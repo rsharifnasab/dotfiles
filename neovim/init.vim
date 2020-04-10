@@ -3,10 +3,6 @@
 " TODO : a good auto complete 
 " i tested coc and ale and ... 
 
-" ****** set variables ****** "
-
-
-
 
 " * appereance setting * " 
 
@@ -20,7 +16,8 @@ syntax enable
 colorscheme default
 set background=dark 
 
-"highlight matchinh bracket? 
+
+"highlight matching bracket 
 set showmatch
 
 " display incomplete commands
@@ -29,8 +26,7 @@ set showcmd
 "do not break line in nextlines
 set nowrap 
 
-"use mouse in nvim
-set mouse=a
+
 
 
 " color of autocompelte menu
@@ -38,16 +34,40 @@ highlight Pmenu ctermbg=6 guibg=#f1f1f0
 highlight PmenuSel ctermbg=3 guifg=#dddd00 guibg=#1f82cd
 "highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 
-" statusline setting
 
-" show status bar 
-set laststatus=2
-
+" *********** editor setting ********* " 
 
 "jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" speed optimize 
+set ttyfast
+set lazyredraw
+
+
+" set wildmenu like bash complete
+set wildmenu
+set wildmode=list:longest
+
+" Fix backspace behavior 
+set backspace=indent,eol,start
+
+"use mouse in nvim
+set mouse=a
+
+" sync system clipborad with vim clipboard
+" no need of \"+p and \"+y for copy and pasting
+set clipboard+=unnamedplus
+
+
+" keep undo history on buffer change
+set hidden
+
+
+" show current mode of editor 
+set showmode
 
 
 
@@ -58,6 +78,7 @@ set smarttab
 set expandtab 
 set autoindent 
 set smartindent 
+set nocindent
 " Highlight tailing whitespace
 set list listchars=tab:\ \ ,trail:·
 
@@ -68,20 +89,6 @@ set ignorecase " search in case insensetive mode
 set smartcase "case sensetive if we have uppercase in queri
 set incsearch " search while typing 
 set gdefault " global find and repalce by default
-
-
-
-" ** some other stuff ** "
-
-" sync system clipborad with vim clipboard
-" no need of \"+p and \"+y for copy and pasting
-set clipboard+=unnamedplus
-
-
-" show current mode of editor 
-set showmode
-
-
 
 
 
@@ -138,6 +145,8 @@ Plug 'honza/vim-snippets'
 " auto close bracket and () and ... 
 Plug 'jiangmiao/auto-pairs'
 
+" some indent help
+Plug 'Yggdroot/indentLine'
 
 
 " ** file tree in the left side ** "
@@ -152,6 +161,9 @@ Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+
+" a theme like atom
+"Plug 'tyrannicaltoucan/vim-quantum'
 
 
 " fuzzy finder (try space with tab)
@@ -171,7 +183,7 @@ call plug#end()
 tnoremap <Esc> <C-\><C-n>
 
 " toggle nerd tree  with ctrl n
-noremap <C-n> :NERDTreeToggle<CR>
+noremap <C-f> :NERDTreeToggle<CR>
 
 " ctrl L for clear highlighted search result
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L> 
@@ -180,6 +192,24 @@ nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 nnoremap <C-w>n :tabnext<CR>
 nnoremap <C-w>p :tabprevious<CR>
 nnoremap <C-w>c :tabnew<CR>
+
+" Browse airline tabs
+:nnoremap <C-p> :bnext<CR>
+:nnoremap <C-o> :bprevious<CR>
+
+
+" Close current buffer
+noremap <silent> <C-q> :bd<CR>
+
+
+" Select all
+map <C-a> <esc>ggVG<CR>
+
+
+" Map Control S for save
+noremap <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S>  <C-O>:update<CR>
 
 
 " vim-fzf key binding
@@ -268,21 +298,31 @@ let mapleader="\\"
 
 " * Airline (status line) * "
 
-
 "let g:airline_extensions = []
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'dark'
 
 
-" *ignore files for nerdtree * "
+set laststatus=2
+let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='bubblegum'
+"let g:airline_theme = 'dark'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#branch#enabled=1
+
+
+" Indent Guides
+let g:indentLine_enabled=1
+let g:indentLine_color_term=235
+let g:indentLine_char='┆'
+
+
+" *ignore files from showing by nerdtree * "
 let NERDTreeIgnore=['\.pyc$','\.class','\~$']
 
 
 " enable autocomplete in startup
 let g:deoplete#enable_at_startup = 1
 let g:JavaComplete_EnableDefaultMappings = 0
-
 
 
