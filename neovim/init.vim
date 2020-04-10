@@ -32,6 +32,7 @@ set nowrap
 set mouse=a
 
 
+
 " statusline setting
 
 " show status bar 
@@ -61,16 +62,15 @@ set gdefault " global find and repalce by default
 
 
 
+" ** some other stuff ** "
 
 " sync system clipborad with vim clipboard
 " no need of \"+p and \"+y for copy and pasting
 set clipboard+=unnamedplus
 
 
-
 " show current mode of editor 
 set showmode
-
 
 
 
@@ -104,7 +104,6 @@ set noswapfile
 
 
 
-
 " ***** plugins ***** "
 
 call plug#begin('~/.config/nvim/plugged')
@@ -116,9 +115,11 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jiangmiao/auto-pairs'
 
 " file tree in the left side
-Plug 'jistr/vim-nerdtree-tabs'     " NERDTree and tabs together in Vim, painlessly
+
+" NERDTree and tabs together in Vim, painlessly
+Plug 'jistr/vim-nerdtree-tabs'
+" nerd tree 
 Plug 'preservim/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin' " A plugin of NERDTree showing git status
 
 
 " lean & mean status/tabline for vim that's light as air
@@ -156,14 +157,13 @@ nnoremap <C-w>c :tabnew<CR>
 " ***** let settings ***** "
 
 " * Airline (status line) * "
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#taboo#enabled = 1
+"let g:airline_extensions = []
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tagbar#enabled = 1
 let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'tomorrow'
-let g:airline_section_c = '%{strftime("%c")}'
+let g:airline_theme = 'dark'
 
 
 
+" enable autocomplete in startup
 let g:deoplete#enable_at_startup = 1
