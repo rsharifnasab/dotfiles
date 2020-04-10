@@ -166,7 +166,7 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'tyrannicaltoucan/vim-quantum'
 
 
-" fuzzy finder (try space with tab)
+" fuzzy finder (try <leader> with tab)
 Plug 'junegunn/fzf.vim'                                           " things you can do with fzf and Vim.
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } " fzf is a general-purpose command-line fuzzy finder.
 
@@ -189,14 +189,16 @@ noremap <C-f> :NERDTreeToggle<CR>
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L> 
 
 " Let's move between tabs and create them with ease
-nnoremap <C-w>n :tabnext<CR>
-nnoremap <C-w>p :tabprevious<CR>
-nnoremap <C-w>c :tabnew<CR>
+" nnoremap <C-w>n :tabnext<CR>
+" nnoremap <C-w>p :tabprevious<CR>
+" nnoremap <C-w>c :tabnew<CR>
 
 " Browse airline tabs
-:nnoremap <C-p> :bnext<CR>
-:nnoremap <C-o> :bprevious<CR>
+nnoremap <C-p> :bnext<CR>
+nnoremap <C-o> :bprevious<CR>
 
+" new tab
+nmap <C-n> :enew<cr>
 
 " Close current buffer
 noremap <silent> <C-q> :bd<CR>
@@ -298,13 +300,16 @@ let mapleader="\\"
 
 " * Airline (status line) * "
 
-"let g:airline_extensions = []
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#show_buffers = 0
+"let g:airline_extensions = [] "clear all extensions"
+let g:airline#extensions#whitespace#enabled = 0 "dont show ugly wihtespaces"
 
+
+" tabline setting "
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#show_buffers = 1 "show buffers in tabline"
+let g:airline#extensions#tabline#fnamemod= ':t' "just show filename"
 
 set laststatus=2
-let g:airline#extensions#tabline#enabled=1
 let g:airline_theme='bubblegum'
 "let g:airline_theme = 'dark'
 let g:airline_powerline_fonts=1
