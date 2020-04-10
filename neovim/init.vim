@@ -55,7 +55,7 @@ set wildmode=list:longest
 set backspace=indent,eol,start
 
 "use mouse in nvim
-set mouse=a
+set mouse=a  
 
 " sync system clipborad with vim clipboard
 " no need of \"+p and \"+y for copy and pasting
@@ -79,7 +79,7 @@ set expandtab
 set autoindent 
 set smartindent 
 set nocindent
-" Highlight tailing whitespace
+" Highlight tailing whitespace todo
 set list listchars=tab:\ \ ,trail:·
 
 
@@ -313,14 +313,13 @@ set laststatus=2
 let g:airline_theme='bubblegum'
 "let g:airline_theme = 'dark'
 let g:airline_powerline_fonts=1
-let g:airline#extensions#branch#enabled=1
 
 
 " Indent Guides
 let g:indentLine_enabled=1
-let g:indentLine_color_term=235
-let g:indentLine_char='┆'
-
+let g:indentLine_color_term=230
+"let g:indentLine_char='|'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " *ignore files from showing by nerdtree * "
 let NERDTreeIgnore=['\.pyc$','\.class','\~$']
