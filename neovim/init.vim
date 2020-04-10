@@ -127,6 +127,13 @@ Plug 'shougo/deoplete-clangx'
 Plug 'deoplete-plugins/deoplete-jedi'
 
 
+" ** snipets ** "
+" snipet engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine.
+Plug 'honza/vim-snippets'
+
+
 
 " auto close bracket and () and ... 
 Plug 'jiangmiao/auto-pairs'
