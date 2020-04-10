@@ -7,7 +7,7 @@
 
 
 
-" * appeereance setting * " 
+" * appereance setting * " 
 
 "enable numbering of lines
 set number
@@ -32,6 +32,10 @@ set nowrap
 set mouse=a
 
 
+" color of autocompelte menu
+highlight Pmenu ctermbg=6 guibg=#f1f1f0
+highlight PmenuSel ctermbg=3 guifg=#dddd00 guibg=#1f82cd
+"highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 
 " statusline setting
 
@@ -167,6 +171,10 @@ nmap <leader><tab> :Files<CR>
 
 " ***** let settings ***** "
 
+
+let mapleader="\\"
+
+
 " * Airline (status line) * "
 "let g:airline_extensions = []
 let g:airline#extensions#whitespace#enabled = 0
@@ -183,4 +191,6 @@ let g:airline_theme = 'dark'
 " enable autocomplete in startup
 let g:deoplete#enable_at_startup = 1
 
-let mapleader="\\"
+
+
+
