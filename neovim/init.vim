@@ -126,12 +126,18 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'preservim/nerdtree'
 
 
-" lean & mean status/tabline for vim that's light as air
+" statusline for vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-call plug#end()
 
+
+" fuzzy finder (try space with tab)
+Plug 'junegunn/fzf.vim'                                           " things you can do with fzf and Vim.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } " fzf is a general-purpose command-line fuzzy finder.
+
+
+call plug#end()
 
 
 
@@ -154,7 +160,8 @@ nnoremap <C-w>p :tabprevious<CR>
 nnoremap <C-w>c :tabnew<CR>
 
 
-
+" vim-fzf key binding
+nmap <leader><tab> :Files<CR>
 
 
 
@@ -169,5 +176,11 @@ let g:airline_theme = 'dark'
 
 
 
+
+
+
+
 " enable autocomplete in startup
 let g:deoplete#enable_at_startup = 1
+
+let mapleader="\\"
