@@ -17,7 +17,7 @@ echo "install plugins for vim with :PlugIstall"
 nvim -c "PlugInstall"
 
 echo "compiling server of java"
-nvim -c "JCserverCompiler"
+nvim -c "JCserverCompile"
 nvim -c "JCserverEnable"
 
 
