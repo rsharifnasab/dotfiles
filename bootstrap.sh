@@ -13,8 +13,8 @@ function doIt() {
 	--exclude "all.sh" \
 	--exclude "LICENSE" \
 	-avh --no-perms . ~;
-
-    #source ~/.bash_profile;
+    
+    source ~/.config/fish/config.fish
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
