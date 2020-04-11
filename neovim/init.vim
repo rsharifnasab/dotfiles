@@ -93,7 +93,6 @@ set gdefault " global find and repalce by default
 
 
 
-
 " ** file stuff ** "
 
 " automatically cd to curredt dir
@@ -220,16 +219,12 @@ nmap <leader><tab> :Files<CR>
 
 
 
-
-
-
 " Change clang binary path
 call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
 
 " Change clang options
 call deoplete#custom#var('clangx', 'default_c_options', '')
 call deoplete#custom#var('clangx', 'default_cpp_options', '')
-
 
 
 
@@ -245,13 +240,11 @@ imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 nmap <F5> <Plug>(JavaComplete-Imports-Add)
 imap <F5> <Plug>(JavaComplete-Imports-Add)
 
-
 nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-
 
 nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
 nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
@@ -264,7 +257,6 @@ imap <C-j>i <Plug>(JavaComplete-Imports-AddSmart)
 imap <C-j>ii <Plug>(JavaComplete-Imports-Add)
 
 nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
-
 imap <C-j>jM <Plug>(JavaComplete-Generate-AbstractMethods)
 
 nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
@@ -291,9 +283,7 @@ nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
 
 
 
-
 " ***** let settings ***** "
-
 
 let mapleader="\\"
 
@@ -302,7 +292,6 @@ let mapleader="\\"
 
 "let g:airline_extensions = [] "clear all extensions"
 let g:airline#extensions#whitespace#enabled = 0 "dont show ugly wihtespaces"
-
 
 " tabline setting "
 let g:airline#extensions#tabline#enabled=1
@@ -315,11 +304,11 @@ let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts=1
 
 
-" Indent Guides
+" ** Indent Guides ** "
 let g:indentLine_enabled=1
 let g:indentLine_color_term=230
-"let g:indentLine_char='|'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char='|'
+"let g:indentLine_char_list = [' ','|', '¦', '┆', '┊']
 
 " *ignore files from showing by nerdtree * "
 let NERDTreeIgnore=['\.pyc$','\.class','\~$']
