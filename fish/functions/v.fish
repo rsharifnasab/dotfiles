@@ -1,8 +1,9 @@
-function at
+
+function v
         
     if count $argv > /dev/null
-        atom "$argv"
+        nvim "$argv"
     else
-        atom .
+        nvim .
     end
 end
