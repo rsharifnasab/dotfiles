@@ -14,7 +14,8 @@ function doIt() {
 	--exclude "LICENSE" \
 	-avh --no-perms . ~;
     
-    source ~/.config/fish/config.fish
+    #source ~/.config/fish/config.fish
+
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
