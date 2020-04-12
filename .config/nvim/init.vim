@@ -187,11 +187,6 @@ noremap <C-f> :NERDTreeToggle<CR>
 " ctrl L for clear highlighted search result
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L> 
 
-" Let's move between tabs and create them with ease
-" nnoremap <C-w>n :tabnext<CR>
-" nnoremap <C-w>p :tabprevious<CR>
-" nnoremap <C-w>c :tabnew<CR>
-
 " Browse airline tabs
 nnoremap <C-p> :bnext<CR>
 nnoremap <C-o> :bprevious<CR>
@@ -314,7 +309,16 @@ let g:indentLine_char='|'
 let NERDTreeIgnore=['\.pyc$','\.class','\~$']
 
 
+" * ale setting * "
+" error and warning signs.
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+" enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
 " enable autocomplete in startup
+
+
+
 let g:deoplete#enable_at_startup = 1
 let g:JavaComplete_EnableDefaultMappings = 0
 
