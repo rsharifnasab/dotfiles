@@ -57,6 +57,9 @@ set backspace=indent,eol,start
 "use mouse in nvim
 set mouse=a  
 
+" move cursor any position not just up to last char of text
+set virtualedit=all
+
 " sync system clipborad with vim clipboard
 " no need of \"+p and \"+y for copy and pasting
 set clipboard+=unnamedplus
@@ -112,8 +115,6 @@ set encoding=utf-8
 set nobackup
 set nowritebackup
 set noswapfile
-
-
 
 
 
