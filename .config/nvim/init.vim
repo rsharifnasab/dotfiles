@@ -170,6 +170,10 @@ Plug 'junegunn/fzf.vim'                                           " things you c
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } " fzf is a general-purpose command-line fuzzy finder.
 
 
+" vim grep, like atoms ctrl-shift-f
+Plug 'mileszs/ack.vim'
+
+
 call plug#end()
 
 
@@ -177,6 +181,12 @@ call plug#end()
 
 
 " ***** REMAPS ****** "
+
+"use ack (global in file search) with remap:"
+cnoreabbrev Ack Ack!
+nnoremap <Leader>f :Ack!<Space>
+
+
 
 " change default exit from terminal mode to esc
 tnoremap <Esc> <C-\><C-n>
@@ -212,6 +222,11 @@ inoremap <silent> <C-S>  <C-O>:update<CR>
 nmap <leader><tab> :Files<CR>
 
 
+
+" vim global file search with ack engine change:
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 
 " Change clang binary path
