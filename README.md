@@ -39,6 +39,8 @@ after copying, you can install plugins by `:PlugInstall`
 and clean them with `:PlugClean` # note that this will clean plugins which is deleted from init.vim
 
 
+
+
 ```bash
 function neovim(){
 
@@ -50,7 +52,10 @@ function neovim(){
     pip3 install pynvim --user
 
     echo "install clang"
-    sudo pacman -S clang 
+    sudo pacman -S clang
+
+    echo "install vimgrep engine"
+    sudo pacman -S the_silver_searcher
 
     echo "install plugins for vim with :PlugIstall"
     nvim -c "PlugInstall"
