@@ -83,6 +83,11 @@ you can open fish setting with command: `fish_config`
 location of dotfiles are in: `~/.config/fish/`
 
 
+### safe-rm
+```bash 
+   npm i -g safe-rm
+```
+
 ```bash 
 function fish(){
     echo "this will update fish functions"
