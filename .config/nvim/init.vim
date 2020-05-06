@@ -58,7 +58,8 @@ set backspace=indent,eol,start
 set mouse=a  
 
 " move cursor any position not just up to last char of text
-set virtualedit=all
+"set virtualedit=all
+"set virtualedit= 
 
 " sync system clipborad with vim clipboard
 " no need of \"+p and \"+y for copy and pasting
