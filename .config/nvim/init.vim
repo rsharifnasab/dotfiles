@@ -133,8 +133,13 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'shougo/deoplete-clangx'
 " python for deoplete 
 Plug 'deoplete-plugins/deoplete-jedi'
+
+
 " smart autocomplete (learning!)
-Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+"disabled due to ram usage 
+
+
 
 " ** snipets ** "
 " snipet engine.
@@ -340,7 +345,8 @@ let g:airline#extensions#ale#enabled = 1
 let g:deoplete#enable_at_startup = 1
 let g:JavaComplete_EnableDefaultMappings = 0
 
- call deoplete#custom#var('tabnine', {
-\ 'line_limit': 200,
-\ 'max_num_results': 5,
-\ })
+" disabled due to ram usage
+" call deoplete#custom#var('tabnine', {
+" \ 'line_limit': 200,
+" \ 'max_num_results': 5,
+" \ })
