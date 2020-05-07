@@ -13,7 +13,7 @@ set number
 syntax enable
 
 " set color scheme
-colorscheme default
+colorscheme industry "default
 set background=dark 
 
 
