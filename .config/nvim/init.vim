@@ -304,7 +304,7 @@ nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
 " ***** let settings ***** "
 
 let mapleader="\\"
-
+let g:python3_host_prog = '/usr/bin/python3'
 
 " * Airline (status line) * "
 
