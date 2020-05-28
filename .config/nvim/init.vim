@@ -13,7 +13,7 @@ set number
 syntax enable
 
 " set color scheme
-colorscheme industry "default
+colorscheme ron "default
 set background=dark 
 
 
@@ -24,7 +24,7 @@ set showmatch
 set showcmd
 
 "do not break line in nextlines
-set nowrap 
+"set nowrap 
 
 
 
@@ -55,7 +55,7 @@ set wildmode=list:longest
 set backspace=indent,eol,start
 
 "use mouse in nvim
-set mouse=a  
+set mouse=a
 
 " move cursor any position not just up to last char of text
 "set virtualedit=all
@@ -147,10 +147,6 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine.
 Plug 'honza/vim-snippets'
 
-
-
-" auto close bracket and () and ... 
-Plug 'jiangmiao/auto-pairs'
 
 " some indent help
 Plug 'Yggdroot/indentLine'
@@ -251,52 +247,6 @@ call deoplete#custom#var('clangx', 'default_cpp_options', '')
 " deoplete for java (keymaps) 
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
-
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-
-nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
-nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
-nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
-nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
-
-imap <C-j>I <Plug>(JavaComplete-Imports-AddMissing)
-imap <C-j>R <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <C-j>i <Plug>(JavaComplete-Imports-AddSmart)
-imap <C-j>ii <Plug>(JavaComplete-Imports-Add)
-
-nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
-imap <C-j>jM <Plug>(JavaComplete-Generate-AbstractMethods)
-
-nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
-nmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
-nmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
-nmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-nmap <leader>jts <Plug>(JavaComplete-Generate-ToString)
-nmap <leader>jeq <Plug>(JavaComplete-Generate-EqualsAndHashCode)
-nmap <leader>jc <Plug>(JavaComplete-Generate-Constructor)
-nmap <leader>jcc <Plug>(JavaComplete-Generate-DefaultConstructor)
-
-imap <C-j>s <Plug>(JavaComplete-Generate-AccessorSetter)
-imap <C-j>g <Plug>(JavaComplete-Generate-AccessorGetter)
-imap <C-j>a <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-
-vmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
-vmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
-vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-
-nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-NewClass)
-nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
-
 
 
 
