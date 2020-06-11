@@ -36,6 +36,8 @@ highlight PmenuSel ctermbg=3 guifg=#dddd00 guibg=#1f82cd
 
 
 " *********** editor setting ********* " 
+" dont need to be compatible with VI
+set nocompatible
 
 "jump to the last position when reopening a file
 if has("autocmd")
@@ -118,7 +120,22 @@ set nowritebackup
 set noswapfile
 
 
+" instead of fuzzy file, we just do with :find 
+set path+=**
 
+
+"create tags file (install ctags first)
+command! MakeTags !ctags -R .
+" now we can: ^] to jump the definition of tag under cursor 
+" and ^t to jump back at the first place
+
+
+
+" vim built in autocomplete (ins-complete)
+" ^n: normal complete
+" ^x^n: complete from just this file 
+" ^x^f complete filenames 
+" ^x^] complete tags only
 
 
 " ***** plugins ***** "
@@ -244,8 +261,7 @@ call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
 
 
-" deoplete for java (keymaps) 
-
+" deoplete for java 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 
@@ -253,8 +269,12 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " ***** let settings ***** "
 
+" set the leader key
 let mapleader="\\"
+
+" set python path (make sure it work inside venvs
 let g:python3_host_prog = '/usr/bin/python3'
+
 
 " * Airline (status line) * "
 
@@ -278,6 +298,7 @@ let g:indentLine_color_term=230
 let g:indentLine_char='|'
 "let g:indentLine_char_list = [' ','|', '¦', '┆', '┊']
 
+
 " *ignore files from showing by nerdtree * "
 let NERDTreeIgnore=['\.pyc$','\.class','\~$']
 
@@ -288,10 +309,9 @@ let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 " enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
+
+
 " enable autocomplete in startup
-
-
-
 let g:deoplete#enable_at_startup = 1
 let g:JavaComplete_EnableDefaultMappings = 0
 
