@@ -54,6 +54,9 @@ function neovim(){
     echo "install clang"
     sudo pacman -S clang
 
+    echo "install ctags"
+    sudo pacman -S ctags
+
     echo "install vimgrep engine"
     sudo pacman -S the_silver_searcher
 
