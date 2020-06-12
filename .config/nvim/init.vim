@@ -25,7 +25,9 @@ set showcmd
 
 "do not break line in nextlines
 "set nowrap 
-
+set wrap "break the text to fill in terminal width
+set linebreak
+set breakindent
 
 
 
@@ -62,6 +64,9 @@ set mouse=a
 " move cursor any position not just up to last char of text
 "set virtualedit=all
 "set virtualedit= 
+
+" make left and right arrow keys change line
+set whichwrap+=<,>,[,]
 
 " sync system clipborad with vim clipboard
 " no need of \"+p and \"+y for copy and pasting
