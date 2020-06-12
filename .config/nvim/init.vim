@@ -66,7 +66,7 @@ set mouse=a
 "set virtualedit= 
 
 " make left and right arrow keys change line
-set whichwrap+=<,>,[,]
+set whichwrap+=<,>,[,],h,l
 
 " sync system clipborad with vim clipboard
 " no need of \"+p and \"+y for copy and pasting
