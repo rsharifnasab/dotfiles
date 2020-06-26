@@ -10,9 +10,12 @@
 """"""""""""" CHEATS """"""""""""
 " 
 " " " BUILTIN COMMANDS CHEAT
-" zz, zt -> change cursor position
+" zz, zt -> change screen position
+" H,M,L -> change cursor position in current screen
 "
-"
+" set relativenumber -> shomare khat ha faseleshoun ba jayee ke hasti
+" . -> repeat last command
+" 
 "
 " " " FUZZY FILE finder 
 " instead of fuzzy file, we just do with :find 
