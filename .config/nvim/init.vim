@@ -10,12 +10,26 @@
 """"""""""""" CHEATS """"""""""""
 " 
 " " " BUILTIN COMMANDS CHEAT
-" zz, zt -> change screen position
+" zz, zt, zb, z. -> change screen position
 " H,M,L -> change cursor position in current screen
 "
 " set relativenumber -> shomare khat ha faseleshoun ba jayee ke hasti
 " . -> repeat last command
+"
+" gf: edit the file which its name is under curser
+"
+"~: chane case lower to upper and otherwise
+"
+"^: start of line (after spaces)
+" +,-: next line after prev line (first char after whitespace)
+" gg: first line of gile 
+" G: last line of file
+" move with () and { }
 " 
+"
+" " " MARKS
+" ma to mz : save current place 
+" `a to `z : go back to mark
 "
 " " " FUZZY FILE finder 
 " instead of fuzzy file, we just do with :find 
@@ -52,9 +66,10 @@
 "
 "
 "
+"
 " " " TABS ANS BUFFERS
 " Browse tabs <C-p> ans <C-o> 
-" new tab <C-n>
+" New tab <C-n>
 " Close current buffer <C-q> 
 "
 "
