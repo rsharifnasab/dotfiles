@@ -2,6 +2,64 @@
 
 " TODO : a good auto complete 
 " i tested coc and ale and ... 
+" todo: you complete me 
+
+
+
+
+""""""""""""" CHEATS """"""""""""
+" 
+" " " BUILTIN COMMANDS CHEAT
+" zz, zt -> change cursor position
+"
+"
+"
+" " " FUZZY FILE finder 
+" instead of fuzzy file, we just do with :find 
+" vim-fzf <leader><tab>
+"
+"
+" " " FIND IN FILES 
+" (like atoms ctrl-shift-f)
+" Ack! or leader+f
+"
+"
+"
+" " " TAGS
+"(install ctags first)
+" create tags file  with 'MakeTags'
+" ^] to jump the definition of tag under cursor 
+" and ^t to jump back at the first place
+"
+"
+"
+" " " AUTOCOMPLETE
+" vim built in autocomplete (ins-complete)
+" ^n: normal complete
+" ^x^n: complete from just this file 
+" ^x^f complete filenames 
+" ^x^] complete tags only
+"
+"
+"
+"
+" " " OTHERS
+" ctrl L for clear highlighted search result
+" ctrl+f: nerdtree
+"
+"
+"
+" " " TABS ANS BUFFERS
+" Browse tabs <C-p> ans <C-o> 
+" new tab <C-n>
+" Close current buffer <C-q> 
+"
+"
+"
+"
+"
+"""""""""""""""""""""""""""""""""
+
 
 
 " * appereance setting * " 
@@ -25,8 +83,14 @@ set showcmd
 
 "do not break line in nextlines
 "set nowrap 
-set wrap "break the text to fill in terminal width
+
+"break the text to fill in terminal width
+set wrap
+
+
 set linebreak
+
+" if broke the line, indent the broken part
 set breakindent
 
 
@@ -63,10 +127,9 @@ set mouse=a
 
 " move cursor any position not just up to last char of text
 "set virtualedit=all
-"set virtualedit= 
 
 " make left and right arrow keys change line
-set whichwrap+=<,>,[,],h,l
+set whichwrap+=<,>,[,] ",h,l
 
 " sync system clipborad with vim clipboard
 " no need of \"+p and \"+y for copy and pasting
@@ -90,6 +153,7 @@ set expandtab
 set autoindent 
 set smartindent 
 set nocindent
+
 " Highlight tailing whitespace todo
 set list listchars=tab:\ \ ,trail:·
 
@@ -107,7 +171,7 @@ set gdefault " global find and repalce by default
 " ** file stuff ** "
 
 " automatically cd to curredt dir
-set autochdir
+"set autochdir
 
 " automatically reload file it is changed outdie of vim
 set autoread
@@ -141,6 +205,8 @@ command! MakeTags !ctags -R .
 " ^x^n: complete from just this file 
 " ^x^f complete filenames 
 " ^x^] complete tags only
+
+
 
 
 " ***** plugins ***** "
@@ -192,11 +258,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 
 " fuzzy finder (try <leader> with tab)
-Plug 'junegunn/fzf.vim'                                           " things you can do with fzf and Vim.
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } " fzf is a general-purpose command-line fuzzy finder.
+" fzf is a general-purpose command-line fuzzy finder.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } 
 
 
-" vim grep, like atoms ctrl-shift-f
+" vim grep, like atoms ctrl-shift-f (by Ack! or leader+f)
 Plug 'mileszs/ack.vim'
 
 
