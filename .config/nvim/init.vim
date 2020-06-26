@@ -259,6 +259,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " fuzzy finder (try <leader> with tab)
 " fzf is a general-purpose command-line fuzzy finder.
+Plug 'junegunn/fzf.vim' 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } 
 
 
@@ -311,7 +312,7 @@ inoremap <silent> <C-S>  <C-O>:update<CR>
 
 
 " vim-fzf key binding
-nmap <leader><tab> :Files<CR>
+nmap <leader><tab> :FZF<CR>
 
 
 
