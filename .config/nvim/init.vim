@@ -18,25 +18,31 @@
 "
 " gf: edit the file which its name is under curser
 "
-"~: chane case lower to upper and otherwise
+" ~: chane case lower to upper and otherwise
 "
-"^: start of line (after spaces)
+" ^: start of line (after spaces)
 " +,-: next line after prev line (first char after whitespace)
-" gg: first line of gile 
+" gg: first line of file
 " G: last line of file
 " move with () and { }
+"
+"
+"  :make -> compile with makefile and go directly to compile errors ^_^
+" open compile errors window with :copen (or :cc)
+" and close if with :cclose or just scroll over
 " 
 "
 " " " MARKS
-" ma to mz : save current place 
+" ma to mz : save current place
 " `a to `z : go back to mark
+" m{uppercase} -> global between files
 "
-" " " FUZZY FILE finder 
-" instead of fuzzy file, we just do with :find 
-" vim-fzf <leader><tab>
+" " " FUZZY FILE finder
+" instead of fuzzy file, we just do with :find
+" vim-fzf <leader><tab>  (installed plugin)
 "
 "
-" " " FIND IN FILES 
+" " " FIND IN FILES
 " (like atoms ctrl-shift-f)
 " Ack! or leader+f
 "
@@ -44,35 +50,66 @@
 "
 " " " TAGS
 "(install ctags first)
-" create tags file  with 'MakeTags'
-" ^] to jump the definition of tag under cursor 
-" and ^t to jump back at the first place
+" create tags file  with 'MakeTags' (function to: :! ctags -R .)
+" ^] to jump the definition of tag under cursor
+" ^t to jump back at the first place
+" g] to show list of tags under cursor
 "
 "
 "
 " " " AUTOCOMPLETE
 " vim built in autocomplete (ins-complete)
 " ^n: normal complete
-" ^x^n: complete from just this file 
-" ^x^f complete filenames 
+" ^x^n: complete from just this file
+" ^x^f complete filenames
 " ^x^] complete tags only
 "
 "
 "
 "
-" " " OTHERS
-" ctrl L for clear highlighted search result
-" ctrl+f: nerdtree
-"
-"
+" " " SEARCH
+" ctrl L for clear highlighted search result 
+" ctrl+f: nerdtree 
+" * -> search word under cursor ? -> search backward
+" REPLACE
+" :%s/search_for_this/replace_with_this/
+" :%s/search_for_this/replace_with_this/c
 "
 "
 " " " TABS ANS BUFFERS
-" Browse tabs <C-p> ans <C-o> 
+" Browse tabs <C-p> ans <C-o>
 " New tab <C-n>
-" Close current buffer <C-q> 
+" Close current buffer <C-q>
 "
 "
+" " " indent
+" C-t and C-d -> indent forward and backward in insert mode
+" < and >  in visual mode do the same
+"
+" auto indent (and format):
+" = -> for selected text
+" == -> current line
+"
+"
+"
+" " " fold
+" you can `zc` (close) and `zo` and `za` (open) 
+" to fold and unfold
+"
+"
+"
+" " " OTHERS
+" to redirect output of command to vim:
+" ls | vim -
+" :set laststatus 0 -> no status line
+"
+"turn off showmatch:
+" :NoMatchParen
+" and turn on again:
+" :DoMatchParen
+"
+" turn on spell check
+" set spell
 "
 "
 "
@@ -111,6 +148,12 @@ set linebreak
 " if broke the line, indent the broken part
 set breakindent
 
+
+" fold option
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable " no fold first time
+set foldlevel=5 " close fold auto after how many indents
 
 
 " color of autocompelte menu
