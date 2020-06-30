@@ -98,3 +98,16 @@ function fish(){
     cp -r ./fish/functions ~/.config/fish/
 }
 ```
+
+
+## tir 
+
+use time.ir in shell 
+
+```bash 
+mkdir -p ~/apps
+cd ~/apps
+git clone --depth 1 --branch 19.10.07 https://github.com/Pouriya-Jahanbakhsh/tir && cd tir
+sudo make install 
+```
+
