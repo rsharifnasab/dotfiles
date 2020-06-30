@@ -24,7 +24,12 @@
 " +,-: next line after prev line (first char after whitespace)
 " gg: first line of file
 " G: last line of file
-" move with () and { }
+"
+"
+" move with [( to start of pharantes
+" and with ]) to end of paranthes (and same for { and ..)
+"
+" move with () and { } between lines and pharantes
 "
 "
 "  :make -> compile with makefile and go directly to compile errors ^_^
