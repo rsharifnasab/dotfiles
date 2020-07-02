@@ -40,12 +40,15 @@
 " " " MARKS
 " ma to mz : save current place
 " `a to `z : go back to mark
+" (or 'a to 'z to go to the fist of that line)
 " m{uppercase} -> global between files
+" y'k : copy from here to k (marked as k)
+" d'k : delete from here to k (marked as k)
 "
 " " " FUZZY FILE finder
 " instead of fuzzy file, we just do with :find
 " vim-fzf <leader><tab>  (installed plugin)
-"
+" :Explore -> open file manager (builtin)
 "
 " " " FIND IN FILES
 " (like atoms ctrl-shift-f)
@@ -100,6 +103,13 @@
 " " " fold
 " you can `zc` (close) and `zo` and `za` (open) 
 " to fold and unfold
+"
+"
+" " " MACROS
+" start saving in `a` with `qa`
+" then press q to stop saving 
+" go to a line and `@a`
+" after the first @a, you can just @@
 "
 "
 "
@@ -241,6 +251,9 @@ set gdefault " global find and repalce by default
 
 " automatically reload file it is changed outdie of vim
 set autoread
+
+" auto write all files before make and other commands
+set autowriteall
 
 " detect setting base on file type 
 filetype on 
@@ -397,6 +410,10 @@ call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
 
 
+" setup compile for programs
+"autocmd FileType c set makeprg=!make||gcc\ -g\ -Wall\ '%'
+"autocmd FileType cpp set makeprg=!make||g++\ -g\ -Wall\ '%'
+"autocmd FileType java set makeprg=!make\ ||\ javac\ '%'
 
 
 " deoplete for java 
