@@ -137,11 +137,21 @@
 "enable numbering of lines
 set number
 
+" set numbers not absoloute
+" based on distance of current line 
+set relativenumber
+
 "enable syntax highlighting
 syntax enable
 
 " set color scheme
-colorscheme ron "default
+try 
+    source ~/.config/nvim/themes/PaperColor.vim
+catch
+    colorscheme ron
+endtry 
+
+
 set background=dark 
 
 
@@ -211,14 +221,11 @@ set whichwrap+=<,>,[,] ",h,l
 " no need of \"+p and \"+y for copy and pasting
 set clipboard+=unnamedplus
 
-
 " keep undo history on buffer change
 set hidden
 
-
 " show current mode of editor 
 set showmode
-
 
 
 
@@ -246,8 +253,8 @@ set gdefault " global find and repalce by default
 
 " ** file stuff ** "
 
-" automatically cd to curredt dir
-"set autochdir
+" automatically cd to current dir
+set autochdir
 
 " automatically reload file it is changed outdie of vim
 set autoread
@@ -274,18 +281,6 @@ set path+=**
 
 "create tags file (install ctags first)
 command! MakeTags !ctags -R .
-" now we can: ^] to jump the definition of tag under cursor 
-" and ^t to jump back at the first place
-
-
-
-" vim built in autocomplete (ins-complete)
-" ^n: normal complete
-" ^x^n: complete from just this file 
-" ^x^f complete filenames 
-" ^x^] complete tags only
-
-
 
 
 " ***** plugins ***** "
@@ -325,15 +320,17 @@ Plug 'jistr/vim-nerdtree-tabs'
 " nerd tree 
 Plug 'preservim/nerdtree'
 
+" icons for nertree and startify
+Plug 'ryanoasis/vim-devicons'
+
+" many colorshcemes 
+"Plug 'rafi/awesome-vim-colorschemes'
 
 
 " statusline for vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-
-" a theme like atom
-"Plug 'tyrannicaltoucan/vim-quantum'
 
 
 " fuzzy finder (try <leader> with tab)
@@ -432,7 +429,6 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 
 " * Airline (status line) * "
-
 "let g:airline_extensions = [] "clear all extensions"
 let g:airline#extensions#whitespace#enabled = 0 "dont show ugly wihtespaces"
 
@@ -442,8 +438,9 @@ let g:airline#extensions#tabline#show_buffers = 1 "show buffers in tabline"
 let g:airline#extensions#tabline#fnamemod= ':t' "just show filename"
 
 set laststatus=2
-let g:airline_theme='bubblegum'
-"let g:airline_theme = 'dark'
+"let g:airline_theme='bubblegum'
+"let g:airline_theme='random'
+let g:airline_theme = 'dark'
 let g:airline_powerline_fonts=1
 
 
