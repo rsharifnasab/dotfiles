@@ -439,8 +439,13 @@ let g:airline#extensions#tabline#fnamemod= ':t' "just show filename"
 
 set laststatus=2
 "let g:airline_theme='bubblegum'
+"let g:airline_theme='badwolf'
+"let g:airline_theme='tomorrow'
+"let g:airline_theme='minimalist'
+"let g:airline_theme='lucius'
 "let g:airline_theme='random'
-let g:airline_theme = 'dark'
+"let g:airline_theme = 'dark'
+let g:airline_theme='serene'
 let g:airline_powerline_fonts=1
 
 
