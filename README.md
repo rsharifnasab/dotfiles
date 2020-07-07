@@ -74,6 +74,9 @@ function neovim(){
 ```
 
 
+for using devicons, you should set terminal font to
+ubuntu font
+
 
 
 ## fish
