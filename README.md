@@ -114,3 +114,6 @@ git clone --depth 1 --branch 19.10.07 https://github.com/Pouriya-Jahanbakhsh/tir
 sudo make install 
 ```
 
+## kateb
+todo: use kateb fonts
+https://github.com/kiamazi/kateb
