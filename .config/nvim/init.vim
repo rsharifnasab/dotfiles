@@ -287,6 +287,9 @@ command! MakeTags !ctags -R .
 
 call plug#begin('~/.config/nvim/plugged')
 
+" ** add syntax highlight for flex ** "
+Plug 'justinmk/vim-syntax-extra'
+
 " *** auto complete *** "
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " java for deoplete

@@ -8,12 +8,13 @@
 + usb stick formatter 
 + usb image writer
 + thunar -> file manager
++ ncdu -> disk space usage
 
 
 ## commands
 + proxy -> `ss-local -c c1.json`
 + clear yay cache -> `yay -Sc`
-+ clear pip cache -> `rm -r .config/pip`
++ clear pip cache -> `rm -r .cache/pip`
 
 ## cmd tools
 `od`, `od -a` -> hexdump
