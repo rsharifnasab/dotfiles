@@ -126,6 +126,10 @@
 " turn on spell check
 " set spell
 "
+" di" => delete inside "
+" da" -> delete whole " (containing ")
+" more info -> :h text-objects
+"
 "
 "
 """""""""""""""""""""""""""""""""
