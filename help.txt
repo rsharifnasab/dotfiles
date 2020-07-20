@@ -33,7 +33,22 @@
 + ctrl-o -> find file to open
 + ctrl-g -> select and open with defaul deitor 
 
-+ 
++ alt-c -> select folder to cd 
+
+
+## fish shortcuts
++ ctrl c -> clear the line 
++ ctrl l -> clear terminal 
++ ctrl w -> delete last word 
++ alt left , alt right -> move between last directories
++ alt up, lat down -> switch between last commands 
++ ctrl U -> delete to beginning 
++ alt D -> delete next word 
+
++ alt p -> auto pipe command to less
+
+
+
 
 trash foler:
 /home/roozbeh/.local/share/Trash/files
