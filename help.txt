@@ -17,12 +17,23 @@
 + clear pip cache -> `rm -r .cache/pip`
 
 ## cmd tools
-`od`, `od -a` -> hexdump
-xdg-open -> double click 
-alsamixer -> sound 
-fd -> find
-fzf -> find files (fuzzy fle finder)
-ag -> grep in all files
++ od, od -a -> hexdump
++ xdg-open -> double click 
++ alsamixer -> sound 
++ fd -> find
++ fzf -> find files (fuzzy fle finder)
++ ag -> grep in all files
+
+## FZF in fish
++ fe -> select fish whith FZF and edit it later 
++ fkill -> select a process to kill with FZF
+
++ ctrl-t -> find file with preview 
++ ctrl-r -> find in recent commands
++ ctrl-o -> find file to open
++ ctrl-g -> select and open with defaul deitor 
+
++ 
 
 trash foler:
 /home/roozbeh/.local/share/Trash/files

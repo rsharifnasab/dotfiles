@@ -88,6 +88,13 @@ you can open fish setting with command: `fish_config`
 
 location of dotfiles are in: `~/.config/fish/`
 
+## fisher 
+package manager for fish 
+```bash 
+yay -s fisher
+fisher add halostatue/fish-fzf
+```
+fish-fzf is very cool thing! use FZF in shell 
 
 ### safe-rm
 ```bash 
