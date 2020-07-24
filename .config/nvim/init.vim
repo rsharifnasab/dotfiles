@@ -258,7 +258,9 @@ set gdefault " global find and repalce by default
 " ** file stuff ** "
 
 " automatically cd to current dir
-set autochdir
+" set autochdir
+" do not cd to current folder
+set noautochdir
 
 " automatically reload file it is changed outdie of vim
 set autoread
