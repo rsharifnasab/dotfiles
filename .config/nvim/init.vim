@@ -270,7 +270,7 @@ set autowriteall
 
 " detect setting base on file type 
 filetype on 
-filetype indent on 
+filetype indent on
 filetype plugin on
 
 set encoding=utf-8
@@ -363,7 +363,6 @@ call plug#end()
 "use ack (global in file search) with remap:"
 cnoreabbrev Ack Ack!
 nnoremap <Leader>f :Ack!<Space>
-
 
 
 " change default exit from terminal mode to esc
