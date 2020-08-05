@@ -478,6 +478,7 @@ let g:airline#extensions#ale#enabled = 1
 
 " enable autocomplete in startup
 let g:deoplete#enable_at_startup = 1
+let g:JavaComplete_CheckServerVersionAtStartup = 0
 let g:JavaComplete_EnableDefaultMappings = 0
 
 " disabled due to ram usage

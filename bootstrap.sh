@@ -15,6 +15,7 @@ function doIt() {
 	-avh --no-perms . ~;
     
     #source ~/.config/fish/config.fish
+    ~/.emacs.d/bin/doom -d sync
 
 }
 
