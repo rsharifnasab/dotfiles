@@ -7,14 +7,11 @@ im actually noob in writing dotfiles, if you want to help me, i appreciate
 i'm using doom mode.
 for install it: 
 ```bash
-
 yay -S fd emacs 
-
 
 rm -r ~/.emacs.d
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
-
 
 #to updare:
 ~/.emacs.d/bin/doom upgrade
