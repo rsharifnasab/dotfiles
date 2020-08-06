@@ -16,6 +16,10 @@ git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 #to updare:
 ~/.emacs.d/bin/doom upgrade
+
+
+# to add to path:
+sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
 ```
 
 ## vim
