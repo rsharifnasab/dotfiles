@@ -1,4 +1,10 @@
 SPC .   -> open file 
 SPC f l -> fzf 
 SPC w w -> switch windows
+SPC o t -> open terminal here
+g t -> next Tab
+g T -> prev tab
 
+
+emacs -mm -> open emacs maximazed
+emacs -nw -> open emacs in terminal
