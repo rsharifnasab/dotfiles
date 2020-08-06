@@ -1,0 +1,4 @@
+SPC .   -> open file 
+SPC f l -> fzf 
+SPC w w -> switch windows
+
