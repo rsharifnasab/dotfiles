@@ -8,6 +8,9 @@ i'm using doom mode.
 for install it: 
 ```bash
 yay -S fd emacs 
+yay -S pipenv pytest python-black python-pyflakes python-rednose
+yay -S python-pytest hlint shellcheck 
+yay -S rtags
 
 rm -r ~/.emacs.d
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
