@@ -7,6 +7,7 @@ im actually noob in writing dotfiles, if you want to help me, i appreciate
 i'm using doom mode.
 for install it: 
 ```bash
+yay -s ghc-static 
 yay -S fd emacs 
 yay -S pipenv pytest python-black python-pyflakes python-rednose
 yay -S python-pytest hlint shellcheck 
