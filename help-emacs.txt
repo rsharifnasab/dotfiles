@@ -1,9 +1,20 @@
 SPC .   -> open file 
-SPC f l -> fzf 
-SPC w w -> switch windows
+
+SPC SPC -> fzf 
+SPC *   -> ag 
+
+SPC f s -> save 
+
+PC w w -> switch windows
 SPC o t -> open terminal here
+SPC o p -> open sidebar 
+SPC c d -> go to definition 
+SPC c c -> compile 
+SPC c x -> list errors
+
 g t -> next Tab
 g T -> prev tab
+
 
 
 emacs -mm -> open emacs maximazed

@@ -144,6 +144,9 @@ disable=print-statement,
         unused-wildcard-import,
         wildcard-import,
         missing_function_docstring,
+        trailing-whitespace,
+        wrong-import-position,
+
 
 
 
