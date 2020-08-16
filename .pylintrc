@@ -150,6 +150,7 @@ disable=print-statement,
         missing_function_docstring,
         trailing-whitespace,
         wrong-import-position,
+        missing-function-docstring
 
 
 
