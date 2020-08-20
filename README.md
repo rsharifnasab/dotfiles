@@ -3,11 +3,16 @@ here i will share my important dot files
 im actually noob in writing dotfiles, if you want to help me, i appreciate
 
 
+## lsd 
+cool ls 
+```bash
+yay -s lsd 
+```
+
 ## emacs 
 i'm using doom mode.
 for install it: 
 ```bash
-yay -S dictd 
 
 yay -s ghc-static 
 yay -S fd emacs 
