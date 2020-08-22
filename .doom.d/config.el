@@ -53,4 +53,4 @@
 
 
 ;; turn of auto close paranthesis
-(electric-pair-mode 0)
+;(electric-pair-mode 0)
