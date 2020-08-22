@@ -11,3 +11,9 @@ alias clean='clear'
 alias CLEAN='clear'
 alias CLEAR='clear'
 alias زمثشق='clear'
+
+
+
+alias em-term='emacsclient -a ""'
+alias em='emacsclient -n -c -a ""'
+alias :q=exit
