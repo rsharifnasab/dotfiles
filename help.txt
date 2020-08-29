@@ -16,6 +16,8 @@
 + clear yay cache -> `yay -Sc`
 + clear pip cache -> `rm -r .cache/pip`
 
++ curl cheet.sh/git # or any other command 
+
 ## cmd tools
 + od, od -a -> hexdump
 + xdg-open -> double click 
