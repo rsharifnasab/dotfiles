@@ -152,7 +152,8 @@ disable=print-statement,
         wrong-import-position,
         missing-function-docstring,
         no-else-return,
-        invalid-name
+        invalid-name,
+        redefined-outer-name
 
 
 
