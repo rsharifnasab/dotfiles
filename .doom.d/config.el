@@ -53,4 +53,9 @@
 
 
 ;; turn of auto close paranthesis
-;(electric-pair-mode 0)
+(setq +electric-pair-mode nil)
+
+
+
+;; turn off symbol mode
+(setq +pretty-code-enabled-modes nil)
