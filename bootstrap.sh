@@ -10,6 +10,7 @@ function doIt() {
     echo "copying"
     rsync --exclude ".git/" \
         --exclude "bootstrap.sh" \
+        --exclude "install-first.sh" \
 	--exclude "*.md" \
 	--exclude "all.sh" \
 	--exclude "LICENSE" \
