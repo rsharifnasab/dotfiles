@@ -50,6 +50,19 @@
 + alt p -> auto pipe command to less
 
 
+## git cheet 
++ git diff HEAD -> what is changed after last commit 
++ git diff --staged -> which change stagged after last commit 
++ git reset somefile -> unstage changes 
++ git checkout -- somefile -> revert to last commit for somefile
+
++ git branch -> show current branches 
++ git branch branchname -> create new branch branchname
++ git checkout branchname -> go to branchname
++ git merge branchname -> merge branchname to current branch
++ git brach -d branchname -> delete branchname
+
+
 
 
 trash foler:
