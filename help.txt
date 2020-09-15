@@ -62,6 +62,9 @@
 + git merge branchname -> merge branchname to current branch
 + git brach -d branchname -> delete branchname
 
++ git stash -> save current uncommited works in a stash and revert back to lastest commit
++ git stash apply -> revert to last stash
++ git stash list, git stash show -> list of my stashes
 
 
 
