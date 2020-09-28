@@ -52,7 +52,11 @@
 
 ## git cheet 
 
-+  git log --abbrev-commit --pretty=oneline
++ git log --abbrev-commit --pretty=oneline
++ git blame -c somefile.txt
+
++ git tag -> show all tags
++ git tag "V1.0" [commit sha]
 
 + git diff HEAD -> what is changed after last commit 
 + git diff HEAD^ -> what is changed after commit before last commit 
