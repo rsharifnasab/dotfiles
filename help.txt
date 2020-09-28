@@ -51,7 +51,13 @@
 
 
 ## git cheet 
+
++  git log --abbrev-commit --pretty=oneline
+
 + git diff HEAD -> what is changed after last commit 
++ git diff HEAD^ -> what is changed after commit before last commit 
++ git diff HEAD~3 -> what is changed after 3 commit before last commit 
+
 + git diff --staged -> which change stagged after last commit 
 + git reset somefile -> unstage changes 
 + git checkout -- somefile -> revert to last commit for somefile
