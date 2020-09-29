@@ -25,6 +25,7 @@
 + fd -> find
 + fzf -> find files (fuzzy fle finder)
 + ag -> grep in all files
++ http -> curl like http client
 
 ## FZF in fish
 + fe -> select fish whith FZF and edit it later 
