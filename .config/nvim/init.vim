@@ -322,6 +322,9 @@ Plug 'honza/vim-snippets'
 " some indent help
 Plug 'Yggdroot/indentLine'
 
+" auto format code with :AutoFormat
+Plug 'Chiel92/vim-autoformat'
+
 
 " ** file tree in the left side ** "
 " NERDTree and tabs together in Vim, painlessly
