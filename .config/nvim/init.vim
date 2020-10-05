@@ -489,3 +489,13 @@ let g:JavaComplete_EnableDefaultMappings = 0
 " \ 'line_limit': 200,
 " \ 'max_num_results': 5,
 " \ })
+
+
+
+" " AUTO FORMATER " "
+
+" set auto format on save
+" au BufWrite * :Autoformat
+
+" to enable debug mode
+" let g:autoformat_verbosemode=1
