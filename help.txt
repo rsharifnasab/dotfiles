@@ -80,6 +80,12 @@
 + git stash list, git stash show -> list of my stashes
 
 
++ git commit --amend -> change last commit
++ git commit --amend -m 'new commit message for last commit'
+
+
+
+
 
 trash foler:
 /home/roozbeh/.local/share/Trash/files
