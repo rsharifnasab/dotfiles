@@ -83,6 +83,10 @@
 + git commit --amend -> change last commit
 + git commit --amend -m 'new commit message for last commit'
 
++ git clean -ix -> delete ignored files 
++ git clean -i -> delete untracked files (not changed)
+--> replace i with f -> not interactive, force
+--> use d -> dry-run : just test, don't do anything
 
 
 

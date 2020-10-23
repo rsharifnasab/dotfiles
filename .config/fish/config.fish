@@ -20,5 +20,7 @@ alias :q=exit
 
 
 
+alias junit='cp -r ~/pro*/*utils/junit_test_runner/* .'
+
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
 
