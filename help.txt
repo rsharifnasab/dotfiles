@@ -17,7 +17,7 @@
 + clear pip cache -> `rm -r .cache/pip`
 
 + curl cheet.sh/git # or any other command 
-
++ tir -> time.ir in shell
 ## cmd tools
 + od, od -a -> hexdump
 + xdg-open -> double click 
