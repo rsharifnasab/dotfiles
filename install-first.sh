@@ -2,10 +2,8 @@
 
 # required sofwares
 echo "installing requierments"
-yay -S --needed ghc-static cabal-install fd emacs python-pipenv python-pytest python-black python-pyflakes python-rednose python-pytest hlint shellcheck rtags fzf lsd neovim python-pylint-venv python-pynvim clang ctags the_silver_searcher fisher httpie astyle clang-format-static-bin autopep8 gofmt stylish-haskell
+yay -S --needed ghc-static cabal-install fd emacs python-pipenv python-pytest python-black python-pyflakes python-rednose python-pytest hlint shellcheck rtags fzf lsd neovim python-pylint-venv python-pynvim clang ctags the_silver_searcher fisher httpie astyle clang-format-static-bin autopep8 gofmt stylish-haskell js-beautify eslint
 
-# install js beautifier
-npm install -g js-beautify
 
 
 #emacs setup
