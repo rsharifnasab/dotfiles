@@ -252,8 +252,8 @@ set smartcase "case sensetive if we have uppercase in queri
 set incsearch " search while typing 
 set gdefault " global find and repalce by default
 
-
-
+" * spell check with SpellCheck command
+command Spellcheck setlocal spell spelllang=en_us
 
 " ** file stuff ** "
 
@@ -353,6 +353,23 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 
 " vim grep, like atoms ctrl-shift-f (by Ack! or leader+f)
 Plug 'mileszs/ack.vim'
+
+
+Plug 'fatih/vim-go'                                    " Go development plugin for Vim
+Plug 'peitalin/vim-jsx-typescript'                     " react JSX syntax highlighting for vim and Typescript
+Plug 'StanAngeloff/php.vim'                            " an up-to-date Vim syntax for PHP (7.x supported)
+Plug 'mrk21/yaml-vim'                                  " YAML syntax/indent plugin for Vim
+Plug 'ekalinin/Dockerfile.vim'                         " Vim syntax file & snippets for Docker's Dockerfile
+Plug 'elzr/vim-json'                                   " A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly.
+Plug 'othree/html5.vim'                                " HTML5 omnicomplete and syntax
+" Plug 'digitaltoad/vim-jade'                          " Vim syntax highlighting for Pug (formerly Jade) templates.
+Plug 'pangloss/vim-javascript'                         " Vastly improved Javascript indentation and syntax support in Vim
+Plug 'octol/vim-cpp-enhanced-highlight'                " Additional Vim syntax highlighting for C++
+Plug 'ap/vim-css-color'                                " Preview colours in source code while editing
+Plug 'rust-lang/rust.vim'                              " Vim configuration for Rust.
+Plug 'arzg/vim-rust-syntax-ext'                        " A Vim plugin that enhances Rust syntax highlighting
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Semantic Highlighting for Python in Neovim
+Plug 'maxmellon/vim-jsx-pretty'                        " JSX and TSX syntax pretty highlighting for vim.
 
 
 call plug#end()
