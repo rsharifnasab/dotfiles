@@ -2,9 +2,15 @@
 
 # required sofwares
 echo "installing requierments"
-yay -S --needed ghc-static cabal-install fd emacs python-pipenv python-pytest python-black python-pyflakes python-rednose python-pytest hlint shellcheck rtags fzf lsd neovim python-pylint-venv python-pynvim clang ctags the_silver_searcher fisher httpie astyle clang-format-static-bin autopep8 gofmt stylish-haskell js-beautify eslint tidy
+yay -S --needed ghc-static cabal-install fd emacs python-pipenv python-pytest python-black python-pyflakes python-rednose python-pytest hlint shellcheck rtags fzf lsd neovim python-pylint-venv python-pynvim clang ctags the_silver_searcher fisher httpie astyle clang-format-static-bin autopep8 gofmt stylish-haskell js-beautify eslint tidy stylelint rustup rust-analyzer
 
-
+# setup rust toolchain 
+rustup install stable
+rustup default stable
+rustup component add clippy
+rustup component add rustfmt
+rustup component add rust-src
+rustup component add rls
 
 #emacs setup
 echo "setupping emacs"
