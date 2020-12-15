@@ -32,7 +32,7 @@
 " move with () and { } between lines and pharantes
 "
 "
-"  :make -> compile with makefile and go directly to compile errors ^_^
+" :make -> compile with makefile and go directly to compile errors ^_^
 " open compile errors window with :copen (or :cc)
 " and close if with :cclose or just scroll over
 " 
@@ -74,7 +74,6 @@
 "
 "
 "
-"
 " " " SEARCH
 " ctrl L for clear highlighted search result 
 " ctrl+f: nerdtree 
@@ -84,10 +83,35 @@
 " :%s/search_for_this/replace_with_this/c
 "
 "
-" " " TABS ANS BUFFERS
+" " " BUFFERS
 " Browse tabs <C-p> ans <C-o>
 " New tab <C-n>
 " Close current buffer <C-q>
+"
+" " tabs 
+" :tabedit file1 -> open nwe file in tab 
+" :tabfirst , :tablast -> move to first and last tab
+" :tabn , :tabp -> move one tab
+" :tabs -> show all tabs 
+" :tabclose -> close this tab 
+" :tabonly -> close all tabs except this 
+" vim -p file1 file2 -> open different files in tabs
+"
+"
+" " " window splitting
+" :split filename  - split window horizontally and load filename
+" :vsplit file     - vertical split and open file
+" ctrl-w up arrow  - move cursor up a window
+" ctrl-w ctrl-w    - move cursor to another window (cycle)
+" ctrl-w _         - maximize current window vertically
+" ctrl-w |         - maximize current window horizontally
+" ctrl-w =         - make all equal size
+" :sview file      - same as split, but readonly
+" :close           - close current window
+" CTRL-W [N] -	Decrease current window height by N (default 1)
+" CTRL-W [N] +	Increase current window height by N (default 1)
+" CTRL-W [N] <	Decrease current window width by N (default 1)
+" CTRL-W [N} >	Increase current window width by N (default 1)
 "
 "
 " " " indent
@@ -97,6 +121,7 @@
 " auto indent (and format):
 " = -> for selected text
 " == -> current line
+" :AutoIndent -> use plugin to auti indent
 "
 "
 "
@@ -112,6 +137,10 @@
 " after the first @a, you can just @@
 "
 "
+" " " SESSIONS
+" :mksession file.vim  -> create a vim file reproduce current vim tabs
+" :mks!  -> update savd session
+" vim -S file.vim -> open vim in savd state
 "
 " " " OTHERS
 " to redirect output of command to vim:
@@ -229,6 +258,13 @@ set clipboard+=unnamedplus
 
 " keep undo history on buffer change
 set hidden
+
+" keep track of undo after reopen file
+if has('persistent_undo')      "check if your vim version supports it
+  set undofile   
+  silent !mkdir -p /tmp/vimundo
+  set undodir= /tmp/vimundo
+endif
 
 " show current mode of editor 
 set showmode
@@ -481,7 +517,7 @@ let g:airline_powerline_fonts=1
 " ** Indent Guides ** "
 let g:indentLine_enabled=1
 let g:indentLine_color_term=230
-let g:indentLine_char='┆'
+let g:indentLine_char='|'
 "let g:indentLine_char_list = [' ','|', '¦', '┆', '┊']
 
 
