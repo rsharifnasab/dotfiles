@@ -263,7 +263,7 @@ set hidden
 if has('persistent_undo')      "check if your vim version supports it
   set undofile   
   silent !mkdir -p /tmp/vimundo
-  set undodir= /tmp/vimundo
+  set undodir=/tmp/vimundo
 endif
 
 " show current mode of editor 
