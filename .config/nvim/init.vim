@@ -68,24 +68,30 @@ set nowritebackup
 set noswapfile
 
 
-
-
 let mapleader="\\" " set the leader key
 let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
 
 
 set hidden " keep undo history on buffer change (TODO)
 
+
 " " color scheme " "
 set background=dark
-try
-"    source ~/.config/nvim/themes/PaperColor.vim
-    source ~/.config/nvim/themes/gotham256.vim
-catch
-    echo "themes not installed"
-    colorscheme ron
-    colorscheme peachpuff
-endtry
+
+" default beautiful 
+"colorscheme ron
+"colorscheme peachpuff
+
+" added
+"colorscheme angr
+"colorscheme gotham256 " deep blue
+"colorscheme afterglow "brown 
+"colorscheme rdark-terminal2 " again brown 
+"colorscheme dogrun "atom like, low contrast
+"colorscheme spacecamp " like spacevim: grey
+
+colorscheme PaperColor
+
 
 
 " " airline colorscheme " " 
@@ -94,10 +100,9 @@ endtry
 "let g:airline_theme='tomorrow'
 "let g:airline_theme='minmalist'
 "let g:airline_theme='lucios'
-"let g:airline_theme='dark'
+let g:airline_theme='dark'
 "let g:airline_theme='serene'
-
-let g:airline_theme='random'
+"let g:airline_theme='random'
 
 
 
@@ -107,8 +112,8 @@ if has("autocmd")
 endif
 
 " save undo stack in file, available after reopen file
-if has('persistent_undo') 
-  set undofile   
+if has('persistent_undo')
+  set undofile
   silent !mkdir -p /tmp/vimundo
   set undodir=/tmp/vimundo
 endif
@@ -275,3 +280,6 @@ call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
 
 " call deoplete#custom#var('tabnine', { 'line_limit': 200, 'max_num_results': 5, }) " disabled due to ram usage
+
+
+
