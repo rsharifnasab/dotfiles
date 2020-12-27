@@ -5,6 +5,7 @@ set nocompatible " don't need to be compatible with VI
 
 set number " enable numbering of lines
 set relativenumber " not absolute line number
+set termguicolors " enable true colors support
 syntax enable " enable syntax highlighting
 set showmatch " highlight matching bracket
 set showcmd " display incomplete commands
@@ -84,7 +85,7 @@ set background=dark
 
 " added
 "colorscheme angr
-"colorscheme gotham256 " deep blue
+"colorscheme gotham " deep blue
 "colorscheme afterglow "brown 
 "colorscheme rdark-terminal2 " again brown 
 "colorscheme dogrun "atom like, low contrast
