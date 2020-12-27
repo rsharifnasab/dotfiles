@@ -1,97 +1,42 @@
 " WELCOME TO nvim init.vim FILE " 
 
-" TODO : a good auto complete 
-" i tested coc and ale and ... 
-" todo: you complete me 
+" maybe TODO  : give coc and you complete me a chance
 
 
-" * appereance setting * " 
+set nocompatible " don't need to be compatible with VI
 
 set number " enable numbering of lines
-set relativenumber " not absoloute line number
+set relativenumber " not absolute line number
 syntax enable " enable syntax highlighting
-
-" set color scheme
-try 
-    source ~/.config/nvim/themes/PaperColor.vim
-catch
-    colorscheme ron
-    colorscheme peachpuff
-endtry
-set background=dark
-
 set showmatch " highlight matching bracket
-
-
 set showcmd " display incomplete commands
+set showmode " show current mode of editor
 
-
-"set nowrap "do not break line in nextlines
-set wrap "break the text to fill in terminal width
+set wrap " break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char
 set breakindent " if broke the line, indent the broken part
 
+set mouse=a " use mouse normally
+set clipboard+=unnamedplus "sync vim clipboard with system clipboard
+set lazyredraw " don't redraw screen in macros
+"set virtualedit=all " move cursor freely in insert mode
 
-" fold option
+set wildmenu " autocomplete vim commands wuth tab
+set wildmode=list:longest
+set whichwrap+=<,>,[,] " < and > can change line
+set backspace=indent,eol,start " Fix backspace behavior 
+set list listchars=tab:\ \ ,trail:· " Highlight tailing whitespace
+set path+=** " search file with :find (same as FZF)
+
+command Spellcheck setlocal spell spelllang=en_us " spell check with "SpellCheck"
+
+" " fold " "
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable " no fold first time
 set foldlevel=5 " close fold auto after how many indents
 
-
-" color of autocompelte menu
-highlight Pmenu ctermbg=6 guibg=#f1f1f0
-highlight PmenuSel ctermbg=3 guifg=#dddd00 guibg=#1f82cd
-"highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
-
-
-" *********** editor setting ********* " 
-set nocompatible " dont need to be compatible with VI
-
-if has("autocmd")
-  "jump to the last position when reopening a file
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-
-" optimize editor speed
-set ttyfast
-set lazyredraw
-
-
-" set wildmenu like bash complete
-set wildmenu
-set wildmode=list:longest
-
-set backspace=indent,eol,start " Fix backspace behavior 
-
-
-set mouse=a " use mouse normally
-
-
-"set virtualedit=all " move cursor freely in insert mode
-
-
-set whichwrap+=<,>,[,] " < and > can change line
-
-" no need of \"+p and \"+y for copy and pasting
-set clipboard+=unnamedplus "sync vim clipbiard with systemclipboard
-
-set hidden " keep undo history on buffer change
-
-if has('persistent_undo') "check if your vim version supports it
-  " keep track of undo after reopen file
-  set undofile   
-  silent !mkdir -p /tmp/vimundo
-  set undodir=/tmp/vimundo
-endif
-
-" show current mode of editor
-set showmode
-
-
-set list listchars=tab:\ \ ,trail:· " Highlight tailing whitespace
-
-" * tab setting * "
+" " tab " "
 set shiftwidth=4
 set smarttab
 set expandtab
@@ -99,114 +44,69 @@ set autoindent
 set smartindent
 set nocindent
 
-
-
-
-
-" * search  setting * "
+" " search " "
 set hlsearch " highlight search result!
-set ignorecase " search in case insensetive mode
-set smartcase "case sensetive if we have uppercase in queri
+set ignorecase " search in case insensitive mode
+set smartcase " case sensitive if we have uppercase in query
 set incsearch " search while typing 
-set gdefault " global find and repalce by default
-
-" * spell check with SpellCheck command
-command Spellcheck setlocal spell spelllang=en_us
+set gdefault " global find and replace by default
 
 
-
-" ** file stuff ** "
+" " file " "
 
 " set autochdir " automatically cd to current dir
 set noautochdir " do not cd to current folder
-
-set autoread " autom reload file changed outside
-
-
+set autoread " auto reload file changed outside
 set autowriteall " auto write all files before make
 
-" detect setting base on file type 
-filetype on 
+filetype on " file-type-base config
 filetype indent on
 filetype plugin on
-
 set encoding=utf-8
 
-" do not create extra junk files
-set nobackup
+set nobackup " do not create extra junk files
 set nowritebackup
 set noswapfile
 
 
-" instead of fuzzy file, we just do with :find 
-set path+=**
 
+
+set hidden " keep undo history on buffer change (TODO)
+
+" " color scheme " "
+set background=dark
+try 
+    source ~/.config/nvim/themes/PaperColor.vim
+catch
+    colorscheme ron
+    colorscheme peachpuff
+endtry
+
+
+
+" save and jump to last position in file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" save undo stack in file, available after reopen file
+if has('persistent_undo') 
+  set undofile   
+  silent !mkdir -p /tmp/vimundo
+  set undodir=/tmp/vimundo
+endif
+
+
+
+
+" " REMAPS "  "
 
 
 command! MakeTags !ctags -R . "create tags file
 
 
-" ***** plugins ***** "
-call plug#begin('~/.config/nvim/plugged')
 
-
-Plug 'justinmk/vim-syntax-extra' "add extra syntax highlight for flex
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete 
-Plug 'artur-shaik/vim-javacomplete2' "java for deoplete 
-Plug 'shougo/deoplete-clangx' "c/cpp for deplete
-Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete 
-
-
-"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' } "machine learning autocomplete
-" (disabled due to ram usage)
-
-
-Plug 'SirVer/ultisnips' " snipet engine
-Plug 'honza/vim-snippets' " actually snippets
-
-Plug 'Yggdroot/indentLine' " some indent help
-Plug 'Chiel92/vim-autoformat' " auto format code with :AutoFormat
-
-Plug 'preservim/nerdtree' " file tree in the left side
-Plug 'jistr/vim-nerdtree-tabs' " NERDTree and tabs together in Vim, painlessly
-
-Plug 'ryanoasis/vim-devicons' " icons for nertree and startify
-
-" Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes 
-
-Plug 'vim-airline/vim-airline' " statusline
-Plug 'vim-airline/vim-airline-themes' "themese for statusline
-
-Plug 'junegunn/fzf.vim' "fuzzy file finder (leader + tab)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } 
-
-
-Plug 'mileszs/ack.vim' " vim grep : find in all project source codes (leader + f)
-
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }     " Go development plugin for Vim
-Plug 'peitalin/vim-jsx-typescript'                     " react JSX syntax highlighting for vim and Typescript
-Plug 'mrk21/yaml-vim'                                  " YAML syntax/indent plugin for Vim
-Plug 'ekalinin/Dockerfile.vim'                         " Vim syntax file & snippets for Docker's Dockerfile
-Plug 'elzr/vim-json'                                   " A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly.
-Plug 'othree/html5.vim'                                " HTML5 omnicomplete and syntax
-Plug 'pangloss/vim-javascript'                         " Vastly improved Javascript indentation and syntax support in Vim
-Plug 'octol/vim-cpp-enhanced-highlight'                " Additional Vim syntax highlighting for C++
-Plug 'ap/vim-css-color'                                " Preview colours in source code while editing
-Plug 'arzg/vim-rust-syntax-ext'                        " A Vim plugin that enhances Rust syntax highlighting
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Semantic Highlighting for Python in Neovim
-Plug 'maxmellon/vim-jsx-pretty'                        " JSX and TSX syntax pretty highlighting for vim.
-Plug 'rust-lang/rust.vim'                              " Vim configuration for Rust.
-call plug#end()
-
-
-
-" ***** REMAPS ****** "
-
-
-" ctrl a -> Select all
-map <C-a> <esc>ggVG<CR>
+map <C-a> <esc>ggVG<CR> " ctrl a -> Select all
 
 " control S -> save
 noremap <silent> <C-S> :update<CR>
@@ -219,8 +119,14 @@ nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 " esc in terminal mode -> exit
 tnoremap <Esc> <C-\><C-n>
 
+
+" " nerd tree " "
 " toggle nerd tree  with ctrl n
 noremap <C-f> :NERDTreeToggle<CR>
+
+" *ignore files from showing by nerdtree * "
+let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out']
+
 
 " tabs (airline)
 nnoremap <C-p> :bnext<CR>
@@ -246,6 +152,11 @@ endif
 
 
 " " deoplete " "
+" color of autocompelte menu
+highlight Pmenu ctermbg=6 guibg=#f1f1f0
+highlight PmenuSel ctermbg=3 guifg=#dddd00 guibg=#1f82cd
+"highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
+"
 call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang') " Change clang binary path
 " Change clang options
 call deoplete#custom#var('clangx', 'default_c_options', '')
@@ -280,14 +191,15 @@ let g:airline#extensions#tabline#fnamemod= ':t' "just show filename"
 
 
 set laststatus=2
-"let g:airline_theme='bubblegum'
-"let g:airline_theme='badwolf'
-"let g:airline_theme='tomorrow'
-"let g:airline_theme='minimalist'
-"let g:airline_theme='lucius'
-"let g:airline_theme='random'
-"let g:airline_theme = 'dark'
-let g:airline_theme='serene'
+"AirlineTheme bubblegum
+"AirlineTheme badwolf
+"AirlineTheme tomorrow
+"AirlineTheme minmalist
+"AirlineTheme lucios
+"AirlineTheme dark
+"AirlineTheme serene
+
+AirlineTheme random
 let g:airline_powerline_fonts=1
 
 
@@ -298,8 +210,6 @@ let g:indentLine_char='|'
 "let g:indentLine_char_list = [' ','|', '¦', '┆', '┊']
 
 
-" *ignore files from showing by nerdtree * "
-let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out']
 
 
 " * ale setting * "
@@ -347,3 +257,65 @@ autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+
+
+
+
+
+
+
+
+
+
+" " plugins " "
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete 
+Plug 'artur-shaik/vim-javacomplete2' "java for deoplete 
+Plug 'shougo/deoplete-clangx' "c/cpp for deplete
+Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete 
+
+
+"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' } "machine learning autocomplete
+" (disabled due to ram usage)
+
+
+Plug 'SirVer/ultisnips' " snipet engine
+Plug 'honza/vim-snippets' " actually snippets
+
+Plug 'justinmk/vim-syntax-extra' "add extra syntax highlight for flex
+Plug 'Yggdroot/indentLine' " some indent help
+Plug 'Chiel92/vim-autoformat' " auto format code with :AutoFormat
+
+Plug 'preservim/nerdtree' " file tree in the left side
+Plug 'jistr/vim-nerdtree-tabs' " NERDTree and tabs together in Vim, painlessly
+
+Plug 'ryanoasis/vim-devicons' " icons for nertree and startify
+
+" Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes 
+
+Plug 'vim-airline/vim-airline' " statusline
+Plug 'vim-airline/vim-airline-themes' "themese for statusline
+
+Plug 'junegunn/fzf.vim' "fuzzy file finder (leader + tab)
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } 
+
+
+Plug 'mileszs/ack.vim' " vim grep : find in all project source codes (leader + f)
+
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }     " Go development plugin for Vim
+Plug 'peitalin/vim-jsx-typescript'                     " react JSX syntax highlighting for vim and Typescript
+Plug 'mrk21/yaml-vim'                                  " YAML syntax/indent plugin for Vim
+Plug 'ekalinin/Dockerfile.vim'                         " Vim syntax file & snippets for Docker's Dockerfile
+Plug 'elzr/vim-json'                                   " A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly.
+Plug 'othree/html5.vim'                                " HTML5 omnicomplete and syntax
+Plug 'pangloss/vim-javascript'                         " Vastly improved Javascript indentation and syntax support in Vim
+Plug 'octol/vim-cpp-enhanced-highlight'                " Additional Vim syntax highlighting for C++
+Plug 'ap/vim-css-color'                                " Preview colours in source code while editing
+Plug 'arzg/vim-rust-syntax-ext'                        " A Vim plugin that enhances Rust syntax highlighting
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Semantic Highlighting for Python in Neovim
+Plug 'maxmellon/vim-jsx-pretty'                        " JSX and TSX syntax pretty highlighting for vim.
+Plug 'rust-lang/rust.vim'                              " Vim configuration for Rust.
+call plug#end()
+

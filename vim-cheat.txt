@@ -146,6 +146,7 @@ turn off showmatch:
 
  turn on spell check
  set spell
+ SpellCheck 
 
  di" => delete inside "
  da" -> delete whole " (containing ")
