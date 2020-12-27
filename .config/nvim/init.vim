@@ -89,7 +89,8 @@ set background=dark
 "colorscheme afterglow "brown 
 "colorscheme rdark-terminal2 " again brown 
 "colorscheme dogrun "atom like, low contrast
-"colorscheme spacecamp " like spacevim: grey
+"colorscheme spacecamp " like spacemacs: grey
+"colorscheme lucid " black with beautiful red color
 
 colorscheme PaperColor
 
