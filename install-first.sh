@@ -2,7 +2,7 @@
 
 # required sofwares
 echo "installing requierments"
-yay -S --needed ghc-static cabal-install fd emacs python-pipenv python-pytest python-black python-pyflakes python-rednose python-pytest hlint shellcheck rtags fzf lsd neovim python-pylint-venv python-pynvim clang ctags the_silver_searcher fisher httpie astyle clang-format-static-bin autopep8 gofmt stylish-haskell js-beautify eslint tidy stylelint rustup rust-analyzer
+yay -S --needed ghc-static cabal-install fd emacs python-pipenv python-pytest python-black python-pyflakes python-rednose python-pytest hlint shellcheck rtags fzf lsd neovim python-pylint-venv python-pynvim clang ctags the_silver_searcher fisher httpie astyle clang-format-static-bin autopep8 gofmt stylish-haskell js-beautify eslint tidy stylelint rustup rust-analyzer xsel
 
 # setup rust toolchain 
 rustup install stable
@@ -64,3 +64,7 @@ mkdir -p ~/apps
 cd ~/apps
 git clone --depth 1 --branch 19.10.07 https://github.com/Pouriya-Jahanbakhsh/tir && cd tir
 sudo make install 
+
+
+echo "installing micro"
+curl https://getmic.ro | bash
