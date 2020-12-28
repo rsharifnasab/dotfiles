@@ -163,6 +163,19 @@ command W w
 command X x
 noremap <silent> <C-w> :qa<CR> " Close nvim with ctrl w
 
+
+
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set norelativenumber
+    else
+        set relativenumber
+    endif
+endfunc
+nnoremap <F2> :call NumberToggle()<cr> " toggle realtive number
+
+
+
 " " ctags " "
 command! MakeTags !ctags -R . "create tags file
 
@@ -252,6 +265,11 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 
 
+" " rust " "
+let g:deoplete#sources#rust#racer_binary='/home/sajjad/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:deoplete#sources#rust#show_duplicates=1
+let g:deoplete#sources#rust#documentation_max_height=20
 
 
 " " plugins " "
@@ -261,6 +279,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
 Plug 'artur-shaik/vim-javacomplete2' "java for deoplete 
 Plug 'shougo/deoplete-clangx' "c/cpp for deplete
 Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete 
+Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
 
 "Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' } "machine learning autocomplete (ram problem)
 

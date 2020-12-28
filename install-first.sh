@@ -12,6 +12,10 @@ rustup component add rustfmt
 rustup component add rust-src
 rustup component add rls
 
+rustup toolchain add nightly
+rustup component add rust-src
+cargo +nightly install racer # auto complete engine for rust
+
 #emacs setup
 echo "setupping emacs"
 rm -r ~/.emacs.d
