@@ -1,4 +1,13 @@
-" maybe TODO  : give coc and you complete me a chance
+" " " " " " " " " " "  " " "
+"
+"  _ ____   _(_)_ __ ___
+" | '_ \ \ / / | '_ ` _ \
+" | | | \ V /| | | | | | |
+" |_| |_|\_/ |_|_| |_| |_|
+"
+" " " " " " " " " " "  " " "
+" improvement:
+"  give coc and youcompleteme a chance
 
 
 set nocompatible " don't need to be compatible with VI
@@ -10,7 +19,9 @@ syntax enable " enable syntax highlighting
 set showmatch " highlight matching bracket
 set showcmd " display incomplete commands
 set showmode " show current mode of editor
-set laststatus=2
+set laststatus=2 " last 2 line : show status
+set cursorline " highlight current cursor line
+set t_Co=256 " 256 color terminal 
 
 set wrap " break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char
@@ -53,7 +64,6 @@ set gdefault " global find and replace by default
 
 
 " " file " "
-
 " set autochdir " automatically cd to current dir
 set noautochdir " do not cd to current folder
 set autoread " auto reload file changed outside
@@ -131,6 +141,28 @@ nnoremap <silent> <C-L>  :nohlsearch<CR><C-L> " ctrl L -> clear highlighted sear
 tnoremap <Esc> <C-\><C-n> " esc in terminal mode -> exit
 
 
+" " tabs " "
+nnoremap <C-p> :bnext<CR>
+nnoremap <C-o> :bprevious<CR>
+nmap <C-n> :enew<cr>
+noremap <silent> <C-q> :bd<CR> " Close current buffer
+
+
+" Go to normal mode with <jk> (esc is too far)
+inoremap jk <esc>
+vnoremap jk <esc>
+inoremap kj <esc>
+vnoremap kj <esc>
+
+" fix :WQ problem 
+nnoremap ; :
+vnoremap ; :
+command Wq wq
+command WQ wq
+command W w
+command X x
+noremap <silent> <C-w> :qa<CR> " Close nvim with ctrl w
+
 " " ctags " "
 command! MakeTags !ctags -R . "create tags file
 
@@ -170,19 +202,11 @@ let g:airline#extensions#whitespace#enabled = 0 "dont show ugly wihtespaces"
 
 let g:airline_powerline_fonts=1
 
-
-
-" " tabs " "
-nnoremap <C-p> :bnext<CR>
-nnoremap <C-o> :bprevious<CR>
-nmap <C-n> :enew<cr>
-" Close current buffer
-noremap <silent> <C-q> :bd<CR>
-
 " " tabline setting " "
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers = 1 "show buffers in tabline"
 let g:airline#extensions#tabline#fnamemod= ':t' "just show filename"
+
 
 
 " " Indent line " "
@@ -193,6 +217,9 @@ let g:indentLine_char='|'
 
 
 " " ale " "
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_enter = 1
+let g:ale_list_window_size = 5
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
