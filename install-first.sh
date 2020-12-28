@@ -16,6 +16,13 @@ rustup toolchain add nightly
 rustup component add rust-src
 cargo +nightly install racer # auto complete engine for rust
 
+# clone rust source code
+mkdir -p ~/apps 
+cd ~/apps || exit
+git clone --depth=1 https://github.com/rust-lang/rust.git
+cd - || exit
+
+
 #emacs setup
 echo "setupping emacs"
 rm -r ~/.emacs.d
