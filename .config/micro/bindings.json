@@ -1,0 +1,4 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "Ctrl-g": "CommandMode"
+}
