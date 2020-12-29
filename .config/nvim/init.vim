@@ -21,7 +21,7 @@ set showcmd " display incomplete commands
 set showmode " show current mode of editor
 set laststatus=2 " last 2 line : show status
 set cursorline " highlight current cursor line
-set t_Co=256 " 256 color terminal 
+set t_Co=256 " 256 color terminal
 
 set wrap " break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char
@@ -35,7 +35,7 @@ set lazyredraw " don't redraw screen in macros
 set wildmenu " autocomplete vim commands wuth tab
 set wildmode=list:longest
 set whichwrap+=<,>,[,] " < and > can change line
-set backspace=indent,eol,start " Fix backspace behavior 
+set backspace=indent,eol,start " Fix backspace behavior
 set list listchars=tab:\ \ ,trail:· " Highlight tailing whitespace
 set path+=** " search file with :find (same as FZF)
 
@@ -59,7 +59,7 @@ set nocindent
 set hlsearch " highlight search result!
 set ignorecase " search in case insensitive mode
 set smartcase " case sensitive if we have uppercase in query
-set incsearch " search while typing 
+set incsearch " search while typing
 set gdefault " global find and replace by default
 
 
@@ -89,15 +89,15 @@ set hidden " keep undo history on buffer change (TODO)
 " " color scheme " "
 set background=dark
 
-" default beautiful 
+" default beautiful
 "colorscheme ron
 "colorscheme peachpuff
 
 " added
 "colorscheme angr
 "colorscheme gotham " deep blue
-"colorscheme afterglow "brown 
-"colorscheme rdark-terminal2 " again brown 
+"colorscheme afterglow "brown
+"colorscheme rdark-terminal2 " again brown
 "colorscheme dogrun "atom like, low contrast
 "colorscheme spacecamp " like spacemacs: grey
 "colorscheme lucid " black with beautiful red color
@@ -106,7 +106,7 @@ colorscheme PaperColor
 
 
 
-" " airline colorscheme " " 
+" " airline colorscheme " "
 "let g:airline_theme='bubblegum'
 "let g:airline_theme='badwolf'
 "let g:airline_theme='tomorrow'
@@ -120,22 +120,22 @@ let g:airline_theme='dark'
 
 " save and jump to last position in file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 " save undo stack in file, available after reopen file
 if has('persistent_undo')
-  set undofile
-  silent !mkdir -p /tmp/vimundo
-  set undodir=/tmp/vimundo
+    set undofile
+    silent !mkdir -p /tmp/vimundo
+    set undodir=/tmp/vimundo
 endif
 
 
 " " general remaps " "
 map <C-a> <esc>ggVG<CR> " ctrl a -> Select all
 
-noremap  <silent> <C-S>      :update<CR> " control S -> save 
-vnoremap <silent> <C-S> <C-C>:update<CR> 
+noremap  <silent> <C-S>      :update<CR> " control S -> save
+vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 nnoremap <silent> <C-L>  :nohlsearch<CR><C-L> " ctrl L -> clear highlighted search result
 tnoremap <Esc> <C-\><C-n> " esc in terminal mode -> exit
@@ -154,7 +154,7 @@ vnoremap jk <esc>
 inoremap kj <esc>
 vnoremap kj <esc>
 
-" fix :WQ problem 
+" fix :WQ problem
 nnoremap ; :
 vnoremap ; :
 command Wq wq
@@ -177,12 +177,13 @@ nnoremap <F2> :call NumberToggle()<cr> " toggle realtive number
 
 
 " " ctags " "
-command! MakeTags !ctags -R . "create tags file
+command! MakeTags !ctags -R .
+"create tags file
 
 " " ack (global in file search) " "
 " change vim global file search with ack engine:
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+    let g:ackprg = 'ag --vimgrep'
 endif
 cnoreabbrev Ack Ack!
 nnoremap <Leader>f :Ack!<Space>
@@ -192,7 +193,7 @@ nmap <leader><tab> :FZF<CR>
 
 " " nerd tree " "
 noremap <C-f> :NERDTreeToggle<CR> " toggle nerd tree  with ctrl n
-let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out'] " ignore files from nerdtree 
+let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out'] " ignore files from nerdtree
 
 
 " " deoplete " "
@@ -201,7 +202,7 @@ highlight Pmenu ctermbg=6 guibg=#f1f1f0
 highlight PmenuSel ctermbg=3 guifg=#d5dd00 guibg=#1f82cd
 "highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 
-" deoplete for java 
+" deoplete for java
 autocmd FileType java setlocal omnifunc=javacomplete#Complete " enable autocomplete in startup
 let g:deoplete#enable_at_startup = 1
 let g:JavaComplete_CheckServerVersionAtStartup = 0
@@ -262,7 +263,7 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 
 " " rust " "
@@ -275,10 +276,10 @@ let g:deoplete#sources#rust#documentation_max_height=20
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete 
-Plug 'artur-shaik/vim-javacomplete2' "java for deoplete 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
+Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
 Plug 'shougo/deoplete-clangx' "c/cpp for deplete
-Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete 
+Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
 Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
 
 "Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' } "machine learning autocomplete (ram problem)
@@ -287,7 +288,7 @@ Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
 Plug 'SirVer/ultisnips' " snipet engine
 Plug 'honza/vim-snippets' " actually snippets
 
-" Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes 
+" Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes
 
 Plug 'justinmk/vim-syntax-extra' "add extra syntax highlight for flex
 Plug 'Yggdroot/indentLine' " some indent help
@@ -301,7 +302,7 @@ Plug 'vim-airline/vim-airline' " statusline
 Plug 'vim-airline/vim-airline-themes' "themese for statusline
 
 Plug 'junegunn/fzf.vim' "fuzzy file finder (leader + tab)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' } 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'mileszs/ack.vim' " vim grep : find in all project source codes (leader + f)
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }     " Go development plugin for Vim
