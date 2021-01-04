@@ -161,7 +161,8 @@ command Wq wq
 command WQ wq
 command W w
 command X x
-noremap <silent> <C-w> :qa<CR> " Close nvim with ctrl w
+
+"noremap <silent> <C-w> :qa<CR> " Close nvim with ctrl w
 
 
 
