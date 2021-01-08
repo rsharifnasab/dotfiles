@@ -7,7 +7,8 @@ function install_package(){
 # required sofwares
 echo "installing requierments"
 install_package base_devel gcc make
-install_package fd shellcheck rtags fzf the_silver_searcher fisher httpie xsel
+install_package zsh zsh-autosuggestions
+install_package fd shellcheck rtags fzf the_silver_searcher httpie xsel
 install_package clang ctags astyle clang-format-static-bin
 install_package rustup rust-analyzer
 install_package neovim python-pynvim
@@ -17,6 +18,13 @@ install-package python3 python-pylint-venv python-pipenv python-pytest \
 
 isntall_package nodejs js-beautify eslint tidy stylelint
 install_package ghc-static cabal-install hlint stylish-haskell emacs
+
+
+# copy dotfiles to home folder
+./bootstrap.sh -f
+
+#install oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # setup rust toolchain
 rustup install stable
