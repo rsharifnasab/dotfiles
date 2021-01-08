@@ -3,10 +3,10 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 #bind \t '__fzf_complete'
 
-SAFE_RM='/usr/bin/safe-rm'
-if test -f "$SAFE_RM"; then
+set SAFE_RM '/usr/bin/safe-rm'
+if test -f "$SAFE_RM"
 alias rm="$SAFE_RM"
-fi
+end
 
 
 # please clear my terminal
@@ -22,6 +22,8 @@ alias :q=exit
 
 
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
-alias junit='cp -r ~/pro*/*utils/junit_test_runner/* .'
+alias junit="cp -r ~/pro*/*utils/junit_test_runner/* ."
+
+#export PATH=$PATH:~/bin/
 
 
