@@ -1,8 +1,22 @@
 #!/bin/bash
 
+function install_package(){
+    yay -Syu --needed --noconfirm "$*"
+}
+
 # required sofwares
 echo "installing requierments"
-yay -S --needed ghc-static cabal-install fd emacs python-pipenv python-pytest python-black python-pyflakes python-rednose python-pytest hlint shellcheck rtags fzf lsd neovim python-pylint-venv python-pynvim clang ctags the_silver_searcher fisher httpie astyle clang-format-static-bin autopep8 gofmt stylish-haskell js-beautify eslint tidy stylelint rustup rust-analyzer xsel
+install_package base_devel gcc make
+install_package fd shellcheck rtags fzf the_silver_searcher fisher httpie xsel
+install_package clang ctags astyle clang-format-static-bin
+install_package rustup rust-analyzer
+install_package neovim python-pynvim
+install_package go gofmt
+install-package python3 python-pylint-venv python-pipenv python-pytest \
+    python-black python-pyflakes python-rednose python-pytest autopep8
+
+isntall_package nodejs js-beautify eslint tidy stylelint
+install_package ghc-static cabal-install hlint stylish-haskell emacs
 
 # setup rust toolchain
 rustup install stable
@@ -13,7 +27,6 @@ rustup component add rust-src
 rustup component add rls
 
 rustup toolchain add nightly
-rustup component add rust-src
 cargo +nightly install racer # auto complete engine for rust
 
 mkdir -p ~/apps
@@ -31,21 +44,10 @@ git clone --depth 1  https://github.com/Pouriya-Jahanbakhsh/tir \
     || echo "cannot install tir"
 
 echo "installing theme.sh"
-git clone https://github.com/lemnos/theme.sh || echo "cannot clone theme sh"
-
+#git clone https://github.com/lemnos/theme.sh || echo "cannot clone theme sh"
 cd - || exit
 
 
-#emacs setup
-echo "setup emacs"
-rm -r ~/.emacs.d
-git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-~/.emacs.d/bin/doom install
-./bootstrap.sh -f
-#to updare:
-~/.emacs.d/bin/doom upgrade
-#add doom binary to path:
-sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
 
 
 
@@ -87,3 +89,16 @@ npm i -g safe-rm
 
 echo "installing micro"
 curl https://getmic.ro | bash
+
+
+
+#emacs setup
+echo "setup emacs"
+rm -r ~/.emacs.d
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+./bootstrap.sh -f
+#to updare:
+~/.emacs.d/bin/doom upgrade
+#add doom binary to path:
+sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
