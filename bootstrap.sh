@@ -30,7 +30,7 @@ function sync_dotfiles() {
 }
 
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
-    doIt;
+    sync_dotfiles;
 else
     read -rp "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
     echo "";
