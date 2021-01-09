@@ -241,7 +241,7 @@ let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
 
 
 " " AUTO FORMATER " "
-au BufWrite * :Autoformat " set auto format on save
+" au BufWrite * :Autoformat " set auto format on save
 " let g:autoformat_verbosemode=1 " to enable debug mode
 
 
