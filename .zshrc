@@ -60,6 +60,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+export FZF_BASE=/usr/bin/fzf
+DISABLE_FZF_KEY_BINDINGS="false"
 
 # User configuration
 export EDITOR="$(which nvim)"
@@ -110,11 +112,11 @@ alias wea='curl -s "wttr.in/TEHRAN"'
 alias :q=exit
 #alias fkill="FZF_DEFAULT_COMMAND='ps -ef'; kill $(fzf)"
 function fkill(){
-    FZF_DEFAULT_COMMAND='ps -ef'
-    ps=$(fzf --bind 'ctrl-r:reload($FZF_DEFAULT_COMMAND)' \
+    FZF_DEFAULT_COMMAND='ps -e' ; \
+        ps=$(fzf --bind "ctrl-r:reload($FZF_DEFAULT_COMMAND)" \
       --header 'CTRL-R : reload' --header-lines=1 \
       --height=50% --layout=reverse)
-    kill $(awk '{print $2}')
+    kill $(echo $ps | awk '{print $1}' )
 }
 
 function typ(){
