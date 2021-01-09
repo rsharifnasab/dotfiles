@@ -110,14 +110,70 @@ alias sss='shutdown now'
 alias ssc='shutdown -c'
 alias wea='curl -s "wttr.in/TEHRAN"'
 alias :q=exit
-#alias fkill="FZF_DEFAULT_COMMAND='ps -ef'; kill $(fzf)"
+
+
 function fkill(){
-    FZF_DEFAULT_COMMAND='ps -e' ; \
-        ps=$(fzf --bind "ctrl-r:reload($FZF_DEFAULT_COMMAND)" \
-      --header 'CTRL-R : reload' --header-lines=1 \
-      --height=50% --layout=reverse)
-    kill $(echo $ps | awk '{print $1}' )
+    local pid
+
+   if [ "$UID" != "0" ]; then
+        pid=$(ps -f -u $UID | sed 1d | fzf -m  --height=50% --layout=reverse | awk '{print $2}')
+    else
+        pid=$(ps -ef | sed 1d | fzf -m --height=50% --layout=reverse | awk '{print $2}')
+    fi  
+    if [ "x$pid" != "x" ]
+    then
+        echo $pid | xargs kill -${1:-9}
+    fi 
 }
+
+# select with fzf open file with vim
+function fe() {
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+# slect dir and cd to it. including hidden directories
+function fd(){
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
+#history repeat 
+function fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+# install with yay
+function in() {
+    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
+}
+
+#remove with yay 
+function re() {
+    yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
+}
+
+
+function nn() {
+    if [[ "$#" != 0 ]]; then
+        builtin cd "$@";
+        return
+    fi
+    while true; do
+        local lsd=$(echo ".." && ls -p | grep '/$' | sed 's;/$;;')
+        local dir="$(printf '%s\n' "${lsd[@]}" |
+            fzf --reverse --preview '
+                __cd_nxt="$(echo {})";
+                __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
+                echo $__cd_path;
+                echo;
+                ls -p --color=always "${__cd_path}";
+        ')"
+        [[ ${#dir} != 0 ]] || return 0
+        builtin cd "$dir" &> /dev/null
+    done
+}
+
 
 function typ(){
     if [ ! -f $@ ]; then

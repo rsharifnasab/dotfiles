@@ -31,15 +31,14 @@
 
 -   fzf (in terminal)
 -   \ + tab (in neovim)
--   fe -> select fish whith FZF and edit it later
+
 -   fkill -> select a process to kill with FZF
-
--   ctrl-t -> find file with preview
--   ctrl-r -> find in recent commands
--   ctrl-o -> find file to open
--   ctrl-g -> select and open with defaul deitor
-
--   alt-c -> select folder to cd
+-   fe -> selec with fzf and edit
+-   fd -> fudn dir with fzf and cd to it
+-   fh -> history repeat
+-   in -> install yay package
+-   re -> remove yay package
+-   nn -> same as nnn but with fzf and cd
 
 ## shell shortcuts
 
@@ -51,6 +50,7 @@
 ## zsh specific shotcuts
 
 -   esc -> enter vi mode
+
 
 ## git cheet
 
