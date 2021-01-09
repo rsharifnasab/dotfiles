@@ -1,23 +1,22 @@
-## apps
-+ meld -> diff
-+ catfish -> search
-+ variety -> screen wallaper change
-+ xfburn -> cd DVD tool
+## apps cheat sheet
++ meld (diff)
++ catfish (gui file search)
++ variety (time-base wallaper change)
++ xfburn (cd DVD tool)
 + dictionary 
 + galculator
-+ usb stick formatter 
++ usb stick formatter
 + usb image writer
-+ thunar -> file manager
-+ ncdu -> disk space usage
++ thunar (file manager)
++ ncdu (terminal disk space usage monitor)
 
 
 ## commands
-+ proxy -> `ss-local -c c1.json`
 + clear yay cache -> `yay -Sc`
 + clear pip cache -> `rm -r .cache/pip`
-
 + curl cheet.sh/git # or any other command 
 + tir -> time.ir in shell
+
 ## cmd tools
 + od, od -a -> hexdump
 + xdg-open -> double click 

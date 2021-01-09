@@ -1,50 +1,18 @@
 # Roozbeh dotfiles 
-here i will share my important dot files 
-im actually noob in writing dotfiles, if you want to help me, I appreciate
+here I will share my important dot files 
+I'm actually newbie in writing Dotfiles, if you want to help me, I appreciate
+
+## How to use
+1. install packages with `./install-first.sh`
+2. update (pull) from repository with `./bootstrap.sh`
+3. Cheat sheet is available in `help.txt`, `vim-cheat.txt` and `emacs-cheat`
 
 
-### install
-use ./install-first.sh
+## Configurations
+1. Neovim: config files is in `./.config/nvim`. Plugins are being managed by vim-plug. Install plugins with `:PlugInstall`. Using devicons depends on setting terminal font to `ubuntu font`
+2. Zsh: recently migrated to Zsh. config files are in `./zshrc`
+3. emacs: using doom mode. view `./doom.d`
+3. Vim: using this [link](http://www.guillaume-barillot.com/2017/06/09/how-to-to-make-vim-to-look-like-atom/) to make it like atom. Install vim-plug and then run `:PlugInstall`
+4. fish: fish config (in `./.config/fish`) have some good functions and customizations but let it be there and use some posix compliant shell
+5. safe-rm: send removed items to trash! Also protect from accidental remove all files!
 
-## emacs 
-emacs doom mode.
-
-## vim
-this [link](http://www.guillaume-barillot.com/2017/06/09/how-to-to-make-vim-to-look-like-atom/)
-and a little change 
-need vim-plug 
-to use it: copy `.vimrc` file to `~/.vimrc` 
-and run vim and then: ':PlugInstall'
-
-
-## neovim
-
-need vim-plug 
-after copying, you can install plugins by `:PlugInstall` 
-and clean them with `:PlugClean` 
-
-
-for using devicons, you should set terminal font to
-ubuntu font
-
-## fish
-
-shell is my favorite shell (for now!)
-it doesn't need much config 
-but i have few functions and setting 
-you can open fish setting with command: `fish_config`
-location of dotfiles are in: `~/.config/fish/`
-### fisher 
-package manager for fish 
-for using fish fzf
-fish-fzf is very cool thing! use FZF in shell 
-
-### safe-rm
-send removed items to trash! and also protect from accidental remove all files!
-
-## tir 
-use time.ir in shell 
-
-## kateb
-todo: use kateb fonts
-https://github.com/kiamazi/kateb

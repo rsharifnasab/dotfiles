@@ -1,7 +1,7 @@
 export PATH=/home/roozbeh/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/roozbeh/.oh-my-zsh"
+export ZSH="/home/roozbeh/.oh-my-zsh/"
 
 ZSH_THEME="robbyrussell"
 ZSH_THEME="half-life"
@@ -13,16 +13,11 @@ for theme in $(cat $ZSH_FAVLIST);  do
     ZSH_THEME_RANDOM_CANDIDATES+=($theme)
 done
 
+setopt NO_GLOB_COMPLETE
 
-# disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
-
-# automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# how often to auto-update (in days).
+# DISABLE_UPDATE_PROMPT="true" # automatically update without prompting.
 # export UPDATE_ZSH_DAYS=13
-
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
@@ -64,6 +59,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
 
 # User configuration
 export EDITOR="$(which nvim)"
@@ -112,6 +108,14 @@ alias sss='shutdown now'
 alias ssc='shutdown -c'
 alias wea='curl -s "wttr.in/TEHRAN"'
 alias :q=exit
+#alias fkill="FZF_DEFAULT_COMMAND='ps -ef'; kill $(fzf)"
+function fkill(){
+    FZF_DEFAULT_COMMAND='ps -ef'
+    ps=$(fzf --bind 'ctrl-r:reload($FZF_DEFAULT_COMMAND)' \
+      --header 'CTRL-R : reload' --header-lines=1 \
+      --height=50% --layout=reverse)
+    kill $(awk '{print $2}')
+}
 
 function typ(){
     if [ ! -f $@ ]; then
