@@ -1,23 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")";
-
-git pull origin master;
-
-function sync_dotfiles() {
-
-    # copy content of this dir to home folder
-    echo "copying"
-    rsync --exclude ".git/" \
-        --exclude "bootstrap.sh" \
-        --exclude "install-first.sh" \
-        --exclude "*.md" \
-        --exclude "all.sh" \
-        --exclude "LICENSE" \
-        -avh --no-perms . ~;
-
-    #source ~/.config/fish/config.fish
-
+function restart_doom(){
     echo "syncing doom"
     ~/.emacs.d/bin/doom -d sync
 
@@ -29,13 +12,23 @@ function sync_dotfiles() {
     emacs --daemon
 }
 
+
+function bootstrap(){
+    cd "$(dirname "${BASH_SOURCE}")" || exit
+    git pull origin master;
+    ./bin/sync
+    restart_doom
+}
+
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
-    sync_dotfiles;
+    bootstrap
 else
     read -rp "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
     echo "";
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        sync_dotfiles;
+        bootstrap
     fi;
 fi;
-unset sync_dotfiles;
+
+unset bootstrap;
+unset restart_doom;

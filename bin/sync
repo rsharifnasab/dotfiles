@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# cd to script location (not caller location)
+cd "$(dirname "${BASH_SOURCE}")" || exit
+
+function sync_dotfiles() {
+    # copy content of dotfiles to home folder
+    rsync --exclude ".git/" \
+        --exclude "bootstrap.sh" \
+        --exclude "install-first.sh" \
+        --exclude "*.md" \
+        --exclude "LICENSE" \
+        -ah --no-perms ~/pro*/dotfiles/ ~;
+    }
+
+sync_dotfiles
+
+unset sync_dotfiles
+

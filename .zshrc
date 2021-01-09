@@ -97,7 +97,7 @@ alias زمثشق='clear'
 alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'
 
-alias r="source ~/pro*/dotfiles/.zshrc"
+alias r="clear; sync; exec zsh"
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
 alias junit="cp -r ~/pro*/*utils/junit_test_runner/* ."
 alias myip='time curl ifconfig.me'
@@ -115,32 +115,32 @@ alias :q=exit
 function fkill(){
     local pid
 
-   if [ "$UID" != "0" ]; then
+    if [ "$UID" != "0" ]; then
         pid=$(ps -f -u $UID | sed 1d | fzf -m  --height=50% --layout=reverse | awk '{print $2}')
     else
         pid=$(ps -ef | sed 1d | fzf -m --height=50% --layout=reverse | awk '{print $2}')
-    fi  
+    fi
     if [ "x$pid" != "x" ]
     then
         echo $pid | xargs kill -${1:-9}
-    fi 
+    fi
 }
 
 # select with fzf open file with vim
 function fe() {
-  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+    IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+    [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
 # slect dir and cd to it. including hidden directories
 function fd(){
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+    local dir
+    dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
-#history repeat 
+#history repeat
 function fh() {
-  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
 # install with yay
@@ -148,7 +148,7 @@ function in() {
     yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
 }
 
-#remove with yay 
+#remove with yay
 function re() {
     yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
@@ -163,24 +163,24 @@ function nn() {
         local lsd=$(echo ".." && ls -p | grep '/$' | sed 's;/$;;')
         local dir="$(printf '%s\n' "${lsd[@]}" |
             fzf --reverse --preview '
-                __cd_nxt="$(echo {})";
-                __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
-                echo $__cd_path;
-                echo;
-                ls -p --color=always "${__cd_path}";
-        ')"
-        [[ ${#dir} != 0 ]] || return 0
-        builtin cd "$dir" &> /dev/null
-    done
-}
+                    __cd_nxt="$(echo {})";
+                    __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
+                    echo $__cd_path;
+                    echo;
+                    ls -p --color=always "${__cd_path}";
+                    ')"
+                    [[ ${#dir} != 0 ]] || return 0
+                    builtin cd "$dir" &> /dev/null
+                done
+            }
 
 
-function typ(){
-    if [ ! -f $@ ]; then
-        touch "$@"
-    fi
-    typora "$@"
-}
+        function typ(){
+            if [ ! -f $@ ]; then
+                touch "$@"
+            fi
+            typora "$@"
+        }
 
 
 # Color of man pages
