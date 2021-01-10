@@ -26,6 +26,7 @@
 -   fzf -> find files (fuzzy fle finder)
 -   ag -> grep in text files
 -   http -> cli http client like curl
+-   auto-xflux (f.lux automatic)
 
 ## FZF
 
