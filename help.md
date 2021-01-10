@@ -39,6 +39,9 @@
 -   in -> install yay package
 -   re -> remove yay package
 -   nn -> same as nnn but with fzf and cd
+-   nvim `**<TAB>` -> open fzf for file choose
+-   cd `**TAB>` -> cd to fzf chosen folder
+-   kill -9 `**<TAB>` -> kill the fzf chosen process
 
 ## shell shortcuts
 
@@ -50,7 +53,7 @@
 ## zsh specific shotcuts
 
 -   esc -> enter vi mode
-
+-   z some_folder -> instant cd to folder name
 
 ## git cheet
 
