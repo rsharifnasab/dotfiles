@@ -42,6 +42,9 @@
 -   nvim `**<TAB>` -> open fzf for file choose
 -   cd `**TAB>` -> cd to fzf chosen folder
 -   kill -9 `**<TAB>` -> kill the fzf chosen process
+-   CTRL-T -> Paste the selected files and directories onto the command-line
+-   CTRL-R -> Paste the selected command from history onto the command-line
+-   ALT-C - cd into the selected directory
 
 ## shell shortcuts
 
