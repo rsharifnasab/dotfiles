@@ -33,6 +33,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 chsh -s "$(which zsh)"
 
+#install fzf for zsh and other
+~/.fzf/install
+
 # setup rust toolchain
 rustup install stable
 rustup default stable
