@@ -183,6 +183,10 @@ function nn() {
         }
 
 
+# solve slow paste issue (cause:zsh-autosuggestions)
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
+
 # Color of man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
 export LESS_TERMCAP_md=$'\E[01;32m'
