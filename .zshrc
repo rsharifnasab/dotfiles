@@ -111,6 +111,12 @@ alias ssc='shutdown -c'
 alias wea='curl -s "wttr.in/TEHRAN"'
 alias :q=exit
 
+#get fastest mirrors in your neighborhood
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+
 
 function fkill(){
     local pid
