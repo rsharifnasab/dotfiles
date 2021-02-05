@@ -98,9 +98,6 @@ mkdir -p ~/.local/share/nvim/site/pack/git-plugins/start
 git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.local/share/nvim/site/pack/git-plugins/start/ale
 
 
-echo "setup fish fzf"
-fisher add halostatue/fish-fzf
-
 echo "setup safe rm"
 npm i -g safe-rm
 
@@ -108,8 +105,6 @@ npm i -g safe-rm
 
 echo "installing micro"
 curl https://getmic.ro | bash
-
-
 
 #emacs setup
 echo "setup emacs"
