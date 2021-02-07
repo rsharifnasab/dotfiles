@@ -101,6 +101,7 @@ alias r="clear; sync; exec zsh"
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
 alias junit="cp -r ~/pro*/*utils/junit_test_runner/* ."
 alias myip='time curl ifconfig.me'
+alias ccc='curl ifconfig.me'
 alias clock='tty-clock -s -S -c -t -C 6 -b'
 alias hdd='clear && df --all -h | grep  "/dev/sda*"'
 alias mkdirp='mkdir -p'
