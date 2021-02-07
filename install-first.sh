@@ -22,6 +22,8 @@ install_package ghc-static cabal-install hlint stylish-haskell emacs
 
 install_package auto-xflux
 
+npm install -g neovim 
+
 # copy dotfiles to home folder
 ./bootstrap.sh -f
 
