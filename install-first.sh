@@ -6,7 +6,7 @@ function install_package(){
 
 # required sofwares
 echo "installing requierments"
-install_package base_devel gcc make
+install_package base-devel gcc make npm
 install_package zsh zsh-autosuggestions
 install_package fd shellcheck rtags fzf the_silver_searcher httpie xsel
 install_package clang ctags astyle clang-format-static-bin
