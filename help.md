@@ -53,6 +53,12 @@
 -   ctrl l -> clear terminal
 -   ctrl w -> delete last word
 -   ctrl u -> delete to beginning
+-   gaa –> git add all
+-   gdca –> git diff --cached
+-   gp –> git push
+-   gpf! –> git push --force
+-   grhh –> git reset --hard
+-   gst –> git status
 
 ## zsh specific shotcuts
 
