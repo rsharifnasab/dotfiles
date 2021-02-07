@@ -45,6 +45,8 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
 
+    sudo
+
     git
     extract
     fzf
