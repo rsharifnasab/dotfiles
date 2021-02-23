@@ -284,7 +284,7 @@ Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
 Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
 
 "Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' } "machine learning autocomplete (ram problem)
-Plug 'codota/tabnine-vim'
+" Plug 'codota/tabnine-vim'
 
 
 Plug 'SirVer/ultisnips' " snipet engine
