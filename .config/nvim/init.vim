@@ -13,7 +13,7 @@
 set nocompatible " don't need to be compatible with VI
 
 set number " enable numbering of lines
-set relativenumber " not absolute line number
+set norelativenumber " not absolute line number
 set termguicolors " enable true colors support
 syntax enable " enable syntax highlighting
 set showmatch " highlight matching bracket
@@ -86,8 +86,20 @@ let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it wor
 set hidden " keep undo history on buffer change (TODO)
 
 
+" " airline colorscheme " "
+"let g:airline_theme='bubblegum'
+"let g:airline_theme='badwolf'
+"let g:airline_theme='tomorrow'
+"let g:airline_theme='minmalist'
+"let g:airline_theme='lucios'
+let g:airline_theme='dark'
+"let g:airline_theme='serene'
+"let g:airline_theme='random'
+
+
+
 " " color scheme " "
-set background=dark
+"set background=dark
 
 " default beautiful
 "colorscheme ron
@@ -101,20 +113,10 @@ set background=dark
 "colorscheme dogrun "atom like, low contrast
 "colorscheme spacecamp " like spacemacs: grey
 "colorscheme lucid " black with beautiful red color
+"colorscheme papercolor "great
 
-colorscheme PaperColor
+colorscheme rdark-terminal2 " again brown
 
-
-
-" " airline colorscheme " "
-"let g:airline_theme='bubblegum'
-"let g:airline_theme='badwolf'
-"let g:airline_theme='tomorrow'
-"let g:airline_theme='minmalist'
-"let g:airline_theme='lucios'
-let g:airline_theme='dark'
-"let g:airline_theme='serene'
-"let g:airline_theme='random'
 
 
 
@@ -173,7 +175,7 @@ function! NumberToggle()
         set relativenumber
     endif
 endfunc
-nnoremap <F2> :call NumberToggle()<cr> " toggle realtive number
+nnoremap <F2> :call NumberToggle()<cr> " toggle relative number
 
 
 
@@ -331,6 +333,5 @@ call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
 
 " call deoplete#custom#var('tabnine', { 'line_limit': 200, 'max_num_results': 5, }) " disabled due to ram usage
-
 
 
