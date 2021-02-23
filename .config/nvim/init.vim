@@ -99,7 +99,7 @@ let g:airline_theme='dark'
 
 
 " " color scheme " "
-"set background=dark
+set background=dark
 
 " default beautiful
 "colorscheme ron
@@ -114,8 +114,9 @@ let g:airline_theme='dark'
 "colorscheme spacecamp " like spacemacs: grey
 "colorscheme lucid " black with beautiful red color
 "colorscheme papercolor "great
+"colorscheme elflord  " sublime
 
-colorscheme rdark-terminal2 " again brown
+colorscheme elflord  " again brown
 
 
 
