@@ -100,7 +100,9 @@ alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'
 
 alias r="clear; sync; exec zsh"
+
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
+alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"
 alias junit="cp -r ~/pro*/*utils/junit_test_runner/* ."
 alias myip='time curl ifconfig.me'
 alias ccc='curl ifconfig.me'
