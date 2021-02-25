@@ -116,7 +116,7 @@ set background=dark
 "colorscheme papercolor "great
 "colorscheme elflord  " sublime
 
-colorscheme elflord  " again brown
+colorscheme rdark-terminal2  " again brown
 
 
 
