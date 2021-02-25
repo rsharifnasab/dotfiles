@@ -14,7 +14,7 @@ function restart_doom(){
 
 
 function bootstrap(){
-    cd "$(dirname "${BASH_SOURCE}")" || exit
+    cd "$(dirname "${BASH_SOURCE[0]}")" || exit
     git pull origin master;
     ./bin/sync
     restart_doom
