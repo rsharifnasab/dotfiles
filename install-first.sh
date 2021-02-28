@@ -1,14 +1,15 @@
 #!/bin/bash
 
 function install_package(){
-    yay -Syu --needed --noconfirm "$*"
+    yay -S --needed --noconfirm "$*"
 }
 
 # required sofwares
 echo "installing requierments"
+yay -Syu
 install_package base-devel gcc make cmake npm
-install_package zsh zsh-autosuggestions
-install_package fd shellcheck rtags fzf the_silver_searcher httpie xsel
+install_package zsh zsh-autosuggestions 
+install_package bat tldr fd shellcheck rtags fzf the_silver_searcher httpie xsel
 install_package clang ctags astyle clang-format-static-bin
 install_package jdk-openjdk
 install_package rustup rust-analyzer
@@ -22,7 +23,7 @@ install_package ghc-static cabal-install hlint stylish-haskell emacs
 
 install_package auto-xflux
 
-npm install -g neovim 
+npm install -g neovim
 
 # copy dotfiles to home folder
 ./bootstrap.sh -f
