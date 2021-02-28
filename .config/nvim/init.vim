@@ -79,11 +79,15 @@ set nowritebackup
 set noswapfile
 
 
+" disable bell
+set noerrorbells visualbell t_vb=
+
+
 let mapleader="\\" " set the leader key
 let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
 
 
-set hidden " keep undo history on buffer change (TODO)
+set hidden " keep undo history on buffer change
 
 
 " " airline colorscheme " "
