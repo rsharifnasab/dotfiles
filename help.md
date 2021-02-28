@@ -29,6 +29,8 @@
 -   ag -> grep in text files
 -   http -> cli http client like curl
 -   auto-xflux (f.lux automatic)
+-   nnn -> beautiful file manager in terminal
+-   n -> open nnn, ctrl g to close with cd
 
 ## FZF
 

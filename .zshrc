@@ -109,7 +109,7 @@ alias ccc='curl ifconfig.me'
 alias clock='tty-clock -s -S -c -t -C 6 -b'
 alias hdd='clear && df --all -h | grep  "/dev/sda*"'
 alias mkdirp='mkdir -p'
-alias n='watch -n 3 -t -d -b "curl -s ifconfig.me"'
+alias network='watch -n 3 -t -d -b "curl -s ifconfig.me"'
 alias rmi='rm -i'
 alias sss='shutdown now'
 alias ssc='shutdown -c'
@@ -185,6 +185,13 @@ function nn() {
                     builtin cd "$dir" &> /dev/null
                 done
 }
+
+
+# exit-cd nnn with ctrl g
+# open it with `n`
+if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
+    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+fi
 
 
 function typ(){
