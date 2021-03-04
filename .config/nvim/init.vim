@@ -281,9 +281,15 @@ let g:deoplete#sources#rust#rust_source_path='/home/roozbeh/apps/rust/library'
 let g:deoplete#sources#rust#show_duplicates=1
 let g:deoplete#sources#rust#documentation_max_height=20
 
+" " vim rooter " " 
+let g:rooter_manual_only = 0
+let g:rooter_patterns = ['=src', '.git', 'Makefile']
+
 
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
+
+Plug 'airblade/vim-rooter'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
 Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
