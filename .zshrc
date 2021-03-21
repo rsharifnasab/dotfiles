@@ -3,6 +3,10 @@ export PATH=/home/roozbeh/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/roozbeh/.oh-my-zsh/"
 
+
+###############
+##set zsh theme
+###############
 ZSH_THEME="robbyrussell"
 ZSH_THEME="half-life"
 ZSH_THEME="random"
@@ -13,11 +17,13 @@ for theme in $(cat $ZSH_FAVLIST);  do
     ZSH_THEME_RANDOM_CANDIDATES+=($theme)
 done
 
+
 setopt NO_GLOB_COMPLETE
 
 # DISABLE_AUTO_UPDATE="true"
 # DISABLE_UPDATE_PROMPT="true" # automatically update without prompting.
 # export UPDATE_ZSH_DAYS=13
+
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
@@ -33,13 +39,10 @@ COMPLETION_WAITING_DOTS="true"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     zsh-autosuggestions
@@ -59,16 +62,18 @@ plugins=(
     history-substring-search
     vi-mode
 )
-
 source $ZSH/oh-my-zsh.sh
+
 
 export FZF_BASE=/usr/bin/fzf
 DISABLE_FZF_KEY_BINDINGS="false"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# User configuration
-export EDITOR="$(which nvim)"
-export SUDO_EDITOR="$(which nvim)"
-# export MANPATH="/usr/local/man:$MANPATH"
+
+# solve slow paste issue (cause:zsh-autosuggestions)
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -79,14 +84,21 @@ export LC_ALL="en_US.UTF-8"
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
     export VISUAL='vim'
+    export SUDO_EDITOR="nvim"
 else
     export EDITOR='nvim'
     export VISUAL='nvim'
+    export SUDO_EDITOR="nvim"
 fi
 
-# safer commands
+
+#############
+## ALIASES ##
+#############
+
+
+## safer commands
 alias rm='rm -I --preserve-root'
-# confirmation #
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
@@ -95,47 +107,61 @@ alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
-
-SAFE_RM='/usr/bin/safe-rm'
-if test -f "$SAFE_RM"; then
-    alias rm="$SAFE_RM"
-fi
-
-
+# what if I mistyped clear?
 alias clean='clear'
 alias CLEAN='clear'
 alias CLEAR='clear'
 alias زمثشق='clear'
 
+# emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'
 
+# reload new config files from dotfiles
 alias r="clear; sync; exec zsh"
 
+# git aliases
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
-alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"
-alias junit="cp -r ~/pro*/*utils/junit_test_runner/* ."
+alias gstat="git status"
+alias gadd="git add" gcom="git commit -m"
+alias gpush="git push" gpull="git pull"
+
+
+alias junit="cp -r \
+    ~/pro*/*utils/junit_test_runner/* ." # make current folder ready for run junit tests
+alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
+alias hdd='clear; df --all -h |\
+    grep --color=never "/dev/sda*"' # disks usage
+alias wea='curl -s "wttr.in/TEHRAN"' # how is the weather?
+alias mkdirp='mkdir -p' # create parent folders too
+alias line='find * -type f | xargs  wc -l' # how many lines are in current dir project
+
+# check network
 alias myip='time curl ifconfig.me'
 alias ccc='curl ifconfig.me; echo'
-alias clock='tty-clock -s -S -c -t -C 6 -b'
-alias hdd='clear && df --all -h | grep  "/dev/sda*"'
-alias mkdirp='mkdir -p'
 alias nw='watch -n 3 -t -d -b "curl -s ifconfig.me"'
-alias rmi='rm -i'
-alias sss='shutdown now'
-alias ssc='shutdown -c'
-alias wea='curl -s "wttr.in/TEHRAN"'
-alias :q=exit
-alias line='find * -type f  | xargs  wc -l'
+
+# download with wget
 alias dllist='wget -c -i'
 alias wget='wget -c'
+
+# bye
+alias :q=exit
+alias sss='shutdown now'
+alias ssc='shutdown -c'
 
 #get fastest mirrors in your neighborhood
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
+alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 \
+    --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
+
+
+#####################
+### FZF functions ###
+#####################
 
 function fkill(){
     local pid
@@ -157,28 +183,28 @@ function fe() {
     [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
-# slect dir and cd to it. including hidden directories
+# select dir and cd to it. including hidden directories
 function fzfd(){
     local dir
     dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
-#history repeat
+# search from history (fzf) to repeat
 function fh() {
     print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-# install with yay
+# search (fzf) and install package with yay
 function in() {
     yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
 }
 
-#remove with yay
+# search (fzf) and remove package with yay
 function re() {
     yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
 
-
+# same as nnn but with fzf and bash
 function nn() {
     if [[ "$#" != 0 ]]; then
         builtin cd "$@";
@@ -200,13 +226,17 @@ function nn() {
 }
 
 
+#################
+##run a command##
+#################
+
 # exit-cd nnn with ctrl g
 # open it with `n`
 if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
     source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
 
-
+# open typora even if file does not exist
 function typ(){
     if [ ! -f $@ ]; then
         touch "$@"
@@ -217,9 +247,12 @@ function typ(){
 
 
 # # ex = EXtractor for all kinds of archives
-# # usage: ex <file>
 ex ()
 {
+  if [[ $# -ne 1 ]] ; then
+    echo "   usage: ex <file>"
+    return
+  fi
   if [ -f $1 ] ; then
     case $1 in
       *.tar.bz2)   tar xjf $1   ;;
@@ -235,8 +268,8 @@ ex ()
       *.7z)        7z x $1      ;;
       *.deb)       ar x $1      ;;
       *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;      
-      *)           echo "'$1' cannot be extracted via ex()" ;;
+      *.tar.zst)   unzstd $1    ;;
+      *)           echo "'$1' is not a valid zip file" ;;
     esac
   else
     echo "'$1' is not a valid file"
@@ -275,8 +308,6 @@ function fod(){
 }
 
 
-# solve slow paste issue (cause:zsh-autosuggestions)
-zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 
 # Color of man pages
@@ -289,4 +320,10 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+SAFE_RM='/usr/bin/safe-rm'
+if test -f "$SAFE_RM"; then
+    alias rm="$SAFE_RM"
+fi
+
