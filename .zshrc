@@ -84,11 +84,22 @@ else
     export VISUAL='nvim'
 fi
 
+# safer commands
+alias rm='rm -I --preserve-root'
+# confirmation #
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+# Parenting changing perms on / #
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+
 SAFE_RM='/usr/bin/safe-rm'
 if test -f "$SAFE_RM"; then
     alias rm="$SAFE_RM"
 fi
-
 
 
 alias clean='clear'
@@ -105,7 +116,7 @@ alias glog='git log --graph --oneline --decorate --abbrev-commit'
 alias gstat="git status" gadd="git add" gcom="git commit -m" gpush="git push" gpull="git pull"
 alias junit="cp -r ~/pro*/*utils/junit_test_runner/* ."
 alias myip='time curl ifconfig.me'
-alias ccc='curl ifconfig.me'
+alias ccc='curl ifconfig.me; echo'
 alias clock='tty-clock -s -S -c -t -C 6 -b'
 alias hdd='clear && df --all -h | grep  "/dev/sda*"'
 alias mkdirp='mkdir -p'
@@ -116,6 +127,8 @@ alias ssc='shutdown -c'
 alias wea='curl -s "wttr.in/TEHRAN"'
 alias :q=exit
 alias line='find * -type f  | xargs  wc -l'
+alias dllist='wget -c -i'
+alias wget='wget -c'
 
 #get fastest mirrors in your neighborhood
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
