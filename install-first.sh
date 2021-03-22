@@ -45,10 +45,10 @@ chsh -s "$(which zsh)"
 # setup rust toolchain
 rustup install stable
 rustup default stable
+
+rustup component add rls rust-analysis rust-src
 rustup component add clippy
 rustup component add rustfmt
-rustup component add rust-src
-rustup component add rls
 
 rustup toolchain add nightly
 cargo +nightly install racer # auto complete engine for rust
