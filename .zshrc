@@ -137,9 +137,12 @@ alias mkdirp='mkdir -p' # create parent folders too
 alias line='find * -type f | xargs  wc -l' # how many lines are in current dir project
 
 # check network
-alias myip='time curl ifconfig.me'
-alias ccc='curl ifconfig.me; echo'
-alias nw='watch -n 3 -t -d -b "curl -s ifconfig.me"'
+alias ccc='curl -q icanhazip.com'
+alias ccv='dig +short myip.opendns.com @resolver1.opendns.com'
+alias ccb="host myip.opendns.com resolver1.opendns.com\
+    | grep 'myip.opendns.com has'\
+    | awk '{print \$4}'"
+alias nw="watch -n 3 -t -d -b  $(alias ccc | cut -d\' -f2)"
 
 # download with wget
 alias dllist='wget -c -i list.txt'
