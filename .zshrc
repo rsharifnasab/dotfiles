@@ -142,7 +142,7 @@ alias ccc='curl ifconfig.me; echo'
 alias nw='watch -n 3 -t -d -b "curl -s ifconfig.me"'
 
 # download with wget
-alias dllist='wget -c -i'
+alias dllist='wget -c -i list.txt'
 alias wget='wget -c'
 
 # bye
