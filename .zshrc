@@ -60,7 +60,9 @@ plugins=(
 
     z # most freq used dirs
     history-substring-search
-    vi-mode
+
+
+    zsh-vi-mode
 )
 source $ZSH/oh-my-zsh.sh
 
