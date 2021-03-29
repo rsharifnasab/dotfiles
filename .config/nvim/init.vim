@@ -87,6 +87,7 @@ set noerrorbells visualbell t_vb=
 let mapleader="\\" " set the leader key
 let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
 
+let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
 
 set hidden " keep undo history on buffer change
 
@@ -296,6 +297,7 @@ Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
 Plug 'shougo/deoplete-clangx' "c/cpp for deplete
 Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
 Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
 
 "Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' } "machine learning autocomplete (ram problem)
 " Plug 'codota/tabnine-vim'
