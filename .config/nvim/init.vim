@@ -20,7 +20,7 @@ set showmatch " highlight matching bracket
 set showcmd " display incomplete commands
 set showmode " show current mode of editor
 set laststatus=2 " last 2 line : show status
-set cursorline " highlight current cursor line
+"set cursorline " highlight current cursor line
 set t_Co=256 " 256 color terminal
 
 set wrap " break the text to fill in terminal width
@@ -119,10 +119,10 @@ set background=dark
 "colorscheme dogrun "atom like, low contrast
 "colorscheme spacecamp " like spacemacs: grey
 "colorscheme lucid " black with beautiful red color
-"colorscheme papercolor "great
+colorscheme papercolor "great
 "colorscheme elflord  " sublime
 
-colorscheme rdark-terminal2  " again brown
+" colorscheme rdark-terminal2  " again brown
 
 
 
