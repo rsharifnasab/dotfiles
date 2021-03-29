@@ -19,6 +19,10 @@ done
 
 
 setopt NO_GLOB_COMPLETE
+setopt autolist      # Display completion candidates immediately.
+setopt listtypes     # When listing files that are possible completions,
+                     # indicate their types with a trailing character.
+setopt nolistbeep    # No bell on ambiguous completion!!
 
 # DISABLE_AUTO_UPDATE="true"
 # DISABLE_UPDATE_PROMPT="true" # automatically update without prompting.
@@ -33,6 +37,8 @@ setopt NO_GLOB_COMPLETE
 ENABLE_CORRECTION="true"
 
 COMPLETION_WAITING_DOTS="true"
+
+
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
