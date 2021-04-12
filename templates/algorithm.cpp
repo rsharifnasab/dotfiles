@@ -62,8 +62,8 @@ static inline Yal new_yal(int a, int b, int type)
 typedef std::priority_queue<Yal, std::vector<Yal>> heap_yal_t;
 typedef std::priority_queue<int> heap_t;
 
-///////// solution //////////////
-//
+/////////// solution //////////////
+
 #define MAX_N 100005
 ll n;
 
