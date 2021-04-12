@@ -129,6 +129,7 @@ alias em='emacsclient -n -c -a ""'
 alias r="clear; sync; exec zsh"
 
 # git aliases
+alias got='git'
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
 alias gstat="git status"
 alias gadd="git add" gcom="git commit -m"
