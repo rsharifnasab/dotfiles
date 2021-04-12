@@ -7,6 +7,8 @@
 #include <unordered_set>
 #include <vector>
 
+typedef long long ll;
+
 ///// fastIO & !stdio ///////
 #define scanf dont_use_scanf
 #define fscanf dont_use_fscanf
@@ -19,11 +21,9 @@ void fast_io()
     std::cin.tie(0);
     std::cout.tie(0);
 }
+
 /////////// pair /////////////
-
 typedef std::pair<int, int> ipair;
-typedef long long ll;
-
 static inline ipair new_pair(int a, int b)
 {
     ipair t;
@@ -74,22 +74,20 @@ int main()
     return 0;
 }
 
+//////// CHEAT SHEET ///////////
 /*
- * heap cheat sheet
+ * *** heap ***
  * heap_t heap;
  *
  * heap.push(1)
  * cout << heap.top();
  * heap.pop();
  *
- */
-
-/*
+ * *** set ***
  * set cheat sheet
  * set<int> s;
  * unordered_set<Yal,Yal::HashFunction> s;
  * s.insert(1);
  * s.erase(1);
- *
- *   for(auto const& item : s){
+ * for(auto const& item : s){
  */
