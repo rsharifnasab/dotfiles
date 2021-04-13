@@ -146,7 +146,7 @@ alias mkdirp='mkdir -p' # create parent folders too
 alias line='find * -type f | xargs  wc -l' # how many lines are in current dir project
 
 # check network
-alias ccc='curl -q icanhazip.com'
+alias ccc='curl -s -q icanhazip.com'
 alias ccv='dig +short myip.opendns.com @resolver1.opendns.com'
 alias ccb="host myip.opendns.com resolver1.opendns.com\
     | grep 'myip.opendns.com has'\
