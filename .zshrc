@@ -141,7 +141,16 @@ alias junit="cp -r \
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias hdd='clear; df --all -h |\
     grep --color=never "/dev/sda*"' # disks usage
-alias wea='curl -s "wttr.in/TEHRAN"' # how is the weather?
+
+
+function wea() {
+    local request="wttr.in/${1-tehran}?Fq"
+    [ "$(tput cols)" -lt 125 ] && request+='n'
+    curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
+}
+alias wea1='curl -s "wttr.in/TEHRAN?format=3"' # one liner: how is the weather?
+alias weac='curl -s "wttr.in/TEHRAN?F0"' # current weather 
+alias weaf='curl -s "wttr.in/TEHRAN?Fq"' # 3 day forecast
 alias mkdirp='mkdir -p' # create parent folders too
 alias line='find * -type f | xargs  wc -l' # how many lines are in current dir project
 
