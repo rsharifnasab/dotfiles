@@ -68,7 +68,7 @@ plugins=(
     history-substring-search
 
 
-    zsh-vi-mode
+    #zsh-vi-mode
 )
 source $ZSH/oh-my-zsh.sh
 
