@@ -249,6 +249,10 @@ let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
 
+" custom syntax highlight
+
+au BufRead,BufNewFile *.fdl set filetype=gezel " gezel.vim in ./syntax
+
 
 " " AUTO FORMATER " "
 " au BufWrite * :Autoformat " set auto format on save
