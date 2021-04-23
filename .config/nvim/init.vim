@@ -110,6 +110,7 @@ set background=dark
 " default beautiful
 "colorscheme ron
 "colorscheme peachpuff
+"colorscheme evening
 
 " added
 "colorscheme angr
