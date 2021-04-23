@@ -9,7 +9,7 @@ echo "installing requierments"
 yay -Syu
 install_package base-devel gcc make cmake npm
 install_package zsh zsh-autosuggestions 
-install_package bat tldr fd nnn fzf 
+install_package bat tldr fd nnn fzf tree
 install_package shellcheck rtags the_silver_searcher httpie xsel
 install_package clang ctags astyle clang-format-static-bin
 install_package jdk-openjdk
