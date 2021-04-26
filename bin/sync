@@ -8,7 +8,8 @@ function sync_dotfiles() {
     rsync --exclude ".git/" \
         --exclude "bootstrap.sh" \
         --exclude "install-first.sh" \
-        --exclude "Readme.md" \
+        --exclude "*.md" \
+        --exclude "*.txt" \
         --exclude "LICENSE" \
         -ah --no-perms ~/pro*/dotfiles/ ~;
     }
