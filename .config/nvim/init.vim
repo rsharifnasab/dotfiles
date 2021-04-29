@@ -93,13 +93,11 @@ set hidden " keep undo history on buffer change
 
 
 " " airline colorscheme " "
-"let g:airline_theme='bubblegum'
-"let g:airline_theme='badwolf'
-"let g:airline_theme='tomorrow'
-"let g:airline_theme='minmalist'
+"let g:airline_theme='dark' " good, colorful
 "let g:airline_theme='lucios'
-let g:airline_theme='dark'
-"let g:airline_theme='serene'
+"let g:airline_theme='minmalist' " just grey
+"let g:airline_theme='bubblegum' " candy
+let g:airline_theme='serene' " classic beautiful
 "let g:airline_theme='random'
 
 
