@@ -26,10 +26,7 @@ void fast_io()
 typedef std::pair<int, int> ipair;
 static inline ipair new_pair(int a, int b)
 {
-    ipair t;
-    t.first = a;
-    t.second = b;
-    return t;
+    return {a, b};
 }
 
 ///////////// heap friendly struct ///////////
@@ -61,6 +58,17 @@ static inline Yal new_yal(int a, int b, int type)
 }
 typedef std::priority_queue<Yal, std::vector<Yal>> heap_yal_t;
 typedef std::priority_queue<int> heap_t;
+
+ll min(ll a, ll b){
+    return a > b ? b : a;
+}
+ll max(ll a, ll b){
+    return a > b ? a : b;
+}
+
+ll abs(ll a){
+    return a < 0? -a : a;
+}
 
 /////////// solution //////////////
 
