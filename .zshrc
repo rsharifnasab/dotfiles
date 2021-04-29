@@ -109,23 +109,25 @@ export GOPATH="$HOME/go"
 #############
 
 
-## safer better commands
+## safer commands
 alias rm='rm -I --preserve-root'
 alias mc='mv -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
-
-alias mkdir="mkdir -pv"
-alias ls='ls --classify --human-readable -1 --color=auto'
-alias cpv='rsync -ah --info=progress2' # copy with progressbar
-alias v='nvim'
-
-
 # Parenting changing perms on / #
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
+
+# shorter commands
+alias mkdir="mkdir -pv"
+alias ls='ls --classify --human-readable -1 --color=auto'
+alias cpv='rsync -ah --info=progress2' # copy with progressbar
+alias v='nvim'
+alias g="g++ -Wall -Wextra -O0"
+
+
 
 # what if I mistyped clear?
 alias clean='clear'
@@ -155,11 +157,13 @@ alias got="go test"
 alias gop='cd $GOPATH'
 
 alias junit="cp -r \
-    ~/pro*/*utils/junit_test_runner/* ." # make current folder ready for run junit tests
+    ~/pro*/*utils/junit_test_runner/* ." 
+    # make current folder ready for run junit tests
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias hdd='clear; df --all -h |\
     grep --color=never "/dev/sda*"' # disks usage
-alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort" # view mounted drives
+alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' \
+    | column -t | egrep ^/dev/ | sort" # view mounted drives
 
 
 function wea() {
