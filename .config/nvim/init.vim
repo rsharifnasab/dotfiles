@@ -84,7 +84,7 @@ set noswapfile
 set noerrorbells visualbell t_vb=
 
 
-let mapleader="\\" " set the leader key
+let mapleader="\<Space>" "set the leader key
 let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
 
 let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
@@ -170,8 +170,27 @@ command WQ wq
 command W w
 command X x
 
-"noremap <silent> <C-w> :qa<CR> " Close nvim with ctrl w
 
+" " map most frequent actions with leader
+
+" open new file
+nnoremap <Leader>o :CtrlP<CR> 
+
+" save
+nnoremap <Leader>w :w<CR>
+" close
+nnoremap <Leader>q :q<CR>
+
+" copy paste with space
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" visual line mode
+nmap <Leader><Leader> V
 
 
 function! NumberToggle()
