@@ -4,6 +4,7 @@ export PATH=/home/roozbeh/bin:/usr/local/bin:$PATH
 export ZSH="/home/roozbeh/.oh-my-zsh/"
 
 
+
 ###############
 ##set zsh theme
 ###############
@@ -54,19 +55,21 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
 
-    sudo
+    colored-man-pages
+    copyfile #copy content of file to clipboard
 
-    git
-    extract
-    fzf
+    sudo # esc esc -> add sudo to command
 
-    rust rustup cargo
-    golang
-    stack
+    extract # extract any archive
+    fzf # fzf integrated to zsh
+
+    golang # completion for go as well as aliases
+    rust # completion for rust
+    rustup # completion for rustup
+    cargo # completion for cargo
+    stack # completion for stack
 
     z # most freq used dirs
-    history-substring-search
-
 
     #zsh-vi-mode
 )
@@ -99,17 +102,26 @@ else
     export SUDO_EDITOR="nvim"
 fi
 
+export GOPATH="$HOME/go"
 
 #############
 ## ALIASES ##
 #############
 
 
-## safer commands
+## safer better commands
 alias rm='rm -I --preserve-root'
+alias mc='mv -i'
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
+
+alias mkdir="mkdir -pv"
+alias ls='ls --classify --human-readable -1 --color=auto'
+alias cpv='rsync -ah --info=progress2' # copy with progressbar
+alias v='nvim'
+
+
 # Parenting changing perms on / #
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
@@ -135,12 +147,19 @@ alias gstat="git status"
 alias gadd="git add" gcom="git commit -m"
 alias gpush="git push" gpull="git pull"
 
+# go aliases 
+alias gor="go run"
+alias gob="go build"
+alias goc="go clean"
+alias got="go test"
+alias gop='cd $GOPATH'
 
 alias junit="cp -r \
     ~/pro*/*utils/junit_test_runner/* ." # make current folder ready for run junit tests
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias hdd='clear; df --all -h |\
     grep --color=never "/dev/sda*"' # disks usage
+alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort" # view mounted drives
 
 
 function wea() {
@@ -267,81 +286,18 @@ function typ(){
 
 
 
-# # ex = EXtractor for all kinds of archives
-ex ()
-{
-  if [[ $# -ne 1 ]] ; then
-    echo "   usage: ex <file>"
-    return
-  fi
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;
-      *)           echo "'$1' is not a valid zip file" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+
+# cd and ls at same time
+function cl() {
+    DIR="$*";
+        # if no DIR given, go home
+        if [ $# -lt 1 ]; then
+                DIR=$HOME;
+    fi;
+    builtin cd "${DIR}" && \
+    # use your preferred ls command
+        ls
 }
-
-
-# Created by fodev.org
-function fod(){
-    case $1 in
-        "--enable" | "-e")
-            export http_proxy=http://fodev.org:8118/
-            export https_proxy=https://fodev.org:8118/
-            export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-            export HTTP_PROXY=http://fodev.org:8118/
-            export HTTPS_PROXY=https://fodev.org:8118/
-            export NO_PROXY="localhost,127.0.0.1,localaddress,.localdomain.com"
-            echo "enable fod proxy !"
-        ;;
-        "--disable" | "-d")
-            unset http_proxy
-            unset https_proxy
-            unset no_proxy
-            unset HTTP_PROXY
-            unset HTTPS_PROXY
-            unset NO_PROXY
-            echo "disable fod proxy !"
-        ;;
-        *)
-            echo "Usage : fod [-e | --enable] [-d | --disable]"
-            echo "Example : "
-            echo "  fod --enable for enable fod proxy "
-            echo "  fod --disable for disable fod proxy "
-        ;;
-    esac
-}
-
-
-
-
-# Color of man pages
-export LESS_TERMCAP_mb=$'\E[01;32m'
-export LESS_TERMCAP_md=$'\E[01;32m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;47;34m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;36m'
-export LESS=-r
-#export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
 
 
 SAFE_RM='/usr/bin/safe-rm'
