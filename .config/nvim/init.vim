@@ -176,10 +176,10 @@ command X x
 " open new file
 nnoremap <Leader>o :CtrlP<CR> 
 
-" save
+" save and close
 nnoremap <Leader>w :w<CR>
-" close
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>wq :wq<CR>
 
 " copy paste with space
 vmap <Leader>y "+y
