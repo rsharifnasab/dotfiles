@@ -222,6 +222,12 @@ function fkill(){
     fi
 }
 
+# select with fzf open file in gui
+function fo() {
+    IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+    [[ -n "$files" ]] && xdg-open "${files[@]}"
+}
+
 # select with fzf open file with vim
 function fe() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
