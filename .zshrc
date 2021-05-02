@@ -167,6 +167,9 @@ alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' \
     | column -t | egrep ^/dev/ | sort" # view mounted drives
 
 
+alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20
+"
+
 function wea() {
     local request="wttr.in/${1-tehran}?Fq"
     [ "$(tput cols)" -lt 125 ] && request+='n'
