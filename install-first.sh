@@ -24,6 +24,8 @@ install_package ghc-static cabal-install hlint stylish-haskell emacs
 
 install_package auto-xflux
 
+# setup every thing for neovim 
+sudo pip3 install --upgrade msgpack pynvim
 sudo npm install -g neovim
 #sudo apt install python-neovim
 #sudo apt install python3-neovim
