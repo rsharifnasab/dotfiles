@@ -25,6 +25,8 @@ install_package ghc-static cabal-install hlint stylish-haskell emacs
 install_package auto-xflux
 
 npm install -g neovim
+#sudo apt install python-neovim
+#sudo apt install python3-neovim
 
 # copy dotfiles to home folder
 # dont create doom files
