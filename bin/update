@@ -23,7 +23,7 @@ function update(){
     set globopt
     cd "$HOME"/pro*/dotfiles || cannot_find
     git pull origin master
-    ./sync
+    ./bin/sync || echo "cannot sync"
 }
 
 if [ "$1" == "--doom" ] || [ "$1" == "-d" ]; then
