@@ -24,7 +24,7 @@ install_package ghc-static cabal-install hlint stylish-haskell emacs
 
 install_package auto-xflux
 
-npm install -g neovim
+sudo npm install -g neovim
 #sudo apt install python-neovim
 #sudo apt install python3-neovim
 
@@ -111,7 +111,7 @@ git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.local/share/nvi
 
 
 echo "setup safe rm"
-npm i -g safe-rm
+sudo npm i -g safe-rm
 
 echo "installing micro"
 curl https://getmic.ro | bash
