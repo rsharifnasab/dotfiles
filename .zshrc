@@ -40,7 +40,6 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 
-
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
@@ -95,7 +94,7 @@ export LC_ALL="en_US.UTF-8"
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
     export VISUAL='vim'
-    export SUDO_EDITOR="nvim"
+    export SUDO_EDITOR="vim"
 else
     export EDITOR='nvim'
     export VISUAL='nvim'
@@ -147,8 +146,11 @@ alias r="clear; sync; exec zsh"
 alias got='git'
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
 alias gstat="git status"
-alias gadd="git add" gcom="git commit -m"
-alias gpush="git push" gpull="git pull"
+alias gadd="git add" 
+alias gcom="git commit -m"
+alias gpush="git push"
+alias gpull="git pull"
+alias gdiff="git diff HEAD"
 
 # go aliases 
 alias gor="go run"
@@ -167,8 +169,7 @@ alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' \
     | column -t | egrep ^/dev/ | sort" # view mounted drives
 
 
-alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20
-"
+alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20"
 
 function wea() {
     local request="wttr.in/${1-tehran}?Fq"

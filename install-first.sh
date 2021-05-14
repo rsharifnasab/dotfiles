@@ -9,7 +9,7 @@ echo "installing requierments"
 yay -Syu
 install_package base-devel gcc make cmake npm
 install_package zsh zsh-autosuggestions 
-install_package bat tldr fd nnn fzf tree
+install_package bat tldr fd nnn fzf tree bind
 install_package shellcheck rtags the_silver_searcher httpie xsel
 install_package clang ctags astyle clang-format-static-bin
 install_package jdk-openjdk
@@ -24,10 +24,15 @@ install_package ghc-static cabal-install hlint stylish-haskell emacs
 
 install_package auto-xflux
 
-npm install -g neovim
+# setup every thing for neovim 
+sudo pip3 install --upgrade msgpack pynvim
+sudo npm install -g neovim
+#sudo apt install python-neovim
+#sudo apt install python3-neovim
 
 # copy dotfiles to home folder
-./bootstrap.sh -f
+# dont create doom files
+./bin/update
 
 #install oh my zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -40,7 +45,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 #install zsh plugin : zsh-vi-mode
 #git clone https://github.com/jeffreytse/zsh-vi-mode \
 #  $HOME/.oh-my-zsh/custom/plugins/zsh-vi-mode
-
 
 chsh -s "$(which zsh)"
 
@@ -59,6 +63,7 @@ rustup toolchain add nightly
 cargo +nightly install racer # auto complete engine for rust
 
 mkdir -p ~/apps
+(
 cd ~/apps || exit
 
 echo "clone rust source code"
@@ -74,8 +79,7 @@ git clone --depth 1  https://github.com/Pouriya-Jahanbakhsh/tir \
 
 echo "installing theme.sh"
 #git clone https://github.com/lemnos/theme.sh || echo "cannot clone theme sh"
-cd - || exit
-
+)
 
 
 
@@ -109,9 +113,7 @@ git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.local/share/nvi
 
 
 echo "setup safe rm"
-npm i -g safe-rm
-
-
+sudo npm i -g safe-rm
 
 echo "installing micro"
 curl https://getmic.ro | bash
@@ -121,8 +123,13 @@ echo "setup emacs"
 rm -r ~/.emacs.d
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
-./bootstrap.sh -f
+
 #to updare:
 ~/.emacs.d/bin/doom upgrade
 #add doom binary to path:
 sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
+
+
+# copy dotfiles to home folder
+# and create doom files
+./bin/update -d
