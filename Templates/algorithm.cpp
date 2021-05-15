@@ -1,4 +1,5 @@
 #include <iomanip>
+#include <algorithm>
 #include <iostream>
 #include <limits.h>
 #include <queue>
@@ -65,16 +66,16 @@ static inline Yal new_yal(int a, int b, int type)
 typedef std::priority_queue<Yal, std::vector<Yal>> heap_yal_t;
 typedef std::priority_queue<int> heap_t;
 
-ll min(ll a, ll b)
+static inline ll min(ll a, ll b)
 {
     return a > b ? b : a;
 }
-ll max(ll a, ll b)
+static inline ll max(ll a, ll b)
 {
     return a > b ? a : b;
 }
 
-ll abs(ll a)
+static inline ll abs(ll a)
 {
     return a < 0 ? -a : a;
 }
