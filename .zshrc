@@ -126,6 +126,7 @@ alias cpv='rsync -ah --info=progress2' # copy with progressbar
 alias v='nvim'
 alias gd="g++ -Wall -Wextra -O0 -g -Ddebug"
 alias g="g++ -Wall -Wextra -O0 -g"
+alias f="thunar"
 
 
 
