@@ -15,9 +15,9 @@
 -   clear yay cache -> `yay -Sc`
 -   show information about installed pakcages -> `yay -Ps`
 -   clear pip cache -> `rm -r .cache/pip`
--   curl cheet.sh/git # or any other command
--   tldr command -> help like man pages, but simple
--   tir -> time.ir in shell
+-   `curl cheet.sh/git` # or any other command
+-   `tldr command` -> help like man pages, but simple
+-   `tir` -> time.ir in shell
 
 ## cmd tools
 
