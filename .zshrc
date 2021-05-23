@@ -321,3 +321,7 @@ if test -f "$SAFE_RM"; then
     alias rm="$SAFE_RM"
 fi
 
+
+# platform specific configs
+[ -f ~/.dependant_configs ] && source ~/.dependant_configs
+
