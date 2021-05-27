@@ -145,7 +145,8 @@ map <C-a> <esc>ggVG<CR> " ctrl a -> Select all
 noremap  <silent> <C-S>      :update<CR> " control S -> save
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
-nnoremap <silent> <C-L>  :nohlsearch<CR><C-L> " ctrl L -> clear highlighted search result
+nnoremap <silent> <C-L>  :nohlsearch<CR>h<C-L> 
+" ctrl L -> clear highlighted search result
 tnoremap <Esc> <C-\><C-n> " esc in terminal mode -> exit
 
 
