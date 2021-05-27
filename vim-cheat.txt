@@ -6,18 +6,26 @@
 
 zz, zt, zb, z. -> change screen position
 H,M,L -> change cursor position in current screen
+5H: 5th line from upper screen
+5L: 5th line from down screen
 
-set relativenumber -> shomare khat ha faseleshoun ba jayee ke hasti
+Set relativenumber -> shomare khat ha faseleshoun ba jayee ke hasti
 . -> repeat last command
 
 gf: edit the file which its name is under curser
 
-~: chane case lower to upper and otherwise
+~: change case one char
+g~ft: change case to first t (use with motion)
+guft: lowercase until first t
+gUft: uppercase until first t
 
 ^: start of line (after spaces)
 +,-: next line after prev line (first char after whitespace)
 gg: first line of file
 G: last line of file
+5gg or 5G: go to line 5
+30% : go to line of 30/100 of file 
+12| : go to 12nd column
 
 j : join this line and next line
 
@@ -25,9 +33,27 @@ z= : view suggestions in spell mode
 zg : mark misspelles word as correct
 
 Move with [( to start of parentheses
-and with ]) to end of parentheses (and same for { and ..)
+and with ]) to end of parentheses (and same for `{`,  `#`, `*` `[`)
 
 Move with () and { } between lines and parentheses
+
+ga : show ascii value of char under cursor
+:redraw! :force redraw screen
+
+Insert mode: 
+    + ctrl v + ascii code: insert that character
+    + ctrl A: insert text from last insert mode operation
+
+Use registers
+    + "2 : use 2nd register for next clipboard operation
+    + :Reg  all registers
+    + :reg 2  what is in 2nd register
+
+Visual mode
+    + o : set cursor to start of highlighted area
+    + gv: select previously selected area
+
+
 
 :make -> compile with makefile and go directly to compile errors ^_^
 open compile errors window with :copen (or :cc)
@@ -74,7 +100,11 @@ vim built in autocomplete (ins-complete)
 " " SEARCH
 ctrl L for clear highlighted search result
 ctrl+f: nerdtree
-* -> search word under cursor ? -> search backward
+* -> search word under cursor
+g* -> search non-strict for word under cursor 
+gd and gD: local definition of word under cursor
+? -> search backward
+
 REPLACE
 :%s/search_for_this/replace_with_this/
 :%s/search_for_this/replace_with_this/c
