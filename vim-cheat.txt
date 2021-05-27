@@ -19,12 +19,15 @@ gf: edit the file which its name is under curser
 gg: first line of file
 G: last line of file
 
+j : join this line and next line
 
-move with [( to start of pharantes
-and with ]) to end of paranthes (and same for { and ..)
+z= : view suggestions in spell mode
+zg : mark misspelles word as correct
 
-move with () and { } between lines and pharantes
+Move with [( to start of parentheses
+and with ]) to end of parentheses (and same for { and ..)
 
+Move with () and { } between lines and parentheses
 
 :make -> compile with makefile and go directly to compile errors ^_^
 open compile errors window with :copen (or :cc)
