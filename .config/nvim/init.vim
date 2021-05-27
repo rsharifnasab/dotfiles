@@ -169,6 +169,7 @@ command Wq wq
 command WQ wq
 command W w
 command X x
+command Q x
 
 
 " " map most frequent actions with leader
