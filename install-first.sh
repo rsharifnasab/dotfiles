@@ -22,7 +22,7 @@ install-package python3 python-pylint-venv python-pipenv python-pytest \
 isntall_package nodejs js-beautify eslint tidy stylelint
 install_package ghc-static cabal-install hlint stylish-haskell emacs
 
-install_package auto-xflux
+install_package auto-xflux meld
 
 # setup every thing for neovim 
 sudo pip3 install --upgrade msgpack pynvim
