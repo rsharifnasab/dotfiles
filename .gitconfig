@@ -29,3 +29,6 @@
   # Automatically --follow when given a single path
   follow = true
   # Disable decorate for reflog
+
+[credential]
+	helper = store
