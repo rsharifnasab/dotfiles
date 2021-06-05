@@ -118,7 +118,8 @@ set background=dark
 "colorscheme dogrun "atom like, low contrast
 "colorscheme spacecamp " like spacemacs: grey
 "colorscheme lucid " black with beautiful red color
-colorscheme papercolor "great
+"colorscheme papercolor "great
+colorscheme molokai "new great
 "colorscheme elflord  " sublime
 
 " colorscheme rdark-terminal2  " again brown
