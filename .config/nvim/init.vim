@@ -109,20 +109,20 @@ set background=dark
 "colorscheme ron
 "colorscheme peachpuff
 "colorscheme evening
+"colorscheme zellner "good light mode
 
 " added
 "colorscheme angr
-"colorscheme gotham " deep blue
-"colorscheme afterglow "brown
+"colorscheme gotham          " deep blue
+"colorscheme afterglow       " brown
 "colorscheme rdark-terminal2 " again brown
-"colorscheme dogrun "atom like, low contrast
-"colorscheme spacecamp " like spacemacs: grey
-"colorscheme lucid " black with beautiful red color
-"colorscheme papercolor "great
-colorscheme molokai "new great
-"colorscheme elflord  " sublime
+"colorscheme dogrun          " like atom, low contrast
+"colorscheme spacecamp       " like spacemacs, grey
+"colorscheme elflord         " like sublime
+"colorscheme lucid           " black with beautiful red color
+"colorscheme papercolor      " great, candy colors
+colorscheme molokai          " great, deep balck and good colors
 
-" colorscheme rdark-terminal2  " again brown
 
 
 
