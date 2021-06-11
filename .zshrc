@@ -124,8 +124,8 @@ alias mkdir="mkdir -pv"
 alias ls='ls --classify --human-readable -1 --color=auto'
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
 alias v='nvim'
-alias gd="gcc -Wall -Wextra -O0 -g -Ddebug"
-alias g="gcc -Wall -Wextra -O0 -g"
+alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
+alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
 alias f="thunar"
 
 
