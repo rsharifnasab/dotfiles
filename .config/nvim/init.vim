@@ -49,7 +49,7 @@ set nofoldenable " no fold first time
 set foldlevel=5 " close fold auto after how many indents
 
 " " tab " "
-set shiftwidth=4
+set shiftwidth=4 tabstop=4
 set smarttab
 set expandtab
 set autoindent
