@@ -50,15 +50,18 @@ COMPLETION_WAITING_DOTS="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
+
+# zsh autocomplete configs 
 zstyle ':autocomplete:*' fzf-completion yes
 zstyle ':autocomplete:*' min-delay 0.15  # number of seconds (float)
 zstyle ':autocomplete:*' min-input 1  # number of characters (integer)
 zstyle ':autocomplete:*' list-lines 10  # (integer)
+# more at : https://github.com/marlonrichert/zsh-autocomplete/blob/main/.zshrc
 
 plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
-    zsh-autocomplete
+    #zsh-autocomplete
 
     colored-man-pages
     copyfile #copy content of file to clipboard
