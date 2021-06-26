@@ -155,7 +155,8 @@ alias r="clear; sync; exec zsh"
 # git aliases
 alias got='git'
 alias glog='git log --graph --oneline --decorate --abbrev-commit'
-alias gstat="git status"
+alias gstat="git status -s"
+alias gstatv="git status -vv"
 alias gadd="git add" 
 alias gcom="git commit -m"
 alias gpush="git push"
