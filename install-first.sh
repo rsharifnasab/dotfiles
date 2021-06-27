@@ -94,7 +94,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # install vim plugins
 cp ./.vimrc ~/.vimrc
-vim -c ':PlugInstal'
+vim +PlugInstal
 
 
 ## neovim
@@ -103,11 +103,11 @@ echo "downloading vimplug for neovim"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-nvim -c ":PlugInstall"
+nvim +PlugInstall
 
 echo "compiling java language server"
-nvim -c "JCserverCompile"
-nvim -c "JCserverEnable"
+nvim +JCserverCompile
+nvim +JCserverStart
 
 echo "downloading ale"
 mkdir -p ~/.local/share/nvim/site/pack/git-plugins/start
