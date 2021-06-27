@@ -311,9 +311,28 @@ let g:deoplete#sources#rust#documentation_max_height=20
 let g:rooter_manual_only = 0
 let g:rooter_patterns = ['=src', '.git', 'Makefile']
 
+" " dashboard " "
+let g:dashboard_default_executive ='fzf'
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+let g:indentLine_fileTypeExclude = ['dashboard']
+let g:dashboard_preview_command = 'cat'
+let g:dashboard_preview_pipeline = 'lolcat'
+"let g:dashboard_preview_file_height = 24
+let g:dashboard_preview_file_width = 70
+
+
+
 
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
+Plug 'glepnir/dashboard-nvim'
 
 Plug 'airblade/vim-rooter'
 
