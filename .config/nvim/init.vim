@@ -259,6 +259,9 @@ let g:indentLine_enabled=1
 let g:indentLine_color_term=230
 let g:indentLine_char='|'
 "let g:indentLine_char_list = [' ','|', '¦', '┆', '┊']
+"
+"
+let g:indentLine_fileTypeExclude = ['dashboard', 'help']
 
 
 " " ale " "
@@ -321,7 +324,6 @@ nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
 nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
 nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
-let g:indentLine_fileTypeExclude = ['dashboard']
 let g:dashboard_preview_command = 'cat'
 let g:dashboard_preview_pipeline = 'lolcat'
 "let g:dashboard_preview_file_height = 24
