@@ -304,6 +304,10 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 
+
+" " yaml " "
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2
+
 " " rust " "
 let g:deoplete#sources#rust#racer_binary='/home/roozbeh/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/home/roozbeh/apps/rust/library'
