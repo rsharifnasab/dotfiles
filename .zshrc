@@ -136,7 +136,8 @@ alias v='nvim'
 alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
 alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
 alias f="thunar"
-
+alias cdls='cd "$@" && ls' # cd and ls in the same time!
+alias cls='cd "$@" && ls' # cd and ls in the same time!
 
 
 # what if I mistyped clear?
