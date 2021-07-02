@@ -323,7 +323,7 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_variable_declarations = 1
 
 let g:go_fmt_command = 'goimports'
-g:go_textobj_include_function_doc = 1
+let g:go_textobj_include_function_doc = 1
 let g:go_fmt_fail_silently = 1
 
 let g:go_metalinter_autosave = 1
