@@ -230,15 +230,20 @@ let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out'] " ignore files from nerdtr
 
 
 " " deoplete " "
-" autocomplete menu color
+" menu color
 "highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=#e7f2dc
-highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=white
-" whole menu
-"highlight PmenuSel  ctermbg=1 guibg=#112257 guifg=#adeaf0
-highlight PmenuSel  ctermbg=1 guibg=#47092f guifg=#fdff94
+"highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=white
+highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=#f7f2e9
+
 " selected item
-highlight PmenuSbar ctermbg=0 guibg=#555555
+"highlight PmenuSel  ctermbg=1 guibg=#112257 guifg=#adeaf0
+"highlight PmenuSel  ctermbg=1 guibg=#47092f guifg=#fdff94
+"highlight PmenuSel  ctermbg=1 guibg=#323f83 guifg=#aebeca
+"highlight PmenuSel  ctermbg=1 guibg=#323f83 guifg=yellow
+highlight PmenuSel  ctermbg=1 guibg=#323f83 guifg=#fff343
+
 "scrollbar
+highlight PmenuSbar ctermbg=0 guibg=#555555
 
 
 
