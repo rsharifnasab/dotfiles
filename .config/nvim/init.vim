@@ -87,7 +87,6 @@ set noerrorbells visualbell t_vb=
 let mapleader="\<Space>" "set the leader key
 let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
 
-let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
 
 set hidden " keep undo history on buffer change
 
@@ -125,8 +124,6 @@ colorscheme molokai          " great, deep balck and good colors
 
 
 
-
-
 " save and jump to last position in file
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -155,7 +152,8 @@ tnoremap <Esc> <C-\><C-n> " esc in terminal mode -> exit
 nnoremap <C-p> :bnext<CR>
 nnoremap <C-o> :bprevious<CR>
 nmap <C-n> :enew<cr>
-noremap <silent> <C-q> :bd<CR> " Close current buffer
+noremap <silent> <C-q> :bd<CR> 
+" Close current buffer
 
 
 " Go to normal mode with <jk> (esc is too far)
@@ -207,6 +205,10 @@ nnoremap <F2> :call NumberToggle()<cr> " toggle relative number
 
 
 
+
+" " PLUGIN SETTINGS " " 
+
+
 " " ctags " "
 command! MakeTags !ctags -R .
 "create tags file
@@ -229,15 +231,58 @@ let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out'] " ignore files from nerdtr
 
 " " deoplete " "
 " autocomplete menu color
-highlight Pmenu ctermbg=6 guibg=#f1f1f0
-highlight PmenuSel ctermbg=3 guifg=#d5dd00 guibg=#1f82cd
-"highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
+"highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=#e7f2dc
+highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=white
+" whole menu
+"highlight PmenuSel  ctermbg=1 guibg=#112257 guifg=#adeaf0
+highlight PmenuSel  ctermbg=1 guibg=#47092f guifg=#fdff94
+" selected item
+highlight PmenuSbar ctermbg=0 guibg=#555555
+"scrollbar
 
-" deoplete for java
-autocmd FileType java setlocal omnifunc=javacomplete#Complete " enable autocomplete in startup
-let g:deoplete#enable_at_startup = 1
-let g:JavaComplete_CheckServerVersionAtStartup = 0
-let g:JavaComplete_EnableDefaultMappings = 0
+
+
+" " auto formater " "
+" au BufWrite * :Autoformat " set auto format on save
+" let g:autoformat_verbosemode=1 " to enable debug mode
+
+
+
+" " vim rooter " " 
+let g:rooter_manual_only = 0
+let g:rooter_patterns = ['=src', '.git', 'Makefile', 'go.mod']
+
+" " dashboard " "
+let g:dashboard_default_executive ='fzf'
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
+nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
+nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
+nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
+nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
+nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
+let g:dashboard_preview_command = 'cat'
+let g:dashboard_preview_pipeline = 'lolcat'
+"let g:dashboard_preview_file_height = 24
+let g:dashboard_preview_file_width = 70
+
+
+" " Indent line " "
+let g:indentLine_enabled=1
+let g:indentLine_color_term=230
+let g:indentLine_char='|'
+"let g:indentLine_char_list = [' ','|', '¦', '┆', '┊']
+let g:indentLine_fileTypeExclude = ['dashboard', 'help']
+
+
+" " ale " "
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_enter = 1
+let g:ale_list_window_size = 5
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
 
 
 
@@ -254,35 +299,18 @@ let g:airline#extensions#tabline#fnamemod= ':t' "just show filename"
 
 
 
-" " Indent line " "
-let g:indentLine_enabled=1
-let g:indentLine_color_term=230
-let g:indentLine_char='|'
-"let g:indentLine_char_list = [' ','|', '¦', '┆', '┊']
-"
-"
-let g:indentLine_fileTypeExclude = ['dashboard', 'help']
+
+" " LANGUAGE SPECIFIC" " 
+
+" rust
+let g:deoplete#sources#rust#racer_binary='/home/roozbeh/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/home/roozbeh/apps/rust/library'
+let g:deoplete#sources#rust#show_duplicates=1
+let g:deoplete#sources#rust#documentation_max_height=20
 
 
-" " ale " "
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_enter = 1
-let g:ale_list_window_size = 5
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
 
-" custom syntax highlight
-
-au BufRead,BufNewFile *.fdl set filetype=gezel " gezel.vim in ./syntax
-
-
-" " AUTO FORMATER " "
-" au BufWrite * :Autoformat " set auto format on save
-" let g:autoformat_verbosemode=1 " to enable debug mode
-
-
-" " vim-go " "
+" vim-go 
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_types = 1
@@ -295,43 +323,39 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_variable_declarations = 1
 
 let g:go_fmt_command = 'goimports'
+g:go_textobj_include_function_doc = 1
+let g:go_fmt_fail_silently = 1
+
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_deadline = "5s"
 
 
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>e  <Plug>(go-iferr)
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
+let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
 
 
-" " yaml " "
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2
+" yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" " rust " "
-let g:deoplete#sources#rust#racer_binary='/home/roozbeh/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/roozbeh/apps/rust/library'
-let g:deoplete#sources#rust#show_duplicates=1
-let g:deoplete#sources#rust#documentation_max_height=20
 
-" " vim rooter " " 
-let g:rooter_manual_only = 0
-let g:rooter_patterns = ['=src', '.git', 'Makefile']
 
-" " dashboard " "
-let g:dashboard_default_executive ='fzf'
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
-nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
-nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
-nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
-nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
-nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
-nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
-let g:dashboard_preview_command = 'cat'
-let g:dashboard_preview_pipeline = 'lolcat'
-"let g:dashboard_preview_file_height = 24
-let g:dashboard_preview_file_width = 70
+" gezel (syntax highlight 
+au BufRead,BufNewFile *.fdl set filetype=gezel " gezel.vim in ./syntax
+
+" java (deoplete)
+autocmd FileType java setlocal omnifunc=javacomplete#Complete " enable autocomplete in startup
+let g:deoplete#enable_at_startup = 1
+let g:JavaComplete_CheckServerVersionAtStartup = 0
+let g:JavaComplete_EnableDefaultMappings = 0
+
+
 
 
 
