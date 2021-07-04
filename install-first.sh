@@ -135,3 +135,16 @@ sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
 # copy dotfiles to home folder
 # and create doom files
 ./bin/update -d
+
+
+
+## tabnine stuff
+
+(
+    cd ~/.config/nvim/plugged || exit
+    git clone --branch master --depth 1 https://github.com/codota/tabnine-vim
+)
+# install goples
+GO111MODULE=on go get golang.org/x/tools/gopls@latest
+pip install --user python-language-server
+

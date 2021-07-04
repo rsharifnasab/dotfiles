@@ -1,4 +1,6 @@
-export PATH=/home/roozbeh/bin:/usr/local/bin:$PATH
+export GOPATH="$HOME/go"
+
+export PATH=/home/roozbeh/bin:/usr/local/bin:$(go env GOPATH)/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/roozbeh/.oh-my-zsh/"
@@ -110,7 +112,6 @@ else
     export SUDO_EDITOR="nvim"
 fi
 
-export GOPATH="$HOME/go"
 
 #############
 ## ALIASES ##

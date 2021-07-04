@@ -378,8 +378,8 @@ Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
 Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
 
-"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' } "machine learning autocomplete (ram problem)
-" Plug 'codota/tabnine-vim'
+"machine learning autocomplete (ram problem)
+Plug 'codota/tabnine-vim'
 
 
 Plug 'SirVer/ultisnips' " snipet engine
@@ -425,6 +425,7 @@ call deoplete#custom#var('clangx', 'default_c_options', '') " Change clang optio
 call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
 
-" call deoplete#custom#var('tabnine', { 'line_limit': 200, 'max_num_results': 5, }) " disabled due to ram usage
+call deoplete#custom#var('tabnine', { 'line_limit': 200, 'max_num_results': 5, }) 
+" disabled due to ram usage
 
 
