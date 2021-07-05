@@ -14,7 +14,7 @@ install_package shellcheck rtags the_silver_searcher httpie xsel
 install_package clang ctags astyle clang-format-static-bin
 install_package jdk-openjdk
 install_package rustup rust-analyzer
-install_package neovim python-pynvim
+install_package neovim 
 install_package go gofmt
 install-package python3 python-pylint-venv python-pipenv python-pytest \
     python-black python-pyflakes python-rednose python-pytest autopep8
@@ -27,8 +27,6 @@ install_package auto-xflux meld
 # setup every thing for neovim 
 sudo pip3 install --upgrade msgpack pynvim
 sudo npm install -g neovim
-#sudo apt install python-neovim
-#sudo apt install python3-neovim
 
 # copy dotfiles to home folder
 # dont create doom files
@@ -136,6 +134,10 @@ sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
 # and create doom files
 ./bin/update -d
 
+
+# ubuntu specific
+
+sudo apt install python-neovim python3-neovim snap cmake npm gcc g++ zsh-autosuggestions tldr nnn fzf tree shellcheck xsel httpie clang ctags 
 
 
 ## tabnine stuff

@@ -1,9 +1,8 @@
 export GOPATH="$HOME/go"
-
-export PATH=/home/roozbeh/bin:/usr/local/bin:$(go env GOPATH)/bin:$PATH
+export PATH="$HOME/bin:/usr/local/bin:$(go env GOPATH)/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/roozbeh/.oh-my-zsh/"
+export ZSH="$HOME/.oh-my-zsh/"
 
 
 
@@ -14,7 +13,7 @@ ZSH_THEME="robbyrussell"
 ZSH_THEME="half-life"
 ZSH_THEME="random"
 
-ZSH_FAVLIST="/home/roozbeh/.zsh_favlist"
+ZSH_FAVLIST="$HOME/.zsh_favlist"
 ZSH_THEME_RANDOM_CANDIDATES=()
 for theme in $(cat $ZSH_FAVLIST);  do
     ZSH_THEME_RANDOM_CANDIDATES+=($theme)

@@ -331,7 +331,7 @@ let g:go_fmt_command = 'goimports'
 let g:go_textobj_include_function_doc = 1
 let g:go_fmt_fail_silently = 1
 
-let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave = 0
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_deadline = "5s"
 
@@ -379,7 +379,7 @@ Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
 
 "machine learning autocomplete (ram problem)
-Plug 'codota/tabnine-vim'
+"Plug 'codota/tabnine-vim'
 
 
 Plug 'SirVer/ultisnips' " snipet engine
@@ -425,7 +425,7 @@ call deoplete#custom#var('clangx', 'default_c_options', '') " Change clang optio
 call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
 
-call deoplete#custom#var('tabnine', { 'line_limit': 200, 'max_num_results': 5, }) 
+"call deoplete#custom#var('tabnine', { 'line_limit': 200, 'max_num_results': 5, }) 
 " disabled due to ram usage
 
 
