@@ -139,6 +139,7 @@ sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
 
 sudo apt install python-neovim python3-neovim snapd cmake npm gcc g++ zsh-autosuggestions tldr nnn fzf tree shellcheck xsel httpie clang ctags 
 sudo snap install nvim --classic
+sudo snap install go --classic # newer than apt version
 
 ## tabnine stuff
 
