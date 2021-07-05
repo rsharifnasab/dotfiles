@@ -137,8 +137,8 @@ sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
 
 # ubuntu specific
 
-sudo apt install python-neovim python3-neovim snap cmake npm gcc g++ zsh-autosuggestions tldr nnn fzf tree shellcheck xsel httpie clang ctags 
-
+sudo apt install python-neovim python3-neovim snapd cmake npm gcc g++ zsh-autosuggestions tldr nnn fzf tree shellcheck xsel httpie clang ctags 
+sudo snap install neovim
 
 ## tabnine stuff
 
