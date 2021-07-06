@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Before running this script, make sure you have sysbench installed:
-#           sudo apt-get install sysbench
-#
 # This script helps you check if your Raspberry pi is correctly powered.
 # You can read more about Raspberry pi powering issues here: https://ownyourbits.com/2019/02/02/whats-wrong-with-the-raspberry-pi/
 
@@ -41,17 +38,17 @@ function throttleCodeMask {
 
 function throttledToText {
   throttledCode=$1
-  throttleCodeMask $throttledCode 0x80000 "Soft temperature limit has occurred, " ""
-  throttleCodeMask $throttledCode 0x8 "Soft temperature limit active, " ""
+  #throttleCodeMask $throttledCode 0x80000 "Soft temperature limit has occurred " ""
+  throttleCodeMask $throttledCode 0x8 "Soft temperature limit active " ""
 
-  throttleCodeMask $throttledCode 0x40000 "Throttling has occurred, " ""
-  throttleCodeMask $throttledCode 0x4 "Currently throttled, " ""
+  throttleCodeMask $throttledCode 0x40000 "Throttling has occurred " ""
+  throttleCodeMask $throttledCode 0x4 "Currently throttled " ""
 
-  throttleCodeMask $throttledCode 0x20000 "Arm frequency capping has occurred, " ""
-  throttleCodeMask $throttledCode 0x2 "Arm frequency capped, " ""
+  throttleCodeMask $throttledCode 0x20000 "Arm frequency capping has occurred " ""
+  throttleCodeMask $throttledCode 0x2 "Arm frequency capped " ""
 
-  throttleCodeMask $throttledCode 0x10000 "Under-voltage has occurred, " ""
-  throttleCodeMask $throttledCode 0x1 "Under-voltage detected, " ""
+  throttleCodeMask $throttledCode 0x10000 "Under-voltage has occurred " ""
+  throttleCodeMask $throttledCode 0x1 "Under-voltage detected " ""
 }
 
 # Main script, kill sysbench when interrupted
