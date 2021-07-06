@@ -333,5 +333,4 @@ fi
 
 
 # platform specific configs
-[ -f ~/.dependant_configs ] && source ~/.dependant_configs
-
+type apt >/dev/null 2>&1 && source ~/.debian_config
