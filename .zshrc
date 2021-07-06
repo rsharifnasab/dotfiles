@@ -135,7 +135,7 @@ alias cpv='rsync -ah --info=progress2' # copy with progressbar
 alias v='nvim'
 alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
 alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
-alias f="thunar"
+alias f="xdg-open"
 alias cdls='cd "$@" && ls' # cd and ls in the same time!
 alias cls='cd "$@" && ls' # cd and ls in the same time!
 
