@@ -361,6 +361,7 @@ let g:JavaComplete_CheckServerVersionAtStartup = 0
 let g:JavaComplete_EnableDefaultMappings = 0
 
 
+let g:JavaComplete_LibsPath = expand('$HOME/proj/ta_utils/junit_test_runner/junit-jars/junit.jar')
 
 
 
