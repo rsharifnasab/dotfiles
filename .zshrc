@@ -160,6 +160,7 @@ alias gstat="git status -s"
 alias gstatv="git status -vv"
 alias gadd="git add" 
 alias gcom="git commit -m"
+alias gcome="git commit" # open editor!
 alias gpush="git push"
 alias gpull="git pull"
 alias gdiff="git diff HEAD"
