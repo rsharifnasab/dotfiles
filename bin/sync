@@ -13,6 +13,7 @@ function sync_dotfiles() {
         --exclude "vim-cheat.txt" \
         --exclude "emacs-cheat.txt" \
         --exclude "LICENSE" \
+        --exclude ".gitignore" \
         -ah --no-perms ~/pro*/dotfiles/ ~;
     }
 
