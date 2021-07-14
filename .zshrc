@@ -163,7 +163,7 @@ alias gcom="git commit -m"
 alias gcome="git commit" # open editor!
 alias gpush="git push"
 alias gpull="git pull"
-alias gdiff="git diff HEAD"
+alias gdiff="git diff HEAD --color-words"
 
 # go aliases 
 alias gor="go run"
