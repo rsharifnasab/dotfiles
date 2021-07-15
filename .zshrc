@@ -182,6 +182,7 @@ alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' \
     | column -t | egrep ^/dev/ | sort" # view mounted drives
 alias mem='cat /proc/meminfo | grep Avail | awk '\'' { print "Available Memory: " $2/1024/1024 " GB" }'\'' '
 alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20"
+alias vid_len="find . -maxdepth 1 -iname '*.*' -exec ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; | awk '{sum += \$0} END{print sum/60 \" min\"}' "
 
 function wea() {
     local request="wttr.in/${1-tehran}?Fq"
