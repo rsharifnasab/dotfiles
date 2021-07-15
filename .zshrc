@@ -180,8 +180,7 @@ alias hdd='clear; df --all -h |\
     grep --color=never "/dev/sda*"' # disks usage
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' \
     | column -t | egrep ^/dev/ | sort" # view mounted drives
-
-
+alias mem='cat /proc/meminfo | grep Avail | awk '\'' { print "Available Memory: " $2/1024/1024 " GB" }'\'' '
 alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20"
 
 function wea() {
