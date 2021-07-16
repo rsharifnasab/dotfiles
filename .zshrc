@@ -184,6 +184,10 @@ alias mem='cat /proc/meminfo | grep Avail | awk '\'' { print "Available Memory: 
 alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20"
 alias vid_len="find . -maxdepth 1 -iname '*.*' -exec ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; | awk '{sum += \$0} END{print sum/60 \" min\"}' "
 
+
+alias clip_set="xclip -selection c"
+alias clip_get="xclip -selection c -o"
+
 function wea() {
     local request="wttr.in/${1-tehran}?Fq"
     [ "$(tput cols)" -lt 125 ] && request+='n'
