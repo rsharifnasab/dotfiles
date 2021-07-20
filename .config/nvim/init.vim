@@ -10,6 +10,64 @@
 "  give coc and youcompleteme a chance
 
 
+" " plugins " "
+call plug#begin('~/.config/nvim/plugged')
+Plug 'ray-x/aurora'    " beautiful theme
+
+Plug 'glepnir/dashboard-nvim'
+
+Plug 'airblade/vim-rooter'
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
+Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
+Plug 'shougo/deoplete-clangx' "c/cpp for deplete
+Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
+Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
+
+"machine learning autocomplete (ram problem)
+"Plug 'codota/tabnine-vim'
+
+
+Plug 'SirVer/ultisnips' " snipet engine
+Plug 'honza/vim-snippets' " actually snippets
+
+" Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes
+
+Plug 'justinmk/vim-syntax-extra' "add extra syntax highlight for flex
+Plug 'Yggdroot/indentLine' " some indent help
+Plug 'Chiel92/vim-autoformat' " auto format code with :AutoFormat
+
+Plug 'preservim/nerdtree' " file tree in the left side
+Plug 'jistr/vim-nerdtree-tabs' " NERDTree and tabs together in Vim, painlessly
+Plug 'ryanoasis/vim-devicons' " icons for nertree and startify
+
+Plug 'vim-airline/vim-airline' " statusline
+Plug 'vim-airline/vim-airline-themes' "themese for statusline
+
+Plug 'junegunn/fzf.vim' "fuzzy file finder (leader + tab)
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'mileszs/ack.vim' " vim grep : find in all project source codes (leader + f)
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }     " Go development plugin for Vim
+Plug 'peitalin/vim-jsx-typescript'                     " react JSX syntax highlighting for vim and Typescript
+Plug 'mrk21/yaml-vim'                                  " YAML syntax/indent plugin for Vim
+Plug 'ekalinin/Dockerfile.vim'                         " Vim syntax file & snippets for Docker's Dockerfile
+Plug 'elzr/vim-json'                                   " A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly.
+Plug 'othree/html5.vim'                                " HTML5 omnicomplete and syntax
+Plug 'pangloss/vim-javascript'                         " Vastly improved Javascript indentation and syntax support in Vim
+Plug 'octol/vim-cpp-enhanced-highlight'                " Additional Vim syntax highlighting for C++
+Plug 'ap/vim-css-color'                                " Preview colours in source code while editing
+Plug 'arzg/vim-rust-syntax-ext'                        " A Vim plugin that enhances Rust syntax highlighting
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Semantic Highlighting for Python in Neovim
+Plug 'maxmellon/vim-jsx-pretty'                        " JSX and TSX syntax pretty highlighting for vim.
+Plug 'rust-lang/rust.vim'                              " Vim configuration for Rust.
+call plug#end()
+
+
+
+
+
 set nocompatible " don't need to be compatible with VI
 
 set number " enable numbering of lines
@@ -105,6 +163,7 @@ let g:airline_theme='serene' " classic beautiful
 set background=dark
 
 " default beautiful
+"colorscheme default " good contrast
 "colorscheme ron
 "colorscheme peachpuff
 "colorscheme evening
@@ -120,8 +179,8 @@ set background=dark
 "colorscheme elflord         " like sublime
 "colorscheme lucid           " black with beautiful red color
 "colorscheme papercolor      " great, candy colors
-colorscheme molokai          " great, deep balck and good colors
-
+"colorscheme molokai         " great, deep balck and good colors
+colorscheme aurora  " seems good for now
 
 
 " save and jump to last position in file
@@ -365,58 +424,6 @@ let g:JavaComplete_LibsPath = expand('$HOME/proj/ta_utils/junit_test_runner/juni
 
 
 
-
-" " plugins " "
-call plug#begin('~/.config/nvim/plugged')
-Plug 'glepnir/dashboard-nvim'
-
-Plug 'airblade/vim-rooter'
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
-Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
-Plug 'shougo/deoplete-clangx' "c/cpp for deplete
-Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
-Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
-
-"machine learning autocomplete (ram problem)
-"Plug 'codota/tabnine-vim'
-
-
-Plug 'SirVer/ultisnips' " snipet engine
-Plug 'honza/vim-snippets' " actually snippets
-
-" Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes
-
-Plug 'justinmk/vim-syntax-extra' "add extra syntax highlight for flex
-Plug 'Yggdroot/indentLine' " some indent help
-Plug 'Chiel92/vim-autoformat' " auto format code with :AutoFormat
-
-Plug 'preservim/nerdtree' " file tree in the left side
-Plug 'jistr/vim-nerdtree-tabs' " NERDTree and tabs together in Vim, painlessly
-Plug 'ryanoasis/vim-devicons' " icons for nertree and startify
-
-Plug 'vim-airline/vim-airline' " statusline
-Plug 'vim-airline/vim-airline-themes' "themese for statusline
-
-Plug 'junegunn/fzf.vim' "fuzzy file finder (leader + tab)
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-Plug 'mileszs/ack.vim' " vim grep : find in all project source codes (leader + f)
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }     " Go development plugin for Vim
-Plug 'peitalin/vim-jsx-typescript'                     " react JSX syntax highlighting for vim and Typescript
-Plug 'mrk21/yaml-vim'                                  " YAML syntax/indent plugin for Vim
-Plug 'ekalinin/Dockerfile.vim'                         " Vim syntax file & snippets for Docker's Dockerfile
-Plug 'elzr/vim-json'                                   " A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly.
-Plug 'othree/html5.vim'                                " HTML5 omnicomplete and syntax
-Plug 'pangloss/vim-javascript'                         " Vastly improved Javascript indentation and syntax support in Vim
-Plug 'octol/vim-cpp-enhanced-highlight'                " Additional Vim syntax highlighting for C++
-Plug 'ap/vim-css-color'                                " Preview colours in source code while editing
-Plug 'arzg/vim-rust-syntax-ext'                        " A Vim plugin that enhances Rust syntax highlighting
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Semantic Highlighting for Python in Neovim
-Plug 'maxmellon/vim-jsx-pretty'                        " JSX and TSX syntax pretty highlighting for vim.
-Plug 'rust-lang/rust.vim'                              " Vim configuration for Rust.
-call plug#end()
 
 
 
