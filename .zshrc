@@ -248,6 +248,22 @@ function fo() {
     [[ -n "$files" ]] && xdg-open "${files[@]}"
 }
 
+# select with fzf open selected folder in file manager
+function fm() {
+    IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+
+    if command -v thunar &> /dev/null # xfce
+    then 
+        [[ -n "$files" ]] && thunar "${files[@]}" # gnome
+    elif command -v nautilus &> /dev/null
+    then 
+        [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
+    else 
+        [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
+    fi
+
+}
+
 # select with fzf open file with vim
 function fe() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
