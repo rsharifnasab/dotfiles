@@ -52,17 +52,9 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 
-# zsh autocomplete configs 
-zstyle ':autocomplete:*' fzf-completion yes
-zstyle ':autocomplete:*' min-delay 0.15  # number of seconds (float)
-zstyle ':autocomplete:*' min-input 1  # number of characters (integer)
-zstyle ':autocomplete:*' list-lines 10  # (integer)
-# more at : https://github.com/marlonrichert/zsh-autocomplete/blob/main/.zshrc
-
 plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
-    #zsh-autocomplete
 
     colored-man-pages
     copyfile #copy content of file to clipboard
@@ -137,7 +129,7 @@ alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
 alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
 alias f="xdg-open"
 alias cdls='cd "$@" && ls' # cd and ls in the same time!
-alias cls='cd "$@" && ls' # cd and ls in the same time!
+alias cls='cd "$@" && ls'  # cd and ls in the same time!
 
 
 # what if I mistyped clear?
@@ -169,7 +161,7 @@ alias gdiff="git diff HEAD --color-words"
 alias gor="go run"
 alias gob="go build"
 alias goc="go clean"
-alias got="go test"
+alias gott="go test"
 alias gop='cd $GOPATH'
 
 alias junit="cp -r \
@@ -197,7 +189,6 @@ alias wea1='curl -s "wttr.in/TEHRAN?format=3"' # one liner: how is the weather?
 alias weac='curl -s "wttr.in/TEHRAN?F0"' # current weather 
 alias weaf='curl -s "wttr.in/TEHRAN?Fq"' # 3 day forecast
 alias mkdirp='mkdir -p' # create parent folders too
-alias line='find * -type f | xargs  wc -l' # how many lines are in current dir project
 
 # check network
 alias ccc='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -354,4 +345,4 @@ fi
 
 
 # platform specific configs
-type apt >/dev/null 2>&1 && source ~/.debian_config
+type apt >/dev/null 2>&1 && source ~/.debian_config || true
