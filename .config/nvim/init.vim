@@ -13,7 +13,6 @@
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
 Plug 'ray-x/aurora'                  " beautiful theme
-Plug 'ghifarit53/tokyonight-vim'     " deep black, lovely
 Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes
 
 Plug 'glepnir/dashboard-nvim' " dashboard 
@@ -181,14 +180,21 @@ let g:tokyonight_enable_italic = 1
 "colorscheme afterglow       " brown with deep good colors
 "colorscheme rdark-terminal2 " again brown, same as default theme
 "colorscheme elflord         " like sublime, same as default
-"colorscheme dogrun          " like atom, low contrast
 "colorscheme spacecamp       " like spacemacs, grey
 "colorscheme lucid           " black with beautiful red color
 "colorscheme PaperColor      " great, candy colors
 "colorscheme molokai         " great, deep balck and good colors
 "colorscheme aurora          " seems good, too much blue
-"colorscheme tokyonight      " blue/black with beautiful deep colors
 colorscheme minimalist      " goood!
+"colorscheme deus            " cute colorful, orange 
+"colorscheme hybrid_reverse  " deep black and beautiful colors
+
+
+" theme for day:
+"colorscheme github          " white, like github
+"colorscheme flattened_light " cream bg with orange
+
+
 
 
 " save and jump to last position in file
