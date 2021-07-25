@@ -38,7 +38,6 @@ Plug 'honza/vim-snippets' " actually snippets
 Plug 'justinmk/vim-syntax-extra' " add extra syntax highlight for flex
 Plug 'Yggdroot/indentLine'       " some indent help
 Plug 'Chiel92/vim-autoformat'    " auto format code with :AutoFormat
-Plug 'sheerun/vim-polyglot'      " collection of language packs
 
 Plug 'preservim/nerdtree'        " file tree in the left side
 Plug 'jistr/vim-nerdtree-tabs'   " NERDTree and tabs together in Vim, painlessly
@@ -280,7 +279,6 @@ nnoremap <F2> :call NumberToggle()<cr> " toggle relative number
 
 
 " " PLUGIN SETTINGS " " 
-
 
 " " ctags " "
 command! MakeTags !ctags -R .
