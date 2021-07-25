@@ -12,11 +12,14 @@
 
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ray-x/aurora'    " beautiful theme
+Plug 'ray-x/aurora'                  " beautiful theme
+Plug 'ghifarit53/tokyonight-vim'     " deep black, lovely
+Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes
 
-Plug 'glepnir/dashboard-nvim'
+Plug 'glepnir/dashboard-nvim' " dashboard 
 
-Plug 'airblade/vim-rooter'
+Plug 'airblade/vim-rooter'   " set root based on .git
+
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
 Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
@@ -32,20 +35,20 @@ Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
 Plug 'SirVer/ultisnips' " snipet engine
 Plug 'honza/vim-snippets' " actually snippets
 
-" Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes
 
-Plug 'justinmk/vim-syntax-extra' "add extra syntax highlight for flex
-Plug 'Yggdroot/indentLine' " some indent help
-Plug 'Chiel92/vim-autoformat' " auto format code with :AutoFormat
+Plug 'justinmk/vim-syntax-extra' " add extra syntax highlight for flex
+Plug 'Yggdroot/indentLine'       " some indent help
+Plug 'Chiel92/vim-autoformat'    " auto format code with :AutoFormat
+Plug 'sheerun/vim-polyglot'      " collection of language packs
 
-Plug 'preservim/nerdtree' " file tree in the left side
-Plug 'jistr/vim-nerdtree-tabs' " NERDTree and tabs together in Vim, painlessly
-Plug 'ryanoasis/vim-devicons' " icons for nertree and startify
+Plug 'preservim/nerdtree'        " file tree in the left side
+Plug 'jistr/vim-nerdtree-tabs'   " NERDTree and tabs together in Vim, painlessly
+Plug 'ryanoasis/vim-devicons'    " icons for nertree and startify
 
-Plug 'vim-airline/vim-airline' " statusline
+Plug 'vim-airline/vim-airline'        " statusline
 Plug 'vim-airline/vim-airline-themes' "themese for statusline
 
-Plug 'junegunn/fzf.vim' "fuzzy file finder (leader + tab)
+Plug 'junegunn/fzf.vim'          "fuzzy file finder (leader + tab)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'mileszs/ack.vim' " vim grep : find in all project source codes (leader + f)
 
@@ -162,6 +165,10 @@ let g:airline_theme='serene' " classic beautiful
 " " color scheme " "
 set background=dark
 
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
 " default beautiful
 "colorscheme default " good contrast
 "colorscheme ron
@@ -170,17 +177,18 @@ set background=dark
 "colorscheme zellner "good light mode
 
 " added
-"colorscheme angr
-"colorscheme gotham          " deep blue
-"colorscheme afterglow       " brown
-"colorscheme rdark-terminal2 " again brown
+"colorscheme angr            " funny colors on brown
+"colorscheme afterglow       " brown with deep good colors
+"colorscheme rdark-terminal2 " again brown, same as default theme
+"colorscheme elflord         " like sublime, same as default
 "colorscheme dogrun          " like atom, low contrast
 "colorscheme spacecamp       " like spacemacs, grey
-"colorscheme elflord         " like sublime
 "colorscheme lucid           " black with beautiful red color
-"colorscheme papercolor      " great, candy colors
+"colorscheme PaperColor      " great, candy colors
 "colorscheme molokai         " great, deep balck and good colors
-colorscheme aurora  " seems good for now
+"colorscheme aurora          " seems good, too much blue
+"colorscheme tokyonight      " blue/black with beautiful deep colors
+colorscheme minimalist      " goood!
 
 
 " save and jump to last position in file
