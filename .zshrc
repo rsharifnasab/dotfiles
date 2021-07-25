@@ -1,5 +1,10 @@
 export GOPATH="$HOME/go"
-export PATH="$HOME/bin:/usr/local/bin:$(go env GOPATH)/bin:$PATH"
+
+export PATH="$PATH:\
+$HOME/bin:\
+$(go env GOPATH)/bin:\
+$HOME/.local/bin"
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh/"
