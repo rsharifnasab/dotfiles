@@ -1,0 +1,13 @@
+delay=4
+region=3
+action=2
+show_mouse=0
+title=ArcoLinux
+timestamp=TRUE
+app=nomacs
+last_user=
+screenshot_dir=file:/home/roozbeh/Desktop
+last_extension=png
+enable_imgur_upload=true
+show_border=1
+
