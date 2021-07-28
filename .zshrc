@@ -148,7 +148,8 @@ alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'
 
 # reload new config files from dotfiles
-alias r="clear; sync; exec zsh"
+# changes in sync_home will effect after second reload!
+alias r="clear; sync_home && exec zsh || echo 'error in syncing'"
 
 # git aliases
 alias got='git'

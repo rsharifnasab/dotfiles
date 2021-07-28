@@ -2,7 +2,7 @@
 
 function cannot_find(){
     echo "cannot find dotfiles folder"
-    echo "program will exit now"
+    echo "program exit now"
     exit
 }
 
@@ -23,7 +23,7 @@ function update(){
     set globopt
     cd "$HOME"/pro*/dotfiles || cannot_find
     git pull origin master
-    ./bin/sync || echo "cannot sync"
+    ./bin/sync_home || echo "cannot sync"
 }
 
 if [ "$1" == "--doom" ] || [ "$1" == "-d" ]; then
