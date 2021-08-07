@@ -431,8 +431,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 
 
-" gezel (syntax highlight 
-au BufRead,BufNewFile *.fdl set filetype=gezel " gezel.vim in ./syntax
 
 " java (deoplete)
 autocmd FileType java setlocal omnifunc=javacomplete#Complete " enable autocomplete in startup
