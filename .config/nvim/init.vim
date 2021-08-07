@@ -13,7 +13,7 @@ source ~/.config/nvim/remaps.vim
 source ~/.config/nvim/colors.vim
 source ~/.config/nvim/functions.vim
 
-for f in split(glob('~/,config/nvim/plug-config/*.vim'), '\n')
+for f in split(glob('~/.config/nvim/plug-config/*.vim'), '\n')
     exe 'source' f
 endfor
 
