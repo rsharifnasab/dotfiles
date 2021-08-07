@@ -56,4 +56,3 @@ vmap <Leader>P "+P
 " visual line mode
 nmap <Leader><Leader> V
 
-
