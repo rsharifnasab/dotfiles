@@ -20,12 +20,17 @@ Plug 'glepnir/dashboard-nvim' " dashboard
 Plug 'airblade/vim-rooter'   " set root based on .git
 
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
-Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
-Plug 'shougo/deoplete-clangx' "c/cpp for deplete
-Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
-Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
+" deoplete 
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
+"Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
+"Plug 'shougo/deoplete-clangx' "c/cpp for deplete
+"Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
+"Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
+"Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
+
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Stable version of coc
+
 
 "machine learning autocomplete (ram problem)
 "Plug 'codota/tabnine-vim'
@@ -280,6 +285,10 @@ nnoremap <F2> :call NumberToggle()<cr> " toggle relative number
 
 " " PLUGIN SETTINGS " " 
 
+" " coc.nvim " "
+source $HOME/.config/nvim/plug-config/coc.vim
+
+
 " " ctags " "
 command! MakeTags !ctags -R .
 "create tags file
@@ -379,10 +388,10 @@ let g:airline#extensions#tabline#fnamemod= ':t' "just show filename"
 " " LANGUAGE SPECIFIC" " 
 
 " rust
-let g:deoplete#sources#rust#racer_binary='/home/roozbeh/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/roozbeh/apps/rust/library'
-let g:deoplete#sources#rust#show_duplicates=1
-let g:deoplete#sources#rust#documentation_max_height=20
+"let g:deoplete#sources#rust#racer_binary='/home/roozbeh/.cargo/bin/racer'
+"let g:deoplete#sources#rust#rust_source_path='/home/roozbeh/apps/rust/library'
+"let g:deoplete#sources#rust#show_duplicates=1
+"let g:deoplete#sources#rust#documentation_max_height=20
 
 
 
@@ -414,7 +423,7 @@ autocmd FileType go nmap <leader>e  <Plug>(go-iferr)
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
-let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
+"let g:deoplete#sources#go#gocode_binary = "~/go/bin/gocode"
 
 
 " yaml
@@ -439,13 +448,17 @@ let g:JavaComplete_LibsPath = expand('$HOME/proj/ta_utils/junit_test_runner/juni
 
 
 
-call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang') " Change clang binary path
+"call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang') " Change clang binary path
 
-call deoplete#custom#var('clangx', 'default_c_options', '') " Change clang options
-call deoplete#custom#var('clangx', 'default_cpp_options', '')
+"call deoplete#custom#var('clangx', 'default_c_options', '') " Change clang options
+"call deoplete#custom#var('clangx', 'default_cpp_options', '')
 
 
 "call deoplete#custom#var('tabnine', { 'line_limit': 200, 'max_num_results': 5, }) 
 " disabled due to ram usage
 
 
+" " coc configs " "
+"augroup coc
+    autocmd VimEnter * if exists('g:did_coc_loaded') | exe "source ~/.config/nvim/coc.vim"  | endif
+augroup end

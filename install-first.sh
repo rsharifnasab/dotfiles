@@ -103,9 +103,15 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 nvim +PlugInstall
 
-echo "compiling java language server"
-nvim +JCserverCompile
-nvim +JCserverStart
+# only of opened a java file
+# nvim +CocCommand java.updateLanguageServer
+
+sudo mkdir /usr/local/share/lombok
+sudo wget https://projectlombok.org/downloads/lombok.jar -O /usr/local/share/lombok/lombok.jar
+
+#echo "compiling java language server"
+#nvim +JCserverCompile
+#nvim +JCserverStart
 
 echo "downloading ale"
 mkdir -p ~/.local/share/nvim/site/pack/git-plugins/start
