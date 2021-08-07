@@ -70,7 +70,7 @@ let g:coc_global_extensions = [
             \ 'coc-tsserver', 'coc-tslint-plugin', 'coc-angular',
             \ 'coc-json', 'coc-yaml',
             \ 'coc-rls', 'coc-rust-analyzer',
-            \ 'coc-python', 'coc-pyright',
+            \ 'coc-pyright',
             \ 'coc-java',
             \ ]
 
