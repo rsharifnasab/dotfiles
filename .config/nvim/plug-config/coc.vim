@@ -26,6 +26,12 @@ endfunction
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
+" refactor
+nmap <leader>rf <Plug>(coc-rename)
+
+" code action
+nmap <leader>a <Plug>(coc-codeaction)
+
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
