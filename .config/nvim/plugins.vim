@@ -1,7 +1,4 @@
 
-
-echo "plugins"
-
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
 Plug 'ray-x/aurora'                  " beautiful theme
