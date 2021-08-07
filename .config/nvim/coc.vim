@@ -47,13 +47,3 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-let g:coc_global_extensions = [
-      \ 'coc-snippets', 'coc-prettier',
-      \ 'coc-html', 'coc-css',
-      \ 'coc-tsserver', 'coc-tslint-plugin', 'coc-angular',
-      \ 'coc-json', 'coc-yaml',
-      \ 'coc-rls', 'coc-rust-analyzer',
-      \ 'coc-python', 'coc-pyright', 
-      \ 'coc-java',
-      \ ]
-
