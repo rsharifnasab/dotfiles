@@ -1,6 +1,10 @@
 
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
+
+Plug 'editorconfig/editorconfig-vim' " editorconfig
+
+
 Plug 'ray-x/aurora'                  " beautiful theme
 Plug 'rafi/awesome-vim-colorschemes' " many colorshcemes
 

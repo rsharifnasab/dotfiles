@@ -31,6 +31,8 @@ nmap <leader>rf <Plug>(coc-rename)
 
 " code action
 nmap <leader>a <Plug>(coc-codeaction)
+xmap <leader>z  <Plug>(coc-codeaction-selected)
+nmap <leader>z  <Plug>(coc-codeaction-selected)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)

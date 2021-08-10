@@ -153,6 +153,7 @@ alias r="clear; sync_home && exec zsh || echo 'error in syncing'"
 
 # git aliases
 alias got='git'
+alias fir='git'
 alias glog='git log --graph --oneline --decorate --abbrev-commit --all'
 alias gstat="git status -s"
 alias gstatv="git status -vv"
@@ -162,6 +163,7 @@ alias gcome="git commit" # open editor!
 alias gpush="git push"
 alias gpull="git pull"
 alias gdiff="git diff HEAD --color-words"
+alias gfetch="git fetch --all --prune"
 
 # go aliases 
 alias gor="go run"
