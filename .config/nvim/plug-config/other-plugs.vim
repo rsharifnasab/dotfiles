@@ -23,7 +23,7 @@ let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out'] " ignore files from nerdtr
 " au BufWrite * :Autoformat " set auto format on save
 let g:autoformat_verbosemode=1 " to enable debug mode
 
-let g:formatdef_my_google_java = '"/usr/lib/jvm/java-11-openjdk/bin/java -jar ~/apps/google-java-format.jar -  2>/dev/null || true"'
+let g:formatdef_my_google_java = '"~/bin/reformat_java"'
 let g:formatters_java = ['my_google_java']
 
 
