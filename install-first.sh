@@ -66,6 +66,12 @@ mkdir -p ~/apps
 (
 cd ~/apps || exit
 
+wget "https://github.com/google/google-java-format/releases/download/v1.11.0/google-java-format-1.11.0-all-deps.jar" 
+mv google-java-format-* google-java-format.jar 
+
+    
+# download from here https://github.com/google/google-java-format/releases
+
 echo "clone rust source code"
 git clone --depth=1 https://github.com/rust-lang/rust.git
 
