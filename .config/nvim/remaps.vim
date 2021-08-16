@@ -57,3 +57,6 @@ vmap <Leader>P "+P
 nmap <Leader><Leader> V
 
 nmap <leader>l  :Autoformat<CR>
+
+
+nmap  <leader>j :! idea format %<CR>
