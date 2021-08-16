@@ -6,3 +6,5 @@ let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
 
+
+let g:ale_pattern_options = {'\.java$': {'ale_enabled': 0}}
