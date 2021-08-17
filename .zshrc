@@ -172,6 +172,7 @@ alias goc="go clean"
 alias gott="go test"
 alias gop='cd $GOPATH'
 
+
 alias junit="cp -r \
     ~/pro*/*utils/junit_test_runner/* ." 
     # make current folder ready for run junit tests
@@ -183,7 +184,7 @@ alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' \
 alias mem='cat /proc/meminfo | grep Avail | awk '\'' { print "Available Memory: " $2/1024/1024 " GB" }'\'' '
 alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20"
 alias vid_len="find . -maxdepth 1 -iname '*.*' -exec ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; | awk '{sum += \$0} END{print sum/60 \" min\"}' "
-
+alias loc="git ls-files | xargs wc -l"
 
 alias clip_set="xclip -selection c"
 alias clip_get="xclip -selection c -o"
