@@ -331,7 +331,10 @@ function typ(){
     typora "$@"
 }
 
-
+# use gnu hightlight for add syntax hight to less
+function color(){
+    src-hilite-lesspipe.sh "$@" | less
+}
 
 
 # cd and ls at same time

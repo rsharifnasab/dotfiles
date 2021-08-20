@@ -9,12 +9,12 @@ echo "installing requierments"
 yay -Syu
 install_package base-devel gcc make cmake npm
 install_package zsh zsh-autosuggestions moreutils
-install_package bat tldr fd nnn fzf tree bind
+install_package neovim 
+install_package bat tldr fd nnn fzf tree bind source-highlight
 install_package shellcheck rtags the_silver_searcher httpie xsel xclip
 install_package clang ctags astyle clang-format-static-bin
 install_package jdk-openjdk
 install_package rustup rust-analyzer
-install_package neovim 
 install_package go gofmt
 install-package python3 python-pylint-venv python-pipenv python-pytest \
     python-black python-pyflakes python-rednose python-pytest autopep8
