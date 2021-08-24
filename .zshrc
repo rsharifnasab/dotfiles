@@ -356,5 +356,8 @@ if test -f "$SAFE_RM"; then
 fi
 
 
+colorscript -e 16
+
 # platform specific configs
 type apt >/dev/null 2>&1 && source ~/.debian_config || true
+
