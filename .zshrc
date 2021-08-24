@@ -92,6 +92,14 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 export MANPATH="/usr/local/man:$MANPATH"
 
+# use bat as man pager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+### "vim" as manpager
+# export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+
+### "nvim" as manpager
+# export MANPAGER="nvim -c 'set ft=man' -"
+
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LANGUAGE="en_US.UTF-8"
@@ -107,6 +115,9 @@ else
     export VISUAL='nvim'
     export SUDO_EDITOR="nvim"
 fi
+
+# ignore non meaningful commands from history
+export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
 
 
 #############
@@ -135,7 +146,7 @@ alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
 alias f="xdg-open"
 alias cdls='cd "$@" && ls' # cd and ls in the same time!
 alias cls='cd "$@" && ls'  # cd and ls in the same time!
-
+alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 
 # what if I mistyped clear?
 alias clean='clear'
@@ -177,8 +188,6 @@ alias junit="cp -r \
     ~/pro*/*utils/junit_test_runner/* ." 
     # make current folder ready for run junit tests
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
-alias hdd='clear; df --all -h |\
-    grep --color=never "/dev/sda*"' # disks usage
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' \
     | column -t | egrep ^/dev/ | sort" # view mounted drives
 alias mem='cat /proc/meminfo | grep Avail | awk '\'' { print "Available Memory: " $2/1024/1024 " GB" }'\'' '
@@ -188,6 +197,14 @@ alias loc="git ls-files | xargs wc -l"
 
 alias clip_set="xclip -selection c"
 alias clip_get="xclip -selection c -o"
+
+alias tb="nc termbin.com 9999" # copy to online clipboard
+
+
+hdd() {
+  hdd="$(df -h | awk 'NR==4{print $3, $5}')"
+  echo -e "HDD: $hdd"
+}
 
 function wea() {
     local request="wttr.in/${1-tehran}?Fq"
