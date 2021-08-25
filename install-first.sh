@@ -9,7 +9,7 @@ echo "installing requierments"
 yay -Syu
 install_package base-devel gcc make cmake npm
 install_package zsh zsh-autosuggestions moreutils
-install_package neovim 
+install_package neovim  kitty
 install_package bat tldr fd nnn fzf tree bind source-highlight
 install_package shellcheck rtags the_silver_searcher httpie xsel xclip
 install_package clang ctags astyle clang-format-static-bin
