@@ -1,12 +1,15 @@
 
 " " airline colorscheme " "
+"let g:airline_theme='random'
 "let g:airline_theme='dark' " good, colorful
 "let g:airline_theme='lucios'
 "let g:airline_theme='minmalist' " just grey
 "let g:airline_theme='bubblegum' " candy
 let g:airline_theme='serene' " classic beautiful
-"let g:airline_theme='random'
+let g:airline_theme='deep_space' " grey colors
+let g:airline_theme='hybrid' " no distraction, good default
 
+" to change theme in running editor run AirlineTheme folan
 
 
 " " color scheme " "
