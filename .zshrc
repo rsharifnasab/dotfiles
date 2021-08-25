@@ -175,6 +175,7 @@ alias gpush="git push"
 alias gpull="git pull"
 alias gdiff="git diff HEAD --color-words"
 alias gfetch="git fetch --all --prune"
+alias gloc="git ls-files | xargs wc -l"
 
 # go aliases 
 alias gor="go run"
@@ -187,18 +188,28 @@ alias gop='cd $GOPATH'
 alias junit="cp -r \
     ~/pro*/*utils/junit_test_runner/* ." 
     # make current folder ready for run junit tests
-alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
+
 alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' \
     | column -t | egrep ^/dev/ | sort" # view mounted drives
+
 alias mem='cat /proc/meminfo | grep Avail | awk '\'' { print "Available Memory: " $2/1024/1024 " GB" }'\'' '
+
 alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20"
+
+
+
+# command with exteral tools
+#
 alias vid_len="find . -maxdepth 1 -iname '*.*' -exec ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; | awk '{sum += \$0} END{print sum/60 \" min\"}' "
-alias loc="git ls-files | xargs wc -l"
 
-alias clip_set="xclip -selection c"
+alias clip_set="xclip -selection c" 
 alias clip_get="xclip -selection c -o"
+alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 
+
+# command with help of online resources
 alias tb="nc termbin.com 9999" # copy to online clipboard
+alias excuse="w3m http://developerexcuses.com/ | head -3 | xargs -o"
 
 
 hdd() {
