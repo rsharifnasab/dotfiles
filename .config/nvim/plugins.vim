@@ -12,7 +12,8 @@ Plug 'glepnir/dashboard-nvim' " dashboard
 
 Plug 'airblade/vim-rooter'   " set root based on .git
 
-
+" ale syntax check
+"Plug 'dense-analysis/ale'
 " deoplete
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
 "Plug 'artur-shaik/vim-javacomplete2' "java for deoplete

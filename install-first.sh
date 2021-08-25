@@ -120,10 +120,6 @@ sudo wget https://projectlombok.org/downloads/lombok.jar -O /usr/local/share/lom
 #nvim +JCserverCompile
 #nvim +JCserverStart
 
-echo "downloading ale"
-mkdir -p ~/.local/share/nvim/site/pack/git-plugins/start
-git clone --depth 1 https://github.com/dense-analysis/ale.git ~/.local/share/nvim/site/pack/git-plugins/start/ale
-
 
 echo "setup safe rm"
 sudo npm i -g safe-rm
