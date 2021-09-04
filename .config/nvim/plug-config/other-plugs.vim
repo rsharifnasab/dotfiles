@@ -62,8 +62,10 @@ let g:airline#extensions#tabline#overflow_marker = '…'
 
 " each buffer label
 "let g:airline#extensions#tabline#fnamemod= ':t'   " just show filename
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " like zsh abbrv
-let g:airline#extensions#tabline#formatter = 'unique_tail' " simple 
+let g:airline#extensions#tabline#fnamemod= ':t:r'   " just show filename, no
+"extension
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " like zsh abbrv
+"let g:airline#extensions#tabline#formatter = 'unique_tail' " simple 
 
 
 
