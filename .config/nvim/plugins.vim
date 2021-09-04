@@ -1,6 +1,7 @@
 
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
+Plug 'airblade/vim-gitgutter' " changed lines from HEAD
 
 Plug 'editorconfig/editorconfig-vim' " editorconfig
 
@@ -14,14 +15,6 @@ Plug 'airblade/vim-rooter'   " set root based on .git
 
 " ale syntax check
 "Plug 'dense-analysis/ale'
-" deoplete
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
-"Plug 'artur-shaik/vim-javacomplete2' "java for deoplete
-"Plug 'shougo/deoplete-clangx' "c/cpp for deplete
-"Plug 'deoplete-plugins/deoplete-jedi' " python for deoplete
-"Plug 'sebastianmarkow/deoplete-rust' " rust for deoplete
-"Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'} " go for deoplete
-
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Stable version of coc
 

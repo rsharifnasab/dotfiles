@@ -4,6 +4,7 @@ set nocompatible " don't need to be compatible with VI
 set number " enable numbering of lines
 set norelativenumber " not absolute line number
 set termguicolors " enable true colors support
+set termbidi      " enable persian support
 syntax enable " enable syntax highlighting
 set showmatch " highlight matching bracket
 set showcmd " display incomplete commands
