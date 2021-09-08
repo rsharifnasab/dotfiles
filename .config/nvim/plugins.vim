@@ -15,6 +15,7 @@ Plug 'airblade/vim-rooter'   " set root based on .git
 
 " ale syntax check
 "Plug 'dense-analysis/ale'
+Plug 'uiiaoo/java-syntax.vim' " richer syntax hightligh for java
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Stable version of coc
 
