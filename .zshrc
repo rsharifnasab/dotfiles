@@ -388,6 +388,6 @@ type apt >/dev/null 2>&1 && source ~/.debian_config || true
 
 
 # nice visualization
-pfetch 
+# pfetch 
 colorscript -e 16
 
