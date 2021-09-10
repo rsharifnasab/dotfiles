@@ -77,6 +77,8 @@ plugins=(
 
     z # most freq used dirs
 
+    fancy-ctrl-z # enter ctrl-z instead of fg<enter>
+
     #zsh-vi-mode
 )
 source $ZSH/oh-my-zsh.sh
