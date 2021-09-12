@@ -282,12 +282,12 @@ function fm() {
 
     if command -v thunar &> /dev/null # xfce
     then 
-        [[ -n "$files" ]] && thunar "${files[@]}" # gnome
+        [[ -n "$files" ]] && exec thunar "${files[@]}" # gnome
     elif command -v nautilus &> /dev/null
     then 
-        [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
+        [[ -n "$files" ]] && exec nautilus --no-desktop "${files[@]}"
     else 
-        [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
+        [[ -n "$files" ]] && exec xdg-open "$(dirname "${files[@]}")"
     fi
 
 }
