@@ -139,15 +139,22 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 # shorter commands
-alias mkdir="mkdir -pv"
 alias ls='ls --classify --human-readable -1 --color=auto'
-alias cpv='rsync -ah --info=progress2' # copy with progressbar
-alias v='nvim'
-alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
-alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
-alias f="xdg-open"
+alias l.="ls -A | egrep '^\.'"
 alias cdls='cd "$@" && ls' # cd and ls in the same time!
 alias cls='cd "$@" && ls'  # cd and ls in the same time!
+alias cd..='cd ..' 
+alias mkdir="mkdir -pv"
+alias cpv='rsync -ah --info=progress2' # copy with progressbar
+
+alias v='nvim'
+alias f="xdg-open"
+
+alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
+alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
+
+alias pacman="sudo pacman --color auto"
+
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 
 # what if I mistyped clear?
