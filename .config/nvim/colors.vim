@@ -9,7 +9,7 @@ let g:airline_theme='serene' " classic beautiful
 let g:airline_theme='deep_space' " grey colors
 let g:airline_theme='hybrid' " little distraction, good default
 let g:airline_theme='raven' " minmal and nice, no distraction
-let g:airline_theme='jellybeas' " beautiful!
+let g:airline_theme='jellybeans' " beautiful!
 
 " to change theme in running editor run AirlineTheme folan
 
