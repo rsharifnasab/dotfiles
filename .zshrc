@@ -300,9 +300,24 @@ function fm() {
     fi
 }
 
+# find mp3 file in cwd
 function fmm() {
     NAME=$1
     files=$(locate "/$NAME.mp3")
+    if command -v thunar &> /dev/null # xfce
+    then 
+        [[ -n "$files" ]] && exec thunar "${files[@]}" # gnome
+    elif command -v nautilus &> /dev/null
+    then 
+        [[ -n "$files" ]] && exec nautilus --no-desktop "${files[@]}"
+    else 
+        [[ -n "$files" ]] && exec xdg-open "$(dirname "${files[@]}")"
+    fi
+}
+
+# open folder containing current playing track
+function fvlc() {
+    files=$(lsof -p `pidof -s vlc` | tail -1 | awk '{print$9}')
     if command -v thunar &> /dev/null # xfce
     then 
         [[ -n "$files" ]] && exec thunar "${files[@]}" # gnome
