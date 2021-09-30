@@ -242,6 +242,8 @@ alias ccv="host myip.opendns.com resolver1.opendns.com\
     | grep 'myip.opendns.com has'\
     | awk '{print \$4}'"
 alias nw="watch -n 3 -t -d -b  $(alias ccc | cut -d\' -f2)"
+alias nws="wget -O /dev/null \
+    http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 
 # download with wget
 alias dllist='wget -c -i list.txt'
