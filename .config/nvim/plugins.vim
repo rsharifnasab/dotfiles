@@ -63,7 +63,7 @@ call plug#end()
 let g:coc_global_extensions = [
             \ 'coc-snippets', 'coc-prettier',
             \ 'coc-html', 'coc-css',
-            \ 'coc-tsserver', 'coc-tslint-plugin', 'coc-angular',
+            \ 'coc-tsserver', 'coc-tslint-plugin', 
             \ 'coc-json', 'coc-yaml',
             \ 'coc-rls', 'coc-rust-analyzer',
             \ 'coc-pyright',
