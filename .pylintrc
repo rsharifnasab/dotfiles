@@ -151,11 +151,11 @@ disable=print-statement,
         trailing-whitespace,
         wrong-import-position,
         missing-function-docstring,
-        too-few-public-methods
+        too-few-public-methods,
+        invalid-name,
+        redefined-outer-name
 
 #        no-else-return,
-#        invalid-name,
-#        redefined-outer-name
 
 
 
