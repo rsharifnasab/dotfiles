@@ -56,6 +56,10 @@ Plug 'arzg/vim-rust-syntax-ext'                        " A Vim plugin that enhan
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'} " Semantic Highlighting for Python in Neovim
 Plug 'maxmellon/vim-jsx-pretty'                        " JSX and TSX syntax pretty highlighting for vim.
 Plug 'rust-lang/rust.vim'                              " Vim configuration for Rust.
+
+
+
+Plug 'github/copilot.vim' " github copilot
 call plug#end()
 
 
