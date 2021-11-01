@@ -1,4 +1,4 @@
-#!/bin/bash
+e!/bin/bash
 
 function install_package(){
     yay -S --needed --noconfirm "$*"
@@ -22,7 +22,7 @@ install-package python3 python-pylint-venv python-pipenv python-pytest \
 isntall_package nodejs js-beautify eslint tidy stylelint
 install_package ghc-static cabal-install hlint stylish-haskell emacs
 
-install_package auto-xflux meld shell-color-scripts pfetch
+install_package redshift meld shell-color-scripts
 
 
 # setup every thing for neovim 

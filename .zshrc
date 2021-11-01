@@ -205,7 +205,7 @@ alias mem='cat /proc/meminfo | grep Avail | awk '\'' { print "Available Memory: 
 
 alias last_commands="history | awk '{print \$4}' | sort | uniq -c | sort -n | tail -20"
 
-
+alias redsh="redshift  -b 0.79:0.65  -l 35.74:51.33"
 
 # command with exteral tools
 #
