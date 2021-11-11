@@ -413,8 +413,7 @@ function cl() {
                 DIR=$HOME;
     fi;
     builtin cd "${DIR}" && \
-    # use your preferred ls command
-        ls
+      ls
 }
 
 
@@ -426,8 +425,6 @@ fi
 # platform specific configs
 type apt >/dev/null 2>&1 && source ~/.debian_config || true
 
-
 # nice visualization
 # pfetch 
-colorscript -e 16
-
+# colorscript -e 16
