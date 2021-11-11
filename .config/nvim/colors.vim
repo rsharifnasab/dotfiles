@@ -64,3 +64,9 @@ highlight PmenuSel  ctermbg=1 guibg=#323f83 guifg=#fff343
 
 "scrollbar
 highlight PmenuSbar ctermbg=0 guibg=#555555
+
+
+" background
+hi Normal guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+
