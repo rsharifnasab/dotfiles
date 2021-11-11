@@ -1,6 +1,7 @@
 
 " " plugins " "
 call plug#begin('~/.config/nvim/plugged')
+
 Plug 'airblade/vim-gitgutter' " changed lines from HEAD
 
 Plug 'editorconfig/editorconfig-vim' " editorconfig

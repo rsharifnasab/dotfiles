@@ -185,6 +185,7 @@ alias gpull="git pull"
 alias gdiff="git diff HEAD --color-words"
 alias gfetch="git fetch --all --prune"
 alias gloc="git ls-files | xargs wc -l"
+alias gclon="git clone --depth 1 --branch "
 
 # go aliases 
 alias gor="go run"
