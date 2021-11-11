@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -o errexit
+
+xrandr -s 1920x1080
+
+rm ~/backg.png
