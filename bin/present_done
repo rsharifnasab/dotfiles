@@ -2,7 +2,7 @@
 
 set -o errexit
 
-#xrandr -s 2560x1080
+xrandr -s 2560x1080
 
 magick ~/Pictures/orig.* \
     -resize "1200x800" \
