@@ -60,3 +60,6 @@ nmap <leader>l  :Autoformat<CR>
 
 
 nmap  <leader>j :! idea format %<CR>
+
+" generate new serial episode download link from the old one
+let @z='yyp/S..EfE€kr€krg€kh'
