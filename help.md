@@ -13,8 +13,14 @@
 ## commands
 
 - clear yay cache -> `yay -Sc`
-- show information about installed pakcages -> `yay -Ps`
+- clear pacman cache -> `sudo pacman -Scc`
 - clear pip cache -> `rm -r .cache/pip`
+- keep only last 100MB log files in systemd -> `sudo journalctl --vacuum-size=100M`
+- clear go cache -> `go clean -cache -modcache -i -r`
+
+- show information about installed pakcages -> `yay -Ps`
+- sort packages by size-> `pacgraph -c`
+
 - `curl cheet.sh/git` # or any other command
 - `tldr command` -> help like man pages, but simple
 - `tir` -> time.ir in shell
