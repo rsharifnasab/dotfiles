@@ -33,11 +33,12 @@ set background=dark
 "colorscheme spacecamp       " like spacemacs, grey
 "colorscheme lucid           " black with beautiful red color
 "colorscheme PaperColor      " great, candy colors
-colorscheme sonokai         " great, deep balck and good colors
+"colorscheme sonokai         " great, deep balck and good colors
 "colorscheme aurora          " seems good, too much blue
 "colorscheme minimalist      " goood!
 "colorscheme deus            " cute colorful, orange 
 "colorscheme hybrid_reverse  " deep black and beautiful colors
+colorscheme ayu
 
 
 " theme for day:
