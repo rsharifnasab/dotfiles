@@ -88,10 +88,18 @@ if has("autocmd")
 endif
 
 " save undo stack in file, available after reopen file
-if has('persistent_undo')
-    set undofile
-    silent !mkdir -p /tmp/vimundo
-    set undodir=/tmp/vimundo
+if has("nvim")
+    if has('persistent_undo')
+        set undofile
+        silent !mkdir -p /tmp/nvimundo
+        set undodir=/tmp/nvimundo
+    endif
+else
+    if has('persistent_undo')
+        set undofile
+        silent !mkdir -p /tmp/vimundo
+        set undodir=/tmp/vimundo
+    endif
 endif
 
 " scroll before cursur reach the end of screen
