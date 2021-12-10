@@ -38,7 +38,7 @@ set background=dark
 "colorscheme minimalist      " goood!
 "colorscheme deus            " cute colorful, orange 
 "colorscheme hybrid_reverse  " deep black and beautiful colors
-colorscheme ayu
+colorscheme tender
 
 
 " theme for day:
