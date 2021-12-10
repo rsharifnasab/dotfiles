@@ -94,5 +94,12 @@ if has('persistent_undo')
     set undodir=/tmp/vimundo
 endif
 
+" scroll before cursur reach the end of screen
+if !&scrolloff
+  set scrolloff=1
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
 
 
