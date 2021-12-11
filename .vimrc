@@ -8,3 +8,6 @@ colorscheme torte
 "colorscheme ron
 "colorscheme peachpuff
 "colorscheme evening
+
+let &fcs='eob: ' 
+
