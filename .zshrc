@@ -141,6 +141,7 @@ alias chgrp='chgrp --preserve-root'
 # shorter commands
 alias ls='ls --classify --human-readable -1 --color=auto'
 alias l.="ls -A | egrep '^\.'"
+alias l='ls --classify --human-readable -1 --color=auto -lAh'
 alias cdls='cd "$@" && ls' # cd and ls in the same time!
 alias cls='cd "$@" && ls'  # cd and ls in the same time!
 alias cd..='cd ..' 
