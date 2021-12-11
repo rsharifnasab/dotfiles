@@ -47,9 +47,6 @@ colorscheme tender
 
 
 
-
-
-
 " " hightlight menu colors " "
 " menu color
 "highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=#e7f2dc
@@ -70,4 +67,7 @@ highlight PmenuSbar ctermbg=0 guibg=#555555
 " background
 hi Normal guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
+
+let &fcs='eob: ' 
+" dont show tilde with fillchars
 
