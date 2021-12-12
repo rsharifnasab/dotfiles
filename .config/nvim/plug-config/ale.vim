@@ -6,5 +6,10 @@ let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
 
+let g:ale_disable_lsp = 1 " let coc do the stuff
 
-let g:ale_pattern_options = {'\.java$': {'ale_enabled': 0}}
+let g:ale_linters = {
+\   'go': ['gobuild', 'govet', 'staticcheck', 'gotype', 'golangserver', 'gosimple' , 'gopls', 'gometalinter' , 'gofmt'],
+\}
+
+

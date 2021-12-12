@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 " "  auto complete " "
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Stable version of coc
 Plug 'github/copilot.vim' " github copilot
-"Plug 'dense-analysis/ale' " ale syntax check
+Plug 'dense-analysis/ale' " ale syntax check
 
 
 " " ETC " "
