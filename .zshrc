@@ -321,7 +321,7 @@ function fmm() {
 
 # open folder containing current playing track
 function fvlc() {
-    files=$(lsof -p `pidof -s vlc` | sed -nr 's#.*(/home.*$)#\1#p')
+    files=$(lsof -p `pidof -s vlc` | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
     if command -v thunar &> /dev/null # xfce
     then 
         [[ -n "$files" ]] && exec thunar "${files[@]}" # gnome
