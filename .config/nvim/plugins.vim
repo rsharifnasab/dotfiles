@@ -1,4 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
+" coding statistics 
+Plug 'wakatime/vim-wakatime'
 
 " "  auto complete " "
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Stable version of coc
