@@ -70,9 +70,7 @@ plugins=(
     fzf # fzf integrated to zsh
 
     golang # completion for go as well as aliases
-    rust # completion for rust
-    rustup # completion for rustup
-    cargo # completion for cargo
+    rust # completion for rust, rustup, cargo
     stack # completion for stack
 
     z # most freq used dirs
