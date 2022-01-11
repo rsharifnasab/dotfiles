@@ -77,6 +77,8 @@ plugins=(
 
     fancy-ctrl-z # enter ctrl-z instead of fg<enter>
 
+    web-search # search web
+
     #zsh-vi-mode
 )
 source $ZSH/oh-my-zsh.sh
