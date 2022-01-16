@@ -129,9 +129,9 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
 
 ## safer commands
 alias rm='rm -I --preserve-root'
-alias mc='mv -i'
-alias mv='mv -i'
-alias cp='cp -i'
+alias mc='nocorrect mv -i'
+alias mv='nocorrect mv -i'
+alias cp='nocorrect cp -i'
 alias ln='ln -i'
 # Parenting changing perms on / #
 alias chown='chown --preserve-root'
