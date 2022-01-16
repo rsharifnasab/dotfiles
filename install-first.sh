@@ -22,7 +22,8 @@ install-package python3 python-pylint-venv python-pipenv python-pytest \
 isntall_package nodejs js-beautify eslint tidy stylelint
 install_package ghc-static cabal-install hlint stylish-haskell emacs
 
-install_package redshift meld variaty gotop
+install_package redshift    meld variaty    bottom tokei
+#               blue light  diff wallpaper  htop   project stats
 
 
 # setup every thing for neovim 
