@@ -70,14 +70,14 @@ plugins=(
     fzf # fzf integrated to zsh
 
     golang # completion for go as well as aliases
-    rust # completion for rust
-    rustup # completion for rustup
-    cargo # completion for cargo
+    rust # completion for rust, rustup, cargo
     stack # completion for stack
 
     z # most freq used dirs
 
     fancy-ctrl-z # enter ctrl-z instead of fg<enter>
+
+    web-search # search web
 
     #zsh-vi-mode
 )
@@ -321,7 +321,7 @@ function fmm() {
 
 # open folder containing current playing track
 function fvlc() {
-    files=$(lsof -p `pidof -s vlc` | tail -1 | awk '{print$9}')
+    files=$(lsof -p `pidof -s vlc` | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
     if command -v thunar &> /dev/null # xfce
     then 
         [[ -n "$files" ]] && exec thunar "${files[@]}" # gnome
