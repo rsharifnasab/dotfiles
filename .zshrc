@@ -145,7 +145,7 @@ alias l='ls --classify --human-readable -1 --color=auto -lAh'
 alias cdls='cd "$@" && ls' # cd and ls in the same time!
 alias cls='cd "$@" && ls'  # cd and ls in the same time!
 alias cd..='cd ..' 
-alias mkdir="mkdir -pv"
+alias mkdir="nocorrect mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
 
 alias v='nvim'
