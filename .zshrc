@@ -129,9 +129,9 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
 
 ## safer commands
 alias rm='rm -I --preserve-root'
-alias mc='mv -i'
-alias mv='mv -i'
-alias cp='cp -i'
+alias mc='nocorrect mv -i'
+alias mv='nocorrect mv -i'
+alias cp='nocorrect cp -i'
 alias ln='ln -i'
 # Parenting changing perms on / #
 alias chown='chown --preserve-root'
@@ -145,7 +145,7 @@ alias l='ls --classify --human-readable -1 --color=auto -lAh'
 alias cdls='cd "$@" && ls' # cd and ls in the same time!
 alias cls='cd "$@" && ls'  # cd and ls in the same time!
 alias cd..='cd ..' 
-alias mkdir="mkdir -pv"
+alias mkdir="nocorrect mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
 
 alias v='nvim'
