@@ -381,6 +381,10 @@ function nn() {
                 done
 }
 
+function play_vlc_sub(){
+    # play a serial episode with vlc
+    vlc *$1* --sub-file *$1*.srt
+}
 
 #################
 ##run a command##
