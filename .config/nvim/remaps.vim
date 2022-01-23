@@ -3,7 +3,8 @@
 " " general remaps " "
 map <C-a> <esc>ggVG<CR> " ctrl a -> Select all
 
-noremap  <silent> <C-S>      :update<CR> " control S -> save
+" control S -> save
+noremap  <silent> <C-S>      :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 nnoremap <silent> <C-L>  :nohlsearch<CR>h<C-L> 
