@@ -25,6 +25,9 @@ install_package ghc-static cabal-install hlint stylish-haskell emacs
 install_package redshift    meld variaty    bottom tokei
 #               blue light  diff wallpaper  htop   project stats
 
+install_package qrencode
+#              encode data in qrcode
+
 
 # setup every thing for neovim 
 sudo pip3 install --upgrade msgpack pynvim

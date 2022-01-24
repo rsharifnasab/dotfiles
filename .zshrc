@@ -216,6 +216,7 @@ alias vid_len="find . -maxdepth 1 -iname '*.*' -exec ffprobe -v quiet -of csv=p=
 alias clip_set="xclip -selection c" 
 alias clip_get="xclip -selection c -o"
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
+alias qrcode="qrencode -t ansiutf8"
 
 
 # command with help of online resources
