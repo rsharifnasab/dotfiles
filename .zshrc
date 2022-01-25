@@ -211,7 +211,6 @@ alias redsh="redshift  -b 0.79:0.65  -l 35.74:51.33"
 
 # command with exteral tools
 # sum of all videos in the current folder
-alias vid_len="find . -maxdepth 1 -iname '*.*' -exec ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; | awk '{sum += \$0} END{print sum/60 \" min\"}' "
 
 alias clip_set="xclip -selection c" 
 alias clip_get="xclip -selection c -o"
@@ -385,6 +384,13 @@ function nn() {
 function play_vlc_sub(){
     # play a serial episode with vlc
     vlc *$1* --sub-file *$1*.srt
+}
+
+function sum_vid_len(){
+    dir="$1"
+    find "$dir" -maxdepth 1 -iname '*.*' -exec \
+        ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; \
+        | awk '{sum += $0} END{print sum/60 "min"}'
 }
 
 #################
