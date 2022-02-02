@@ -393,6 +393,20 @@ function sum_vid_len(){
         | awk '{sum += $0} END{print sum/60 "min"}'
 }
 
+function clean_disk(){
+    echo "cleaning yay"
+    yay -Sc
+    echo "cleaning pacman"
+    sudo pacman -Scc
+    echo "cleaning pip"
+    rm -r ".cache/pip"
+    echo "cleaning journalctl"
+    sudo journalctl --vacuum-size=100M
+    echo "cleaning recyclebin"
+    sudo rm -rf /home/*/.local/share/Trash/files/*
+    sudo rm -rf /home/*/.local/share/Trash/files/.*
+}
+
 #################
 ##run a command##
 #################
