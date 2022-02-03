@@ -15,13 +15,14 @@ makepkg -si
 )
 
 yay -Syu
-install_package base-devel gcc make cmake npm go jdk-openjdk
+install_package base-devel gcc make cmake npm go
 install_package zsh zsh-autosuggestions moreutils
 install_package neovim kitty ttf-fira-code
 install_package firefox chromium nano vim
 install_package bat tldr fd nnn tree bind source-highlight
 install_package shellcheck rtags the_silver_searcher httpie xsel xclip
 install_package clang ctags astyle clang-format-static-bin
+install_package jdk-openjdk jdk11-openjdk
 install_package python3 python-pylint-venv python-pipenv python-pytest \
     python-black python-pyflakes python-rednose python-pytest autopep8
 install_package rustup rust-analyzer
@@ -33,7 +34,7 @@ install_package ghc-static cabal-install hlint stylish-haskell emacs
 install_package redshift    meld variety    bottom tokei
 #               blue light  diff wallpaper  htop   project stats
 
-install_package qrencode                vlc
+install_package qrencode                vlc acpi
 #              encode data in qrcode
 
 
