@@ -73,9 +73,6 @@ rustup component add rls rust-analysis rust-src
 rustup component add clippy
 rustup component add rustfmt
 
-rustup toolchain add nightly
-cargo +nightly install racer # auto complete engine for rust
-
 mkdir -p ~/apps
 (
 cd ~/apps || exit
@@ -83,9 +80,6 @@ cd ~/apps || exit
 wget "https://github.com/google/google-java-format/releases/download/v1.11.0/google-java-format-1.11.0-all-deps.jar" 
 mv google-java-format-* google-java-format.jar 
 # download from here https://github.com/google/google-java-format/releases
-
-echo "clone rust source code"
-git clone --depth=1 https://github.com/rust-lang/rust.git
 
 
 echo "install tir (time.ir in shell)"
@@ -95,21 +89,10 @@ git clone --depth 1  https://github.com/Pouriya-Jahanbakhsh/tir \
     && cd .. \
     || echo "cannot install tir"
 
-echo "installing theme.sh"
+#echo "installing theme.sh"
 #git clone https://github.com/lemnos/theme.sh || echo "cannot clone theme sh"
 )
 
-
-
-
-## vim
-# install vim plug
-#echo "downloading vimplug for vim"
-#curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# install vim plugins
-#vim +PlugInstal
 
 
 ## neovim
@@ -161,6 +144,7 @@ sudo snap install nvim --classic
 sudo snap install go --classic # newer than apt version
 
 # install goples
-GO111MODULE=on go get golang.org/x/tools/gopls@latest
+go install golang.org/x/tools/gopls@latest
+# install python language server
 pip install --user python-language-server
 
