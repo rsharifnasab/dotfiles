@@ -1,31 +1,39 @@
-e!/bin/bash
+#!/bin/bash
 
 function install_package(){
-    yay -S --needed --noconfirm "$*"
+    yay -S --needed --noconfirm $*
 }
 
 # required sofwares
-echo "installing requierments"
+
+# yay
+(
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+)
+
 yay -Syu
-install_package base-devel gcc make cmake npm
+install_package base-devel gcc make cmake npm go jdk-openjdk
 install_package zsh zsh-autosuggestions moreutils
-install_package neovim  kitty ttf-fire-code
-install_package bat tldr fd nnn fzf tree bind source-highlight
+install_package neovim kitty ttf-fira-code
+install_package firefox chromium nano vim
+install_package bat tldr fd nnn tree bind source-highlight
 install_package shellcheck rtags the_silver_searcher httpie xsel xclip
 install_package clang ctags astyle clang-format-static-bin
-install_package jdk-openjdk
-install_package rustup rust-analyzer
-install_package go gofmt
-install-package python3 python-pylint-venv python-pipenv python-pytest \
+install_package python3 python-pylint-venv python-pipenv python-pytest \
     python-black python-pyflakes python-rednose python-pytest autopep8
+install_package rustup rust-analyzer
 
-isntall_package nodejs js-beautify eslint tidy stylelint
+
+install_package nodejs js-beautify eslint tidy stylelint
 install_package ghc-static cabal-install hlint stylish-haskell emacs
 
-install_package redshift    meld variaty    bottom tokei
+install_package redshift    meld variety    bottom tokei
 #               blue light  diff wallpaper  htop   project stats
 
-install_package qrencode
+install_package qrencode                vlc
 #              encode data in qrcode
 
 
@@ -54,6 +62,7 @@ git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_
 chsh -s "$(which zsh)"
 
 #install fzf for zsh and other
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # setup rust toolchain
@@ -73,8 +82,6 @@ cd ~/apps || exit
 
 wget "https://github.com/google/google-java-format/releases/download/v1.11.0/google-java-format-1.11.0-all-deps.jar" 
 mv google-java-format-* google-java-format.jar 
-
-    
 # download from here https://github.com/google/google-java-format/releases
 
 echo "clone rust source code"
@@ -97,13 +104,12 @@ echo "installing theme.sh"
 
 ## vim
 # install vim plug
-echo "downloading vimplug for vim"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#echo "downloading vimplug for vim"
+#curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install vim plugins
-cp ./.vimrc ~/.vimrc
-vim +PlugInstal
+#vim +PlugInstal
 
 
 ## neovim
@@ -154,12 +160,6 @@ sudo apt install python-neovim python3-neovim snapd cmake npm gcc g++ zsh-autosu
 sudo snap install nvim --classic
 sudo snap install go --classic # newer than apt version
 
-## tabnine stuff
-
-(
-    cd ~/.config/nvim/plugged || exit
-    git clone --branch master --depth 1 https://github.com/codota/tabnine-vim
-)
 # install goples
 GO111MODULE=on go get golang.org/x/tools/gopls@latest
 pip install --user python-language-server
