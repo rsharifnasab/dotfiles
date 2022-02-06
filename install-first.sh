@@ -83,6 +83,11 @@ mv google-java-format-* google-java-format.jar
 # download from here https://github.com/google/google-java-format/releases
 
 
+virtualenv venv
+source venv/bin/activate
+pip3 install --upgrade pip numpy pandas matplotlib
+
+
 echo "install tir (time.ir in shell)"
 git clone --depth 1  https://github.com/Pouriya-Jahanbakhsh/tir \
     && cd tir \
@@ -148,4 +153,5 @@ sudo snap install go --classic # newer than apt version
 go install golang.org/x/tools/gopls@latest
 # install python language server
 pip install --user python-language-server
+
 
