@@ -17,12 +17,12 @@ makepkg -si
 yay -Syu
 install_package base-devel gcc make cmake npm go
 install_package zsh zsh-autosuggestions moreutils
-install_package neovim kitty ttf-fira-code
-install_package firefox chromium nano vim
+install_package neovim kitty ttf-fira-code nvim-packer-git
+install_package firefox chromium nano gvim jcal
 install_package bat tldr fd nnn tree bind source-highlight
-install_package shellcheck rtags the_silver_searcher httpie xsel xclip
+install_package shellcheck the_silver_searcher httpie xsel xclip
 install_package clang ctags astyle clang-format-static-bin
-install_package jdk-openjdk jdk11-openjdk
+install_package jdk-openjdk #jdk11-openjdk
 install_package python3 python-pylint-venv python-pipenv python-pytest \
     python-black python-pyflakes python-rednose python-pytest autopep8
 install_package rustup rust-analyzer
@@ -81,6 +81,11 @@ cd ~/apps || exit
 wget "https://github.com/google/google-java-format/releases/download/v1.11.0/google-java-format-1.11.0-all-deps.jar" 
 mv google-java-format-* google-java-format.jar 
 # download from here https://github.com/google/google-java-format/releases
+
+
+virtualenv venv
+source venv/bin/activate
+pip3 install --upgrade pip numpy pandas matplotlib
 
 
 echo "install tir (time.ir in shell)"
@@ -148,4 +153,5 @@ sudo snap install go --classic # newer than apt version
 go install golang.org/x/tools/gopls@latest
 # install python language server
 pip install --user python-language-server
+
 

@@ -99,7 +99,9 @@ alias clip_set="xclip -selection c"
 alias clip_get="xclip -selection c -o"
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
-
+alias ipython="python -m IPython"
+alias ipy="python -m IPython"
+alias psrc="source ~/apps/venv/bin/activate"
 
 # check network
 alias ccc='dig +short myip.opendns.com @resolver1.opendns.com'

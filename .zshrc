@@ -127,6 +127,9 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
 type apt >/dev/null 2>&1 && source ~/.debian_config || true
 
 
+bindkey "^[[7~" beginning-of-line
+bindkey "^[[8~" end-of-line
+
 # nice visualization
 # pfetch 
 # colorscript -e 16

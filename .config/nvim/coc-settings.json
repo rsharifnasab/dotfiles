@@ -40,5 +40,6 @@
         "~/.config/nvim/utils/snips"
     ],
     "codeLens.enable": true,
+    "java.referencesCodeLens.enabled": true,
     "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar"
 }
