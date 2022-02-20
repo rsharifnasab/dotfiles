@@ -11,6 +11,7 @@ set noshowmode " don't show current mode of editor
 set laststatus=2 " last 2 line : show status
 "set cursorline " highlight current cursor line
 set t_Co=256 " 256 color terminal
+set t_ut="" " fix vim background color erase
 
 set wrap " break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char

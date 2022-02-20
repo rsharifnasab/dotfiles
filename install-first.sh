@@ -1,20 +1,22 @@
 #!/bin/bash
 
+
+
 function install_package(){
-    yay -S --needed --noconfirm $*
+    paru -S --needed --noconfirm $*
 }
 
 # required sofwares
 
-# yay
+# aur helper
 (
 pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
+git clone https://aur.archlinux.org/paru.git
+cd paru
 makepkg -si
 )
 
-yay -Syu
+paru -Syu
 install_package base-devel gcc make cmake npm go
 install_package zsh zsh-autosuggestions moreutils
 install_package neovim kitty ttf-fira-code nvim-packer-git
@@ -38,7 +40,7 @@ install_package qrencode                vlc acpi
 #              encode data in qrcode
 
 
-# setup every thing for neovim 
+# setup every thing for neovim
 sudo pip3 install --upgrade msgpack pynvim
 sudo npm install -g neovim
 

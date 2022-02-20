@@ -12,13 +12,13 @@
 
 ## commands
 
-- clear yay cache -> `yay -Sc`
+- clear paru cache -> `paru -Sc`
 - clear pacman cache -> `sudo pacman -Scc`
 - clear pip cache -> `rm -r .cache/pip`
 - keep only last 100MB log files in systemd -> `sudo journalctl --vacuum-size=100M`
 - clear go cache -> `go clean -cache -modcache -i -r`
 
-- show information about installed pakcages -> `yay -Ps`
+- show information about installed pakcages -> `paru -Ps`
 - sort packages by size-> `pacgraph -c`
 
 - `curl cheet.sh/git` # or any other command
@@ -47,8 +47,8 @@
 - fe -> selec with fzf and edit
 - fd -> fudn dir with fzf and cd to it
 - fh -> history repeat
-- in -> install yay package
-- re -> remove yay package
+- in -> install paru package
+- re -> remove paru package
 - nn -> same as nnn but with fzf and cd
 - nvim `**<TAB>` -> open fzf for file choose
 - cd `**TAB>` -> cd to fzf chosen folder

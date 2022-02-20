@@ -91,7 +91,7 @@ alias gott="go test"
 alias gop='cd $GOPATH'
 
 
-# command with exteral tools
+# command with extenral tools
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ." 
 alias redsh="redshift  -b 0.79:0.65  -l 35.74:51.33"
@@ -102,6 +102,7 @@ alias qrcode="qrencode -t ansiutf8"
 alias ipython="python -m IPython"
 alias ipy="python -m IPython"
 alias psrc="source ~/apps/venv/bin/activate"
+alias yay="paru"
 
 # check network
 alias ccc='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -181,8 +182,8 @@ function sum_vid_len(){
 }
 
 function clean_disk(){
-    echo "cleaning yay"
-    yay -Sc
+    echo "cleaning paru"
+    paru -Sc
     echo "cleaning pacman"
     sudo "pacman" -Scc
     echo "cleaning pip"
@@ -316,14 +317,14 @@ function fh() {
     print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-# search (fzf) and install package with yay
+# search (fzf) and install package with paru
 function in() {
-    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}'| xargs -ro yay -S
+    paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}'| xargs -ro paru -S
 }
 
-# search (fzf) and remove package with yay
+# search (fzf) and remove package with paru
 function re() {
-    yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
+    paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 
 # same as nnn but with fzf and bash
