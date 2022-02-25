@@ -2,15 +2,15 @@
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute(
+    vim.fn.execute(
     '!git clone https://github.com/wbthomason/packer.nvim ' .. install_path
-  )
+    )
 end
 
 vim.cmd [[
 augroup Packer
-  autocmd!
-  autocmd BufWritePost init.lua PackerCompile
+autocmd!
+autocmd BufWritePost init.lua PackerCompile
 augroup end
 ]]
 
@@ -70,12 +70,20 @@ packer.startup(function ()
 
     -- better syntax highlight
     use 'justinmk/vim-syntax-extra'   -- add extra syntax highlight for flex
-    use 'ap/vim-css-color'            -- Preview colours in source code while editing
+    use {
+        'norcalli/nvim-colorizer.lua',
+        --ft = { 'css', 'javascript', 'vim', 'html' },
+        config = [[
+        require('colorizer').setup()
+        ]],
+    }
+
+
     use 'uiiaoo/java-syntax.vim'      -- richer syntax hightligh for java
     use 'octol/vim-cpp-enhanced-highlight'  -- Additional Vim syntax highlighting for C++
     use {                             -- Semantic Highlighting for Python in Neovim
         'numirias/semshi',
-        ft = 'python', 
+        ft = 'python',
         config = 'vim.cmd [[UpdateRemotePlugins]]'
     }
     use 'maxmellon/vim-jsx-pretty'     -- JSX and TSX syntax pretty highlighting for vim.
@@ -101,10 +109,11 @@ packer.startup(function ()
 
     -- language specific
     use {                              -- Go development plugin for Vim
-        'fatih/vim-go'
-        -- , { 'do': ':GoUpdateBinaries' }
-    }
-    --use 'elzr/vim-json'              -- A better JSON for Vim: highlighting of keywords/values, JSON-specific warnings, quote concealing.
+    'fatih/vim-go'
+    -- , { 'do': ':GoUpdateBinaries' }
+        }
+        --use 'elzr/vim-json'              -- A better JSON for Vim: highlighting of keywords/values, JSON-specific warnings, quote concealing.
+
 
 
 end)
@@ -112,19 +121,18 @@ end)
 
 
 
-
 vim.g.coc_global_extensions = {
-            'coc-html', 'coc-css',
-            'coc-tsserver', 'coc-tslint-plugin',
-            'coc-json', 'coc-yaml',
-            'coc-rls', 'coc-rust-analyzer',
-            'coc-pyright',
-            'coc-java',
-            'coc-clangd',
-            'coc-lua',
-            'coc-tag',
-            -- coc-tag : add autocomplete source: tags file
-            -- 'coc-snippets', 'coc-prettier',
+    'coc-html', 'coc-css',
+    'coc-tsserver', 'coc-tslint-plugin',
+    'coc-json', 'coc-yaml',
+    'coc-rls', 'coc-rust-analyzer',
+    'coc-pyright',
+    'coc-java',
+    'coc-clangd',
+    'coc-lua',
+    'coc-tag',
+    -- coc-tag : add autocomplete source: tags file
+    -- 'coc-snippets', 'coc-prettier',
 }
 
 
