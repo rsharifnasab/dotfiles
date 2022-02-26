@@ -133,3 +133,7 @@ bindkey "^[[8~" end-of-line
 # nice visualization
 # pfetch 
 # colorscript -e 16
+
+# ignore history for jrnl
+setopt HIST_IGNORE_SPACE
+alias jrnl=" jrnl"
