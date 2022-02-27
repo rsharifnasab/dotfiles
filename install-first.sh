@@ -21,7 +21,7 @@ install_package base-devel gcc make cmake npm go
 install_package zsh zsh-autosuggestions moreutils
 install_package neovim kitty ttf-fira-code nvim-packer-git
 install_package firefox chromium nano gvim jcal
-install_package bat tldr fd nnn tree bind source-highlight
+install_package bat tldr fd nnn tree bind source-highlight lsd
 install_package shellcheck the_silver_searcher httpie xsel xclip
 install_package clang ctags astyle clang-format-static-bin
 install_package jdk-openjdk #jdk11-openjdk

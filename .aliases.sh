@@ -19,6 +19,7 @@ if test -f "$SAFE_RM"; then
 fi
 
 
+
 # Preserve changing perms on /
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
@@ -38,8 +39,18 @@ alias fgrep='fgrep --color=auto'
 alias free="free -mht"
 
 alias ls='ls --classify --human-readable -1 --color=auto'
-alias l.="ls -A | egrep '^\.'"
 alias l='ls --classify --human-readable -1 --color=auto -lAh'
+alias l.="ls -A | egrep '^\.'"
+
+LSD_COMMAND="/usr/bin/lsd"
+if test -f "$LSD_COMMAND"; then
+    alias ls='lsd    -Fh1    --color=auto --sizesort --group-dirs first'
+    alias lsize='lsd -Fh1l   --color=auto --sizesort --group-dirs first --total-size'
+    alias l='lsd     -Fh1lA  --color=auto --sizesort --group-dirs first'
+    alias tree='lsd  -Fh1    --color=auto --sizesort --group-dirs first --tree'
+fi
+
+
 alias cd..='cd ..' 
 alias mkdir="nocorrect mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
