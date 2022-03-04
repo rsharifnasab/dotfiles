@@ -44,10 +44,10 @@ alias l.="ls -A | egrep '^\.'"
 
 LSD_COMMAND="/usr/bin/lsd"
 if test -f "$LSD_COMMAND"; then
-    alias ls='lsd    -Fh1    --color=auto --sizesort --group-dirs first'
-    alias lsize='lsd -Fh1l   --color=auto --sizesort --group-dirs first --total-size'
+    alias ls='lsd    -Fh1    --color=auto            --group-dirs first'
+    alias lsize='lsd -Fh1l   --color=auto --sizesort                    --total-size'
     alias l='lsd     -Fh1lA  --color=auto --sizesort --group-dirs first'
-    alias tree='lsd  -Fh1    --color=auto --sizesort --group-dirs first --tree'
+    alias tree='lsd  -Fh1    --color=auto            --group-dirs first --tree'
 fi
 
 
