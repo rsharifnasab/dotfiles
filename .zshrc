@@ -137,3 +137,11 @@ bindkey "^[[8~" end-of-line
 # ignore history for jrnl
 setopt HIST_IGNORE_SPACE
 alias jrnl=" jrnl"
+
+if [[ ! -e /tmp/welcome.sem ]]
+then
+    touch /tmp/welcome.sem
+    cat ./welcome.txt
+    # from here: https://www.asciiart.eu/space/astronauts
+fi
+

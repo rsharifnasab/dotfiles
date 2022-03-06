@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/usr/lib/jvm/java-11-openjdk/bin/java \
+/usr/bin/java \
   --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED \
   --add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED \
   --add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED \
