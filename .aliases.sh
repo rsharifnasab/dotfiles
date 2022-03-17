@@ -75,6 +75,7 @@ alias زمثشق='clear'
 # bye
 alias :q=exit
 alias sss='shutdown now'
+alias سسس='shutdown now'
 alias ssc='shutdown -c'
 
 
