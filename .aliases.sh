@@ -275,12 +275,12 @@ function fm() {
 
     if command -v thunar &> /dev/null # xfce
     then 
-        [[ -n "$files" ]] && exec thunar "${files[@]}" # gnome
+        [[ -n "$files" ]] && thunar "${files[@]}" # gnome
     elif command -v nautilus &> /dev/null
     then 
-        [[ -n "$files" ]] && exec nautilus --no-desktop "${files[@]}"
+        [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
     else 
-        [[ -n "$files" ]] && exec xdg-open "$(dirname "${files[@]}")"
+        [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
     fi
 }
 
@@ -288,14 +288,15 @@ function fm() {
 function fmm() {
     NAME=$1
     files=$(locate "/$NAME.mp3")
+    echo "$files"
     if command -v thunar &> /dev/null # xfce
     then 
-        [[ -n "$files" ]] && exec thunar "${files[@]}" # gnome
+        [[ -n "$files" ]] && thunar "${files[@]}" # gnome
     elif command -v nautilus &> /dev/null
     then 
-        [[ -n "$files" ]] && exec nautilus --no-desktop "${files[@]}"
+        [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
     else 
-        [[ -n "$files" ]] && exec xdg-open "$(dirname "${files[@]}")"
+        [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
     fi
 }
 
@@ -304,12 +305,12 @@ function fvlc() {
     files=$(lsof -p `pidof -s vlc` | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
     if command -v thunar &> /dev/null # xfce
     then 
-        [[ -n "$files" ]] && exec thunar "${files[@]}" # gnome
+        [[ -n "$files" ]] &&  thunar "${files[@]}" # gnome
     elif command -v nautilus &> /dev/null
     then 
-        [[ -n "$files" ]] && exec nautilus --no-desktop "${files[@]}"
+        [[ -n "$files" ]] &&  nautilus --no-desktop "${files[@]}"
     else 
-        [[ -n "$files" ]] && exec xdg-open "$(dirname "${files[@]}")"
+        [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
     fi
 }
 
