@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 set -o errexit
+set -o nounset
+set -o pipefail
 set globopt
 
 # findout we have ~/prog or ~/proj
@@ -11,12 +13,9 @@ done < <(compgen -G "$dotfiles_pattern" || true)
 
 # copy content of dotfiles to home folder
 rsync --exclude ".git/" \
-    --exclude "bootstrap.sh" \
     --exclude "install-first.sh" \
     --exclude "README.md" \
-    --exclude "help.md" \
-    --exclude "vim-cheat.txt" \
-    --exclude "emacs-cheat.txt" \
+    --exclude "docs" \
     --exclude "LICENSE" \
     --exclude ".gitignore" \
     -ah --no-perms \
