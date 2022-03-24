@@ -22,12 +22,14 @@ install_package zsh zsh-autosuggestions moreutils
 install_package neovim kitty ttf-fira-code nvim-packer-git
 install_package firefox chromium nano gvim jcal
 install_package bat tldr fd nnn tree bind source-highlight lsd
-install_package shellcheck the_silver_searcher httpie xsel xclip
+install_package the_silver_searcher httpie xsel xclip
 install_package clang ctags astyle clang-format-static-bin
-install_package jdk-openjdk #jdk11-openjdk
+install_package jdk-openjdk # jdk11-openjdk
 install_package python3 python-pylint-venv python-pipenv python-pytest \
     python-black python-pyflakes python-rednose python-pytest autopep8
 install_package rustup rust-analyzer
+
+install_package shellcheck-bin pandoc-bin
 
 
 install_package nodejs js-beautify eslint tidy stylelint
