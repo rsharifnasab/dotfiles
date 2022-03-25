@@ -10,7 +10,7 @@ after that these things are important:
 + check bluetooth and sound
 + login to sites
    + gmail
-   + github (setup copilot with `CoPilot 
+   + github (setup copilot with `CoPilot setup`)
    + quera
    + wakatime (get api key from https://wakatime.com/settings/account)
 + setup firefox sync
@@ -20,6 +20,7 @@ after that these things are important:
     + scaling
     + launch when system start
     + notification
+    + send with ctrl-enter
 
 + bring ssh keys to ~/.ssh
 + bring wallpapers to ~/Pictures/wallpaper folder

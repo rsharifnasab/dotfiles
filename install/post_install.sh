@@ -108,6 +108,7 @@ function desktop_packages(){
     inst typora
 
     sudo npm i -g safe-rm
+    pip3 install --user ipython
 
     tirr
 }
