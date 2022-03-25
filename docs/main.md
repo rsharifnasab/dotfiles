@@ -13,7 +13,6 @@
 ## commands
 
 - clear paru cache -> `paru -Sc`
-- clear pacman cache -> `sudo pacman -Scc`
 - clear pip cache -> `rm -r .cache/pip`
 - keep only last 100MB log files in systemd -> `sudo journalctl --vacuum-size=100M`
 - clear go cache -> `go clean -cache -modcache -i -r`
@@ -24,6 +23,7 @@
 - `curl cheet.sh/git` # or any other command
 - `tldr command` -> help like man pages, but simple
 - `tir` -> time.ir in shell
+-  `xed` -> xfce editor with good persian support
 
 ## cmd tools
 
@@ -64,16 +64,8 @@
 - ctrl w -> delete last word
 - ctrl u -> delete to beginning
 
-- gaa –> git add all
-- gdca –> git diff --cached
-- gp –> git push
-- gpf! –> git push --force
-- grhh –> git reset --hard
-- gst –> git status
-
 ## zsh specific shotcuts
 
-- esc -> enter vi mode
 - z some_folder -> instant cd to folder name
 
 ## git cheet

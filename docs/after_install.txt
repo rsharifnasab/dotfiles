@@ -25,6 +25,7 @@ after that these things are important:
 + bring ssh keys to ~/.ssh
 + bring wallpapers to ~/Pictures/wallpaper folder
 + bring ~/proj files like ta_utils and my-learning
++ change default search engine to duck duck go
 
 + customize pinned icons in taskbar
 

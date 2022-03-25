@@ -52,8 +52,7 @@ function neovim_bare(){
     # sync plugins
     nvim +PackerSync
     nvim +PackerCompile
-
-
+    nvim +UpdateRemotePlugins
 }
 
 function terminal_full(){
@@ -106,10 +105,13 @@ function desktop_packages(){
     #  encode data in qrcode             manage sizes
     inst qrencode         pandoc           ncdu
     #    markdown editor  screen recorder   editor for persian
-    inst typora           obs-studio        kate
+    inst typora           obs-studio        xed # kate
 
     sudo npm i -g safe-rm
     pip3 install --user ipython
+
+    inst insomnia-bin
+    #    gui http client
 
     tirr
 }
