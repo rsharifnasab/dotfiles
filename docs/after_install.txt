@@ -1,0 +1,30 @@
+after install arch-base distro, customize `post_install.sh` and run int (inside `install` folder)
+after that these things are important:
++ add "persian with persian keyboard"
++ change "change layout option" to "caps lock"
++ check super-key
++ check zsh backspace
++ check ctrl+alt+t
++ change default apps
++ setup shecan or fod (freedom of developers)
++ check bluetooth and sound
++ login to sites
+   + gmail
+   + github (setup copilot with `CoPilot 
+   + quera
+   + wakatime (get api key from https://wakatime.com/settings/account)
++ setup firefox sync
++ setup telegram account and proxycf
++ change telegram setting
+    + auto-download settings
+    + scaling
+    + launch when system start
+    + notification
+
++ bring ssh keys to ~/.ssh
++ bring wallpapers to ~/Pictures/wallpaper folder
++ bring ~/proj files like ta_utils and my-learning
+
++ customize pinned icons in taskbar
+
++ restart!
