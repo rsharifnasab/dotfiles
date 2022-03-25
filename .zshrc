@@ -59,7 +59,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     zsh-autosuggestions
-    zsh-syntax-highlighting
+    fast-syntax-highlighting
 
     colored-man-pages
     copyfile #copy content of file to clipboard
