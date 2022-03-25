@@ -32,10 +32,12 @@ shopt -s dotglob
 shopt -s histappend # do not overwrite history
 shopt -s expand_aliases # expand aliases
 
-#create a file called .bashrc-personal and put all your personal aliases
-#in there. They will not be overwritten by skel.
 
-[[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
+# solve problem "nocorrect not found"
+# because nocorrect is only in zsh
+# and we have aliases like "nocorrect mkdir"
+alias nocorrect='command'
+
 [[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
 
 
