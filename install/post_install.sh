@@ -38,7 +38,8 @@ function terminal_bare(){
 }
 
 function compilers(){
-    inst nodejs npm go python3 python-pip rustup jdk-openjdk
+    inst nodejs npm go python3 python-pip \
+        rustup jdk-openjdk lua
     rustup install stable
     rustup default stable
 }
@@ -102,10 +103,10 @@ function desktop_packages(){
     inst firefox chromium vlc telegram-desktop meld variety
     # terminal apps     bluelight  htop(btm)   project stats
     inst nano jcal acpi redshift   bottom      tokei
-    #    encode data in qrcode
-    inst qrencode         pandoc
-    #    markdown editor
-    inst typora
+    #  encode data in qrcode             manage sizes
+    inst qrencode         pandoc           ncdu
+    #    markdown editor  screen recorder   editor for persian
+    inst typora           obs-studio        kate
 
     sudo npm i -g safe-rm
     pip3 install --user ipython
