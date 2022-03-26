@@ -104,14 +104,16 @@ function desktop_packages(){
     inst nano jcal acpi redshift   bottom      tokei
     #  encode data in qrcode             manage sizes
     inst qrencode         pandoc           ncdu
-    #    markdown editor  screen recorder   editor for persian
-    inst typora           obs-studio        xed # kate
+    #    markdown editor  screen recorder  gui editor for persian
+    inst typora-free      obs-studio       xed # kate
 
+    # prevent rm from deleting important files
     sudo npm i -g safe-rm
+    # my lovely calculator
     pip3 install --user ipython
 
-    inst insomnia-bin
     #    gui http client
+    inst insomnia-bin
 
     tirr
 }
@@ -166,7 +168,7 @@ function python_devel(){
     cd apps || exit
     python -m venv venv
     source venv/bin/activate
-    pip3 install --upgrade pip numpy pandas matplotlib
+    pip3 install --upgrade pip numpy pandas matplotlib pillow ipython
     )
 
     inst python-pylint python-black python-pyflakes
