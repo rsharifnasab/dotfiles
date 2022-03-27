@@ -16,6 +16,7 @@ rsync --exclude ".git/" \
     --exclude "install-first.sh" \
     --exclude "README.md" \
     --exclude "docs" \
+    --exclude "install" \
     --exclude "LICENSE" \
     --exclude ".gitignore" \
     -ah --no-perms \

@@ -59,7 +59,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     zsh-autosuggestions
-    zsh-syntax-highlighting
+    fast-syntax-highlighting
 
     colored-man-pages
     copyfile #copy content of file to clipboard
@@ -121,7 +121,7 @@ fi
 # ignore non meaningful commands from history
 export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
 
-[[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
+[[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
 
 # platform specific configs
 type apt >/dev/null 2>&1 && source ~/.debian_config || true
@@ -137,6 +137,13 @@ bindkey "^[[8~" end-of-line
 # ignore history for jrnl
 setopt HIST_IGNORE_SPACE
 alias jrnl=" jrnl"
+
+
+# reload new config files from dotfiles
+# changes in sync_home will effect after second reload!
+# TODO: handle this better
+alias r="clear; ~/proj/dotfiles/bin/sync_home && exec zsh || echo 'error in syncing'"
+
 
 if [[ ! -e /tmp/welcome.sem ]]
 then

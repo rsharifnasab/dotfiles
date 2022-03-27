@@ -2,9 +2,6 @@
 ## ALIASES ##
 #############
 
-# reload new config files from dotfiles
-# changes in sync_home will effect after second reload!
-alias r="clear; sync_home && exec zsh || echo 'error in syncing'"
 
 ## safer commands
 alias rm='rm -I --preserve-root'

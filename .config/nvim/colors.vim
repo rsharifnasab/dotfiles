@@ -38,13 +38,18 @@ set background=dark
 "colorscheme minimalist      " goood!
 "colorscheme deus            " cute colorful, orange 
 "colorscheme hybrid_reverse  " deep black and beautiful colors
-colorscheme tender
+"colorscheme tender
 
 
 " theme for day:
 "colorscheme github          " white, like github
 "colorscheme flattened_light " cream bg with orange
 
+
+let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for mirage version of theme
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
 
 
 " " hightlight menu colors " "
