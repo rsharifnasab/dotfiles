@@ -61,9 +61,11 @@ alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
 alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
 
-# download with wget
-alias dllist='wget -c -i list.txt'
+# download in  terminal
 alias wget='wget -c'
+alias dllist='wget -c -i list.txt'
+alias aria2='aria2c -c -x8 -s8 -j1 --summary-interval=0'
+alias arialist='aria2c -c -x8 -s8 -j1 --summary-interval=0 -i list.txt'
 
 # what if I mistyped clear?
 alias clean='clear'
