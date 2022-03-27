@@ -15,7 +15,6 @@ function aur_helper(){
     # if distro repo has paru, use it!
     sudo pacman -S paru || (
     # or else: install from source
-    pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/paru.git
     cd paru
     makepkg -si

@@ -2,9 +2,11 @@ export GOPATH="$HOME/go"
 
 export PATH="$PATH:\
 $HOME/bin:\
-$(go env GOPATH)/bin:\
 $HOME/.local/bin"
 
+if [ -x "$(command -v go)" ]; then
+    export PATH="$PATH:$(go env GOPATH)/bin"
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh/"
