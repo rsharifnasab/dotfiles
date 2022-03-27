@@ -145,15 +145,7 @@ function zsh_full(){
 
 
 function java_devel(){
-    mkdir -p ~/apps
-    (
-    cd ~/apps || exit
-    formatter="https://github.com/google/google-java-format/releases/download/v1.11.0/google-java-format-1.11.0-all-deps.jar"
-
-    wget "$formatter" -O google-java-format.jar 
-    # download from here https://github.com/google/google-java-format/releases
-    )
-
+    inst astyle
     # only of opened a java file
     # nvim +CocCommand java.updateLanguageServer
 

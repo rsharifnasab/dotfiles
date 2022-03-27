@@ -21,7 +21,7 @@ vim.cmd([[ source ~/.config/nvim/colors.vim ]])
 vim.cmd([[ source ~/.config/nvim/functions.vim ]])
 
 vim.cmd([[
-for f in split(glob('~/.config/nvim/plug-config/*.vim'), '\n')
+for f in split(glob('~/.config/nvim/pluginconfig/*.vim'), '\n')
     exe 'source' f
 endfor
 ]])

@@ -4,10 +4,13 @@ set -e
 set -o nounset
 set -o pipefail
 
-command -v git ||  {
-    echo "git is not installed"
-    exit 1
-}
+
+if ! [ -x "$(command -v git)" ]; then
+	echo "git is not installed. please install it first"
+	exit 1
+fi
+
+echo "create directory structure"
 cd "$HOME"
 mkdir -p proj
 cd proj
