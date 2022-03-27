@@ -1,20 +1,31 @@
 # Roozbeh dotfiles
 
-here I will share my important dot files
-I'm actually newbie in writing Dotfiles, if you want to help me, I appreciate
+You are visiting my dotfiles repository.
+
+I'm actually newbie in writing Dotfiles. if you want to help me, I appreciate!
+
+I collected all of my config files here to apply them after each re-install and keep them sync between my systems.
+
 
 ## How to use
-
-1. clone this repo in '~/proj/dotfiles' and cd to it.
-2. install packages with `./install-first.sh`
-3. update (pull) from repository with `./bootstrap.sh`
-4. Cheat sheet is available in `help.txt`, `vim-cheat.txt` and `emacs-cheat`
+1. Make sure you have Arch Linux.
+2. Clone the repo in proper place with this command:
+```bash
+ curl -sL https://raw.githubusercontent.com/rsharifnasab/dotfiles/master/install/dotfiles_cloner.sh | bash
+```
+2. open `install/post_install.sh` and comment/uncomment sections in `run`
+3. run `install/post_install.sh` with bash
+4. check out `docs` folder, for example there is a cheatsheet for after installation steps. [+](./docs/after_install.txt) or general useful commands [+](./docs/main.md).
 
 ## Configurations
++ Neovim: config files is in `.config/nvim`. Plugins are being managed by packer. Install new plugins with `:PackerSync` and `:PackerCompile`. 
++ Devicons depends on setting terminal font to `ubuntu font`
++ Zsh config files are in `.zshrc`. zsh select a random theme from `zsh_favlist`. don't panic!
++ Bash and Zsh use common aliases (in `.aliases`
++ emacs: using doom mode. (config is in `.doom.d`)
++ Trying to keep Vim minimal. no plugins or special settings. just `.vimrc` 
++ safe-rm: send removed items to trash! Also protect from accidental remove all files!
++ kitty is my favorite termial.
++ there are some tiny scripts in `bin` which I find useful. they are in `$PATH` too.
++ `Templates` contain different code templates which I may use.
 
-1. Neovim: config files is in `./.config/nvim`. Plugins are being managed by vim-plug. Install plugins with `:PlugInstall`. Using devicons depends on setting terminal font to `ubuntu font`
-2. Zsh: recently migrated to Zsh. config files are in `./zshrc`
-3. emacs: using doom mode. view `./doom.d`
-4. Vim: using simple configs from the neovim configs
-5. fish: fish config (in `./.config/fish`) have some good functions and customizations but let it be there and use some posix compliant shell
-6. safe-rm: send removed items to trash! Also protect from accidental remove all files!

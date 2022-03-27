@@ -234,4 +234,6 @@ function run(){
     #ubuntu
 }
 
+run
+
 

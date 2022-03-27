@@ -1,4 +1,4 @@
-after install arch-base distro, customize `post_install.sh` and run int (inside `install` folder)
+after install arch-base distro, customize `post_install.sh` and run it (inside `install` folder)
 after that these things are important:
 + add "persian with persian keyboard"
 + change "change layout option" to "caps lock"
