@@ -182,7 +182,7 @@ function last_commands(){
 
 
 function vlc_sub(){
-    vlc *$1* --sub-file *$1*.srt
+    vlc -q *$1* --sub-file *$1*.srt
 }
 
 # sum of all videos in the current folder
