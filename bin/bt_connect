@@ -11,9 +11,9 @@ A0:60:90:2F:59:09
 
 for device in $devices; do
     echo "removing $device"
-    bluetoothctl disconnect "$device"
-#    bluetoothctl untrust "$device"
-#    bluetoothctl remove "$device"
+    #bluetoothctl disconnect "$device"
+    #bluetoothctl untrust "$device"
+    #bluetoothctl remove "$device"
 done
 
 bluetoothctl power off
