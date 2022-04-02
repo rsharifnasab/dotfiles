@@ -205,6 +205,13 @@ function ubuntu(){
 # install python language server
 #pip install --user python-language-server
 
+function bluetooth(){
+    inst bluez bluez-tools
+    sudo systemctl enable bluetooth.service
+    sudo systemctl start bluetooth.service
+
+}
+
 function run(){
     pre_install
     aur_helper
@@ -212,6 +219,7 @@ function run(){
     terminal_bare
     neovim_bare
     zsh_full
+    bluetooth
     desktop_packages
     ta
     cpp_devel
