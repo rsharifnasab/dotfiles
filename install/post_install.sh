@@ -99,8 +99,8 @@ function tirr(){
 function desktop_packages(){
     # gui apps                                 diff wallpaper
     inst firefox chromium vlc telegram-desktop meld variety
-    # terminal apps     bluelight  htop(btm)   project stats better wget
-    inst nano jcal acpi redshift   bottom      tokei         aria2
+    # terminal apps     bluelight  htop   project stats  better wget
+    inst nano jcal acpi redshift   btop   tokei          aria2
     #  encode data in qrcode             manage sizes
     inst qrencode         pandoc           ncdu
     #    markdown editor  screen recorder  gui editor for persian
