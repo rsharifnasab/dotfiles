@@ -101,8 +101,8 @@ function desktop_packages(){
     inst firefox chromium vlc telegram-desktop meld variety
     # terminal apps     bluelight  htop   project stats  better wget
     inst nano jcal acpi redshift   btop   tokei          aria2
-    #  encode data in qrcode             manage sizes
-    inst qrencode         pandoc           ncdu
+    #  encode data in qrcode             manage sizes  pic in terminal
+    inst qrencode         pandoc           ncdu        viu
     #    markdown editor  screen recorder  gui editor for persian
     inst typora-free      obs-studio       xed # kate
 
