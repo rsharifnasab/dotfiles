@@ -52,6 +52,7 @@ fi
 alias cd..='cd ..' 
 alias mkdir="nocorrect mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
+function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
 alias pacman="sudo pacman --color auto"
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
