@@ -111,8 +111,8 @@ function desktop_packages(){
     # my lovely calculator
     pip3 install --user ipython
 
-    #    gui http client
-    inst insomnia-bin
+    #    gui http client    beautiful ncurses clock
+    inst insomnia-bin       tty-clock
 
     tirr
 }
