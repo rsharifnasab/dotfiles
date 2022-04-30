@@ -119,7 +119,8 @@ alias psrc="source ~/apps/venv/bin/activate"
 alias yay="paru"
 
 # check network
-alias ccc='dig +short myip.opendns.com @resolver1.opendns.com'
+alias ccc='dig +short myip.dnsomatic.com @resolver1.opendns.com'
+alias ccv='dig +short myip.opendns.com @resolver1.opendns.com'
 alias nw="watch -n 3 -t -d -b  $(alias ccc | cut -d\' -f2)"
 
 # command with help of online resources
