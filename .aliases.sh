@@ -26,6 +26,7 @@ alias chgrp='chgrp --preserve-root'
 
 alias j='jdate -u +"%Y/%m/%d"'
 alias f="xdg-open"
+alias f.="xdg-open ."
 alias v='nvim'
 # emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
