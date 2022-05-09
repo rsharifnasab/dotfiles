@@ -38,7 +38,7 @@ function terminal_bare(){
 
 function compilers(){
     inst nodejs npm go python3 python-pip \
-        rustup jdk-openjdk lua
+        rustup jdk-openjdk lua elixir
     rustup install stable
     rustup default stable
 }
