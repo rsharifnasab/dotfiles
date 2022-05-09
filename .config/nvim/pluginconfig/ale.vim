@@ -12,4 +12,8 @@ let g:ale_linters = {
 \   'go': ['gobuild', 'govet', 'staticcheck', 'gotype', 'golangserver', 'gosimple' , 'gopls', 'gometalinter' , 'gofmt'],
 \}
 
+let g:ale_fixers = {
+\   'elixir': ['mix_format'],
+\}
+
 

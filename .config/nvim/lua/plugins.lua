@@ -114,7 +114,7 @@ packer.startup(function ()
         }
         --use 'elzr/vim-json'              -- A better JSON for Vim: highlighting of keywords/values, JSON-specific warnings, quote concealing.
 
-
+    use 'elixir-editors/vim-elixir'
 
 end)
 
@@ -131,6 +131,7 @@ vim.g.coc_global_extensions = {
     'coc-clangd',
     'coc-lua',
     'coc-tag',
+    'coc-elixir',
     -- coc-tag : add autocomplete source: tags file
     -- 'coc-snippets', 'coc-prettier',
 }
