@@ -40,6 +40,7 @@ alias free="free -mht"
 alias ls='ls --classify --human-readable -1 --color=auto'
 alias l='ls --classify --human-readable -1 --color=auto -lAh'
 alias l.="ls -A | egrep '^\.'"
+alias sl='ls'
 
 LSD_COMMAND="/usr/bin/lsd"
 if test -f "$LSD_COMMAND"; then
