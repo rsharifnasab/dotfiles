@@ -15,6 +15,10 @@ function aur_helper(){
     # if distro repo has paru, use it!
     sudo pacman -S paru || (
     # or else: install from source
+    pacman -Syu --needed rustup 
+    rustup install stable
+    rustup default stable
+
     git clone https://aur.archlinux.org/paru.git
     cd paru
     makepkg -si
@@ -101,8 +105,8 @@ function desktop_packages(){
     inst firefox chromium vlc telegram-desktop meld variety
     # terminal apps     bluelight  htop   project stats  better wget
     inst nano jcal acpi redshift   btop   tokei          aria2
-    #  encode data in qrcode             manage sizes  pic in terminal
-    inst qrencode         pandoc           ncdu        viu
+    #  encode data in qrcode              manage sizes  pic in terminal
+    inst qrencode         pandoc-bin           ncdu        viu
     #    markdown editor  screen recorder  gui editor for persian
     inst typora-free      obs-studio       xed # kate
 
