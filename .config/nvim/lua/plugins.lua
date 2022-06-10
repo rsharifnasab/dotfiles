@@ -55,7 +55,7 @@ packer.startup(function ()
     use 'junegunn/fzf.vim'       -- fuzzy file finder (leader + tab)
     use {
         'junegunn/fzf',
-        --{ 'dir': '~/.fzf', 'do': './install --bin' }
+        run = 'cd ~/.fzf && ./install --bin',
     }
     use  'mileszs/ack.vim'        -- search in project source code (leader + f)
 
@@ -109,12 +109,50 @@ packer.startup(function ()
 
     -- language specific
     use {                              -- Go development plugin for Vim
-    'fatih/vim-go'
-    -- , { 'do': ':GoUpdateBinaries' }
-        }
-        --use 'elzr/vim-json'              -- A better JSON for Vim: highlighting of keywords/values, JSON-specific warnings, quote concealing.
+       'fatih/vim-go',
+        run = ':GoUpdateBinaries' 
+    }
 
     use 'elixir-editors/vim-elixir'
+
+
+    use { 'nvim-treesitter/nvim-treesitter-context',
+    config = [[
+            require'treesitter-context'.setup{
+
+            }
+        ]],
+    }
+
+
+
+    use {
+        'nvim-treesitter/nvim-treesitter', 
+        run = ':TSUpdate' ,
+        config  = [[
+                require'nvim-treesitter.configs'.setup {
+              ensure_installed = { "c", "lua", "rust", "java", "cpp" },
+
+              -- Install parsers synchronously (only applied to `ensure_installed`)
+              sync_install = false,
+
+
+              highlight = {
+                enable = true,
+
+                -- disable = { "c", "rust" },
+
+                -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+                -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+                -- Using this option may slow down your editor, and you may see some duplicate highlights.
+                -- Instead of true it can also be a list of languages
+                additional_vim_regex_highlighting = false,
+              },
+            }
+        ]]
+
+    }
+
 
 end)
 
