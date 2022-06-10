@@ -54,7 +54,6 @@ function neovim_bare(){
     sudo npm install -g neovim
     # sync plugins
     nvim +PackerSync
-    nvim +PackerCompile
     nvim +UpdateRemotePlugins
 }
 
