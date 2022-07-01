@@ -15,21 +15,9 @@ augroup end
 ]]
 
 
-
-
-
-
-
 packer = require("packer")
 
-
-
-
 use = packer.use
-
-
-
-
 
 packer.startup(function ()
     use 'wbthomason/packer.nvim'
@@ -124,7 +112,15 @@ packer.startup(function ()
         ]],
     }
 
-
+    use {
+      'rmagatti/auto-session',
+      config = function()
+        require('auto-session').setup {
+          log_level = 'info',
+          auto_session_suppress_dirs = {'~/', '~/Desktop', '~/proj'}
+        }
+      end
+    }
 
     use {
         'nvim-treesitter/nvim-treesitter', 
@@ -136,6 +132,7 @@ packer.startup(function ()
               -- Install parsers synchronously (only applied to `ensure_installed`)
               sync_install = false,
 
+              indent = { enable = true, disable = { "yaml" } }.
 
               highlight = {
                 enable = true,
