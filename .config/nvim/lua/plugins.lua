@@ -14,25 +14,17 @@ autocmd BufWritePost init.lua PackerCompile
 augroup end
 ]]
 
-
-
-
-
-
-
 packer = require("packer")
-
-
-
 
 use = packer.use
 
 
+packer.startup(function ()    
 
-
-
-packer.startup(function ()
     use 'wbthomason/packer.nvim'
+
+    use "tversteeg/registers.nvim" -- press " to show registers content
+
     use 'wakatime/vim-wakatime' -- time track my programming
 
     -- Stable version of coc autocomplete
