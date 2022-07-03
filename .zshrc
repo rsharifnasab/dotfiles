@@ -150,7 +150,7 @@ alias r="clear; ~/proj/dotfiles/bin/sync_home && exec zsh || echo 'error in sync
 if [[ ! -e /tmp/welcome.sem ]]
 then
     touch /tmp/welcome.sem
-    cat ~/welcome.txt
+    cat "$HOME/proj/dotfiles/welcome.txt"
     # from here: https://www.asciiart.eu/space/astronauts
 fi
 

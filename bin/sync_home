@@ -19,6 +19,7 @@ rsync --exclude ".git/" \
     --exclude "install" \
     --exclude "LICENSE" \
     --exclude "LICENSE.md" \
+    --exclude "welcome.txt" \
     --exclude ".gitignore" \
     -ah --no-perms \
     "$dotfiles_path" "$HOME";
