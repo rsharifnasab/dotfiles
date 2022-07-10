@@ -116,6 +116,9 @@ function desktop_packages(){
 
     #    gui http client    beautiful ncurses clock
     inst insomnia-bin       tty-clock
+    
+    #    grammer check offline
+    inst languagetool
 
     tirr
 }
