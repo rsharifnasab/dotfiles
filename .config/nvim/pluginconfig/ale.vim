@@ -10,10 +10,11 @@ let g:ale_disable_lsp = 1 " let coc do the stuff
 
 let g:ale_linters = {
 \   'go': ['gobuild', 'govet', 'staticcheck', 'gotype', 'golangserver', 'gosimple' , 'gopls', 'gometalinter' , 'gofmt'],
+\   'text': ['languagetool', 'vale', 'alex'],
 \}
 
 let g:ale_fixers = {
 \   'elixir': ['mix_format'],
+\   'text': ['remove_trailing_lines', 'trim_whitespace'],
 \}
-
 

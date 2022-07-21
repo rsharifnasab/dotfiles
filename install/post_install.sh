@@ -63,6 +63,8 @@ function terminal_full(){
 }
 
 function shell_devel(){
+    go install mvdan.cc/sh/v3/cmd/shfmt@latest
+
     inst shellcheck-bin
 }
 
@@ -73,11 +75,12 @@ function cpp_devel(){
 
 function js_devel(){
     # for js development
-    inst js-beautify eslint tidy stylelint
+    inst eslint tidy stylelint
+    sudo npm -g install js-beautify
 }
 
 function haskell_devel(){
-    inst ghc-static stack cabal-install hlint stylish-haskell 
+    inst ghc-static stack cabal-install hlint stylish-haskell
 }
 
 function rust_devel(){
@@ -99,26 +102,42 @@ function tirr(){
     )
 }
 
+function text_linters(){
+    #    grammer check offline but slow
+    inst languagetool
+
+    # fast and have options
+    inst vale
+    vale sync
+    # read and sync styles from .vale.ini 
+    # more info: https://vale.sh/generator/
+
+    # fast, foxus on non-offending writing
+    sudo npm install alex --global
+}
+
 function desktop_packages(){
     # gui apps                                 diff wallpaper
     inst firefox chromium vlc telegram-desktop meld variety
+
     # terminal apps     bluelight  htop   project stats  better wget
     inst nano jcal acpi redshift   btop   tokei          aria2
+
     #  encode data in qrcode              manage sizes  pic in terminal
     inst qrencode         pandoc-bin           ncdu        viu
+
     #    markdown editor  screen recorder  gui editor for persian
     inst typora-free      obs-studio       xed # kate
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
+
     # my lovely calculator
     pip3 install --user ipython
 
     #    gui http client    beautiful ncurses clock
     inst insomnia-bin       tty-clock
-    
-    #    grammer check offline
-    inst languagetool
+
 
     tirr
 }
@@ -172,6 +191,10 @@ function python_devel(){
 
     #inst python-pylint-venv python-pipenv python-pytest \
     # python-rednose python-pytest autopep8
+    
+    # install python language server
+    #pip install --user python-language-server
+
 }
 
 
@@ -208,14 +231,11 @@ function ubuntu(){
 }
 # install goples
 #go install golang.org/x/tools/gopls@latest
-# install python language server
-#pip install --user python-language-server
 
 function bluetooth(){
     inst bluez bluez-tools
     sudo systemctl enable bluetooth.service
     sudo systemctl start bluetooth.service
-
 }
 
 function run(){
@@ -231,10 +251,11 @@ function run(){
     cpp_devel
     java_devel
     python_devel
+    text_linters
     #rust_devel
     #haskell_devel
     #js_devel
-    #microredirection:
+    #micro
     #emacs
     #ubuntu
 }
