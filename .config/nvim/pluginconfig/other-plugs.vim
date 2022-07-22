@@ -15,7 +15,8 @@ nmap <leader><tab> :FZF<CR>
 
 " " nerd tree " "
 noremap <C-f> :NERDTreeToggle<CR> " toggle nerd tree  with ctrl n
-let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out'] " ignore files from nerdtree
+let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out', '\.exe']
+" ignore files from nerdtree
 
 
 
