@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-set -o errexit
+set -euo pipefail
 
 xrandr -s 2560x1080
 
-magick ~/Pictures/orig.* \
-    -resize "1200x800" \
-    -brightness-contrast "-65x-65" \
-    ~/backg.png
+backg_name="$(cat ~/Pictures/kitty.txt)"
 
+magick "${HOME}/Pictures/${backg_name}" \
+    -brightness-contrast "-25x-30" \
+    ~/backg.png
+    #-resize "1300x750" \

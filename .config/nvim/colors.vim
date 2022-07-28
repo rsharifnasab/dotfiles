@@ -69,10 +69,12 @@ highlight PmenuSel  ctermbg=1 guibg=#323f83 guifg=#fff343
 highlight PmenuSbar ctermbg=0 guibg=#555555
 
 
-" background
+" clear background (for kitty background picture)
 hi Normal guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi Whitespace guibg=NONE ctermbg=NONE
 
-let &fcs='eob: ' 
+let &fcs='eob: '
 " dont show tilde with fillchars
-

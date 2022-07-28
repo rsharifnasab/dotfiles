@@ -3,51 +3,50 @@ set -e
 set -o nounset
 set -o pipefail
 
-function pre_install(){
+function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!
     sudo pacman -Sy archlinux-keyring
     sudo pacman -Syu --needed base-devel gvim xsel xclip bat lsd
 }
 
-
-function aur_helper(){
+function aur_helper() {
     # if distro repo has paru, use it!
     sudo pacman -S paru || (
-    # or else: install from source
-    pacman -Syu --needed rustup 
-    rustup install stable
-    rustup default stable
+        # or else: install from source
+        pacman -Syu --needed rustup
+        rustup install stable
+        rustup default stable
 
-    git clone https://aur.archlinux.org/paru.git
-    cd paru
-    makepkg -si
+        git clone https://aur.archlinux.org/paru.git
+        cd paru
+        makepkg -si
     )
 }
 
 # install a software with pacman
-function inst(){
+function inst() {
     paru -S --needed --noconfirm $*
 }
 
-function ta(){
+function ta() {
     inst astyle splint firejail
     inst clang-format-static-bin
 }
 
-function terminal_bare(){
+function terminal_bare() {
     inst zsh zsh-autosuggestions moreutils
-    inst kitty ttf-fira-code 
+    inst kitty ttf-fira-code
 }
 
-function compilers(){
+function compilers() {
     inst nodejs npm go python3 python-pip \
         rustup jdk-openjdk lua elixir
     rustup install stable
     rustup default stable
 }
 
-function neovim_bare(){
+function neovim_bare() {
     inst neovim nvim-packer-git
     # requiered packages for neovim
     sudo pip3 install --upgrade msgpack pynvim
@@ -57,77 +56,76 @@ function neovim_bare(){
     nvim +UpdateRemotePlugins
 }
 
-function terminal_full(){
+function terminal_full() {
     inst tree tldr fd nnn source-highlight
     inst the_silver_searcher httpie
 }
 
-function shell_devel(){
+function shell_devel() {
     go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
     inst shellcheck-bin
 }
 
-function cpp_devel(){
+function cpp_devel() {
     inst clang ctags cmake astyle
 }
 
-
-function js_devel(){
+function js_devel() {
     # for js development
     inst eslint tidy stylelint
     sudo npm -g install js-beautify
 }
 
-function haskell_devel(){
+function haskell_devel() {
     inst ghc-static stack cabal-install hlint stylish-haskell
 }
 
-function rust_devel(){
+function rust_devel() {
     inst rust-analyzer
     rustup component add rls rust-analysis rust-src
     rustup component add clippy
     rustup component add rustfmt
 }
 
-function tirr(){
+function tirr() {
     mkdir -p ~/apps
     (
-    cd ~/apps || exit
-    echo "install tir (time.ir in shell)"
-    git clone --depth 1  https://github.com/Pouriya-Jahanbakhsh/tir \
-        && cd tir \
-        && sudo make install \
-        || echo "cannot install tir"
+        cd ~/apps || exit
+        echo "install tir (time.ir in shell)"
+        git clone --depth 1 https://github.com/Pouriya-Jahanbakhsh/tir &&
+            cd tir &&
+            sudo make install ||
+            echo "cannot install tir"
     )
 }
 
-function text_linters(){
+function text_linters() {
     #    grammer check offline but slow
     inst languagetool
 
     # fast and have options
     inst vale
     vale sync
-    # read and sync styles from .vale.ini 
+    # read and sync styles from .vale.ini
     # more info: https://vale.sh/generator/
 
     # fast, foxus on non-offending writing
     sudo npm install alex --global
 }
 
-function desktop_packages(){
+function desktop_packages() {
     # gui apps                                 diff wallpaper
     inst firefox chromium vlc telegram-desktop meld variety
 
     # terminal apps     bluelight  htop   project stats  better wget
-    inst nano jcal acpi redshift   btop   tokei          aria2
+    inst nano jcal acpi redshift btop tokei aria2
 
     #  encode data in qrcode              manage sizes  pic in terminal
-    inst qrencode         pandoc-bin           ncdu        viu
+    inst qrencode pandoc-bin ncdu viu
 
     #    markdown editor  screen recorder  gui editor for persian
-    inst typora-free      obs-studio       xed # kate
+    inst typora-free obs-studio xed # kate
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -136,14 +134,12 @@ function desktop_packages(){
     pip3 install --user ipython
 
     #    gui http client    beautiful ncurses clock
-    inst insomnia-bin       tty-clock
-
+    inst insomnia-bin tty-clock
 
     tirr
 }
 
-
-function zsh_full(){
+function zsh_full() {
     #install oh my zsh
     #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
@@ -167,8 +163,7 @@ function zsh_full(){
     ~/.fzf/install
 }
 
-
-function java_devel(){
+function java_devel() {
     inst astyle
     # only of opened a java file
     # nvim +CocCommand java.updateLanguageServer
@@ -177,34 +172,35 @@ function java_devel(){
     sudo wget https://projectlombok.org/downloads/lombok.jar -O /usr/local/share/lombok/lombok.jar
 }
 
-
-function python_devel(){
+function python_devel() {
     mkdir -p ~/apps
     (
-    cd apps || exit
-    python -m venv venv
-    source venv/bin/activate
-    pip3 install --upgrade pip numpy pandas matplotlib pillow ipython
+        cd apps || exit
+        python -m venv venv
+        source "venv/bin/activate"
+        pip3 install --upgrade pip numpy pandas matplotlib pillow ipython plotly
+        pip3 install pandas-stubs # typing info for pandas
+
+        pip3 install mypy # python static type check (work with ale)
+        mypy --install-types
     )
 
     inst python-pylint python-black python-pyflakes
 
     #inst python-pylint-venv python-pipenv python-pytest \
     # python-rednose python-pytest autopep8
-    
+
     # install python language server
     #pip install --user python-language-server
 
 }
 
-
-function micro(){
+function micro() {
     # micro text editor
     curl https://getmic.ro | bash
 }
 
-
-function emacs(){
+function emacs() {
     inst emacs
     rm -r ~/.emacs.d
     git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
@@ -219,8 +215,7 @@ function emacs(){
     ./bin/update -d
 }
 
-
-function ubuntu(){
+function ubuntu() {
     sudo apt install python-neovim python3-neovim \
         snapd cmake npm gcc g++ zsh-autosuggestions tldr \
         nnn fzf tree shellcheck xsel httpie clang ctags dnsutils
@@ -232,13 +227,13 @@ function ubuntu(){
 # install goples
 #go install golang.org/x/tools/gopls@latest
 
-function bluetooth(){
+function bluetooth() {
     inst bluez bluez-tools
     sudo systemctl enable bluetooth.service
     sudo systemctl start bluetooth.service
 }
 
-function run(){
+function run() {
     pre_install
     aur_helper
     compilers
@@ -261,5 +256,3 @@ function run(){
 }
 
 run
-
-
