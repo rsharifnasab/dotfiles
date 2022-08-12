@@ -121,7 +121,7 @@ function desktop_packages() {
     # terminal apps     bluelight  htop   project stats  better wget
     inst nano jcal acpi redshift btop tokei aria2
 
-    #  encode data in qrcode              manage sizes  pic in terminal
+    #  encode data in qrcode manage sizes  pic in terminal
     inst qrencode pandoc-bin ncdu viu
 
     #    markdown editor  screen recorder  gui editor for persian
@@ -130,8 +130,8 @@ function desktop_packages() {
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
 
-    # my lovely calculator
-    pip3 install --user ipython
+    # my lovely calculator and speedtest
+    pip3 install --user ipython speedtest-cli
 
     #    gui http client    beautiful ncurses clock
     inst insomnia-bin tty-clock
