@@ -101,9 +101,9 @@ alias gclon="git clone --depth 1 --branch "
 
 # go aliases 
 alias gor="go run"
-alias gob="go build"
+alias gob="go build ."
 alias goc="go clean"
-alias gott="go test"
+alias gott="go test './...' -cover"
 alias gop='cd $GOPATH'
 
 
