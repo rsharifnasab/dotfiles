@@ -19,6 +19,7 @@ export ZSH="$HOME/.oh-my-zsh/"
 ZSH_THEME="robbyrussell"
 ZSH_THEME="half-life"
 ZSH_THEME="random"
+ZSH_THEME="archcraft"
 
 ZSH_FAVLIST="$HOME/.zsh_favlist"
 ZSH_THEME_RANDOM_CANDIDATES=()

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 set -o nounset
 set -o pipefail
 
@@ -47,7 +47,12 @@ function compilers() {
 }
 
 function neovim_bare() {
-    inst neovim nvim-packer-git
+    inst neovim
+
+    # nvim packer 
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
     # requiered packages for neovim
     sudo pip3 install --upgrade msgpack pynvim
     sudo npm install -g neovim
@@ -255,4 +260,4 @@ function run() {
     #ubuntu
 }
 
-run
+#run
