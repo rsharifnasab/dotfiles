@@ -6,8 +6,8 @@ set -o pipefail
 function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!
-    sudo pacman -Sy archlinux-keyring
-    sudo pacman -Syu --needed base-devel gvim xsel xclip bat lsd
+    sudo pacman -Sy  --noconfirm           archlinux-keyring
+    sudo pacman -Syu --noconfirm  --needed base-devel gvim xsel xclip bat lsd wget curl
 }
 
 function aur_helper() {
@@ -35,7 +35,7 @@ function ta() {
 }
 
 function terminal_bare() {
-    inst zsh zsh-autosuggestions moreutils
+    inst zsh moreutils
     inst kitty ttf-fira-code
 }
 
@@ -46,7 +46,7 @@ function compilers() {
     rustup default stable
 }
 
-function neovim_bare() {
+function neovim_full() {
     inst neovim
 
     # nvim packer 
@@ -121,16 +121,13 @@ function text_linters() {
 
 function desktop_packages() {
     # gui apps                                 diff wallpaper
-    inst firefox chromium vlc telegram-desktop meld variety
-
     # terminal apps     bluelight  htop   project stats  better wget
-    inst nano jcal acpi redshift btop tokei aria2
-
     #  encode data in qrcode manage sizes  pic in terminal
-    inst qrencode pandoc-bin ncdu viu
-
     #    markdown editor  screen recorder  gui editor for persian
-    inst typora-free obs-studio xed # kate
+    inst firefox chromium vlc telegram-desktop meld variety \
+     nano jcal acpi redshift btop tokei aria2 \
+     qrencode pandoc-bin ncdu viu \
+     typora-free obs-studio xed # kate
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -243,7 +240,7 @@ function run() {
     aur_helper
     compilers
     terminal_bare
-    neovim_bare
+    neovim_full
     zsh_full
     bluetooth
     desktop_packages
