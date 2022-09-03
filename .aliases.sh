@@ -100,6 +100,7 @@ alias gloc="git ls-files | xargs wc -l"
 alias gclon="git clone --depth 1 --branch "
 
 # go aliases 
+alias go="nocorrect go"
 alias gor="go run"
 alias gob="go build ."
 alias goc="go clean"

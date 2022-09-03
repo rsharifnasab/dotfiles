@@ -134,7 +134,7 @@ bindkey "^[[7~" beginning-of-line
 bindkey "^[[8~" end-of-line
 
 # nice visualization
-# pfetch 
+# pfetch
 # colorscript -e 16
 
 # ignore history for jrnl
