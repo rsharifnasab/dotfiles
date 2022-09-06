@@ -120,6 +120,7 @@ alias ipython="python -m IPython"
 alias ipy="python -m IPython"
 alias psrc="source ~/apps/venv/bin/activate"
 alias yay="paru"
+alias kitty="kitty --detach"
 
 # check network
 alias ccc='dig +short myip.dnsomatic.com @resolver1.opendns.com'
