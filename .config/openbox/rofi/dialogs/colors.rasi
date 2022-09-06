@@ -1,0 +1,7 @@
+/* Color-Scheme */
+
+* {
+    BG:    #191D27ff;
+    FG:    #929AA9ff;
+    BDR:   #FFC86Aff;
+}
