@@ -1,0 +1,2 @@
+forest is also a godo theme
+delete bad theme from dotfiles
