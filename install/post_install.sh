@@ -7,7 +7,7 @@ function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!
     sudo pacman -Sy  --noconfirm           archlinux-keyring
-    sudo pacman -Syu --noconfirm  --needed base-devel gvim xsel xclip bat lsd wget curl
+    sudo pacman -Syu --noconfirm  --needed base-devel gvim xsel xclip wget curl stow
 }
 
 function aur_helper() {
@@ -125,9 +125,10 @@ function desktop_packages() {
     #  encode data in qrcode manage sizes  pic in terminal
     #    markdown editor  screen recorder  gui editor for persian
     inst firefox chromium vlc telegram-desktop meld variety \
-     nano jcal acpi redshift btop tokei aria2 \
+     nano jcal acpi redshift bashtop tokei aria2 \
      qrencode pandoc-bin ncdu viu \
-     typora-free obs-studio xed # kate
+     typora-free obs-studio xed  \
+     gnome-screenshot # kate
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm

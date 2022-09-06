@@ -1,2 +1,1 @@
-export PATH="/snap/bin/:$PATH"
-export PATH="$HOME/bin/pi/:$PATH"
+configs/.debian_config

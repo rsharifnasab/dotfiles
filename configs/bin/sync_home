@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# findout we have ~/prog or ~/proj
+dotfiles_pattern="$HOME/pro[jg]/dotfiles/"
+while read -r file; do
+    dotfiles_path="$file"
+done < <(compgen -G "$dotfiles_pattern" || true)
+
+
+rsync_sync(){
+    # copy content of dotfiles to home folder
+    rsync -ah --no-perms \
+        "$dotfiles_path/configs" "$HOME";
+}
+
+stow_sync(){
+    # TODO: use stow-local-ignore instead of /configs/ dir
+    stow \
+        --restow \
+        --dotfiles \
+        --dir="$dotfiles_path" \
+        --target="$HOME" \
+        "configs"
+}
+
+
+stow_sync
+
+openbox --reconfigure
+
+

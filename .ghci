@@ -1,2 +1,1 @@
-:set prompt "\x03bb>"
-:! clear
+configs/.ghci

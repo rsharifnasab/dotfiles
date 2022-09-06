@@ -1,29 +1,31 @@
 #!/usr/bin/env bash
 
-function cannot_find(){
-    echo "cannot find dotfiles folder"
-    echo "program exit now"
-    exit
-}
+set -euo nounset
+
+
+# findout we have ~/prog or ~/proj
+dotfiles_pattern="$HOME/pro[jg]/dotfiles/"
+while read -r file; do
+    dotfiles_path="$file"
+done < <(compgen -G "$dotfiles_pattern" || true)
+
 
 function restart_doom(){
     echo "syncing doom"
     ~/.emacs.d/bin/doom -d sync
-
     echo "kill emacs daemon"
     #emacsclient -e 'doom/reload'
     emacsclient -e '(kill-emacs)'
-
     echo "re-open emacs daemon"
     emacs --daemon
 }
 
-
 function update(){
-    set globopt
-    cd "$HOME"/pro*/dotfiles || cannot_find
-    git pull origin master
-    ./bin/sync_home || echo "cannot sync"
+    (
+        cd "$dotfiles_path"
+        git pull origin master
+        "$HOME/bin/sync_home"
+    )
 }
 
 if [ "$1" == "--doom" ] || [ "$1" == "-d" ]; then
@@ -31,12 +33,11 @@ if [ "$1" == "--doom" ] || [ "$1" == "-d" ]; then
     restart_doom
 else
     update
-    read -rp "Recreate doom config files may take a while, Are you sure? (y/n) " -n 1;
+    read -rp "Recreate emacs configs take a while, Are you sure? (y/n) " -n 1;
     echo "";
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         restart_doom
     fi;
 fi;
 
-unset update;
-unset restart_doom;
+
