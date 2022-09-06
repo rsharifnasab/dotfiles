@@ -147,7 +147,7 @@ alias jrnl=" jrnl"
 # TODO: handle this better
 function r(){
     clear
-    ~/proj/dotfiles/bin/sync_home
+    sync_home
     exec zsh || echo 'error in syncing'
 }
 

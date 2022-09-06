@@ -2,6 +2,7 @@
 
 set -euo nounset
 
+config="${1:---no-doom}"
 
 # findout we have ~/prog or ~/proj
 dotfiles_pattern="$HOME/pro[jg]/dotfiles/"
@@ -28,7 +29,7 @@ function update(){
     )
 }
 
-if [ "$1" == "--doom" ] || [ "$1" == "-d" ]; then
+if [ "$config" == "--doom" ] || [ "$config" == "-d" ]; then
     update
     restart_doom
 else
