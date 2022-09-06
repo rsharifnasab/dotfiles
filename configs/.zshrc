@@ -155,7 +155,7 @@ function r(){
 if [[ ! -e /tmp/welcome.sem ]]
 then
     touch /tmp/welcome.sem
-    cat "$HOME/proj/dotfiles/welcome.txt"
+    cat "$HOME/proj/dotfiles/welcome.txt" || true
     # from here: https://www.asciiart.eu/space/astronauts
 fi
 
