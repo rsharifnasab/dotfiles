@@ -1,2 +1,21 @@
-forest is also a godo theme
+good themes:
++ bouget
++ keyboards
+
++ adaptive
++ forest
++ easy (best one, with polywins)
++ spark (modern and beautiful)
+
+
++ mountain
+
+
+
+not bad:
++ tealize
++ beach
++ default
++ landscape
+
 delete bad theme from dotfiles

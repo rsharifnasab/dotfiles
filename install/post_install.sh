@@ -6,8 +6,8 @@ set -o pipefail
 function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!
-    sudo pacman -Sy  --noconfirm           archlinux-keyring
-    sudo pacman -Syu --noconfirm  --needed base-devel gvim xsel xclip wget curl stow
+    sudo pacman -Sy --noconfirm archlinux-keyring
+    sudo pacman -Syu --noconfirm --needed base-devel gvim xsel xclip wget curl stow
 }
 
 function aur_helper() {
@@ -49,9 +49,8 @@ function compilers() {
 function neovim_full() {
     inst neovim
 
-    # nvim packer 
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    # nvim packer
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # requiered packages for neovim
     sudo pip3 install --upgrade msgpack pynvim
@@ -125,19 +124,17 @@ function desktop_packages() {
     #  encode data in qrcode manage sizes  pic in terminal
     #    markdown editor  screen recorder  gui editor for persian
     inst firefox chromium vlc telegram-desktop meld variety \
-     nano jcal acpi redshift bashtop tokei aria2 \
-     qrencode pandoc-bin ncdu viu \
-     typora-free obs-studio xed  \
-     gnome-screenshot # kate
+        nano jcal acpi redshift bashtop tokei aria2 \
+        qrencode pandoc-bin ncdu viu \
+        typora-free obs-studio xed \
+        gnome-screenshot insomnia-bin tty-clock
+    #    gui http client    beautiful ncurses clock
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
 
     # my lovely calculator and speedtest
     pip3 install --user ipython speedtest-cli
-
-    #    gui http client    beautiful ncurses clock
-    inst insomnia-bin tty-clock
 
     tirr
 }
