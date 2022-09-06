@@ -4,7 +4,7 @@
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
 
 ## Default
-STYLE="bouquet"
+STYLE="keyboards"
 ddir="$HOME/.config/openbox/rofi/dialogs"
 
 rofi_command="rofi -theme $HOME/.config/openbox/rofi/$STYLE/powermenu.rasi"
