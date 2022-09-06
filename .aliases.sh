@@ -1,1 +1,0 @@
-configs/.aliases.sh
