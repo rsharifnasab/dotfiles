@@ -6,8 +6,8 @@ set -o pipefail
 function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!
-    sudo pacman -Sy --noconfirm archlinux-keyring
-    sudo pacman -Syu --noconfirm --needed base-devel gvim xsel xclip wget curl stow
+    sudo pacman -Sy  --noconfirm archlinux-keyring
+    sudo pacman -Syu --needed base-devel gvim xsel xclip wget curl stow
 }
 
 function aur_helper() {
@@ -53,7 +53,7 @@ function neovim_full() {
     git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # requiered packages for neovim
-    sudo pip3 install --upgrade msgpack pynvim
+    pip3 install --user --upgrade msgpack pynvim
     sudo npm install -g neovim
     # sync plugins
     nvim +PackerSync
@@ -231,6 +231,7 @@ function bluetooth() {
     inst bluez bluez-tools
     sudo systemctl enable bluetooth.service
     sudo systemctl start bluetooth.service
+    rfkill unblock all
 }
 
 function run() {

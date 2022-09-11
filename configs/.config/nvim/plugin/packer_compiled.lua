@@ -268,13 +268,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-treesitter-context
-time([[Config for nvim-treesitter-context]], true)
-            require'treesitter-context'.setup{
-
-            }
-        
-time([[Config for nvim-treesitter-context]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
                 require'nvim-treesitter.configs'.setup {
@@ -303,6 +296,13 @@ time([[Config for nvim-colorizer.lua]], true)
         require('colorizer').setup()
         
 time([[Config for nvim-colorizer.lua]], false)
+-- Config for: nvim-treesitter-context
+time([[Config for nvim-treesitter-context]], true)
+            require'treesitter-context'.setup{
+
+            }
+        
+time([[Config for nvim-treesitter-context]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
