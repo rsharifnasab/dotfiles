@@ -231,6 +231,7 @@ function bluetooth() {
     inst bluez bluez-tools
     sudo systemctl enable bluetooth.service
     sudo systemctl start bluetooth.service
+    rfkill unblock all 
 }
 
 function run() {
