@@ -27,6 +27,9 @@ stow_sync(){
 
 stow_sync
 
-openbox --reconfigure
+if command -v openbox 
+then
+    openbox --reconfigure
+fi
 
 

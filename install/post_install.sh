@@ -6,18 +6,19 @@ set -o pipefail
 function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!
-    sudo pacman -Sy --noconfirm archlinux-keyring
-    sudo pacman -Syu --noconfirm --needed base-devel gvim xsel xclip wget curl stow
+    sudo pacman -Sy  --noconfirm archlinux-keyring
+    sudo pacman -Syu --needed base-devel gvim xsel xclip wget curl stow
 }
 
 function aur_helper() {
     # if distro repo has paru, use it!
     sudo pacman -S paru || (
         # or else: install from source
-        pacman -Syu --needed rustup
+        sudo pacman -Syu --needed rustup
         rustup install stable
         rustup default stable
 
+        cd /tmp
         git clone https://aur.archlinux.org/paru.git
         cd paru
         makepkg -si
@@ -34,11 +35,6 @@ function ta() {
     inst clang-format-static-bin
 }
 
-function terminal_bare() {
-    inst zsh moreutils
-    inst kitty ttf-fira-code
-}
-
 function compilers() {
     inst nodejs npm go python3 python-pip \
         rustup jdk-openjdk lua elixir
@@ -50,10 +46,11 @@ function neovim_full() {
     inst neovim
 
     # nvim packer
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+		~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # requiered packages for neovim
-    sudo pip3 install --upgrade msgpack pynvim
+    pip3 install --user --upgrade msgpack pynvim
     sudo npm install -g neovim
     # sync plugins
     nvim +PackerSync
@@ -61,8 +58,10 @@ function neovim_full() {
 }
 
 function terminal_full() {
-    inst tree tldr fd nnn source-highlight
-    inst the_silver_searcher httpie
+    inst zsh moreutils \
+		kitty ttf-fira-code
+    inst tree tldr fd nnn source-highlight \
+		the_silver_searcher httpie
 }
 
 function shell_devel() {
@@ -109,26 +108,31 @@ function text_linters() {
     inst languagetool
 
     # fast and have options
-    inst vale
-    vale sync
+    #inst vale
+    #vale sync
     # read and sync styles from .vale.ini
     # more info: https://vale.sh/generator/
 
     # fast, foxus on non-offending writing
-    sudo npm install alex --global
+    #sudo npm install alex --global
 }
 
 function desktop_packages() {
+    # make persian fonts ok
+    pacman -S --needed noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu 
     # gui apps                                 diff wallpaper
     # terminal apps     bluelight  htop   project stats  better wget
     #  encode data in qrcode manage sizes  pic in terminal
     #    markdown editor  screen recorder  gui editor for persian
+    #    gui http client    beautiful ncurses clock
     inst firefox chromium vlc telegram-desktop meld variety \
         nano jcal acpi redshift bashtop tokei aria2 \
         qrencode pandoc-bin ncdu viu \
         typora-free obs-studio xed \
-        gnome-screenshot insomnia-bin tty-clock
-    #    gui http client    beautiful ncurses clock
+        gnome-screenshot insomnia-bin tty-clock \
+        zip unzip unrar xarchiver \
+        thunar dnsutils
+
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -143,6 +147,14 @@ function zsh_full() {
     #install oh my zsh
     #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+
+	# archcraft zsh theme
+    (
+        cd ~/.oh-my-zsh/themes
+        git clone https://github.com/mrx04programmer/ZshTheme-ArchCraft/
+        mv ZshTheme-ArchCraft/archcraft-dwm.zsh-theme $PWD
+    )
+
 
     # autosuggestion, fast syntax highlight, autocomplete
     git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions \
@@ -224,14 +236,16 @@ function ubuntu() {
     sudo snap install nvim --classic
     sudo snap install go --classic
 }
-# install goples
-#go install golang.org/x/tools/gopls@latest
 
 function bluetooth() {
     inst bluez bluez-tools
     sudo systemctl enable bluetooth.service
     sudo systemctl start bluetooth.service
-    rfkill unblock all 
+    rfkill unblock all
+}
+
+function list() {
+    declare -F | awk '{print $NF}' | sort | egrep -v "^_" 
 }
 
 function run() {
@@ -256,4 +270,4 @@ function run() {
     #ubuntu
 }
 
-#run
+list

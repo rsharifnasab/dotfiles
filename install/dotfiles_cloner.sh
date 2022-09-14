@@ -16,5 +16,6 @@ mkdir -p proj
 cd proj
 git clone https://github.com/rsharifnasab/dotfiles.git
 cd dotfiles
-./bin/sync_home
+sudo pacman -S --needed stow
+bash ./configs/bin/sync_home
 
