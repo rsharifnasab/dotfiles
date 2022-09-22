@@ -34,7 +34,7 @@ setopt listtypes     # When listing files that are possible completions,
                      # indicate their types with a trailing character.
 setopt nolistbeep    # No bell on ambiguous completion!!
 
-DISABLE_AUTO_UPDATE="false"
+DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true" # automatically update without prompting.
 export UPDATE_ZSH_DAYS=13
 
