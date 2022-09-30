@@ -7,9 +7,17 @@ function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!
     sudo pacman -Sy  --noconfirm archlinux-keyring
-    sudo pacman -Syu --needed base-devel gvim xsel xclip wget curl stow
+    sudo pacman -Syu
+    sudo pacman -S --needed --noconfirm base-devel gvim xsel xclip wget curl stow man-pages man
 }
 
+function inst() {
+    if hash paru paru 2>/dev/null; then
+        paru -S --needed --noconfirm $*
+    else
+        pacman -S --needed --noconfirm $*
+    fi
+}
 function aur_helper() {
     # if distro repo has paru, use it!
     sudo pacman -S paru || (
@@ -25,14 +33,16 @@ function aur_helper() {
     )
 }
 
+
+
 # install a software with pacman
 function inst() {
     paru -S --needed --noconfirm $*
 }
 
 function ta() {
-    inst astyle splint firejail
-    inst clang-format-static-bin
+    inst astyle splint firejail \
+        clang-format-static-bin
 }
 
 function compilers() {
@@ -59,14 +69,13 @@ function neovim_full() {
 
 function terminal_full() {
     inst zsh moreutils \
-		kitty ttf-fira-code
-    inst tree tldr fd nnn source-highlight \
+		kitty ttf-fira-code \
+        tree tldr fd nnn source-highlight \
 		the_silver_searcher httpie
 }
 
 function shell_devel() {
     go install mvdan.cc/sh/v3/cmd/shfmt@latest
-
     inst shellcheck-bin
 }
 
@@ -91,18 +100,6 @@ function rust_devel() {
     rustup component add rustfmt
 }
 
-function tirr() {
-    mkdir -p ~/apps
-    (
-        cd ~/apps || exit
-        echo "install tir (time.ir in shell)"
-        git clone --depth 1 https://github.com/Pouriya-Jahanbakhsh/tir &&
-            cd tir &&
-            sudo make install ||
-            echo "cannot install tir"
-    )
-}
-
 function text_linters() {
     #    grammer check offline but slow
     inst languagetool
@@ -119,14 +116,14 @@ function text_linters() {
 
 function desktop_packages() {
     # make persian fonts ok
-    pacman -S --needed noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu 
+    pacman -S --needed noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu
     # gui apps                                 diff wallpaper
     # terminal apps     bluelight  htop   project stats  better wget
     #  encode data in qrcode manage sizes  pic in terminal
     #    markdown editor  screen recorder  gui editor for persian
     #    gui http client    beautiful ncurses clock
     inst firefox chromium vlc telegram-desktop meld variety \
-        nano jcal acpi redshift bashtop tokei aria2 \
+        nano jcal acpi redshift btop tokei aria2 \
         qrencode pandoc-bin ncdu viu \
         typora-free obs-studio xed \
         gnome-screenshot insomnia-bin tty-clock \
@@ -140,7 +137,6 @@ function desktop_packages() {
     # my lovely calculator and speedtest
     pip3 install --user ipython speedtest-cli
 
-    tirr
 }
 
 function zsh_full() {

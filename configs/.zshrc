@@ -34,6 +34,8 @@ setopt listtypes     # When listing files that are possible completions,
                      # indicate their types with a trailing character.
 setopt nolistbeep    # No bell on ambiguous completion!!
 
+setopt interactivecomments # comments in interactive mode
+
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true" # automatically update without prompting.
 export UPDATE_ZSH_DAYS=13
@@ -130,8 +132,10 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
 type apt >/dev/null 2>&1 && source ~/.debian_config || true
 
 
-bindkey "^[[7~" beginning-of-line
-bindkey "^[[8~" end-of-line
+#fix home/end/delete not working
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
 
 # nice visualization
 # pfetch

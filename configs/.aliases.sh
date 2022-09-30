@@ -123,7 +123,7 @@ alias yay="paru"
 alias kitty="kitty --detach"
 
 # check network
-alias ccc='dig +short myip.dnsomatic.com @resolver1.opendns.com'
+alias ccc='curl ifconfig.me; echo'
 alias ccv='dig +short myip.opendns.com @resolver1.opendns.com'
 alias nw="watch -n 3 -t -d -b  $(alias ccc | cut -d\' -f2)"
 
@@ -335,6 +335,14 @@ function fzfd(){
 # search from history (fzf) to repeat
 function fh() {
     print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+function inst() {
+    if hash paru paru 2>/dev/null; then
+        paru -S --needed --noconfirm $*
+    else
+        pacman -S --needed --noconfirm $*
+    fi
 }
 
 # search (fzf) and install package with paru
