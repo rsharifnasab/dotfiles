@@ -19,6 +19,7 @@ stow_sync(){
     # TODO: use stow-local-ignore instead of /configs/ dir
     stow \
         --restow \
+        --no-folding \
         --dir="$dotfiles_path" \
         --target="$HOME" \
         "configs"
