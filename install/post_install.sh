@@ -128,7 +128,7 @@ function desktop_packages() {
         typora-free obs-studio xed \
         gnome-screenshot insomnia-bin tty-clock \
         zip unzip unrar xarchiver \
-        thunar dnsutils
+        thunar dnsutils inetutils
 
 
     # prevent rm from deleting important files

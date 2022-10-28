@@ -250,6 +250,8 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 \
     --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 
+alias p="proxychains -q"
+alias neko="~/apps/nekoray/launcher"
 
 #####################
 ### FZF functions ###
