@@ -118,3 +118,10 @@ autocmd BufRead *.pacnew set readonly
 
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
+
+
+
+
+autocmd BufNewFile *.sh 0r ~/Templates/a.sh
+autocmd BufNewFile *.c 0r ~/Templates/main.c
+autocmd BufNewFile algorithm.cpp 0r ~/Templates/algorithm.cpp
