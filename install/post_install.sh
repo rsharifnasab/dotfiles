@@ -193,7 +193,7 @@ function python_devel() {
         mypy --install-types
     )
 
-    inst python-pylint python-black python-pyflakes
+    inst python-pylint python-black python-pyflakes autopep8
 
     #inst python-pylint-venv python-pipenv python-pytest \
     # python-rednose python-pytest autopep8
