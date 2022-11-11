@@ -163,3 +163,7 @@ then
     # from here: https://www.asciiart.eu/space/astronauts
 fi
 
+if [[ -f ".site.sh" ]]
+then
+    source ".site.sh"
+fi
