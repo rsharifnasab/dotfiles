@@ -114,6 +114,10 @@ function text_linters() {
     #sudo npm install alex --global
 }
 
+function virtualbox() {
+    inst virtualbox virtualbox-host-modules-arch  virtualbox-guest-iso  virtualbox-ext-oracle
+}
+
 function desktop_packages() {
     # make persian fonts ok
     pacman -S --needed noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu
