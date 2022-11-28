@@ -24,6 +24,7 @@ alias chgrp='chgrp --preserve-root'
 
 # shorter commands
 
+alias k="kubectl"
 alias j='jdate -u +"%Y/%m/%d"'
 alias f="xdg-open"
 alias f.="xdg-open ."
