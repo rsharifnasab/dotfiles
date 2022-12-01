@@ -28,6 +28,7 @@ alias k="kubectl"
 alias j='jdate -u +"%Y/%m/%d"'
 alias f="xdg-open"
 alias f.="xdg-open ."
+alias open="xdg-open"
 alias v='nvim'
 # emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
@@ -52,6 +53,8 @@ if test -f "$LSD_COMMAND"; then
 fi
 
 
+alias please="sudo "
+alias sudo="sudo "
 alias cd..='cd ..' 
 alias mkdir="nocorrect mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
@@ -77,7 +80,12 @@ alias زمثشق='clear'
 
 
 # bye
-alias :q=exit
+alias :q='exit'
+alias bye="shutdown now"
+alias zzz="systemctl suspend"
+alias zzzz="systemctl hibernate"
+alias ظظظ="systemctl suspend"
+alias ظظظظ="systemctl hibernate"
 alias sss='shutdown now'
 alias سسس='shutdown now'
 alias ssc='shutdown -c'
@@ -253,7 +261,8 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 \
     --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 
-alias p="proxychains -q"
+## network
+alias p="proxychains -q "
 alias neko="~/apps/nekoray/launcher"
 
 #####################
