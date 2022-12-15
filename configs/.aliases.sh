@@ -125,7 +125,7 @@ alias kitty="kitty --detach"
 
 # check network
 alias ccc='curl ifconfig.me; echo'
-alias ccv='dig +short myip.opendns.com @resolver1.opendns.com'
+alias ccv='curl myip.wtf/text'
 alias nw='watch -n 3 -t -d -b  "curl -s ifconfig.me"'
 alias pccc='proxychains -q curl ifconfig.me'
 alias pnw='watch -n3 -t -d -b "proxychains -q curl -s ifconfig.me"'
