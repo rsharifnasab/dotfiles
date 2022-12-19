@@ -24,6 +24,9 @@ alias chgrp='chgrp --preserve-root'
 
 # shorter commands
 
+alias docker-compose='sudo docker-compose'
+alias docker='sudo docker'
+
 alias k="kubectl"
 alias j='jdate -u +"%Y/%m/%d"'
 alias f="xdg-open"
