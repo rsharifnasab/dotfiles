@@ -26,6 +26,12 @@ vnoremap jk <esc>
 inoremap kj <esc>
 vnoremap kj <esc>
 
+inoremap <C-c> <Esc>
+
+
+" disable Q
+noremap Q <nop>
+
 " fix :WQ problem
 nnoremap ; :
 vnoremap ; :

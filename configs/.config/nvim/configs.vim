@@ -47,7 +47,7 @@ set smartindent
 set nocindent
 
 " " search " "
-set hlsearch " highlight search result!
+set nohlsearch " highlight search result!
 set ignorecase " search in case insensitive mode
 set smartcase " case sensitive if we have uppercase in query
 set incsearch " search while typing
@@ -102,14 +102,7 @@ else
     endif
 endif
 
-" scroll before cursur reach the end of screen
-if !&scrolloff
-  set scrolloff=1
-endif
-if !&sidescrolloff
-  set sidescrolloff=5
-endif
-
+set sidescrolloff=5
 
 
 " Prevent accidental writes to buffers that shouldn't be edited
