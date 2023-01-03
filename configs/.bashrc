@@ -32,6 +32,8 @@ shopt -s dotglob
 shopt -s histappend # do not overwrite history
 shopt -s expand_aliases # expand aliases
 
+# auto compelte even after sudo
+complete -cf sudo
 
 # solve problem "nocorrect not found"
 # because nocorrect is only in zsh
