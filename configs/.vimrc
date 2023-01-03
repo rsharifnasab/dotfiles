@@ -197,5 +197,8 @@ nnoremap <F2> :call NumberToggle()<cr> " toggle relative number
 "colorscheme peachpuff
 colorscheme evening
 
+runtime! ftplugin/man.vim
+
+
 let &fcs='eob: ' 
 

@@ -104,6 +104,7 @@ endif
 
 set sidescrolloff=5
 
+runtime! ftplugin/man.vim
 
 " Prevent accidental writes to buffers that shouldn't be edited
 autocmd BufRead *.orig set readonly
@@ -111,8 +112,6 @@ autocmd BufRead *.pacnew set readonly
 
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
-
-
 
 
 autocmd BufNewFile *.sh 0r ~/Templates/a.sh
