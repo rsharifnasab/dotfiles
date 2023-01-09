@@ -25,21 +25,25 @@ nmcli general status
 ```
 
 ## active connection name and UUID
+
 ```bash
 nmcli connection show --active
 ```
 
 ## adaptors and their active connection
+
 ```bash
 nmcli device status
 ```
 
 ## retrieve password (only current wifi)
+
 ```bash
 nmcli device wifi show-password
 ```
 
 ## monitor events
+
 ```bash
 nmcli monitor
 ```
@@ -48,11 +52,13 @@ nmcli monitor
 
 
 ## connect the second time
+
 ```bash
 nmcli connection up <name>
 ```
 
 ## connect for the first time
+
 ```bash
 nmcli device wifi rescan
 # or with list:
@@ -63,12 +69,14 @@ nmcli device wifi connect <name> password <pass>
 ```
 
 ## disconnect
-``bash
+
+```bash
 nmcli connection down <name>
 ```
 
 
 # show available connections
+
 ```bash
 nmcli device wifi list
 nmcli device wifi list --rescan yes
