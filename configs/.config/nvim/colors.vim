@@ -5,10 +5,10 @@
 "let g:airline_theme='lucios'
 "let g:airline_theme='minmalist' " just grey
 "let g:airline_theme='bubblegum' " candy
-let g:airline_theme='serene' " classic beautiful
-let g:airline_theme='deep_space' " grey colors
-let g:airline_theme='hybrid' " little distraction, good default
-let g:airline_theme='raven' " minmal and nice, no distraction
+"let g:airline_theme='serene' " classic beautiful
+"let g:airline_theme='deep_space' " grey colors
+"let g:airline_theme='hybrid' " little distraction, good default
+"let g:airline_theme='raven' " minmal and nice, no distraction
 let g:airline_theme='jellybeans' " beautiful!
 
 " to change theme in running editor run AirlineTheme folan
@@ -16,6 +16,7 @@ let g:airline_theme='jellybeans' " beautiful!
 
 " " color scheme " "
 set background=dark
+
 
 
 " default beautiful

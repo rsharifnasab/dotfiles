@@ -14,16 +14,15 @@ autocmd BufWritePost init.lua PackerCompile
 augroup end
 ]]
 
-packer = require("packer")
+local packer = require("packer")
 
-use = packer.use
+local use = packer.use
 
 
-packer.startup(function ()    
-
+packer.startup(function ()
     use 'wbthomason/packer.nvim'
 
-    use "tversteeg/registers.nvim" -- press " to show registers content
+    --use "tversteeg/registers.nvim" -- press " to show registers content
 
     use 'wakatime/vim-wakatime' -- time track my programming
 
@@ -102,7 +101,7 @@ packer.startup(function ()
     -- language specific
     use {                              -- Go development plugin for Vim
        'fatih/vim-go',
-        run = ':GoUpdateBinaries' 
+        run = ':GoUpdateBinaries'
     }
 
     use 'elixir-editors/vim-elixir'
