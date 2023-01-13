@@ -11,18 +11,18 @@ A0:60:90:2F:59:09
 
 for device in $devices; do
     echo "removing $device"
-    #bluetoothctl disconnect "$device"
-    #bluetoothctl untrust "$device"
-    #bluetoothctl remove "$device"
+    bluetoothctl disconnect "$device"
+    bluetoothctl untrust "$device"
+    bluetoothctl remove "$device"
 done
 
 bluetoothctl power off
 bluetoothctl power on
-timeout 7s bluetoothctl scan on
+timeout 12s bluetoothctl scan on
 
 for device in $devices; do
     echo "----connecting to $device----"
-    #bluetoothctl info "$device"
+    bluetoothctl info "$device"
     bluetoothctl trust "$device"
     bluetoothctl pair "$device"
     bluetoothctl connect "$device" || continue
