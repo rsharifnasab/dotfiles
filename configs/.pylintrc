@@ -153,6 +153,7 @@ disable=raw-checker-failed,
         deprecated-pragma,
         use-symbolic-message-instead,
         missing-module-docstring,
+        missing-class-docstring,
         missing-function-docstring,
         invalid-name,
 
