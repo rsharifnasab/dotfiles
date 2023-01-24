@@ -158,7 +158,7 @@ alias weaf='curl -s "wttr.in/TEHRAN?Fq"' # 3 day forecast
 
 # open typora even if file does not exist
 function typ(){
-    if [ ! -f $@ ]; then
+    if [ ! -f "$0" ]; then
         touch "$@"
     fi
     typora "$@"
@@ -169,6 +169,16 @@ function gat(){
     src-hilite-lesspipe.sh "$@" | less
 }
 
+
+function dif(){
+    if [ -x  "$(command -v diff-so-fancy)" ]; then
+        diff -u "$@" | diff-so-fancy
+    else
+        echo "git so fancy not installed, fallback"
+        diff "$@"
+    fi
+
+}
 
 # cd and ls at same time
 function cls() {
@@ -203,7 +213,7 @@ function last_commands(){
 
 
 function vlc_sub(){
-    vlc -q *$1* --sub-file *$1*.srt
+    vlc -q ./*$1* --sub-file ./*$1*.srt
 }
 
 # sum of all videos in the current folder
@@ -232,22 +242,22 @@ function clean_disk(){
 # # usage: ex <file>
 ex ()
 {
-  if [ -f $1 ] ; then
+  if [ -f "$1" ] ; then
     case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
+      *.tar.bz2)   tar xjf "$1"   ;;
+      *.tar.gz)    tar xzf "$1"   ;;
+      *.bz2)       bunzip2 "$1"   ;;
+      *.rar)       unrar x "$1"   ;;
+      *.gz)        gunzip  "$1"   ;;
+      *.tar)       tar xf  "$1"   ;;
+      *.tbz2)      tar xjf "$1"   ;;
+      *.tgz)       tar xzf "$1"   ;;
+      *.zip)       unzip   "$1"   ;;
       *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;      
+      *.7z)        7z x    "$1"   ;;
+      *.deb)       ar x    "$1"   ;;
+      *.tar.xz)    tar xf  "$1"   ;;
+      *.tar.zst)   unzstd  "$1"   ;;
       *)           echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
@@ -265,7 +275,7 @@ alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 \
     --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 
 ## network
-alias p="proxychains -q "
+alias p="nocorrect proxychains -q "
 alias neko="~/apps/nekoray/launcher"
 
 #####################
@@ -282,14 +292,14 @@ function fkill(){
     fi
     if [ "x$pid" != "x" ]
     then
-        echo $pid | xargs kill -${1:-9}
+        echo "$pid" | xargs kill -${1:-9}
     fi
 }
 
 # select with fzf open file in gui
 function fo() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-    [[ -n "$files" ]] && xdg-open "${files[@]}"
+    [[ -n "${files[0]}" ]] && xdg-open "${files[@]}"
 }
 
 # select with fzf open selected folder in file manager
@@ -298,7 +308,7 @@ function fm() {
 
     if command -v thunar &> /dev/null # xfce
     then 
-        [[ -n "$files" ]] && thunar "${files[@]}" # gnome
+        [[ -n "${files[0]}" ]] && thunar "${files[@]}" # gnome
     elif command -v nautilus &> /dev/null
     then 
         [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
@@ -340,13 +350,13 @@ function fvlc() {
 # select with fzf open file with vim
 function fe() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-    [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+    [[ -n "${files[0]}" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
 # select dir and cd to it. including hidden directories
 function fzfd(){
     local dir
-    dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+    dir=$(find "${1:-.}" -type d 2> /dev/null | fzf +m) && cd "$dir" || return
 }
 
 # search from history (fzf) to repeat
@@ -356,9 +366,9 @@ function fh() {
 
 function inst() {
     if hash paru paru 2>/dev/null; then
-        paru -S --needed --noconfirm $*
+        paru -S --needed --noconfirm "$@"
     else
-        pacman -S --needed --noconfirm $*
+        pacman -S --needed --noconfirm "$@"
     fi
 }
 
@@ -381,5 +391,4 @@ function re() {
 if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
     source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
-
 
