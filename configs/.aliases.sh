@@ -16,6 +16,8 @@ if test -f "$SAFE_RM"; then
 fi
 
 
+dns(){ dig "$@" "+short" ; }
+
 
 # Preserve changing perms on /
 alias chown='chown --preserve-root'
