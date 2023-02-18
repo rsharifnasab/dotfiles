@@ -255,7 +255,7 @@ ex ()
       *.tbz2)      tar xjf "$1"   ;;
       *.tgz)       tar xzf "$1"   ;;
       *.zip)       unzip   "$1"   ;;
-      *.Z)         uncompress $1;;
+      *.Z)         uncompress "$1";;
       *.7z)        7z x    "$1"   ;;
       *.deb)       ar x    "$1"   ;;
       *.tar.xz)    tar xf  "$1"   ;;
@@ -309,12 +309,12 @@ function fm() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
 
     if command -v thunar &> /dev/null # xfce
-    then 
+    then
         [[ -n "${files[0]}" ]] && thunar "${files[@]}" # gnome
     elif command -v nautilus &> /dev/null
-    then 
+    then
         [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
-    else 
+    else
         [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
     fi
 }
@@ -339,12 +339,12 @@ function fmm() {
 function fvlc() {
     files=$(lsof -p `pidof -s vlc` | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
     if command -v thunar &> /dev/null # xfce
-    then 
+    then
         [[ -n "$files" ]] &&  thunar "${files[@]}" # gnome
     elif command -v nautilus &> /dev/null
-    then 
+    then
         [[ -n "$files" ]] &&  nautilus --no-desktop "${files[@]}"
-    else 
+    else
         [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
     fi
 }
@@ -352,7 +352,7 @@ function fvlc() {
 # select with fzf open file with vim
 function fe() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-    [[ -n "${files[0]}" ]] && ${EDITOR:-vim} "${files[@]}"
+    [[ -n "${files[*]}" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
 # select dir and cd to it. including hidden directories
