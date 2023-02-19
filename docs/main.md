@@ -15,10 +15,11 @@
 - clear paru cache -> `paru -Sc`
 - clear pip cache -> `rm -r .cache/pip`
 - keep only last 100MB log files in systemd -> `sudo journalctl --vacuum-size=100M`
-- clear go cache -> `go clean -cache -modcache -i -r`
+- clear go cache -> `go clean -cache -modcache`
+- empty trash -> `\rm -r ~/.local/share/Trash/files/*`
 
 - show information about installed pakcages -> `paru -Ps`
-- sort packages by size-> `pacgraph -c`
+- sort packages by size -> `pacgraph -c`
 
 - `curl cheet.sh/git` # or any other command
 - `tldr command` -> help like man pages, but simple
