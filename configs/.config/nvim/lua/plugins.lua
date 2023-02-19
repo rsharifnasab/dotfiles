@@ -31,7 +31,6 @@ packer.startup(function ()
         'neoclide/coc.nvim',
         branch = 'release'
     }
-    use 'github/copilot.vim'
     use 'dense-analysis/ale' -- ale for foreign linting
 
 
@@ -68,8 +67,6 @@ packer.startup(function ()
         require('colorizer').setup()
         ]],
     }
-
-
     use 'uiiaoo/java-syntax.vim'      -- richer syntax hightligh for java
     use 'octol/vim-cpp-enhanced-highlight'  -- Additional Vim syntax highlighting for C++
     use {                             -- Semantic Highlighting for Python in Neovim
