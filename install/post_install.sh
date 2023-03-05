@@ -95,7 +95,7 @@ function haskell_devel() {
 
 function rust_devel() {
     inst rust-analyzer
-    rustup component add rls rust-analysis rust-src
+    rustup component add rust-analysis rust-src
     rustup component add clippy
     rustup component add rustfmt
 }

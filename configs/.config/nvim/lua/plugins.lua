@@ -151,7 +151,7 @@ vim.g.coc_global_extensions = {
     'coc-html', 'coc-css',
     'coc-tsserver', 'coc-tslint-plugin',
     'coc-json', 'coc-yaml',
-    'coc-rls', 'coc-rust-analyzer',
+    'coc-rust-analyzer',
     'coc-pyright',
     'coc-java',
     'coc-clangd',
