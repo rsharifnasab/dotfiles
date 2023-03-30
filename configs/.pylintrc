@@ -1,3 +1,13 @@
+[MASTER]
+#init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
+
+#init-hook='from distutils.sysconfig import get_python_lib; sys.path.append(get_python_lib())'
+
+# init-hook='import site; sys.path.append(site.getsitepackages()[0])'
+#init-hook="import imp, os; from pylint.config import find_pylintrc; imp.load_source('import_hook', os.path.join(os.path.dirname(find_pylintrc()), 'import_hook.py'))"
+
+# init-hook='import site; sys.path += site.getsitepackages()'
+
 [MAIN]
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and
@@ -373,8 +383,8 @@ min-public-methods=2
 [EXCEPTIONS]
 
 # Exceptions that will emit a warning when caught.
-overgeneral-exceptions=BaseException,
-                       Exception
+overgeneral-exceptions=builtins.BaseException,
+                       builtins.Exception
 
 
 [FORMAT]
