@@ -134,7 +134,8 @@ function desktop_packages() {
         typora-free obs-studio xed \
         gnome-screenshot insomnia-bin tty-clock \
         zip unzip unrar xarchiver \
-        thunar dnsutils inetutils
+        thunar dnsutils inetutils \
+        pacman-contrib
 
 
     # prevent rm from deleting important files
@@ -152,9 +153,9 @@ function zsh_full() {
 
 	# archcraft zsh theme
     (
-        cd ~/.oh-my-zsh/themes
+        cd ~/.oh-my-zsh/themes || exit
         git clone https://github.com/mrx04programmer/ZshTheme-ArchCraft/
-        mv ZshTheme-ArchCraft/archcraft-dwm.zsh-theme $PWD
+        mv ZshTheme-ArchCraft/archcraft-dwm.zsh-theme "$PWD"
     )
 
 
@@ -192,10 +193,10 @@ function python_devel() {
         cd apps || exit
         python -m venv venv
         source "venv/bin/activate"
-        pip3 install --upgrade pip numpy pandas matplotlib pillow ipython plotly
-        pip3 install pandas-stubs # typing info for pandas
+        pip3 install --upgrade pip pylint pynvim ipython
+        pip3 install --upgrade numpy pandas matplotlib plotly networkx pillow
 
-        pip3 install mypy # python static type check (work with ale)
+        pip3 install mypy pandas-stubs data-science-types # python static type check (work with ale)
         mypy --install-types
     )
 
