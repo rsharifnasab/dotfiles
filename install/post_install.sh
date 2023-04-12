@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e
+set -e
 set -o nounset
 set -o pipefail
 
@@ -129,7 +129,7 @@ function desktop_packages() {
         gnome-screenshot insomnia-bin tty-clock \
         zip unzip unrar xarchiver \
         thunar dnsutils inetutils \
-        pacman-contrib
+        pacman-contrib flameshot
 
 
     # prevent rm from deleting important files
