@@ -33,13 +33,6 @@ function aur_helper() {
     )
 }
 
-
-
-# install a software with pacman
-function inst() {
-    paru -S --needed --noconfirm $*
-}
-
 function ta() {
     inst astyle splint firejail \
         clang-format-static-bin
@@ -65,6 +58,7 @@ function neovim_full() {
     # sync plugins
     nvim +PackerSync
     nvim +UpdateRemotePlugins
+    nvim +CocUpdate
 }
 
 function terminal_full() {
@@ -122,7 +116,7 @@ function desktop_packages() {
     # make persian fonts ok
     pacman -S --needed noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu
     # multi monitor management
-    inst lxranr
+    inst lxrandr
     # gui apps                                 diff wallpaper
     # terminal apps     bluelight  htop   project stats  better wget
     #  encode data in qrcode manage sizes  pic in terminal
@@ -255,7 +249,6 @@ function run() {
     pre_install
     aur_helper
     compilers
-    terminal_bare
     neovim_full
     zsh_full
     bluetooth
@@ -263,9 +256,9 @@ function run() {
     ta
     cpp_devel
     java_devel
+    rust_devel
     python_devel
-    text_linters
-    #rust_devel
+    #text_linters
     #haskell_devel
     #js_devel
     #micro
@@ -273,4 +266,4 @@ function run() {
     #ubuntu
 }
 
-list
+run
