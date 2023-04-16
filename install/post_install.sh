@@ -138,6 +138,9 @@ function desktop_packages() {
     # my lovely calculator and speedtest
     pip3 install --user ipython speedtest-cli
 
+    # install persian font (from here: https://github.com/fzerorubigd/persian-fonts-linux)
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
+
 }
 
 function zsh_full() {
