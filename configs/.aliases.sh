@@ -226,6 +226,7 @@ function sum_vid_len(){
         | awk '{sum += $0} END{print sum/60 "min"}'
 }
 
+alias orphans='[[ -n $(pacman -Qdt) ]] && sudo pacman -Rs $(pacman -Qdtq) || echo "no orphans to remove"'
 function clean_disk(){
     echo "cleaning paru"
     paru -Sc
@@ -238,6 +239,7 @@ function clean_disk(){
     echo "cleaning recyclebin"
     sudo "rm" -rf /home/*/.local/share/Trash/files/* || true
     sudo "rm" -rf /home/*/.local/share/Trash/files/.* || true
+    pacman -Rs $(pacman -Qdtq)
 }
 
 
