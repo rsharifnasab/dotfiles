@@ -44,7 +44,7 @@ export UPDATE_ZSH_DAYS=13
 # DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 ENABLE_CORRECTION="true"
 
@@ -154,7 +154,6 @@ function r(){
     sync_home
     exec zsh || echo 'error in syncing'
 }
-
 
 if [[ ! -e /tmp/welcome.sem ]]
 then

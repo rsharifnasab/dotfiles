@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -e
+set -e
 set -o nounset
 set -o pipefail
 
@@ -33,13 +33,6 @@ function aur_helper() {
     )
 }
 
-
-
-# install a software with pacman
-function inst() {
-    paru -S --needed --noconfirm $*
-}
-
 function ta() {
     inst astyle splint firejail \
         clang-format-static-bin
@@ -65,6 +58,7 @@ function neovim_full() {
     # sync plugins
     nvim +PackerSync
     nvim +UpdateRemotePlugins
+    nvim +CocUpdate
 }
 
 function terminal_full() {
@@ -122,7 +116,7 @@ function desktop_packages() {
     # make persian fonts ok
     pacman -S --needed noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu
     # multi monitor management
-    inst lxranr
+    inst lxrandr
     # gui apps                                 diff wallpaper
     # terminal apps     bluelight  htop   project stats  better wget
     #  encode data in qrcode manage sizes  pic in terminal
@@ -135,7 +129,7 @@ function desktop_packages() {
         gnome-screenshot insomnia-bin tty-clock \
         zip unzip unrar xarchiver \
         thunar dnsutils inetutils \
-        pacman-contrib
+        pacman-contrib flameshot
 
 
     # prevent rm from deleting important files
@@ -143,6 +137,9 @@ function desktop_packages() {
 
     # my lovely calculator and speedtest
     pip3 install --user ipython speedtest-cli
+
+    # install persian font (from here: https://github.com/fzerorubigd/persian-fonts-linux)
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
 
 }
 
@@ -255,7 +252,6 @@ function run() {
     pre_install
     aur_helper
     compilers
-    terminal_bare
     neovim_full
     zsh_full
     bluetooth
@@ -263,9 +259,9 @@ function run() {
     ta
     cpp_devel
     java_devel
+    rust_devel
     python_devel
-    text_linters
-    #rust_devel
+    #text_linters
     #haskell_devel
     #js_devel
     #micro
@@ -273,4 +269,4 @@ function run() {
     #ubuntu
 }
 
-list
+run
