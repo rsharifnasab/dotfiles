@@ -69,7 +69,7 @@ alias pacman="sudo pacman --color auto"
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 
 alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
-alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
+alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 
 # download in  terminal
 alias wget='wget -c'
