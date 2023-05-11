@@ -130,7 +130,8 @@ function desktop_packages() {
         gnome-screenshot insomnia-bin tty-clock \
         zip unzip unrar xarchiver \
         thunar dnsutils inetutils \
-        pacman-contrib flameshot
+        pacman-contrib flameshot \
+        ntfs-3g engrampa
 
 
     # prevent rm from deleting important files
@@ -198,7 +199,7 @@ function python_devel() {
         mypy --install-types
     )
 
-    inst python-pylint python-black pyright autopep8
+    inst python-pylint python-black pyright autopep8 pynvim 
 
     #inst python-pylint-venv python-pipenv python-pytest \
     # python-rednose python-pytest autopep8
