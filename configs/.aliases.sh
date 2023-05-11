@@ -69,7 +69,7 @@ alias pacman="sudo pacman --color auto"
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 
 alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
-alias g=" gcc -lstdc++ -Wall -Wextra -O0 -g"
+alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 
 # download in  terminal
 alias wget='wget -c'
@@ -226,6 +226,7 @@ function sum_vid_len(){
         | awk '{sum += $0} END{print sum/60 "min"}'
 }
 
+alias orphans='[[ -n $(pacman -Qdt) ]] && sudo pacman -Rs $(pacman -Qdtq) || echo "no orphans to remove"'
 function clean_disk(){
     echo "cleaning paru"
     paru -Sc
@@ -238,6 +239,7 @@ function clean_disk(){
     echo "cleaning recyclebin"
     sudo "rm" -rf /home/*/.local/share/Trash/files/* || true
     sudo "rm" -rf /home/*/.local/share/Trash/files/.* || true
+    pacman -Rs $(pacman -Qdtq)
 }
 
 
