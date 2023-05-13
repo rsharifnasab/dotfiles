@@ -133,6 +133,9 @@ function desktop_packages() {
         pacman-contrib flameshot \
         ntfs-3g engrampa
 
+    # tmux - ncdu - bandwith which
+    inst zellij diskonaut bandwhich
+
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -196,7 +199,7 @@ function python_devel() {
         pip3 install --upgrade numpy pandas matplotlib plotly networkx pillow
 
         pip3 install mypy pandas-stubs data-science-types # python static type check (work with ale)
-        mypy --install-types
+        #mypy --install-types
     )
 
     inst python-pylint python-black pyright autopep8 pynvim 

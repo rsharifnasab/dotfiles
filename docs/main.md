@@ -38,6 +38,9 @@
 - auto-xflux (f.lux automatic)
 - nnn -> beautiful file manager in terminal
 - n -> open nnn, ctrl g to close with cd
+- bandwhich: which app is using bandwidth
+- zellij: good tmux alternative
+- ncdu & diskonaut -> check hdd usage
 
 ## FZF
 
