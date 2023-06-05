@@ -16,7 +16,21 @@ if test -f "$SAFE_RM"; then
 fi
 
 
-dns(){ dig "$@" "+short" ; }
+reboot()
+{
+   printf "Reboot is about to happen , press enter "
+   read
+   /usr/bin/reboot
+}
+
+shutdown()
+{
+   printf "shutdown is about to happen , press enter "
+   read
+   /usr/bin/shutdown "$@"
+   # or for those who like to use systemd way, you can do systemctl reboot
+}
+
 
 
 # Preserve changing perms on /
@@ -64,6 +78,7 @@ alias cd..='cd ..'
 alias mkdir="nocorrect mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
 function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+dns(){ dig "$@" "+short" ; }
 
 alias pacman="sudo pacman --color auto"
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
@@ -86,14 +101,14 @@ alias زمثشق='clear'
 
 # bye
 alias :q='exit'
-alias bye="shutdown now"
 alias zzz="systemctl suspend"
 alias zzzz="systemctl hibernate"
 alias ظظظ="systemctl suspend"
 alias ظظظظ="systemctl hibernate"
-alias sss='shutdown now'
-alias سسس='shutdown now'
-alias ssc='shutdown -c'
+alias bye="\shutdown now"
+alias sss='\shutdown now'
+alias سسس='\shutdown now'
+alias ssc='\shutdown -c'
 
 
 # git aliases
