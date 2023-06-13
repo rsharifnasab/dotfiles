@@ -105,10 +105,10 @@ alias zzz="systemctl suspend"
 alias zzzz="systemctl hibernate"
 alias ظظظ="systemctl suspend"
 alias ظظظظ="systemctl hibernate"
-alias bye="\shutdown now"
-alias sss='\shutdown now'
-alias سسس='\shutdown now'
-alias ssc='\shutdown -c'
+alias bye="command shutdown now"
+alias sss='command shutdown now'
+alias سسس='command shutdown now'
+alias ssc='command shutdown -c'
 
 
 # git aliases
@@ -248,13 +248,13 @@ function clean_disk(){
     echo "cleaning pacman"
     sudo "pacman" -Scc
     echo "cleaning pip"
-    rm -r ".cache/pip"
+    \rm -r "$HOME/.cache/pip"
     echo "cleaning journalctl"
     sudo journalctl --vacuum-size=100M
     echo "cleaning recyclebin"
-    sudo "rm" -rf /home/*/.local/share/Trash/files/* || true
-    sudo "rm" -rf /home/*/.local/share/Trash/files/.* || true
-    pacman -Rs $(pacman -Qdtq)
+    sudo "rm" -rf "$HOME"/.local/share/Trash/files/* || true
+    sudo "rm" -rf "$HOME"/.local/share/Trash/files/.* || true
+    orphans
 }
 
 
