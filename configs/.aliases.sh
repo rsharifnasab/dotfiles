@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 #############
 ## ALIASES ##
 #############
@@ -12,7 +13,7 @@ alias ln='ln -i'
 
 SAFE_RM='/usr/bin/safe-rm'
 if test -f "$SAFE_RM"; then
-    alias rm="$SAFE_RM"
+    alias rm='$SAFE_RM'
 fi
 
 
@@ -221,8 +222,13 @@ function mem(){
 }
 
 function hdd() {
-  hdd="$(df -h | awk 'NR==4{print $3, $5}')"
-  echo -e "HDD: $hdd"
+    df -x tmpfs -x devtmpfs | \
+    tail -n +2 | \
+    awk '{print $3, "of", $4, $5}' | \
+    sort -nr | \
+    uniq | \
+    numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%.1f" --field=1,3 | \
+    head -10
 }
 
 function last_commands(){
@@ -240,6 +246,40 @@ function sum_vid_len(){
     find "$dir" -maxdepth 1 -iname '*.*' -exec \
         ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; \
         | awk '{sum += $0} END{print sum/60 "min"}'
+}
+
+function clean_docker(){
+    # Kill all running containers:
+    docker kill $(docker ps -q)
+
+    # Delete all stopped containers
+    docker rm $(docker ps -a -q)
+
+    # clean unsued and dead images
+    docker image prune -a
+
+    # Delete all images
+    docker rmi $(docker images -q)
+
+    # Remove unused data
+    docker system prune
+
+    # And some more
+    docker system prune -af
+
+    docker volume rm $(docker volume ls -f dangling=true -q)
+
+    docker system prune -af && \
+        docker image prune -af && \
+        docker system prune -af --volumes && \
+        docker system df
+
+
+    # and 
+    # service docker stop
+    # cd /var/lib/docker
+    # rm -rf *
+    # service docker start
 }
 
 alias orphans='[[ -n $(pacman -Qdt) ]] && sudo pacman -Rs $(pacman -Qdtq) || echo "no orphans to remove"'
