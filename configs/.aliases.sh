@@ -17,7 +17,21 @@ if test -f "$SAFE_RM"; then
 fi
 
 
-dns(){ dig "$@" "+short" ; }
+reboot()
+{
+   printf "Reboot is about to happen , press enter "
+   read
+   /usr/bin/reboot
+}
+
+shutdown()
+{
+   printf "shutdown is about to happen , press enter "
+   read
+   /usr/bin/shutdown "$@"
+   # or for those who like to use systemd way, you can do systemctl reboot
+}
+
 
 
 # Preserve changing perms on /
@@ -65,6 +79,7 @@ alias cd..='cd ..'
 alias mkdir="nocorrect mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
 function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+dns(){ dig "$@" "+short" ; }
 
 alias pacman="sudo pacman --color auto"
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
@@ -87,14 +102,14 @@ alias زمثشق='clear'
 
 # bye
 alias :q='exit'
-alias bye="shutdown now"
 alias zzz="systemctl suspend"
 alias zzzz="systemctl hibernate"
 alias ظظظ="systemctl suspend"
 alias ظظظظ="systemctl hibernate"
-alias sss='shutdown now'
-alias سسس='shutdown now'
-alias ssc='shutdown -c'
+alias bye="command shutdown now"
+alias sss='command shutdown now'
+alias سسس='command shutdown now'
+alias ssc='command shutdown -c'
 
 
 # git aliases
@@ -273,13 +288,13 @@ function clean_disk(){
     echo "cleaning pacman"
     sudo "pacman" -Scc
     echo "cleaning pip"
-    rm -r ".cache/pip"
+    \rm -r "$HOME/.cache/pip"
     echo "cleaning journalctl"
     sudo journalctl --vacuum-size=100M
     echo "cleaning recyclebin"
-    sudo "rm" -rf /home/*/.local/share/Trash/files/* || true
-    sudo "rm" -rf /home/*/.local/share/Trash/files/.* || true
-    pacman -Rs $(pacman -Qdtq)
+    sudo "rm" -rf "$HOME"/.local/share/Trash/files/* || true
+    sudo "rm" -rf "$HOME"/.local/share/Trash/files/.* || true
+    orphans
 }
 
 
