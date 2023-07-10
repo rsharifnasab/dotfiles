@@ -154,8 +154,9 @@ alias kitty="kitty --detach"
 # check network
 alias ccc='curl ifconfig.me; echo'
 alias ccv='curl myip.wtf/text'
-alias nw='watch -n 3 -t -d -b  "curl -s ifconfig.me"'
-alias pccc='proxychains -q curl ifconfig.me'
+alias pccc='proxychains -q curl ifconfig.me; echo'
+alias pccv='proxychains -q curl myip.wtf/text'
+alias nw='watch -n 3 -t -d -b "curl -s ifconfig.me"'
 alias pnw='watch -n3 -t -d -b "proxychains -q curl -s ifconfig.me"'
 
 # command with help of online resources
@@ -254,6 +255,9 @@ function clean_disk(){
     echo "cleaning recyclebin"
     sudo "rm" -rf "$HOME"/.local/share/Trash/files/* || true
     sudo "rm" -rf "$HOME"/.local/share/Trash/files/.* || true
+    echo "cleaning go cache"
+    go clean -cache -modcache
+    echo "removing orphan packages"
     orphans
 }
 
