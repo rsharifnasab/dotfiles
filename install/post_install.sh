@@ -114,38 +114,21 @@ function virtualbox() {
 }
 
 function desktop_packages() {
-    # make persian fonts ok
-    pacman -S --needed noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu
-    # multi monitor management
-    inst lxrandr
-    # gui apps                                 diff wallpaper
-    # terminal apps     bluelight  htop   project stats  better wget
-    #  encode data in qrcode manage sizes  pic in terminal
-    #    markdown editor  screen recorder  gui editor for persian
-    #    gui http client    beautiful ncurses clock
-    inst firefox chromium vlc telegram-desktop meld variety \
-        nano jcal acpi redshift btop tokei aria2 \
-        qrencode pandoc-bin ncdu viu \
-        typora-free obs-studio xed \
-        gnome-screenshot insomnia-bin tty-clock \
-        zip unzip unrar xarchiver \
-        thunar dnsutils inetutils \
-        pacman-contrib flameshot \
-        ntfs-3g engrampa
-
-    # tmux - ncdu - bandwith which
-    inst zellij diskonaut bandwhich
-
+    inst firefox chromium \
+        noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu \
+        ntfs-3g pacman-contrib dnsutil inetutils  lxrandr \
+        zip unzip unrar xarchiver engrampa \
+        variety flameshot redshift \
+        nano xed tmux zellij jcal btop tokei aria2 acpi tty-clock \
+        ncdu qrencode viu speedtet-cli ipython \
+        vlc shotwell telegram-desktop meld thunar obs-studio \
+        pandoc-bin typora-free
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
 
-    # my lovely calculator and speedtest
-    pip3 install --user ipython speedtest-cli
-
     # install persian font (from here: https://github.com/fzerorubigd/persian-fonts-linux)
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
-
 }
 
 function zsh_full() {
