@@ -177,9 +177,7 @@ alias weaf='curl -s "wttr.in/TEHRAN?Fq"' # 3 day forecast
 
 # open typora even if file does not exist
 function typ(){
-    if [ ! -f "$0" ]; then
-        touch "$@"
-    fi
+    touch "$@"
     typora "$@"
 }
 
@@ -201,13 +199,12 @@ function dif(){
 
 # cd and ls at same time
 function cls() {
-    DIR="$*";
-        # if no DIR given, go home
-        if [ $# -lt 1 ]; then
-                DIR=$HOME;
+    DIR="$*"
+    # if no DIR given, go home
+    if [ $# -lt 1 ]; then
+        DIR=$HOME;
     fi;
-    builtin cd "${DIR}" && \
-      ls
+    builtin cd "${DIR}" && ls
 }
 
 
@@ -223,12 +220,12 @@ function mem(){
 
 function hdd() {
     df -x tmpfs -x devtmpfs | \
-    tail -n +2 | \
-    awk '{print $3, "of", $4, $5}' | \
-    sort -nr | \
-    uniq | \
-    numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%.1f" --field=1,3 | \
-    head -10
+        tail -n +2 | \
+        awk '{print $3, "of", $4, $5}' | \
+        sort -nr | \
+        uniq | \
+        numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%.1f" --field=1,3 | \
+        head -10
 }
 
 function last_commands(){

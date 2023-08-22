@@ -42,3 +42,5 @@
 
 [init]
     defaultBranch = master
+[merg]
+	tool = meld
