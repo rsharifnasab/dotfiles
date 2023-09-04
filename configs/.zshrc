@@ -66,7 +66,6 @@ plugins=(
     zsh-autosuggestions
     fast-syntax-highlighting
 
-    colored-man-pages
     copyfile #copy content of file to clipboard
 
     sudo # esc esc -> add sudo to command
@@ -100,7 +99,8 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 export MANPATH="/usr/local/man:$MANPATH"
 
 # use bat as man pager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+#export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+#
 ### "vim" as manpager
 # export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 
