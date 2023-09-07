@@ -3,6 +3,20 @@ set -e
 set -o nounset
 set -o pipefail
 
+
+function latex(){
+    inst tectonic \
+        texlive-bin texlive-basic texlive-latex texlive-latexextra texlive-fontsrecommended
+
+    (
+        cd /usr/share/texmf-dist/scripts/texlive
+        sudo sed -i 's/\$Master = "\$Master\/..\/..";/\$Master = "\$Master\/..\/..\/..";/'  ./tlmgr.pl
+    )
+
+    tlmgr init-usertree
+    tlmgr option repository http://mirrors.rit.edu/CTAN/systems/texlive/tlnet
+}
+
 function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!

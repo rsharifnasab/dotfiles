@@ -175,6 +175,9 @@ alias weac='curl -s "wttr.in/TEHRAN?F0"' # current weather
 alias weaf='curl -s "wttr.in/TEHRAN?Fq"' # 3 day forecast
 
 
+alias tllocalmgr="tlmgr --usermode"
+alias tlmgr="tlmgr --usermode"
+
 # open typora even if file does not exist
 function typ(){
     touch "$@"
