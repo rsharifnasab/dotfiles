@@ -53,6 +53,58 @@ colorscheme PaperColor      " great, candy colors
 "colorscheme ayu
 
 
+lua << EOF
+    vim.cmd.colorscheme("sweetie")
+
+    vim.g.sweetie = {
+      -- Pop-up menu pseudo-transparency
+      -- It requires `pumblend` option to have a non-zero value
+      pumblend = {
+        enable = true,
+        transparency_amount = 20,
+      },
+      -- Override default sweetie color palettes
+      -- Palette fields:
+      --  bg
+      --  fg
+      --  bg_hl
+      --  bg_alt
+      --  fg_alt
+      --  grey
+      --  dark_grey
+      --  red
+      --  orange
+      --  green
+      --  teal
+      --  yellow
+      --  blue
+      --  magenta
+      --  violet
+      --  cyan
+      palette = {
+        dark = {},
+        light = {},
+      },
+      -- Override default highlighting groups options
+      overrides = {},
+      -- Custom plugins highlighting groups
+      integrations = {
+        lazy = true,
+        neorg = true,
+        neogit = true,
+        neomake = true,
+        telescope = true,
+      },
+      -- Enable custom cursor coloring even in terminal Neovim sessions
+      cursor_color = true,
+      -- Use sweetie's palette in `:terminal` instead of your default terminal colorscheme
+      terminal_colors = true,
+      -- Use the legacy dark theme background colors
+      use_legacy_dark_bg = false,
+    }
+EOF
+
+
 " " hightlight menu colors " "
 " menu color
 "highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=#e7f2dc
