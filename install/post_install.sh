@@ -80,7 +80,7 @@ function terminal_full() {
     inst zsh moreutils \
 		kitty ttf-fira-code \
         tree tldr fd nnn source-highlight \
-		the_silver_searcher httpie lazygit
+		the_silver_searcher httpie lazygit gitui
 }
 
 function shell_devel() {
