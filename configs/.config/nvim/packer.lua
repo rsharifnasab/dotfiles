@@ -1,4 +1,3 @@
-
 local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -7,17 +6,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     )
 end
 
-vim.cmd [[
-augroup Packer
-autocmd!
-autocmd BufWritePost init.lua PackerCompile
-augroup end
-]]
-
 local packer = require("packer")
-
 local use = packer.use
-
 
 packer.startup(function ()
     use 'wbthomason/packer.nvim'
@@ -42,13 +32,13 @@ packer.startup(function ()
     use 'Chiel92/vim-autoformat'   -- auto format code with :AutoFormat
 
     -- search
-    use 'junegunn/fzf.vim'       -- fuzzy file finder (leader + tab)
     use {
-        'junegunn/fzf',
-        run = 'cd ~/.fzf && ./install --bin',
+         'nvim-telescope/telescope.nvim', tag = '0.1.3',
+          requires = {
+              {'nvim-lua/plenary.nvim'},
+              {'BurntSushi/ripgrep'}
+          }
     }
-    use  'mileszs/ack.vim'        -- search in project source code (leader + f)
-
 
     -- language specific
     use 'othree/html5.vim'               -- HTML5 omnicomplete and syntax
@@ -145,8 +135,6 @@ packer.startup(function ()
 end)
 
 
-
-
 vim.g.coc_global_extensions = {
     'coc-html', 'coc-css',
     'coc-tsserver', 'coc-tslint-plugin',
@@ -161,6 +149,3 @@ vim.g.coc_global_extensions = {
     -- coc-tag : add autocomplete source: tags file
     -- 'coc-snippets', 'coc-prettier',
 }
-
-
-

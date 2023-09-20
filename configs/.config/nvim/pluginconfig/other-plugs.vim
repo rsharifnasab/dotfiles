@@ -2,22 +2,11 @@
 command! MakeTags !ctags -R .
 "create tags file
 
-" " ack (global in file search) " "
-" change vim global file search with ack engine:
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-cnoreabbrev Ack Ack!
-nnoremap <Leader>f :Ack!<Space>
-
-" " fzf " "
-nmap <leader><tab> :FZF<CR>
 
 " " nerd tree " "
 noremap <C-f> :NERDTreeToggle<CR> " toggle nerd tree  with ctrl n
 let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out', '\.exe']
 " ignore files from nerdtree
-
 
 
 " " auto formater " "
