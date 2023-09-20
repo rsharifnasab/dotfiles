@@ -94,7 +94,6 @@ packer.startup(function ()
 
     -- themes
     use 'rafi/awesome-vim-colorschemes' -- many colorshcemes
-    use 'NTBBloodbath/sweetie.nvim'
 
     -- language specific
     use {                              -- Go development plugin for Vim
@@ -116,7 +115,7 @@ packer.startup(function ()
 
 
     use {
-        'nvim-treesitter/nvim-treesitter', 
+        'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate' ,
         config  = [[
                 require'nvim-treesitter.configs'.setup {

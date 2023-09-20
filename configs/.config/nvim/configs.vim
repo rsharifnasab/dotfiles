@@ -1,4 +1,3 @@
-
 set nocompatible " don't need to be compatible with VI
 
 set number " enable numbering of lines
@@ -76,12 +75,8 @@ set noerrorbells visualbell t_vb=
 
 let mapleader="\<Space>" "set the leader key
 let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
-"let g:python3_host_prog = '/home/roozbeh/apps/venv/bin/python3' " set python path (make sure it work inside venvs
-
 
 set hidden " keep undo history on buffer change
-
-
 
 " save and jump to last position in file
 if has("autocmd")
