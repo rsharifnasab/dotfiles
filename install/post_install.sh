@@ -243,6 +243,13 @@ function bluetooth() {
     rfkill unblock all
 }
 
+function grub_fix(){
+    sudo bash -c 'echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub.'
+    inst os-prober
+    os-prober 
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+}
+
 function run() {
     pre_install
     aur_helper
