@@ -125,6 +125,7 @@ function virtualbox() {
 }
 
 function desktop_packages() {
+    mkdir -p ~/Desktop ~/Pictures ~/Music ~/Videos ~/Downloads ~/Documents
     inst firefox chromium \
         noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu \
         ntfs-3g pacman-contrib dnsutil inetutils  lxrandr \
@@ -248,6 +249,11 @@ function grub_fix(){
     inst os-prober
     os-prober 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
+}
+function wallpaper(){
+    mkdir -p ~/Pictures/
+    git clone --branch master --depth 1 "https://github.com/rsharifnasab/wallpapers.git"
+    variety "&" || true
 }
 
 function run() {
