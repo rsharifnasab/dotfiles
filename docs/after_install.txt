@@ -27,6 +27,8 @@ after that these things are important:
 + bring ~/proj files like ta_utils and my-learning
 + change default search engine to duck duck go
 
-+ customize pinned icons in taskbar
++ customize taskbar
++ set super+space to: xfce4-popup-whiskermenu
++ set f12 to: xfce4-terminal --drop-down
 
 + restart!

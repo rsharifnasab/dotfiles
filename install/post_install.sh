@@ -1,7 +1,7 @@
 #!/bin/bash
-set -e
-set -o nounset
-set -o pipefail
+#set -e
+#set -o nounset
+#set -o pipefail
 
 
 function latex(){
@@ -22,6 +22,7 @@ function pre_install() {
     # install minimum tools to survive next steps!
     sudo pacman -Sy  --noconfirm archlinux-keyring
     sudo pacman -Syu
+    sudo pacman -R --noconfirm vim || true
     sudo pacman -S --needed --noconfirm base-devel gvim xsel xclip wget curl \
         stow man-pages man lsof bc rsync
 }
@@ -35,16 +36,12 @@ function inst() {
 }
 function aur_helper() {
     # if distro repo has paru, use it!
-    sudo pacman -S paru || (
+    paru -h || asudo pacman -S paru || (
         # or else: install from source
-        sudo pacman -Syu --needed rustup
-        rustup install stable
-        rustup default stable
-
         cd /tmp
-        git clone https://aur.archlinux.org/paru.git
-        cd paru
-        makepkg -si
+        git clone https://aur.archlinux.org/paru-bin.git
+        cd paru-bin
+        makepkg -si --noconfirm --needed
     )
 }
 
@@ -56,8 +53,8 @@ function ta() {
 function compilers() {
     inst nodejs npm go python3 python-pip \
         rustup jdk-openjdk lua elixir
-    rustup install stable
-    rustup default stable
+    rustup install stable || true
+    rustup default stable || true
 }
 
 function neovim_full() {
@@ -68,7 +65,7 @@ function neovim_full() {
 		~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # requiered packages for neovim
-    pip3 install --user --upgrade msgpack pynvim
+    inst python-msgpack python-pynvim
     sudo npm install -g neovim
     # sync plugins
     nvim +PackerSync
@@ -182,14 +179,14 @@ function java_devel() {
     # only of opened a java file
     # nvim +CocCommand java.updateLanguageServer
 
-    sudo mkdir /usr/local/share/lombok
+    \sudo \mkdir /usr/local/share/lombok
     sudo wget https://projectlombok.org/downloads/lombok.jar -O /usr/local/share/lombok/lombok.jar
 }
 
 function python_devel() {
     mkdir -p ~/apps
     (
-        cd apps || exit
+        cd ~/apps || exit
         python -m venv venv
         source "venv/bin/activate"
         pip3 install --upgrade pip pylint pynvim ipython
@@ -199,7 +196,7 @@ function python_devel() {
         #mypy --install-types
     )
 
-    inst python-pylint python-black pyright autopep8 pynvim
+    inst python-pylint python-black pyright autopep8
 
     #inst python-pylint-venv python-pipenv python-pytest \
     # python-rednose python-pytest autopep8
@@ -246,23 +243,21 @@ function bluetooth() {
     rfkill unblock all
 }
 
-function list() {
-    declare -F | awk '{print $NF}' | sort | egrep -v "^_" 
-}
-
 function run() {
     pre_install
     aur_helper
     compilers
-    neovim_full
     zsh_full
+    terminal_full
+    neovim_full
     bluetooth
     desktop_packages
     ta
     cpp_devel
     java_devel
-    rust_devel
     python_devel
+    shell_devel
+    #rust_devel
     #text_linters
     #haskell_devel
     #js_devel
@@ -271,4 +266,4 @@ function run() {
     #ubuntu
 }
 
-run
+#run

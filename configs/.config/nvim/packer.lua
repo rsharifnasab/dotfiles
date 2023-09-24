@@ -14,7 +14,7 @@ packer.startup(function ()
 
     --use "tversteeg/registers.nvim" -- press " to show registers content
 
-    use 'wakatime/vim-wakatime' -- time track my programming
+    --use 'wakatime/vim-wakatime' -- time track my programming
 
     -- Stable version of coc autocomplete
     use {
