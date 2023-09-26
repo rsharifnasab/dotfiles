@@ -18,7 +18,7 @@ bash ./configs/bin/sync_home
 
 
 brew install firefox skype kitty 
-brew install tldr moreutils nnn fd ripgrep 
+brew install tldr moreutils nnn fd ripgrep wget
 brew install jcal safe-rm ipython vlc #obs
 brew install nvim node shellcheck 
 sudo npm install -g neovim

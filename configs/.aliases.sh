@@ -131,7 +131,7 @@ alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
 alias psrc="source ~/apps/venv/bin/activate"
 alias yay="paru"
-alias kitty="kitty --detach"
+alias kit="kitty --detach"
 
 # check network
 alias ccc='curl ifconfig.me; echo'
