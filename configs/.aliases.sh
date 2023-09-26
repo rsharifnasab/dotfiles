@@ -11,27 +11,10 @@ alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
 alias ln='ln -i'
 
-SAFE_RM='/usr/bin/safe-rm'
-if test -f "$SAFE_RM"; then
+if command -v safe-rm &> /dev/null
+then
     alias rm='$SAFE_RM'
 fi
-
-
-reboot()
-{
-   printf "Reboot is about to happen , press enter "
-   read
-   /usr/bin/reboot
-}
-
-shutdown()
-{
-   printf "shutdown is about to happen , press enter "
-   read
-   /usr/bin/shutdown "$@"
-   # or for those who like to use systemd way, you can do systemctl reboot
-}
-
 
 
 # Preserve changing perms on /
