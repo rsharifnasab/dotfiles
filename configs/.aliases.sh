@@ -59,8 +59,8 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias free="free -mht"
 
-alias ls='ls --classify --human-readable -1 --color=auto'
-alias l='ls --classify --human-readable -1 --color=auto -lAh'
+alias ls='ls -h -1 --color=auto'
+alias l='ls -h -1 --color=auto -lAh'
 alias l.="ls -A | egrep '^\.'"
 alias sl='ls'
 
@@ -146,8 +146,6 @@ alias clip_set="xclip -selection c"
 alias clip_get="xclip -selection c -o"
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
-alias ipython="python -m IPython"
-alias ipy="python -m IPython"
 alias psrc="source ~/apps/venv/bin/activate"
 alias yay="paru"
 alias kitty="kitty --detach"
