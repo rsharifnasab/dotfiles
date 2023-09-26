@@ -65,7 +65,7 @@ function neovim_full() {
 		~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # requiered packages for neovim
-    inst python-msgpack python-pynvim
+    inst python-msgpack python-pynvim fd ripgrep
     sudo npm install -g neovim
     # sync plugins
     nvim +PackerSync
@@ -134,7 +134,8 @@ function desktop_packages() {
         nano xed tmux zellij jcal btop tokei aria2 acpi tty-clock \
         ncdu qrencode viu speedtet-cli ipython \
         vlc shotwell telegram-desktop meld thunar obs-studio \
-        pandoc-bin typora-free
+        pandoc-bin typora-free \
+        gparted
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -238,7 +239,7 @@ function ubuntu() {
 }
 
 function bluetooth() {
-    inst bluez bluez-tools
+    inst bluez bluez-tools bluez-utils blueman
     sudo systemctl enable bluetooth.service
     sudo systemctl start bluetooth.service
     rfkill unblock all
