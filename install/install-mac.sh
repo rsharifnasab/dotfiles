@@ -4,6 +4,8 @@ set -e
 set -o nounset
 set -o pipefail
 
+sudo xcode-select --install
+
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'export PATH="$PATH:/opt/homebrew/bin'
 
