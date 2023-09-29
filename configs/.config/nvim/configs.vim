@@ -74,7 +74,8 @@ set noerrorbells visualbell t_vb=
 
 
 let mapleader="\<Space>" "set the leader key
-let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
+"let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
+
 
 set hidden " keep undo history on buffer change
 

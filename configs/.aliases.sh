@@ -7,8 +7,8 @@
 ## safer commands
 alias rm='rm -I --preserve-root'
 alias mc='nocorrect mv -i'
-alias mv='nocorrect mv -i'
-alias cp='nocorrect cp -i'
+#alias mv='nocorrect mv -i'
+#alias cp='nocorrect cp -i'
 alias ln='ln -i'
 
 if command -v safe-rm &> /dev/null
@@ -18,20 +18,20 @@ fi
 
 
 # Preserve changing perms on /
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
+#alias chown='chown --preserve-root'
+#alias chmod='chmod --preserve-root'
+#alias chgrp='chgrp --preserve-root'
 
 # shorter commands
 
-alias docker-compose='sudo docker-compose'
-alias docker='sudo docker'
+#alias docker-compose='sudo docker-compose'
+#alias docker='sudo docker'
 
 alias k="kubectl"
 alias j='jdate -u +"%Y/%m/%d"'
 alias f="xdg-open"
 alias f.="xdg-open ."
-alias open="xdg-open"
+#alias open="xdg-open"
 alias v='nvim'
 # emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
@@ -59,7 +59,7 @@ fi
 alias please="sudo "
 alias sudo="sudo "
 alias cd..='cd ..' 
-alias mkdir="nocorrect mkdir -pv"
+alias mkdir="mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
 function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 dns(){ dig "$@" "+short" ; }
