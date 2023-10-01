@@ -5,15 +5,15 @@
 
 
 ## safer commands
-alias rm='rm -I --preserve-root'
-alias mc='nocorrect mv -i'
+#alias rm='rm -I --preserve-root'
+#alias mc='nocorrect mv -i'
 #alias mv='nocorrect mv -i'
 #alias cp='nocorrect cp -i'
 alias ln='ln -i'
 
-if command -v safe-rm &> /dev/null
+if ! command -v safe-rm &> /dev/null
 then
-    alias rm='$SAFE_RM'
+    alias rm="safe-rm"
 fi
 
 
@@ -191,6 +191,14 @@ function cls() {
     builtin cd "${DIR}" && ls
 }
 
+function clear_proxy(){
+    export http_proxy=""
+    export https_proxy=""
+    export HTTP_PROXY=""
+    export HTTPS_PROXY=""
+    export ftp_proxy=""
+    export ALL_PROXY=""
+}
 
 function mnt(){
     mount | awk -F' ' '{ printf "%s\t%s\n",$1,$3; }' \
