@@ -162,7 +162,7 @@ then
     # from here: https://www.asciiart.eu/space/astronauts
 fi
 
-if [[ -f ".site.sh" ]]
+if [[ -f "$HOME/.site.sh" ]]
 then
-    source ".site.sh"
+    source "$HOME/.site.sh"
 fi
