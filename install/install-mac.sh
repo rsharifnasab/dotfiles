@@ -23,6 +23,7 @@ brew install firefox skype kitty
 brew install tldr moreutils nnn fd ripgrep wget the_silver_searcher
 brew install jcal safe-rm ipython vlc #obs
 brew install nvim node shellcheck 
+brew install speedtest-cli
 brew install homebrew/cask/docker # docker desktop
 # set this registry in ~/.docker/daemon.json:         "https://docker.iranserver.com"
 brew install nats-io/nats-tools/nats
