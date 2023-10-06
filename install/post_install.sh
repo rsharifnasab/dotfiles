@@ -6,7 +6,11 @@
 
 function latex(){
     inst tectonic \
-        texlive-bin texlive-basic texlive-latex texlive-latexextra texlive-fontsrecommended
+        texlive-bin texlive-basic texlive-xetex \
+        texlive-latex texlive-latexextra \
+        texlive-fontsrecommended texlive-binextra \
+        ed dialog wdiff \
+        texstudio
 
     (
         cd /usr/share/texmf-dist/scripts/texlive
@@ -15,6 +19,8 @@ function latex(){
 
     tlmgr init-usertree
     tlmgr option repository http://mirrors.rit.edu/CTAN/systems/texlive/tlnet
+
+    sudo fmtutil-sys --all
 }
 
 function pre_install() {
