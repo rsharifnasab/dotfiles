@@ -156,14 +156,18 @@ function r(){
     exec zsh || echo 'error in syncing'
 }
 
+if [[ -f "$HOME/.site.sh" ]]
+then
+    source "$HOME/.site.sh"
+fi
+
 if [[ ! -e /tmp/welcome.sem ]]
 then
     touch /tmp/welcome.sem
     cat "$HOME/proj/dotfiles/welcome.txt" || true
     # from here: https://www.asciiart.eu/space/astronauts
-fi
-
-if [[ -f "$HOME/.site.sh" ]]
-then
-    source "$HOME/.site.sh"
+else 
+    if [ -x "$(command -v pfetch)" ]; then 
+        pfetch
+    fi
 fi
