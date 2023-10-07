@@ -4,11 +4,19 @@ set -e
 set -o nounset
 set -o pipefail
 
+
+# to disable SIP
+# in recovery mode: csrutil disable
+
+# turn off annoying accent menu pop up
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# install git/other needed requirements
 sudo xcode-select --install
 
+#install brew 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'export PATH="$PATH:/opt/homebrew/bin'
-
+echo 'export PATH="$PATH:/opt/homebrew/bin' >> ~/.site.sh
 
 brew install stow lsd
 
@@ -22,8 +30,13 @@ bash ./configs/bin/sync_home
 brew install firefox skype kitty 
 brew install tldr moreutils nnn fd ripgrep wget the_silver_searcher
 brew install jcal safe-rm ipython vlc #obs
-brew install nvim node shellcheck 
-brew install speedtest-cli
+brew install nvim node shellcheck speedtest-cli 
+
+
+#install firacode font
+brew tap homebrew/cask-fonts
+brew install --cask font-fira-code
+
 brew install homebrew/cask/docker # docker desktop
 # set this registry in ~/.docker/daemon.json:         "https://docker.iranserver.com"
 brew install nats-io/nats-tools/nats
@@ -60,7 +73,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 git clone --depth 1 https://github.com/wbthomason/packer.nvim \
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
 
 
 

@@ -191,6 +191,11 @@ function cls() {
     builtin cd "${DIR}" && ls
 }
 
+function set_proxy(){
+    export http_proxy="http://127.0.0.1:6666/"
+    export https_proxy="http://127.0.0.1:6666/"
+}
+
 function clear_proxy(){
     export http_proxy=""
     export https_proxy=""

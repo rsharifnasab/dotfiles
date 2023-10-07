@@ -39,6 +39,7 @@ setopt interactivecomments # comments in interactive mode
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true" # automatically update without prompting.
 export UPDATE_ZSH_DAYS=13
+# instead, update with omz update
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
