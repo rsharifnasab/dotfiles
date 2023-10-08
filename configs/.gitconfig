@@ -44,3 +44,8 @@
     defaultBranch = master
 [merg]
 	tool = meld
+
+
+# Include only when I am in snapp
+[includeIf "gitdir:/Users/roozbewh/"]
+    path = .gitconfig.snapp
