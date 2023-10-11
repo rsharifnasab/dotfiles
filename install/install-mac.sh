@@ -30,17 +30,17 @@ bash ./configs/bin/sync_home
 brew install firefox skype kitty 
 brew install tldr moreutils nnn fd ripgrep wget the_silver_searcher
 brew install jcal safe-rm ipython vlc #obs
-brew install nvim node shellcheck speedtest-cli 
-
+brew install nvim node shellcheck speedtest-cli  bat-extras
+brew install coreutils inetutils just git bash zsh lazygit 
 
 #install firacode font
 brew tap homebrew/cask-fonts
 brew install --cask font-fira-code
 
-brew install homebrew/cask/docker # docker desktop
+brew install homebrew/cask/docker lazydocker docker-completion docker-compose docker-compose-completion # docker desktop
 # set this registry in ~/.docker/daemon.json:         "https://docker.iranserver.com"
 brew install nats-io/nats-tools/nats
-
+brew install openshift-client helm
 
 sudo npm install -g neovim
 /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip

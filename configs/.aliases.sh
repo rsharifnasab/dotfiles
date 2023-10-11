@@ -61,7 +61,7 @@ alias sudo="sudo "
 alias cd..='cd ..' 
 alias mkdir="mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
-function mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+ mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 dns(){ dig "$@" "+short" ; }
 
 alias pacman="sudo pacman --color auto"
@@ -146,7 +146,7 @@ alias tb="nc termbin.com 9999" # copy to online clipboard
 alias excuse="w3m http://developerexcuses.com/ | head -3 | xargs -o"
 
 # check the weather 
-function wea() {
+ wea() {
     local request="wttr.in/${1-tehran}?Fq"
     [ "$(tput cols)" -lt 125 ] && request+='n'
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
@@ -160,18 +160,18 @@ alias tllocalmgr="tlmgr --usermode"
 alias tlmgr="tlmgr --usermode"
 
 # open typora even if file does not exist
-function typ(){
+ typ(){
     touch "$@"
     typora "$@"
 }
 
 # use gnu hightlight for add syntax hight to less
-function gat(){
+ gat(){
     src-hilite-lesspipe.sh "$@" | less
 }
 
 
-function dif(){
+ dif(){
     if [ -x  "$(command -v diff-so-fancy)" ]; then
         diff -u "$@" | diff-so-fancy
     else
@@ -182,7 +182,7 @@ function dif(){
 }
 
 # cd and ls at same time
-function cls() {
+ cls() {
     DIR="$*"
     # if no DIR given, go home
     if [ $# -lt 1 ]; then
@@ -191,12 +191,12 @@ function cls() {
     builtin cd "${DIR}" && ls
 }
 
-function set_proxy(){
+ set_proxy(){
     export http_proxy="http://127.0.0.1:6666/"
     export https_proxy="http://127.0.0.1:6666/"
 }
 
-function clear_proxy(){
+ clear_proxy(){
     export http_proxy=""
     export https_proxy=""
     export HTTP_PROXY=""
@@ -205,17 +205,17 @@ function clear_proxy(){
     export ALL_PROXY=""
 }
 
-function mnt(){
+ mnt(){
     mount | awk -F' ' '{ printf "%s\t%s\n",$1,$3; }' \
         | column -t | grep -E "^/dev/" | sort
 }
 
-function mem(){
+ mem(){
     grep "Avail" /proc/meminfo | \
         awk ' { print "Available Memory: " $2/1024/1024 " GB" }'
 }
 
-function hdd() {
+ hdd() {
     df -x tmpfs -x devtmpfs | \
         tail -n +2 | \
         awk '{print $3, "of", $4, $5}' | \
@@ -225,24 +225,24 @@ function hdd() {
         head -10
 }
 
-function last_commands(){
+ last_commands(){
     history | awk '{print $4}' | sort | uniq -c | sort -n | tail -20
 }
 
 
-function vlc_sub(){
+ vlc_sub(){
     vlc -q ./*$1* --sub-file ./*$1*.srt
 }
 
 # sum of all videos in the current folder
-function sum_vid_len(){
+ sum_vid_len(){
     dir="$1"
     find "$dir" -maxdepth 1 -iname '*.*' -exec \
         ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; \
         | awk '{sum += $0} END{print sum/60 "min"}'
 }
 
-function clean_docker(){
+ clean_docker(){
     # Kill all running containers:
     docker kill $(docker ps -q)
 
@@ -277,7 +277,7 @@ function clean_docker(){
 }
 
 alias orphans='[[ -n $(pacman -Qdt) ]] && sudo pacman -Rs $(pacman -Qdtq) || echo "no orphans to remove"'
-function clean_disk(){
+ clean_disk(){
     echo "cleaning paru"
     paru -Sc
     echo "cleaning pacman"
@@ -336,10 +336,10 @@ alias p="nocorrect proxychains -q "
 alias neko="~/apps/nekoray/launcher"
 
 #####################
-### FZF functions ###
+### FZF s ###
 #####################
 
-function fkill(){
+ fkill(){
     local pid
 
     if [ "$UID" != "0" ]; then
@@ -354,13 +354,13 @@ function fkill(){
 }
 
 # select with fzf open file in gui
-function fo() {
+ fo() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
     [[ -n "${files[0]}" ]] && xdg-open "${files[@]}"
 }
 
 # select with fzf open selected folder in file manager
-function fm() {
+ fm() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
 
     if command -v thunar &> /dev/null # xfce
@@ -375,7 +375,7 @@ function fm() {
 }
 
 # find mp3 file in cwd
-function fmm() {
+ fmm() {
     NAME=$1
     files=$(locate "/$NAME.mp3")
     echo "$files"
@@ -391,7 +391,7 @@ function fmm() {
 }
 
 # open folder containing current playing track
-function fvlc() {
+ fvlc() {
     files=$(lsof -p `pidof -s vlc` | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
     if command -v thunar &> /dev/null # xfce
     then
@@ -405,23 +405,23 @@ function fvlc() {
 }
 
 # select with fzf open file with vim
-function fe() {
+ fe() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
     [[ -n "${files[*]}" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
 # select dir and cd to it. including hidden directories
-function fzfd(){
+ fzfd(){
     local dir
     dir=$(find "${1:-.}" -type d 2> /dev/null | fzf +m) && cd "$dir" || return
 }
 
 # search from history (fzf) to repeat
-function fh() {
+ fh() {
     print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-function inst() {
+ inst() {
     if hash paru paru 2>/dev/null; then
         paru -S --needed --noconfirm "$@"
     else
@@ -430,12 +430,12 @@ function inst() {
 }
 
 # search (fzf) and install package with paru
-function in() {
+ in() {
     paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}'| xargs -ro paru -S
 }
 
 # search (fzf) and remove package with paru
-function re() {
+re() {
     paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 
@@ -450,6 +450,12 @@ lg()
             rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
     fi
 }
+
+port(){
+    port_no="$1"
+    lsof -i ":${port_no}" -sTCP:LISTEN -n -P | awk '{ print $1 }' | tail +2 | sort | uniq
+}
+
 
 #########
 ## ETC ##

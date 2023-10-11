@@ -11,7 +11,11 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh/"
 
-
+# add brew site functions to FPATH
+if type /opt/homebrew/bin/brew &>/dev/null
+then
+    FPATH="$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 
 ###############
 ##set zsh theme
