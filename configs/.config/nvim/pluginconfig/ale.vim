@@ -9,7 +9,7 @@ let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
 let g:ale_disable_lsp = 1 " let coc do the stuff
 
 let g:ale_linters = {
-\   'go': ['gobuild', 'govet', 'staticcheck', 'gotype', 'golangserver', 'gosimple' , 'gopls', 'gometalinter' , 'gofmt', 'bingo', 'golangci-lint', 'revive'],
+\   'go': ['gobuild', 'govet', 'staticcheck', 'gotype', 'golangserver', 'gosimple' , 'gopls', 'gometalinter' , 'gofmt', 'bingo', 'golangci-lint'],
 \   'text': ['languagetool', 'vale', 'alex'],
 \}
 
