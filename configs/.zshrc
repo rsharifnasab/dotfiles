@@ -1,12 +1,9 @@
-export GOPATH="$HOME/go"
 
+export GOPATH="$HOME/go"
 export PATH="$PATH:\
 $HOME/bin:\
-$HOME/.local/bin"
-
-if [ -x "$(command -v go)" ]; then
-    export PATH="$PATH:$(go env GOPATH)/bin"
-fi
+$HOME/.local/bin:\
+$GOPATH/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh/"
@@ -90,27 +87,13 @@ plugins=(
 
     #zsh-vi-mode
 )
-source $ZSH/oh-my-zsh.sh
-
-
-export FZF_BASE=/usr/bin/fzf
-DISABLE_FZF_KEY_BINDINGS="false"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source "$ZSH"/oh-my-zsh.sh
 
 
 # solve slow paste issue (cause:zsh-autosuggestions)
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 export MANPATH="/usr/local/man:$MANPATH"
-
-# use bat as man pager
-#export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-#
-### "vim" as manpager
-# export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
-
-### "nvim" as manpager
-# export MANPAGER="nvim -c 'set ft=man' -"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -128,13 +111,12 @@ else
     export SUDO_EDITOR="nvim"
 fi
 
+## Control history
 # ignore non meaningful commands from history
 export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
-
-[[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
-
-# platform specific configs
-type apt >/dev/null 2>&1 && source ~/.debian_config || true
+# ignore history for jrnl
+setopt HIST_IGNORE_SPACE
+alias jrnl=" jrnl"
 
 
 #fix home/end/delete not working
@@ -142,23 +124,21 @@ bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
 
-# nice visualization
-# pfetch
-# colorscript -e 16
-
-# ignore history for jrnl
-setopt HIST_IGNORE_SPACE
-alias jrnl=" jrnl"
-
-
 # reload new config files from dotfiles
 # changes in sync_home will effect after second reload!
-# TODO: handle this better
 function r(){
     clear
     sync_home
     exec zsh || echo 'error in syncing'
 }
+
+export FZF_BASE=$(which fzf)
+DISABLE_FZF_KEY_BINDINGS="false"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
+
+type apt >/dev/null 2>&1 && [[ -f ~/.debian_config ]] && source ~/.debian_config
 
 if [[ -f "$HOME/.site.sh" ]]
 then
@@ -170,8 +150,8 @@ then
     touch /tmp/welcome.sem
     cat "$HOME/proj/dotfiles/welcome.txt" || true
     # from here: https://www.asciiart.eu/space/astronauts
-else 
-    if [ -x "$(command -v pfetch)" ]; then 
+else
+    if [ -x "$(command -v pfetch)" ]; then
         pfetch
     fi
 fi
