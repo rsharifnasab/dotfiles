@@ -119,6 +119,10 @@ autocmd BufRead *.pacnew set readonly
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
 
+" disable swap file for gopass files
+autocmd BufNewFile,BufRead /dev/shm/gopass* setlocal noswapfile nobackup noundofile viminfo=""
+autocmd BufNewFile,BufRead /private/**/gopass** setlocal noswapfile nobackup noundofile viminfo=""
+
 """"""""""""""""""""""""""""""""""""
 
 

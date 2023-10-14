@@ -110,6 +110,9 @@ autocmd BufRead *.pacnew set readonly
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
 
+" disable swap file for gopass files
+autocmd BufNewFile,BufRead /dev/shm/gopass* setlocal noswapfile nobackup noundofile shada=""
+autocmd BufNewFile,BufRead /private/**/gopass** setlocal noswapfile nobackup noundofile shada=""
 
 autocmd BufNewFile *.sh 0r ~/Templates/a.sh
 autocmd BufNewFile *.c 0r ~/Templates/main.c

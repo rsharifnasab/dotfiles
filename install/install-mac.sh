@@ -77,3 +77,14 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim \
 
 
 #https://github.com/rofl0r/proxychains-ng/issues/481
+
+
+
+# gopass
+brew install gopass 
+gpg --full-generate-key
+
+brew install pinentry-mac
+PINENTRY=$(which pinentry-mac)
+echo "pinentry-program ${PINENTRY}" >>~/.gnupg/gpg-agent.conf
+defaults write org.gpgtools.common UseKeychain NO
