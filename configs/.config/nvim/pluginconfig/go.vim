@@ -11,12 +11,16 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_variable_declarations = 1
 
 "let g:go_fmt_command = 'goimports'
+
+let g:go_fmt_command="gopls"
+let g:go_gopls_gofumpt=1
+
 let g:go_textobj_include_function_doc = 1
 let g:go_fmt_fail_silently = 1
 
-let g:go_metalinter_autosave = 0
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_deadline = "5s"
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'golangci-lint']
+let g:go_metalinter_deadline = "9s"
 
 
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
