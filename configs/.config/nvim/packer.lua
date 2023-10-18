@@ -75,7 +75,7 @@ packer.startup(function ()
     -- file explorer
     use 'preservim/nerdtree'           -- file tree in the left side
     use 'jistr/vim-nerdtree-tabs'      -- NERDTree and tabs together in Vim, painlessly
-    use 'ryanoasis/vim-devicons'       -- icons for nerdree and startify
+    --use 'ryanoasis/vim-devicons'       -- icons for nerdree and startify
 
 
     -- beautiful airline
