@@ -192,8 +192,8 @@ alias tlmgr="tlmgr --usermode"
 }
 
  set_proxy(){
-    export http_proxy="http://127.0.0.1:6666/"
-    export https_proxy="http://127.0.0.1:6666/"
+    export http_proxy="socks5://127.0.0.1:9876/"
+    export https_proxy="socks5://127.0.0.1:9876/"
 }
 
  clear_proxy(){
