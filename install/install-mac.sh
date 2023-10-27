@@ -48,6 +48,10 @@ pip3 install --user pynvim
 
 
 
+brew install mark-text
+xattr -cr /Applications/MarkText.app
+
+
 git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 
 # archcraft zsh theme

@@ -23,6 +23,9 @@ stow_sync(){
         --dir="$dotfiles_path" \
         --target="$HOME" \
         "configs"
+    if [ -d "$HOME/Library" ]; then 
+        ln -sf "$dotfiles_path/configs/.config/marktext/themes/" "$HOME/Library/Application Support/marktext/"
+    fi
 }
 
 
