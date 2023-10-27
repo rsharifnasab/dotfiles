@@ -27,7 +27,7 @@ cd dotfiles
 bash ./configs/bin/sync_home
 
 
-brew install firefox skype kitty 
+brew install firefox skype kitty
 brew install tldr moreutils nnn fd ripgrep wget the_silver_searcher
 brew install jcal safe-rm ipython vlc #obs
 brew install nvim node shellcheck speedtest-cli  bat-extras
@@ -47,6 +47,7 @@ sudo npm install -g neovim
 pip3 install --user pynvim
 
 
+brew install mactex texstudio
 
 brew install mark-text
 xattr -cr /Applications/MarkText.app
@@ -83,9 +84,8 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim \
 #https://github.com/rofl0r/proxychains-ng/issues/481
 
 
-
 # gopass
-brew install gopass 
+brew install gopass
 gpg --full-generate-key
 
 brew install pinentry-mac
