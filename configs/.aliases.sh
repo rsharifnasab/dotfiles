@@ -16,6 +16,9 @@ then
     alias rm="safe-rm"
 fi
 
+if [ -e "/Applications/MarkText.app/Contents/MacOS/MarkText" ]; then
+    alias marktext="/Applications/MarkText.app/Contents/MacOS/MarkText"
+fi
 
 # Preserve changing perms on /
 #alias chown='chown --preserve-root'
