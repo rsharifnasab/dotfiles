@@ -1,7 +1,8 @@
 
 
 " " general remaps " "
-map <C-a> <esc>ggVG<CR> " ctrl a -> Select all
+" ctrl a -> Select all
+map <C-a> <esc>ggVG<CR>
 
 " control S -> save
 noremap  <silent> <C-S>      :update<CR>

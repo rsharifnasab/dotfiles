@@ -36,24 +36,25 @@ packer.startup(function()
 	})
 
 	-- language specific
-	use("othree/html5.vim") -- HTML5 omnicomplete and syntax
-	use("mrk21/yaml-vim") -- YAML syntax/indent plugin for Vim
-	use("ekalinin/Dockerfile.vim") -- Vim syntax file & snippets for Docker's Dockerfile
-	use("rust-lang/rust.vim") -- Vim configuration for Rust.
-
-	-- better syntax highlight
 	use("justinmk/vim-syntax-extra") -- add extra syntax highlight for flex
-	use("uiiaoo/java-syntax.vim") -- richer syntax hightligh for java
-	use("octol/vim-cpp-enhanced-highlight") -- Additional Vim syntax highlighting for C++
+	use("elixir-editors/vim-elixir")
+	use("ekalinin/Dockerfile.vim") -- Vim syntax file & snippets for Dockerfile
+	use("rust-lang/rust.vim")
+	use({
+		"fatih/vim-go",
+		run = ":GoUpdateBinaries",
+	})
 
 	-- snippets
 	use("SirVer/ultisnips") -- snippet engine
 	use("honza/vim-snippets") -- actually snippets
 
 	-- file explorer
-	use("preservim/nerdtree") -- file tree in the left side
-	use("jistr/vim-nerdtree-tabs") -- NERDTree and tabs together in Vim, painlessly
-
+	use({
+		"ms-jpq/chadtree",
+		branch = "chad",
+		run = ":CHADdeps",
+	})
 	use({
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
@@ -73,14 +74,6 @@ packer.startup(function()
 
 	-- themes
 	use("rafi/awesome-vim-colorschemes") -- many colorshcemes
-
-	-- language specific
-	use({ -- Go development plugin for Vim
-		"fatih/vim-go",
-		run = ":GoUpdateBinaries",
-	})
-
-	use("elixir-editors/vim-elixir")
 
 	use({
 		"nvim-treesitter/nvim-treesitter-context",

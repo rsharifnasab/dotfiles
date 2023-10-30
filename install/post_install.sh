@@ -73,7 +73,8 @@ function neovim_full() {
     inst python-msgpack python-pynvim fd ripgrep
     sudo npm install -g neovim
     # sync plugins
-    nvim +PackerSync
+    # nvim +PackerSync
+    nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
     nvim +UpdateRemotePlugins
     nvim +CocUpdate
 
