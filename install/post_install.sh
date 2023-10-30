@@ -3,8 +3,7 @@
 #set -o nounset
 #set -o pipefail
 
-
-function latex(){
+function latex() {
     inst tectonic \
         texlive-bin texlive-basic texlive-xetex \
         texlive-latex texlive-latexextra \
@@ -14,7 +13,7 @@ function latex(){
 
     (
         cd /usr/share/texmf-dist/scripts/texlive
-        sudo sed -i 's/\$Master = "\$Master\/..\/..";/\$Master = "\$Master\/..\/..\/..";/'  ./tlmgr.pl
+        sudo sed -i 's/\$Master = "\$Master\/..\/..";/\$Master = "\$Master\/..\/..\/..";/' ./tlmgr.pl
     )
 
     tlmgr init-usertree
@@ -26,7 +25,7 @@ function latex(){
 function pre_install() {
     # update the system before anything!
     # install minimum tools to survive next steps!
-    sudo pacman -Sy  --noconfirm archlinux-keyring
+    sudo pacman -Sy --noconfirm archlinux-keyring
     sudo pacman -Syu
     sudo pacman -R --noconfirm vim || true
     sudo pacman -S --needed --noconfirm base-devel gvim xsel xclip wget curl \
@@ -68,7 +67,7 @@ function neovim_full() {
 
     # nvim packer
     git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-		~/.local/share/nvim/site/pack/packer/start/packer.nvim
+        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # requiered packages for neovim
     inst python-msgpack python-pynvim fd ripgrep
@@ -77,13 +76,16 @@ function neovim_full() {
     nvim +PackerSync
     nvim +UpdateRemotePlugins
     nvim +CocUpdate
+
+    inst prettier
 }
 
 function terminal_full() {
     inst zsh moreutils \
-		kitty ttf-fira-code \
+        kitty ttf-fira-code ttf-firacode-nerd \
         tree tldr fd nnn source-highlight \
-		the_silver_searcher httpie lazygit gitui
+        the_silver_searcher httpie lazygit gitui \
+        proxychains-ng xray just
 }
 
 function shell_devel() {
@@ -117,24 +119,24 @@ function text_linters() {
     inst languagetool
 
     # fast and have options
-    #inst vale
-    #vale sync
+    # inst vale
+    # vale sync
     # read and sync styles from .vale.ini
     # more info: https://vale.sh/generator/
 
     # fast, foxus on non-offending writing
-    #sudo npm install alex --global
+    # sudo npm install alex --global
 }
 
 function virtualbox() {
-    inst virtualbox virtualbox-host-modules-arch  virtualbox-guest-iso  virtualbox-ext-oracle
+    inst virtualbox virtualbox-host-modules-arch virtualbox-guest-iso virtualbox-ext-oracle
 }
 
 function desktop_packages() {
     mkdir -p ~/Desktop ~/Pictures ~/Music ~/Videos ~/Downloads ~/Documents
     inst firefox chromium \
         noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu \
-        ntfs-3g pacman-contrib dnsutil inetutils  lxrandr \
+        ntfs-3g pacman-contrib dnsutil inetutils lxrandr \
         zip unzip unrar xarchiver engrampa \
         variety flameshot redshift \
         nano xed tmux zellij jcal btop tokei aria2 acpi tty-clock \
@@ -155,13 +157,12 @@ function zsh_full() {
     #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 
-	# archcraft zsh theme
+    # archcraft zsh theme
     (
         cd ~/.oh-my-zsh/themes || exit
         git clone https://github.com/mrx04programmer/ZshTheme-ArchCraft/
         mv ZshTheme-ArchCraft/archcraft-dwm.zsh-theme "$PWD"
     )
-
 
     # autosuggestion, fast syntax highlight, autocomplete
     git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions \
@@ -187,7 +188,7 @@ function java_devel() {
     # only of opened a java file
     # nvim +CocCommand java.updateLanguageServer
 
-    \sudo \mkdir /usr/local/share/lombok
+    sudo mkdir /usr/local/share/lombok
     sudo wget https://projectlombok.org/downloads/lombok.jar -O /usr/local/share/lombok/lombok.jar
 }
 
@@ -212,6 +213,10 @@ function python_devel() {
     # install python language server
     #pip install --user python-language-server
 
+}
+
+function lua_devel() {
+    inst stylua luajit
 }
 
 function micro() {
@@ -251,13 +256,13 @@ function bluetooth() {
     rfkill unblock all
 }
 
-function grub_fix(){
+function grub_fix() {
     sudo bash -c 'echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub.'
     inst os-prober
-    os-prober 
+    os-prober
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
-function wallpaper(){
+function wallpaper() {
     mkdir -p ~/Pictures/
     git clone --branch master --depth 1 "https://github.com/rsharifnasab/wallpapers.git"
     variety "&" || true
@@ -277,6 +282,7 @@ function run() {
     java_devel
     python_devel
     shell_devel
+    lua_devel
     #rust_devel
     #text_linters
     #haskell_devel

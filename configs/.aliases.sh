@@ -3,7 +3,6 @@
 ## ALIASES ##
 #############
 
-
 ## safer commands
 #alias rm='rm -I --preserve-root'
 #alias mc='nocorrect mv -i'
@@ -11,8 +10,7 @@
 #alias cp='nocorrect cp -i'
 alias ln='ln -i'
 
-if ! command -v safe-rm &> /dev/null
-then
+if ! command -v safe-rm &>/dev/null; then
     alias rm="safe-rm"
 fi
 
@@ -58,14 +56,13 @@ if test -f "$LSD_COMMAND"; then
     alias tree='lsd  -Fh1    --color=auto            --group-dirs first --tree'
 fi
 
-
 alias please="sudo "
 alias sudo="sudo "
 alias cd..='cd ..'
 alias mkdir="mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
-mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
-dns(){ dig "$@" "+short" ; }
+mkcd() { mkdir -p "$@" && eval cd "\"\$$#\""; }
+dns() { dig "$@" "+short"; }
 
 alias pacman="sudo pacman --color auto"
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
@@ -85,7 +82,6 @@ alias CLEAN='clear'
 alias CLEAR='clear'
 alias زمثشق='clear'
 
-
 # bye
 alias :q='exit'
 alias zzz="systemctl suspend"
@@ -96,7 +92,6 @@ alias bye="command shutdown now"
 alias sss='command shutdown now'
 alias سسس='command shutdown now'
 alias ssc='command shutdown -c'
-
 
 # git aliases
 alias got='git'
@@ -123,7 +118,6 @@ alias goc="go clean"
 alias gott="go test './...' -cover"
 alias gop='cd $GOPATH'
 
-
 # command with extenral tools
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
@@ -139,8 +133,8 @@ alias kit="kitty --detach"
 # check network
 alias ccc='curl ifconfig.me; echo'
 alias ccv='curl myip.wtf/text'
-alias pccc='proxychains -q curl ifconfig.me; echo'
-alias pccv='proxychains -q curl myip.wtf/text'
+alias pccc='p curl ifconfig.me; echo'
+alias pccv='p curl myip.wtf/text'
 alias nw='watch -n 3 -t -d -b "curl -s ifconfig.me"'
 alias pnw='watch -n3 -t -d -b "proxychains -q curl -s ifconfig.me"'
 
@@ -155,27 +149,25 @@ wea() {
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
 alias wea1='curl -s "wttr.in/TEHRAN?format=3"' # one liner: how is the weather?
-alias weac='curl -s "wttr.in/TEHRAN?F0"' # current weather
-alias weaf='curl -s "wttr.in/TEHRAN?Fq"' # 3 day forecast
-
+alias weac='curl -s "wttr.in/TEHRAN?F0"'       # current weather
+alias weaf='curl -s "wttr.in/TEHRAN?Fq"'       # 3 day forecast
 
 alias tllocalmgr="tlmgr --usermode"
 alias tlmgr="tlmgr --usermode"
 
 # open typora even if file does not exist
-typ(){
+typ() {
     touch "$@"
     typora "$@"
 }
 
 # use gnu hightlight for add syntax hight to less
-gat(){
+gat() {
     src-hilite-lesspipe.sh "$@" | less
 }
 
-
-dif(){
-    if [ -x  "$(command -v diff-so-fancy)" ]; then
+dif() {
+    if [ -x "$(command -v diff-so-fancy)" ]; then
         diff -u "$@" | diff-so-fancy
     else
         echo "git so fancy not installed, fallback"
@@ -189,22 +181,22 @@ cls() {
     DIR="$*"
     # if no DIR given, go home
     if [ $# -lt 1 ]; then
-        DIR=$HOME;
-    fi;
+        DIR=$HOME
+    fi
     builtin cd "${DIR}" && ls
 }
 
-query_proxy(){
+query_proxy() {
     echo "http_proxy=$http_proxy, https_proxy=$https_proxy"
 }
 
-set_proxy(){
+set_proxy() {
     export http_proxy="socks5://127.0.0.1:9876/"
     export https_proxy="socks5://127.0.0.1:9876/"
     query_proxy
 }
 
-reset_proxy(){
+reset_proxy() {
     export http_proxy=""
     export https_proxy=""
     export HTTP_PROXY=""
@@ -218,46 +210,45 @@ alias rp="reset_proxy"
 alias sp="set_proxy"
 alias qp="query_proxy"
 
-mnt(){
-    mount | awk -F' ' '{ printf "%s\t%s\n",$1,$3; }' \
-        | column -t | grep -E "^/dev/" | sort
-    }
+mnt() {
+    mount | awk -F' ' '{ printf "%s\t%s\n",$1,$3; }' |
+        column -t | grep -E "^/dev/" | sort
+}
 
-    mem(){
-        grep "Avail" /proc/meminfo | \
-            awk ' { print "Available Memory: " $2/1024/1024 " GB" }'
-        }
+mem() {
+    grep "Avail" /proc/meminfo |
+        awk ' { print "Available Memory: " $2/1024/1024 " GB" }'
+}
 
-        hdd() {
-            df -x tmpfs -x devtmpfs | \
-                tail -n +2 | \
-                awk '{print $3, "of", $4, $5}' | \
-                sort -nr | \
-                uniq | \
-                numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%.1f" --field=1,3 | \
-                head -10
-            }
+hdd() {
+    df -x tmpfs -x devtmpfs |
+        tail -n +2 |
+        awk '{print $3, "of", $4, $5}' |
+        sort -nr |
+        uniq |
+        numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%.1f" --field=1,3 |
+        head -10
+}
 
-            last_commands(){
-                history | awk '{print $4}' | sort | uniq -c | sort -n | tail -20
-            }
+last_commands() {
+    history | awk '{print $4}' | sort | uniq -c | sort -n | tail -20
+}
 
-
-            vlc_sub(){
-                vlc -q ./*$1* --sub-file ./*$1*.srt
-            }
+vlc_sub() {
+    vlc -q ./*$1* --sub-file ./*$1*.srt
+}
 
 # sum of all videos in the current folder
-sum_vid_len(){
+sum_vid_len() {
     dir="$1"
     find "$dir" -maxdepth 1 -iname '*.*' -exec \
-        ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; \
-        | awk '{sum += $0} END{print sum/60 "min"}'
-    }
+        ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; |
+        awk '{sum += $0} END{print sum/60 "min"}'
+}
 
-    clean_docker(){
-        # Kill all running containers:
-        docker kill $(docker ps -q)
+clean_docker() {
+    # Kill all running containers:
+    docker kill $(docker ps -q)
 
     # Delete all stopped containers
     docker rm $(docker ps -a -q)
@@ -276,11 +267,10 @@ sum_vid_len(){
 
     docker volume rm $(docker volume ls -f dangling=true -q)
 
-    docker system prune -af && \
-        docker image prune -af && \
-        docker system prune -af --volumes && \
+    docker system prune -af &&
+        docker image prune -af &&
+        docker system prune -af --volumes &&
         docker system df
-
 
     # and
     # service docker stop
@@ -290,7 +280,7 @@ sum_vid_len(){
 }
 
 alias orphans='[[ -n $(pacman -Qdt) ]] && sudo pacman -Rs $(pacman -Qdtq) || echo "no orphans to remove"'
-clean_disk(){
+clean_disk() {
     echo "cleaning paru"
     paru -Sc
     echo "cleaning pacman"
@@ -308,33 +298,30 @@ clean_disk(){
     orphans
 }
 
-
 # # usage: ex <file>
-ex ()
-{
-    if [ -f "$1" ] ; then
+ex() {
+    if [ -f "$1" ]; then
         case $1 in
-            *.tar.bz2)   tar xjf "$1"   ;;
-            *.tar.gz)    tar xzf "$1"   ;;
-            *.bz2)       bunzip2 "$1"   ;;
-            *.rar)       unrar x "$1"   ;;
-            *.gz)        gunzip  "$1"   ;;
-            *.tar)       tar xf  "$1"   ;;
-            *.tbz2)      tar xjf "$1"   ;;
-            *.tgz)       tar xzf "$1"   ;;
-            *.zip)       unzip   "$1"   ;;
-            *.Z)         uncompress "$1";;
-            *.7z)        7z x    "$1"   ;;
-            *.deb)       ar x    "$1"   ;;
-            *.tar.xz)    tar xf  "$1"   ;;
-            *.tar.zst)   unzstd  "$1"   ;;
-            *)           echo "'$1' cannot be extracted via ex()" ;;
+        *.tar.bz2) tar xjf "$1" ;;
+        *.tar.gz) tar xzf "$1" ;;
+        *.bz2) bunzip2 "$1" ;;
+        *.rar) unrar x "$1" ;;
+        *.gz) gunzip "$1" ;;
+        *.tar) tar xf "$1" ;;
+        *.tbz2) tar xjf "$1" ;;
+        *.tgz) tar xzf "$1" ;;
+        *.zip) unzip "$1" ;;
+        *.Z) uncompress "$1" ;;
+        *.7z) 7z x "$1" ;;
+        *.deb) ar x "$1" ;;
+        *.tar.xz) tar xf "$1" ;;
+        *.tar.zst) unzstd "$1" ;;
+        *) echo "'$1' cannot be extracted via ex()" ;;
         esac
     else
         echo "'$1' is not a valid file"
     fi
 }
-
 
 #get fastest mirrors in your neighborhood
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
@@ -352,16 +339,15 @@ alias neko="~/apps/nekoray/launcher"
 ### FZF s ###
 #####################
 
-fkill(){
+fkill() {
     local pid
 
     if [ "$UID" != "0" ]; then
-        pid=$(ps -f -u $UID | sed 1d | fzf -m  --height=50% --layout=reverse | awk '{print $2}')
+        pid=$(ps -f -u $UID | sed 1d | fzf -m --height=50% --layout=reverse | awk '{print $2}')
     else
         pid=$(ps -ef | sed 1d | fzf -m --height=50% --layout=reverse | awk '{print $2}')
     fi
-    if [ "x$pid" != "x" ]
-    then
+    if [ "x$pid" != "x" ]; then
         echo "$pid" | xargs kill -${1:-9}
     fi
 }
@@ -376,11 +362,9 @@ fo() {
 fm() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
 
-    if command -v thunar &> /dev/null # xfce
-    then
+    if command -v thunar &>/dev/null; then             # xfce
         [[ -n "${files[0]}" ]] && thunar "${files[@]}" # gnome
-    elif command -v nautilus &> /dev/null
-    then
+    elif command -v nautilus &>/dev/null; then
         [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
     else
         [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
@@ -392,11 +376,9 @@ fmm() {
     NAME=$1
     files=$(locate "/$NAME.mp3")
     echo "$files"
-    if command -v thunar &> /dev/null # xfce
-    then
+    if command -v thunar &>/dev/null; then        # xfce
         [[ -n "$files" ]] && thunar "${files[@]}" # gnome
-    elif command -v nautilus &> /dev/null
-    then
+    elif command -v nautilus &>/dev/null; then
         [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
     else
         [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
@@ -405,13 +387,11 @@ fmm() {
 
 # open folder containing current playing track
 fvlc() {
-    files=$(lsof -p `pidof -s vlc` | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
-    if command -v thunar &> /dev/null # xfce
-    then
-        [[ -n "$files" ]] &&  thunar "${files[@]}" # gnome
-    elif command -v nautilus &> /dev/null
-    then
-        [[ -n "$files" ]] &&  nautilus --no-desktop "${files[@]}"
+    files=$(lsof -p $(pidof -s vlc) | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
+    if command -v thunar &>/dev/null; then        # xfce
+        [[ -n "$files" ]] && thunar "${files[@]}" # gnome
+    elif command -v nautilus &>/dev/null; then
+        [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
     else
         [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
     fi
@@ -424,17 +404,17 @@ fe() {
 }
 
 # select dir and cd to it. including hidden directories
-fzfd(){
+fzfd() {
     local dir
-    dir=$(find "${1:-.}" -type d 2> /dev/null | fzf +m) && cd "$dir" || return
+    dir=$(find "${1:-.}" -type d 2>/dev/null | fzf +m) && cd "$dir" || return
 }
 
 # search from history (fzf) to repeat
-fh(){
+fh() {
     print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-inst(){
+inst() {
     if hash paru paru 2>/dev/null; then
         paru -S --needed --noconfirm "$@"
     else
@@ -443,31 +423,30 @@ inst(){
 }
 
 # search (fzf) and install package with paru
-in(){
-    paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}'| xargs -ro paru -S
+in() {
+    paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
 # search (fzf) and remove package with paru
-re(){
+re() {
     paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 
-lg(){
+lg() {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
 
     lazygit "$@"
 
     if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
         cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-        rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+        rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
     fi
 }
 
-port(){
+port() {
     port_no="$1"
     lsof -i ":${port_no}" -sTCP:LISTEN -n -P | awk '{ print $1 }' | tail +2 | sort | uniq
 }
-
 
 #########
 ## ETC ##
@@ -478,4 +457,3 @@ port(){
 if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
     source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
-
