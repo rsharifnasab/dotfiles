@@ -61,10 +61,10 @@ fi
 
 alias please="sudo "
 alias sudo="sudo "
-alias cd..='cd ..' 
+alias cd..='cd ..'
 alias mkdir="mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
- mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+mkcd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 dns(){ dig "$@" "+short" ; }
 
 alias pacman="sudo pacman --color auto"
@@ -105,7 +105,7 @@ alias fir='git'
 alias glog='git log --graph --oneline --decorate --abbrev-commit --all'
 alias gstat="git status -sb"
 alias gstatv="git status -vv"
-alias gadd="git add" 
+alias gadd="git add"
 alias gcom="git commit -m"
 alias gcome="git commit" # open editor!
 alias gpush="git push"
@@ -115,7 +115,7 @@ alias gfetch="git fetch --all --prune"
 alias gloc="git ls-files | xargs wc -l"
 alias gclon="git clone --depth 1 --branch "
 
-# go aliases 
+# go aliases
 alias go="nocorrect go"
 alias gor="go run"
 alias gob="go build ."
@@ -126,9 +126,9 @@ alias gop='cd $GOPATH'
 
 # command with extenral tools
 # make current folder ready for run junit tests
-alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ." 
+alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 alias redsh="redshift  -b 0.79:0.65  -l 35.74:51.33"
-alias clip_set="xclip -selection c" 
+alias clip_set="xclip -selection c"
 alias clip_get="xclip -selection c -o"
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
@@ -148,14 +148,14 @@ alias pnw='watch -n3 -t -d -b "proxychains -q curl -s ifconfig.me"'
 alias tb="nc termbin.com 9999" # copy to online clipboard
 alias excuse="w3m http://developerexcuses.com/ | head -3 | xargs -o"
 
-# check the weather 
- wea() {
+# check the weather
+wea() {
     local request="wttr.in/${1-tehran}?Fq"
     [ "$(tput cols)" -lt 125 ] && request+='n'
     curl -H "Accept-Language: ${LANG%_*}" --compressed "$request"
 }
 alias wea1='curl -s "wttr.in/TEHRAN?format=3"' # one liner: how is the weather?
-alias weac='curl -s "wttr.in/TEHRAN?F0"' # current weather 
+alias weac='curl -s "wttr.in/TEHRAN?F0"' # current weather
 alias weaf='curl -s "wttr.in/TEHRAN?Fq"' # 3 day forecast
 
 
@@ -163,18 +163,18 @@ alias tllocalmgr="tlmgr --usermode"
 alias tlmgr="tlmgr --usermode"
 
 # open typora even if file does not exist
- typ(){
+typ(){
     touch "$@"
     typora "$@"
 }
 
 # use gnu hightlight for add syntax hight to less
- gat(){
+gat(){
     src-hilite-lesspipe.sh "$@" | less
 }
 
 
- dif(){
+dif(){
     if [ -x  "$(command -v diff-so-fancy)" ]; then
         diff -u "$@" | diff-so-fancy
     else
@@ -185,7 +185,7 @@ alias tlmgr="tlmgr --usermode"
 }
 
 # cd and ls at same time
- cls() {
+cls() {
     DIR="$*"
     # if no DIR given, go home
     if [ $# -lt 1 ]; then
@@ -194,60 +194,70 @@ alias tlmgr="tlmgr --usermode"
     builtin cd "${DIR}" && ls
 }
 
- set_proxy(){
-    export http_proxy="socks5://127.0.0.1:9876/"
-    export https_proxy="socks5://127.0.0.1:9876/"
+query_proxy(){
+    echo "http_proxy=$http_proxy, https_proxy=$https_proxy"
 }
 
- clear_proxy(){
+set_proxy(){
+    export http_proxy="socks5://127.0.0.1:9876/"
+    export https_proxy="socks5://127.0.0.1:9876/"
+    query_proxy
+}
+
+reset_proxy(){
     export http_proxy=""
     export https_proxy=""
     export HTTP_PROXY=""
     export HTTPS_PROXY=""
     export ftp_proxy=""
     export ALL_PROXY=""
+    query_proxy
 }
 
- mnt(){
+alias rp="reset_proxy"
+alias sp="set_proxy"
+alias qp="query_proxy"
+
+mnt(){
     mount | awk -F' ' '{ printf "%s\t%s\n",$1,$3; }' \
         | column -t | grep -E "^/dev/" | sort
-}
+    }
 
- mem(){
-    grep "Avail" /proc/meminfo | \
-        awk ' { print "Available Memory: " $2/1024/1024 " GB" }'
-}
+    mem(){
+        grep "Avail" /proc/meminfo | \
+            awk ' { print "Available Memory: " $2/1024/1024 " GB" }'
+        }
 
- hdd() {
-    df -x tmpfs -x devtmpfs | \
-        tail -n +2 | \
-        awk '{print $3, "of", $4, $5}' | \
-        sort -nr | \
-        uniq | \
-        numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%.1f" --field=1,3 | \
-        head -10
-}
+        hdd() {
+            df -x tmpfs -x devtmpfs | \
+                tail -n +2 | \
+                awk '{print $3, "of", $4, $5}' | \
+                sort -nr | \
+                uniq | \
+                numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%.1f" --field=1,3 | \
+                head -10
+            }
 
- last_commands(){
-    history | awk '{print $4}' | sort | uniq -c | sort -n | tail -20
-}
+            last_commands(){
+                history | awk '{print $4}' | sort | uniq -c | sort -n | tail -20
+            }
 
 
- vlc_sub(){
-    vlc -q ./*$1* --sub-file ./*$1*.srt
-}
+            vlc_sub(){
+                vlc -q ./*$1* --sub-file ./*$1*.srt
+            }
 
 # sum of all videos in the current folder
- sum_vid_len(){
+sum_vid_len(){
     dir="$1"
     find "$dir" -maxdepth 1 -iname '*.*' -exec \
         ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; \
         | awk '{sum += $0} END{print sum/60 "min"}'
-}
+    }
 
- clean_docker(){
-    # Kill all running containers:
-    docker kill $(docker ps -q)
+    clean_docker(){
+        # Kill all running containers:
+        docker kill $(docker ps -q)
 
     # Delete all stopped containers
     docker rm $(docker ps -a -q)
@@ -272,7 +282,7 @@ alias tlmgr="tlmgr --usermode"
         docker system df
 
 
-    # and 
+    # and
     # service docker stop
     # cd /var/lib/docker
     # rm -rf *
@@ -280,7 +290,7 @@ alias tlmgr="tlmgr --usermode"
 }
 
 alias orphans='[[ -n $(pacman -Qdt) ]] && sudo pacman -Rs $(pacman -Qdtq) || echo "no orphans to remove"'
- clean_disk(){
+clean_disk(){
     echo "cleaning paru"
     paru -Sc
     echo "cleaning pacman"
@@ -302,27 +312,27 @@ alias orphans='[[ -n $(pacman -Qdt) ]] && sudo pacman -Rs $(pacman -Qdtq) || ech
 # # usage: ex <file>
 ex ()
 {
-  if [ -f "$1" ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf "$1"   ;;
-      *.tar.gz)    tar xzf "$1"   ;;
-      *.bz2)       bunzip2 "$1"   ;;
-      *.rar)       unrar x "$1"   ;;
-      *.gz)        gunzip  "$1"   ;;
-      *.tar)       tar xf  "$1"   ;;
-      *.tbz2)      tar xjf "$1"   ;;
-      *.tgz)       tar xzf "$1"   ;;
-      *.zip)       unzip   "$1"   ;;
-      *.Z)         uncompress "$1";;
-      *.7z)        7z x    "$1"   ;;
-      *.deb)       ar x    "$1"   ;;
-      *.tar.xz)    tar xf  "$1"   ;;
-      *.tar.zst)   unzstd  "$1"   ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+    if [ -f "$1" ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf "$1"   ;;
+            *.tar.gz)    tar xzf "$1"   ;;
+            *.bz2)       bunzip2 "$1"   ;;
+            *.rar)       unrar x "$1"   ;;
+            *.gz)        gunzip  "$1"   ;;
+            *.tar)       tar xf  "$1"   ;;
+            *.tbz2)      tar xjf "$1"   ;;
+            *.tgz)       tar xzf "$1"   ;;
+            *.zip)       unzip   "$1"   ;;
+            *.Z)         uncompress "$1";;
+            *.7z)        7z x    "$1"   ;;
+            *.deb)       ar x    "$1"   ;;
+            *.tar.xz)    tar xf  "$1"   ;;
+            *.tar.zst)   unzstd  "$1"   ;;
+            *)           echo "'$1' cannot be extracted via ex()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 
@@ -335,14 +345,14 @@ alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 \
     --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 
 ## network
-alias p="nocorrect proxychains -q "
+alias p="nocorrect proxychains4 -q "
 alias neko="~/apps/nekoray/launcher"
 
 #####################
 ### FZF s ###
 #####################
 
- fkill(){
+fkill(){
     local pid
 
     if [ "$UID" != "0" ]; then
@@ -357,13 +367,13 @@ alias neko="~/apps/nekoray/launcher"
 }
 
 # select with fzf open file in gui
- fo() {
+fo() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
     [[ -n "${files[0]}" ]] && xdg-open "${files[@]}"
 }
 
 # select with fzf open selected folder in file manager
- fm() {
+fm() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
 
     if command -v thunar &> /dev/null # xfce
@@ -378,23 +388,23 @@ alias neko="~/apps/nekoray/launcher"
 }
 
 # find mp3 file in cwd
- fmm() {
+fmm() {
     NAME=$1
     files=$(locate "/$NAME.mp3")
     echo "$files"
     if command -v thunar &> /dev/null # xfce
-    then 
+    then
         [[ -n "$files" ]] && thunar "${files[@]}" # gnome
     elif command -v nautilus &> /dev/null
-    then 
+    then
         [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
-    else 
+    else
         [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
     fi
 }
 
 # open folder containing current playing track
- fvlc() {
+fvlc() {
     files=$(lsof -p `pidof -s vlc` | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
     if command -v thunar &> /dev/null # xfce
     then
@@ -408,23 +418,23 @@ alias neko="~/apps/nekoray/launcher"
 }
 
 # select with fzf open file with vim
- fe() {
+fe() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
     [[ -n "${files[*]}" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
 # select dir and cd to it. including hidden directories
- fzfd(){
+fzfd(){
     local dir
     dir=$(find "${1:-.}" -type d 2> /dev/null | fzf +m) && cd "$dir" || return
 }
 
 # search from history (fzf) to repeat
- fh() {
+fh(){
     print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
- inst() {
+inst(){
     if hash paru paru 2>/dev/null; then
         paru -S --needed --noconfirm "$@"
     else
@@ -433,24 +443,23 @@ alias neko="~/apps/nekoray/launcher"
 }
 
 # search (fzf) and install package with paru
- in() {
+in(){
     paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}'| xargs -ro paru -S
 }
 
 # search (fzf) and remove package with paru
-re() {
+re(){
     paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 
-lg()
-{
+lg(){
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
 
     lazygit "$@"
 
     if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+        cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+        rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
     fi
 }
 
