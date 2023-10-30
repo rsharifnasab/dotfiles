@@ -21,7 +21,15 @@ packer.startup(function()
 	-- ETC
 	use("editorconfig/editorconfig-vim")
 	use("airblade/vim-rooter") -- set root based on .git
-	use("airblade/vim-gitgutter") -- changed lines from HEAD
+	use("lewis6991/gitsigns.nvim") -- changed lines from HEAD
+	use({
+		"romgrk/barbar.nvim",
+		requires = {
+			{ "lewis6991/gitsigns.nvim" },
+			{ "nvim-tree/nvim-web-devicons" },
+		},
+	})
+
 	use("sbdchd/neoformat") -- format code
 	use("lukas-reineke/indent-blankline.nvim") -- draw a line to show tabs
 
