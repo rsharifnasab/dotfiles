@@ -14,7 +14,6 @@
             }
         }
     },
-    "rust.clippy_preference": "on",
     "yaml.schemas": {
         "http://json.schemastore.org/drone": "/.drone.yml",
         "http://json.schemastore.org/gitlab-ci": "/.gitlab-ci.yml",
@@ -22,25 +21,14 @@
         "https://json.schemastore.org/travis": "/.travis.yml",
         "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/schemas/v3.0/schema.json": "swagger.yaml"
     },
-    "coc.preferences.formatOnSaveFiletypes": [
-        "css",
-        "markdown",
-        "javascript",
-        "graphql",
-        "html",
-        "yaml",
-        "json",
-        "python",
-        "rust"
-    ],
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "snippets.ultisnips.directories": [
-        "UltiSnips",
-        "~/.config/nvim/utils/snips"
-    ],
     "codeLens.enable": true,
     "java.server.launchMode": "Standard",
     "java.referencesCodeLens.enabled": true,
-    "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar"
+    "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",
+    "Lua.diagnostics.globals": [
+        "vim",
+        "require"
+    ]
 }

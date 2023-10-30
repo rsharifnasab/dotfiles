@@ -7,7 +7,7 @@ map <C-a> <esc>ggVG<CR> " ctrl a -> Select all
 noremap  <silent> <C-S>      :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
-nnoremap <silent> <C-L>  :nohlsearch<CR>h<C-L> 
+nnoremap <silent> <C-L>  :nohlsearch<CR>h<C-L>
 " ctrl L -> clear highlighted search result
 tnoremap <Esc> <C-\><C-n> " esc in terminal mode -> exit
 
@@ -16,7 +16,7 @@ tnoremap <Esc> <C-\><C-n> " esc in terminal mode -> exit
 nnoremap <C-p> :bnext<CR>
 nnoremap <C-o> :bprevious<CR>
 nmap <C-n> :enew<cr>
-noremap <silent> <C-q> :bd<CR> 
+noremap <silent> <C-q> :bd<CR>
 " Close current buffer
 
 
@@ -44,7 +44,7 @@ command Q x
 " " map most frequent actions with leader
 
 " open new file
-nnoremap <Leader>o :CtrlP<CR> 
+nnoremap <Leader>o :CtrlP<CR>
 
 " save and close
 nnoremap <Leader>w :w<CR>
@@ -62,7 +62,7 @@ vmap <Leader>P "+P
 " visual line mode
 nmap <Leader><Leader> V
 
-nmap <leader>l  :Autoformat<CR>
+nmap <leader>l  :Neoformat<CR>
 
 
 nmap  <leader>j :! idea format %<CR>

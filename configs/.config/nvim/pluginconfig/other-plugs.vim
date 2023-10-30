@@ -10,11 +10,19 @@ let NERDTreeIgnore=['\.pyc$','\.class','\~$','\.out', '\.exe']
 
 
 " " auto formater " "
-" au BufWrite * :Autoformat " set auto format on save
-let g:autoformat_verbosemode=1 " to enable debug mode
+let g:neoformat_basic_format_align = 1 " Enable alignment
+let g:neoformat_basic_format_retab = 1 " Enable tab to spaces conversion
+let g:neoformat_basic_format_trim = 1 " Enable trimmming of trailing whitespace
+let g:neoformat_run_all_formatters = 1 " run all formaters even when the first one is ok
+" fix undo problem with autoformat
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
 
-let g:formatdef_my_astyle = '"astyle --quiet --mode=java --style=java --indent-after-parens --indent-classes --indent-switches --break-blocks --pad-comma --unpad-paren --add-braces --convert-tabs --delete-empty-lines"'
-let g:formatters_java = ['my_astyle']
+
+" astyle --quiet --mode=java --style=java --indent-after-parens --indent-classes --indent-switches --break-blocks --pad-comma --unpad-paren --add-braces --convert-tabs --delete-empty-lines
+"let g:formatters_java = ['my_astyle']
 
 
 
@@ -22,63 +30,6 @@ let g:formatters_java = ['my_astyle']
 let g:rooter_manual_only = 0
 let g:rooter_patterns = ['src', '.git', 'Makefile', 'go.mod']
 
-
-" " Indent line " "
-let g:indentLine_enabled=1
-let g:indentLine_color_term=230
-let g:indentLine_char='|'
-"let g:indentLine_char_list = [' ','|', '¦', '┆', '┊']
-let g:indentLine_fileTypeExclude = ['dashboard', 'help']
-
-
-
-" " Airline (status line) " "
-"let g:airline_extensions = [] "clear all extensions
-let g:airline#extensions#whitespace#enabled = 0 "dont show ugly wihtespaces"
-let g:airline_powerline_fonts=1
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline_detect_modified=1
-
-" " tabline setting " "
-"
-let g:airline#extensions#tabline#enabled=1
-
-let g:airline#extensions#tabline#show_buffers = 1 "show buffers in tabline"
-
-" tabs splitter character
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#overflow_marker = '…'
-
-" each buffer label
-"let g:airline#extensions#tabline#fnamemod= ':t'   " just show filename
-let g:airline#extensions#tabline#fnamemod= ':t:r'   " just show filename, no
-"extension
-"let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " like zsh abbrv
-"let g:airline#extensions#tabline#formatter = 'unique_tail' " simple 
-
-
-
-let airline#extensions#tabline#current_first = 0 " bring selected tab to first 
-let g:airline#extensions#tabline#show_tab_count = 1 "only show tab count if there is one tab (not buffer)
-let g:airline#extensions#tabline#show_tab_type = 0   " buffer or tab at right
-let g:airline#extensions#tabline#buf_label_first = 0 " buffer or tab at left
-let g:airline#extensions#tabline#buffer_nr_show = 0 " each buffer number
-let g:airline#extensions#tabline#buffer_min_count = 2 " minimum buffer count to show tabline
-
-let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#coc#error_symbol = 'E:'
-let g:airline#extensions#coc#warning_symbol = 'W:'
-let g:airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-let g:airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
-
-let g:airline#extensions#nerdtree_statusline = 1
-
-" rust
-"let g:deoplete#sources#rust#racer_binary='/home/roozbeh/.cargo/bin/racer'
-"let g:deoplete#sources#rust#rust_source_path='/home/roozbeh/apps/rust/library'
-"let g:deoplete#sources#rust#show_duplicates=1
-"let g:deoplete#sources#rust#documentation_max_height=20
 
 
 " yaml

@@ -1,3 +1,4 @@
+
 set background=dark
 
 " clear background (for kitty background picture)
@@ -6,19 +7,6 @@ hi EndOfBuffer guibg=NONE ctermbg=NONE
 hi LineNr      guibg=NONE ctermbg=NONE
 hi SignColumn  guibg=NONE ctermbg=NONE
 hi Whitespace  guibg=NONE ctermbg=NONE
-
-
-" " airline colorscheme " "
-" run: AirlineTheme folan
-"let g:airline_theme='random'
-"let g:airline_theme='dark'       " good, colorful
-"let g:airline_theme='lucios'
-"let g:airline_theme='minmalist'  " just grey
-"let g:airline_theme='serene'     " classic beautiful
-"let g:airline_theme='deep_space' " grey colors
-"let g:airline_theme='raven'      " minmal and nice, no distraction
-let g:airline_theme='jellybeans' " beautiful! long-term default
-"let g:airline_theme='luna'        " green & red, nice
 
 
 " " color scheme " "
@@ -40,10 +28,10 @@ let g:afterglow_blackout=1  "(default: 0)
 "colorscheme minimalist      " goood!
 "colorscheme tender           " good colorful
 let g:jellybeans_overrides = {
-\    'SignColumn': { 'guifg': 'none', 'guibg': 'none',
-\              'ctermfg': 'none', 'ctermbg': 'none',
-\     },
-\}
+            \    'SignColumn': { 'guifg': 'none', 'guibg': 'none',
+            \              'ctermfg': 'none', 'ctermbg': 'none',
+            \     },
+            \}
 colorscheme jellybeans
 
 
@@ -73,3 +61,52 @@ colorscheme jellybeans
 
 let &fcs='eob: '
 " dont show tilde in fillchars
+
+" https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
+lua <<END
+require('lualine').setup{
+options = {
+    theme = 'ayu_mirage',
+},
+}
+END
+
+lua <<END
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
+}
+
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+end)
+
+require("ibl").setup {
+    indent = {
+        highlight = highlight,
+    },
+    scope = {
+        show_start = false,
+        show_end = false,
+    },
+    exclude = {
+        filetypes = {
+            "dashboard",
+        },
+    },
+}
+END
