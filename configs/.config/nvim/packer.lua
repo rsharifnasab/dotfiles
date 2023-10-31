@@ -95,7 +95,7 @@ packer.startup(function()
 		run = ":TSUpdate",
 		config = [[
             require'nvim-treesitter.configs'.setup {
-               ensure_installed = { "c", "lua", "rust", "java", "cpp", "python", "go", "yaml" },
+               ensure_installed = { "c", "lua", "rust", "java", "cpp", "python", "go", "yaml", "bash" },
 
                -- Install parsers synchronously (only applied to `ensure_installed`)
                sync_install = false,
@@ -132,5 +132,6 @@ vim.g.coc_global_extensions = {
 	"coc-elixir",
 	"coc-lua",
 	"coc-go",
+	"coc-sh",
 	-- coc-tag : add autocomplete source: tags file
 }
