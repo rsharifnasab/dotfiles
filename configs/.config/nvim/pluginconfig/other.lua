@@ -1,3 +1,7 @@
+-- chadtree instead of nerdtree  "
+-- https://github.com/ms-jpq/chadtree/blob/chad/docs/FEATURES.md
+-- or you can use https://github.com/nvim-tree/nvim-tree.lua
+
 local chadtree_settings = {
 	theme = {
 		text_colour_set = "solarized_dark_256",

@@ -1,6 +1,3 @@
-
-
-" " general remaps " "
 " ctrl a -> Select all
 map <C-a> <esc>ggVG<CR>
 
@@ -21,14 +18,7 @@ noremap <silent> <C-q> :bd<CR>
 " Close current buffer
 
 
-" Go to normal mode with <jk> (esc is too far)
-inoremap jk <esc>
-vnoremap jk <esc>
-inoremap kj <esc>
-vnoremap kj <esc>
-
 inoremap <C-c> <Esc>
-
 
 " disable Q
 noremap Q <nop>
@@ -40,12 +30,6 @@ command Wq wq
 command WQ wq
 command W w
 command Q x
-
-
-" " map most frequent actions with leader
-
-" open new file
-nnoremap <Leader>o :CtrlP<CR>
 
 " save and close
 nnoremap <Leader>w :w<CR>
@@ -60,6 +44,15 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+
+" open new file
+nnoremap <Leader>o :Telescope find_files<CR>
+nnoremap <leader><tab> <cmd>Telescope find_files<cr>
+nnoremap <leader>f <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
 " visual line mode
 nmap <Leader><Leader> V
 
@@ -67,6 +60,10 @@ nmap <leader>l  :Neoformat<CR>
 
 
 nmap  <leader>j :! idea format %<CR>
+
+
+nnoremap <C-f> :CHADopen<cr>
+
 
 " generate new serial episode download link from the old one
 let @z='yyp/S..EfE€kr€krg€kh'

@@ -1,4 +1,3 @@
-
 export GOPATH="$HOME/go"
 export PATH="$PATH:\
 $HOME/bin:\
@@ -9,8 +8,7 @@ $GOPATH/bin"
 export ZSH="$HOME/.oh-my-zsh/"
 
 # add brew site functions to FPATH
-if type /opt/homebrew/bin/brew &>/dev/null
-then
+if type /opt/homebrew/bin/brew &>/dev/null; then
     FPATH="$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
@@ -24,16 +22,15 @@ ZSH_THEME="archcraft-dwm"
 
 ZSH_FAVLIST="$HOME/.zsh_favlist"
 ZSH_THEME_RANDOM_CANDIDATES=()
-for theme in $(cat $ZSH_FAVLIST);  do
+for theme in $(cat $ZSH_FAVLIST); do
     ZSH_THEME_RANDOM_CANDIDATES+=($theme)
 done
 
-
 setopt NO_GLOB_COMPLETE
-setopt autolist      # Display completion candidates immediately.
-setopt listtypes     # When listing files that are possible completions,
-                     # indicate their types with a trailing character.
-setopt nolistbeep    # No bell on ambiguous completion!!
+setopt autolist  # Display completion candidates immediately.
+setopt listtypes # When listing files that are possible completions,
+# indicate their types with a trailing character.
+setopt nolistbeep # No bell on ambiguous completion!!
 
 setopt interactivecomments # comments in interactive mode
 
@@ -52,7 +49,6 @@ ENABLE_CORRECTION="true"
 
 COMPLETION_WAITING_DOTS="true"
 
-
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
@@ -63,7 +59,6 @@ COMPLETION_WAITING_DOTS="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
-
 plugins=(
     zsh-autosuggestions
     fast-syntax-highlighting
@@ -73,11 +68,11 @@ plugins=(
     sudo # esc esc -> add sudo to command
 
     extract # extract any archive
-    fzf # fzf integrated to zsh
+    fzf     # fzf integrated to zsh
 
     golang # completion for go as well as aliases
-    rust # completion for rust, rustup, cargo
-    stack # completion for stack
+    rust   # completion for rust, rustup, cargo
+    stack  # completion for stack
 
     z # most freq used dirs
 
@@ -88,7 +83,6 @@ plugins=(
     #zsh-vi-mode
 )
 source "$ZSH"/oh-my-zsh.sh
-
 
 # solve slow paste issue (cause:zsh-autosuggestions)
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
@@ -118,15 +112,14 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
 setopt HIST_IGNORE_SPACE
 alias jrnl=" jrnl"
 
-
 #fix home/end/delete not working
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-bindkey  "^[[3~"  delete-char
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+bindkey "^[[3~" delete-char
 
 # reload new config files from dotfiles
 # changes in sync_home will effect after second reload!
-function r(){
+function r() {
     clear
     sync_home
     exec zsh || echo 'error in syncing'
@@ -134,19 +127,18 @@ function r(){
 
 export FZF_BASE=$(which fzf)
 DISABLE_FZF_KEY_BINDINGS="false"
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
 
 type apt >/dev/null 2>&1 && [[ -f ~/.debian_config ]] && source ~/.debian_config
 
-if [[ -f "$HOME/.site.sh" ]]
-then
+if [[ -f "$HOME/.site.sh" ]]; then
     source "$HOME/.site.sh"
 fi
 
-if [[ ! -e /tmp/welcome.sem ]]
-then
+if [[ ! -e /tmp/welcome.sem ]]; then
     touch /tmp/welcome.sem
     cat "$HOME/proj/dotfiles/welcome.txt" || true
     # from here: https://www.asciiart.eu/space/astronauts

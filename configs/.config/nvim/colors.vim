@@ -10,7 +10,6 @@ hi Whitespace  guibg=NONE ctermbg=NONE
 
 
 " " color scheme " "
-
 " built-in themes
 "colorscheme default " good contrast
 "colorscheme ron
@@ -45,33 +44,18 @@ colorscheme jellybeans
 "colorscheme ayu        " deep black
 
 
-" " custom hightlights for menu " "
-" menu color
-" highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=#e7f2dc
-" highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=white
-" highlight Pmenu     ctermbg=8 guibg=#093d4a guifg=#f7f2e9
-" selected item
-" highlight PmenuSel  ctermbg=1 guibg=#112257 guifg=#adeaf0
-" highlight PmenuSel  ctermbg=1 guibg=#47092f guifg=#fdff94
-" highlight PmenuSel  ctermbg=1 guibg=#323f83 guifg=#aebeca
-" highlight PmenuSel  ctermbg=1 guibg=#323f83 guifg=yellow
-" highlight PmenuSel  ctermbg=1 guibg=#323f83 guifg=#fff343
-"scrollbar
-"highlight PmenuSbar ctermbg=0 guibg=#555555
+let &fcs='eob: ' " dont show tilde in fillchars
 
-let &fcs='eob: '
-" dont show tilde in fillchars
 
-" https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
 lua <<END
+-- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md
 require('lualine').setup{
-options = {
-    theme = 'ayu_mirage',
-},
+    options = {
+        theme = 'ayu_mirage',
+    },
 }
-END
 
-lua <<END
+-- indent blankline
 local highlight = {
     "RainbowRed",
     "RainbowYellow",
@@ -110,3 +94,11 @@ require("ibl").setup {
     },
 }
 END
+
+" git signs no highlight
+highlight GitSignsAdd          guifg=#009900 ctermfg=2
+highlight GitSignsChange       guifg=#bbbb00 ctermfg=3
+highlight GitSignsChangeDelete guifg=#bbbb00 ctermfg=3
+highlight GitSignsDelete       guifg=#ff2222 ctermfg=1
+highlight GitSignsTopDelete    guifg=#ff2222 ctermfg=1
+highlight GitSignsUntracked    guifg=#ff2222 ctermfg=1

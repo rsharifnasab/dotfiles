@@ -3,16 +3,12 @@ command! MakeTags !ctags -R .
 "create tags file
 
 
-" " chadtree instead of nerdtree  "
-" https://github.com/ms-jpq/chadtree/blob/chad/docs/FEATURES.md
-" or you can use https://github.com/nvim-tree/nvim-tree.lua
-nnoremap <C-f> <cmd>CHADopen<cr>
 
 
 " " auto formater " "
 " install more tools from:
 " https://github.com/sbdchd/neoformat#supported-filetypes
-let g:neoformat_basic_format_align = 1 " Enable alignment
+let g:neoformat_basic_format_align = 0 " Enable alignment
 let g:neoformat_basic_format_retab = 1 " Enable tab to spaces conversion
 let g:neoformat_basic_format_trim = 1 " Enable trimmming of trailing whitespace
 let g:neoformat_run_all_formatters = 1 " run all formaters even when the first one is ok
@@ -36,7 +32,3 @@ let g:rooter_patterns = ['src', '.git', 'Makefile', 'go.mod']
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 
-" git signs no highlight
-highlight GitSignsAdd    guifg=#009900 ctermfg=2
-highlight GitSignsChange guifg=#bbbb00 ctermfg=3
-highlight GitSignsDelete guifg=#ff2222 ctermfg=1
