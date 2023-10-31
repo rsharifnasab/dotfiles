@@ -9,12 +9,17 @@
 
 
 source ~/.config/nvim/configs.vim
-luafile  ~/.config/nvim/packer.lua
+source ~/.config/nvim/packer.lua
 
 for f in split(glob('~/.config/nvim/pluginconfig/*.vim'), '\n')
     exe 'source' f
 endfor
 
-source ~/.config/nvim/remaps.vim 
+
+for f in split(glob('~/.config/nvim/pluginconfig/*.lua'), '\n')
+    exe 'luafile' f
+endfor
+
+source ~/.config/nvim/remaps.vim
 source ~/.config/nvim/functions.vim
 source ~/.config/nvim/colors.vim
