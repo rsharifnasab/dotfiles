@@ -10,12 +10,19 @@ let g:airline#extensions#ale#enabled = 1 " enable integration with airline.
 let g:ale_disable_lsp = 1 " let coc do the stuff
 
 let g:ale_linters = {
-\   'go': ['gobuild', 'govet', 'staticcheck', 'gotype', 'golangserver', 'gosimple' , 'gopls', 'gometalinter' , 'gofmt', 'bingo', 'golangci-lint'],
+\   'go': [ 'gobuild', 'govet', 'staticcheck', 'gotype', 'golangserver', 'gosimple' ,
+\    'gopls', 'gometalinter' , 'gofmt', 'bingo', 'golangci-lint'],
 \   'text': ['languagetool', 'vale', 'alex'],
 \}
+
+let g:ale_go_golangci_lint_executable='golangci-lint'
+let g:ale_go_golangci_lint_options='-c ~/.golangci.yml'
+let g:ale_go_golangci_lint_package=1
+" golangci-lint is disabled by now because it doesnt respect the config
 
 let g:ale_fixers = {
 \   'elixir': ['mix_format'],
 \   'text': ['remove_trailing_lines', 'trim_whitespace'],
+\   'go' : ['gofmt', 'gofumpt', 'goimports', 'golines' ]
 \}
 

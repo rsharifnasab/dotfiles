@@ -31,5 +31,6 @@
   "Lua.diagnostics.globals": [
     "vim",
     "require"
-  ]
+  ],
+  "diagnostic.displayByAle": true
 }

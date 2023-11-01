@@ -1,0 +1,32 @@
+---
+run:
+  tests: false
+
+  skip-files:
+    - ".*_test.go$"
+
+linters:
+  enable-all: true
+  disable:
+    # it should improve to support more known patterns
+    - varnamelen
+    - nolintlint
+    - depguard
+    # why?
+    - tagliatelle
+    - ireturn
+    - musttag
+    # deprecated linters
+    - maligned
+    - scopelint
+    - golint
+    - interfacer
+    - exhaustivestruct
+    - deadcode
+    - nosnakecase
+    - ifshort
+    - varcheck
+    - structcheck
+linters-settings:
+  cyclop:
+    max-complexity: 15
