@@ -29,7 +29,8 @@ require("gitsigns").setup({
 		delay = 1000,
 		ignore_whitespace = true,
 	},
-	current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+	-- check :help gitsigns-config-current_line_blame_formatter
+	current_line_blame_formatter = "<author>, <author_time:%a-%d/%b/%y>",
 
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
