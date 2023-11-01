@@ -59,17 +59,15 @@ packer.startup(function()
 
 	-- file explorer
 	use({
-		"ms-jpq/chadtree",
-		branch = "chad",
-		run = ":CHADdeps",
+		"nvim-tree/nvim-tree.lua",
+		requires = { "nvim-tree/nvim-web-devicons" },
 	})
+
 	use({
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
-			require("dashboard").setup({
-				-- config
-			})
+			require("dashboard").setup()
 		end,
 		requires = { "nvim-tree/nvim-web-devicons" },
 	})

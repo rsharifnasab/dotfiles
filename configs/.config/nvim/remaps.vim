@@ -62,7 +62,7 @@ nmap <leader>l  :Neoformat<CR>
 nmap  <leader>j :! idea format %<CR>
 
 
-nnoremap <C-f> :CHADopen<cr>
+nnoremap <C-f> :NvimTreeFindFileToggle<cr>
 
 
 " generate new serial episode download link from the old one

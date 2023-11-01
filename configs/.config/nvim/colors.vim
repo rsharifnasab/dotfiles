@@ -81,6 +81,9 @@ require("ibl").setup {
             "RainbowViolet",
             "RainbowCyan",
         },
+        -- check: :h ibl.config.indent.char
+        char = {"│"},
+        tab_char = {"│"},
     },
     scope = {
         enabled = false,
