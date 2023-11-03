@@ -26,14 +26,15 @@ set -o pipefail
 )
 
 (
-    brew install firefox skype kitty chromium vlc geany obs drawio
     brew install git bash zsh
+    brew install firefox skype kitty chromium vlc geany obs drawio
     brew install moreutils nnn fd ripgrep wget the_silver_searcher aria2
     brew install jcal safe-rm ipython tokei pfetch screenfetch
     brew install node speedtest-cli bat-extras jq
     brew install coreutils inetutils rar
     brew install ncdu tty-clock poppler
-    brwe install warch languagetool htop btop
+    brew install watch languagetool htop btop
+    brew install keka the-unarchiver
 )
 (
     #install firacode font
@@ -97,6 +98,10 @@ set -o pipefail
     # to disable SIP
     # in recovery mode: csrutil disable
     #https://github.com/rofl0r/proxychains-ng/issues/481
+)
+(
+    brew install python3
+    brew install pyright pylint autopep8 mypy
 )
 (
     # gopass

@@ -13,11 +13,11 @@ let g:neoformat_basic_format_retab = 1 " Enable tab to spaces conversion
 let g:neoformat_basic_format_trim = 1 " Enable trimmming of trailing whitespace
 let g:neoformat_run_all_formatters = 1 " run all formaters even when the first one is ok
 " fix undo problem with autoformat
-augroup fmt
-    autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
-augroup END
-
+"--augroup fmt
+"--    autocmd!
+"--   autocmd BufWritePre * undojoin | Neoformat
+"--augroup END
+au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | endtry
 
 let g:astyle_opt="--quiet --mode=java --style=java --indent-after-parens --indent-classes --indent-switches --break-blocks --pad-comma --unpad-paren --add-braces --convert-tabs --delete-empty-lines"
 let g:shfmt_opt="-ci"

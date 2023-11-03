@@ -16,7 +16,7 @@ let g:ale_linters = {
 \}
 
 let g:ale_go_golangci_lint_executable='golangci-lint'
-let g:ale_go_golangci_lint_options='-c ~/.golangci.yml'
+"let g:ale_go_golangci_lint_options='-c ~/.golangci.yml'
 let g:ale_go_golangci_lint_package=1
 " golangci-lint is disabled by now because it doesnt respect the config
 
