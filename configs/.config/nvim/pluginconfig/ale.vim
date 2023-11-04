@@ -18,11 +18,11 @@ let g:ale_linters = {
 let g:ale_go_golangci_lint_executable='golangci-lint'
 "let g:ale_go_golangci_lint_options='-c ~/.golangci.yml'
 let g:ale_go_golangci_lint_package=1
-" golangci-lint is disabled by now because it doesnt respect the config
 
 let g:ale_fixers = {
 \   'elixir': ['mix_format'],
 \   'text': ['remove_trailing_lines', 'trim_whitespace'],
-\   'go' : ['gofmt', 'gofumpt', 'goimports', 'golines' ]
+\   'go' : ['gofmt', 'gofumpt', 'goimports', 'golines', 'gopls'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace']
 \}
 
