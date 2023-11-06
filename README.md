@@ -8,10 +8,12 @@ I'm actually a newbie in saving Dotfiles. If you want to help me, I appreciate i
 ## How to use
 1. Make sure you have (and love) Arch Linux.
 2. Clone repo with this command:
+
 ```bash
  curl -sL https://raw.githubusercontent.com/rsharifnasab/dotfiles/master/install/dotfiles_cloner.sh | bash
 ```
 This would clone the current repository to "~/proj/dotfiles"
+
 2. Open `install/post_install.sh` in your editor of choice and comment/uncomment sections in `run` and run it (Use at your own risk). 
 3. Run `install/post_install.sh` with bash. You can also source it manually in bash and run functions interactively.
 4. Check out the `docs` folder for more information. For example, there is a cheat sheet for "after installation steps". [+](./docs/after_install.txt) and general useful commands [+](./docs/main.md).
