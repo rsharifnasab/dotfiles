@@ -25,7 +25,7 @@ if [ -d "$HOME/.local/bin" ] ;
 fi
 
 #shopt
-shopt -s autocd # change to named directory
+#shopt -s autocd # change to named directory
 shopt -s cdspell # autocorrects cd misspellings
 shopt -s cmdhist # save multi-line commands in history as single line
 shopt -s dotglob
@@ -48,6 +48,6 @@ alias nocorrect='command'
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:${PATH}"
 #eval "$(pyenv init --path)"
-PYTHON_BIN_PATH="$(python -m site --user-base)/bin"
+PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
 export PATH="$PATH:$PYTHON_BIN_PATH"
 

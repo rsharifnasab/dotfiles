@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
 # vim-profiler - Utility script to profile (n)vim (e.g. startup)
@@ -19,14 +19,14 @@
 
 from __future__ import print_function
 
-import os
-import sys
-import subprocess
-import re
-import csv
-import operator
 import argparse
 import collections
+import csv
+import operator
+import os
+import re
+import subprocess
+import sys
 
 
 def to_list(cmd):
