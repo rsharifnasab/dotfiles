@@ -118,3 +118,7 @@ set -o pipefail
     brew intsall karabiner-elements
     # then use this: https://apple.stackexchange.com/a/456649
 )
+(
+    # download telegram desktop dmg
+    wget -c "https://telegram.org/dl/desktop/mac"
+)
