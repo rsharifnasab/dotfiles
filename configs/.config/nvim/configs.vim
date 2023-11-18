@@ -2,10 +2,14 @@ set nocompatible " don't need to be compatible with VI
 
 set number " enable numbering of lines
 set norelativenumber " not absolute line number
+
 set termguicolors " enable true colors support
 set termbidi      " enable persian support
 syntax enable " enable syntax highlighting
+set lazyredraw " don't redraw screen in macros
+set synmaxcol=500 "200 char of line should be highlighted
 set showmatch " highlight matching bracket
+
 set showcmd " display incomplete commands
 set noshowmode " don't show current mode of editor
 set laststatus=2 " last 2 line : show status
@@ -18,8 +22,6 @@ set breakindent " if broke the line, indent the broken part
 
 set mouse=a " use mouse normally
 set clipboard+=unnamedplus "sync vim clipboard with system clipboard
-set lazyredraw " don't redraw screen in macros
-set synmaxcol=200 "200 char of line should be highlited
 "set virtualedit=all " move cursor freely in insert mode
 
 set wildmenu " autocomplete vim commands wuth tab
@@ -122,4 +124,3 @@ autocmd BufNewFile tester.cpp 0r ~/Templates/tester.cpp
 
 let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1
-

@@ -7,7 +7,7 @@ set termbidi      " enable persian support
 syntax enable " enable syntax highlighting
 set showmatch " highlight matching bracket
 set showcmd " display incomplete commands
-set noshowmode " don't show current mode of editor
+set showmode " show current mode of editor
 set laststatus=2 " last 2 line : show status
 "set cursorline " highlight current cursor line
 set t_Co=256 " 256 color terminal
