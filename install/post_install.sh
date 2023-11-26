@@ -250,6 +250,11 @@ function ubuntu() {
     sudo snap install go --classic
 }
 
+function hotspot(){
+    inst dnsmasq linux-wifi-hotspot
+    # then run: wihotspot
+}
+
 function bluetooth() {
     inst bluez bluez-tools bluez-utils blueman
     sudo systemctl enable bluetooth.service
