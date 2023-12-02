@@ -35,6 +35,7 @@ set -o pipefail
     brew install ncdu tty-clock poppler
     brew install watch languagetool htop btop
     brew install keka the-unarchiver
+    xattr -cr /Applications/Chromium.app
 )
 (
     #install firacode font
