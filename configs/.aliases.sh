@@ -14,10 +14,6 @@ if ! command -v safe-rm &>/dev/null; then
     alias rm="safe-rm"
 fi
 
-if [ -e "/Applications/MarkText.app/Contents/MacOS/MarkText" ]; then
-    alias marktext="/Applications/MarkText.app/Contents/MacOS/MarkText"
-fi
-
 # Preserve changing perms on /
 #alias chown='chown --preserve-root'
 #alias chmod='chmod --preserve-root'
@@ -28,11 +24,28 @@ fi
 #alias docker-compose='sudo docker-compose'
 #alias docker='sudo docker'
 
+if command -v xdg-open &>/dev/null; then
+    alias opener="xdg-open"
+    alias open="xdg-open"
+elif command -v open &>/dev/null; then
+    alias opener="open"
+    alias xdg-open="open"
+fi
+alias f="opener"
+alias f.="opener ."
+
+function gui_opener() {
+    if command -v thunar &>/dev/null; then # xfce
+        [[ -n "$1" ]] && thunar "$1"
+    elif command -v nautilus &>/dev/null; then # gnome
+        [[ -n "$1" ]] && nautilus --no-desktop "$1"
+    else
+        opener "$(dirname "$1")"
+    fi
+}
+
 alias k="kubectl"
 alias j='jdate -u +"%Y/%m/%d"'
-alias f="xdg-open"
-alias f.="xdg-open ."
-#alias open="xdg-open"
 alias v='nvim'
 # emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
@@ -186,6 +199,14 @@ cls() {
     builtin cd "${DIR}" && ls
 }
 
+## network
+alias neko="~/apps/nekoray/launcher"
+if command -v proxychains4 &>/dev/null; then
+    alias p="nocorrect proxychains4 -q "
+else
+    alias p='http_proxy="http://127.0.0.1:6666/" https_proxy="http://127.0.0.1:6666/" '
+fi
+
 query_proxy() {
     echo "http_proxy=$http_proxy, https_proxy=$https_proxy"
 }
@@ -210,6 +231,7 @@ alias rp="reset_proxy"
 alias sp="set_proxy"
 alias qp="query_proxy"
 
+### other functions
 mnt() {
     mount | awk -F' ' '{ printf "%s\t%s\n",$1,$3; }' |
         column -t | grep -E "^/dev/" | sort
@@ -279,7 +301,14 @@ clean_docker() {
     # service docker start
 }
 
-alias orphans='[[ -n $(pacman -Qdt) ]] && sudo pacman -Rs $(pacman -Qdtq) || echo "no orphans to remove"'
+orphans() {
+    if [[ -n $(pacman -Qdt) ]]; then
+        sudo pacman -Rs $(pacman -Qdtq)
+    else
+        echo "no orphans to remove"
+    fi
+}
+
 clean_disk() {
     echo "cleaning paru"
     paru -Sc
@@ -331,13 +360,9 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 \
     --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 
-## network
-alias p="nocorrect proxychains4 -q "
-alias neko="~/apps/nekoray/launcher"
-
-#####################
+##############
 ### FZF s ###
-#####################
+#############
 
 fkill() {
     local pid
@@ -348,53 +373,26 @@ fkill() {
         pid=$(ps -ef | sed 1d | fzf -m --height=50% --layout=reverse | awk '{print $2}')
     fi
     if [ "x$pid" != "x" ]; then
-        echo "$pid" | xargs kill -${1:-9}
+        echo "$pid" | xargs kill "-${1:-9}"
     fi
 }
 
 # select with fzf open file in gui
 fo() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-    [[ -n "${files[0]}" ]] && xdg-open "${files[@]}"
+    [[ -n "${files[0]}" ]] && opener "${files[@]}"
 }
 
 # select with fzf open selected folder in file manager
 fm() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-
-    if command -v thunar &>/dev/null; then             # xfce
-        [[ -n "${files[0]}" ]] && thunar "${files[@]}" # gnome
-    elif command -v nautilus &>/dev/null; then
-        [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
-    else
-        [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
-    fi
-}
-
-# find mp3 file in cwd
-fmm() {
-    NAME=$1
-    files=$(locate "/$NAME.mp3")
-    echo "$files"
-    if command -v thunar &>/dev/null; then        # xfce
-        [[ -n "$files" ]] && thunar "${files[@]}" # gnome
-    elif command -v nautilus &>/dev/null; then
-        [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
-    else
-        [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
-    fi
+    gui_opener "${files[@]}"
 }
 
 # open folder containing current playing track
 fvlc() {
     files=$(lsof -p $(pidof -s vlc) | tail -1 | sed -nr 's#.*(/home.*$)#\1#p')
-    if command -v thunar &>/dev/null; then        # xfce
-        [[ -n "$files" ]] && thunar "${files[@]}" # gnome
-    elif command -v nautilus &>/dev/null; then
-        [[ -n "$files" ]] && nautilus --no-desktop "${files[@]}"
-    else
-        [[ -n "$files" ]] && xdg-open "$(dirname "${files[@]}")"
-    fi
+    gui_opener "${files[0]}"
 }
 
 # select with fzf open file with vim
@@ -445,12 +443,23 @@ lg() {
 
 port() {
     port_no="$1"
-    lsof -i ":${port_no}" -sTCP:LISTEN -n -P | awk '{ print $1 }' | tail +2 | sort | uniq
+    case $port_no in
+        '' | *[!0-9]*)
+            echo "invalid port number"
+            ;;
+        *)
+            lsof -i ":${port_no}" -sTCP:LISTEN -n -P | awk '{ print $1 }' | tail +2 | sort | uniq
+            ;;
+    esac
 }
 
 #########
 ## ETC ##
 #########
+
+if [ -e "/Applications/MarkText.app/Contents/MacOS/MarkText" ]; then
+    alias marktext="/Applications/MarkText.app/Contents/MacOS/MarkText"
+fi
 
 # exit-cd nnn with ctrl g
 # open it with `n`
