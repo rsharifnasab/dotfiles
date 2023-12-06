@@ -61,8 +61,7 @@ alias l='ls -h -1 --color=auto -lAh'
 alias l.="ls -A | egrep '^\.'"
 alias sl='ls'
 
-LSD_COMMAND="/usr/bin/lsd"
-if test -f "$LSD_COMMAND"; then
+if command -v lsd &>/dev/null; then
     alias ls='lsd    -Fh1    --color=auto            --group-dirs first'
     alias lsize='lsd -Fh1l   --color=auto --sizesort                    --total-size'
     alias l='lsd     -Fh1lA  --color=auto --sizesort --group-dirs first'
@@ -86,8 +85,8 @@ alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 # download in  terminal
 alias wget='wget -c'
 alias dllist='wget -c -i list.txt'
-alias aria2='aria2c -c -x8 -s8 -j1 --summary-interval=0'
-alias arialist='aria2c -c -x8 -s8 -j1 --summary-interval=0 -i list.txt'
+alias aria2='aria2c -c -x8 -s8 -j1 --summary-interval=0 --file-allocation=none'
+alias arialist='aria2c -c -x8 -s8 -j1 --summary-interval=0 -i list.txt --file-allocation=none'
 
 # what if I mistyped clear?
 alias clean='clear'
@@ -302,8 +301,8 @@ clean_docker() {
 }
 
 orphans() {
-    if [[ -n $(pacman -Qdt) ]]; then
-        sudo pacman -Rs $(pacman -Qdtq)
+    if [[ -n $(\pacman -Qdt) ]]; then
+        sudo \pacman -Rs $(\pacman -Qdtq)
     else
         echo "no orphans to remove"
     fi
