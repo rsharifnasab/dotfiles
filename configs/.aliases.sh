@@ -4,14 +4,14 @@
 #############
 
 ## safer commands
-#alias rm='rm -I --preserve-root'
-#alias mc='nocorrect mv -i'
-#alias mv='nocorrect mv -i'
-#alias cp='nocorrect cp -i'
+alias rm='rm -I'
+alias mc='nocorrect mv -i'
+alias mv='nocorrect mv -i'
+alias cp='nocorrect cp -i'
 alias ln='ln -i'
 
-if ! command -v safe-rm &>/dev/null; then
-    alias rm="safe-rm"
+if command -v safe-rm &>/dev/null; then
+    alias rm="safe-rm -I"
 fi
 
 # Preserve changing perms on /
