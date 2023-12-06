@@ -84,9 +84,9 @@ function neovim_full() {
 function terminal_full() {
     inst zsh moreutils \
         kitty ttf-fira-code ttf-firacode-nerd \
-        tree tldr fd nnn source-highlight \
+        tree tldr fd nnn source-highlight mtr \
         the_silver_searcher httpie lazygit gitui \
-        proxychains-ng xray just
+        proxychains-ng xray sing-box just
 }
 
 function shell_devel() {
@@ -250,7 +250,7 @@ function ubuntu() {
     sudo snap install go --classic
 }
 
-function hotspot(){
+function hotspot() {
     inst dnsmasq linux-wifi-hotspot
     # then run: wihotspot
 }
