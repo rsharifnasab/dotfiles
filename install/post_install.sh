@@ -12,7 +12,7 @@ function latex() {
         texstudio
 
     (
-        cd /usr/share/texmf-dist/scripts/texlive
+        cd /usr/share/texmf-dist/scripts/texlive || return
         sudo sed -i 's/\$Master = "\$Master\/..\/..";/\$Master = "\$Master\/..\/..\/..";/' ./tlmgr.pl
     )
 
@@ -43,9 +43,9 @@ function aur_helper() {
     # if distro repo has paru, use it!
     paru -h || asudo pacman -S paru || (
         # or else: install from source
-        cd /tmp
+        cd /tmp || exit
         git clone https://aur.archlinux.org/paru-bin.git
-        cd paru-bin
+        cd paru-bin || exit
         makepkg -si --noconfirm --needed
     )
 }
@@ -84,7 +84,11 @@ function terminal_full() {
         kitty ttf-fira-code ttf-firacode-nerd \
         tree tldr fd nnn source-highlight mtr \
         the_silver_searcher httpie lazygit gitui \
-        proxychains-ng xray sing-box just
+        just
+}
+
+function internet() {
+    inst proxychains-ng xray-bin sing-box-bin jdk-openjdk
 }
 
 function shell_devel() {
@@ -211,10 +215,6 @@ function python_devel() {
 
     #inst python-pylint-venv python-pipenv python-pytest \
     # python-rednose python-pytest autopep8
-
-    # install python language server
-    #pip install --user python-language-server
-
 }
 
 function lua_devel() {
@@ -224,6 +224,7 @@ function lua_devel() {
 function micro() {
     # micro text editor
     curl https://getmic.ro | bash
+    sudo mv ./micro /usr/bin/micro
 }
 
 function emacs() {
