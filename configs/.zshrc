@@ -84,6 +84,9 @@ plugins=(
 )
 source "$ZSH"/oh-my-zsh.sh
 
+# fix autosuggestion color to bi visible
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
+
 # solve slow paste issue (cause:zsh-autosuggestions)
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 

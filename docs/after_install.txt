@@ -30,5 +30,6 @@ after that these things are important:
 + customize taskbar
 + set super+space to: xfce4-popup-whiskermenu
 + set f12 to: xfce4-terminal --drop-down
++ check docker installation: run `dockerd` and in another terminal run: `docker run hello-world`
 
 + restart!

@@ -24,7 +24,7 @@
 - `curl cheet.sh/git` # or any other command
 - `tldr command` -> help like man pages, but simple
 - `tir` -> time.ir in shell
--  `xed` -> xfce editor with good persian support
+- `xed` -> xfce editor with good persian support
 
 ## cmd tools
 
@@ -116,3 +116,9 @@
 
 - key bindings [+](https://sw.kovidgoyal.net/kitty/overview/)
 - configurations [+](https://sw.kovidgoyal.net/kitty/conf/)
+- change theme: `kitten themes`
+
+# Docker
+
+- Docker in arch uses iran server repository for bypassing sanctions.
+- Docker in mac uses orbstack currently.

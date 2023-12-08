@@ -58,8 +58,6 @@ function ta() {
 function compilers() {
     inst nodejs npm go python3 python-pip \
         rustup jdk-openjdk lua elixir
-    rustup install stable || true
-    rustup default stable || true
 }
 
 function neovim_full() {
@@ -109,6 +107,8 @@ function haskell_devel() {
 }
 
 function rust_devel() {
+    rustup install stable
+    rustup default stable
     inst rust-analyzer
     rustup component add rust-analysis rust-src
     rustup component add clippy
@@ -150,7 +150,8 @@ function desktop_packages() {
     sudo npm i -g safe-rm
 
     # install persian font (from here: https://github.com/fzerorubigd/persian-fonts-linux)
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
+    echo "37" |
+        bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
 }
 
 function zsh_full() {
@@ -274,6 +275,13 @@ function wallpaper() {
     variety "&" || true
 }
 
+function docker_install() {
+    inst docker docker-compose
+    sudo mkdir -p /etc/docker
+    sudo echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
+        /etc/docker/daemon.json
+}
+
 function run() {
     pre_install
     aur_helper
@@ -289,6 +297,7 @@ function run() {
     python_devel
     shell_devel
     lua_devel
+    #docker_install
     #rust_devel
     #text_linters
     #haskell_devel
