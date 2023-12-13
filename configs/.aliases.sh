@@ -143,16 +143,15 @@ alias yay="paru"
 alias kit="kitty --detach"
 
 # check network
-alias ccc='curl ifconfig.me; echo'
-alias ccv='curl myip.wtf/text'
-alias pccc='p curl ifconfig.me; echo'
-alias pccv='p curl myip.wtf/text'
-alias nw='watch -n 3 -t -d -b "curl -s ifconfig.me"'
-alias pnw='watch -n3 -t -d -b "proxychains -q curl -s ifconfig.me"'
+alias ccc='curl -s ipconfig.io/country'
+alias ccv='curl -s myip.wtf/yaml | grep -i country | head -1'
+alias pccc='p ccc'
+alias pccv='p ccv'
+alias nw='watch -n 3 -t -d -b "curl -s ipconfig.io/json"'
 
 # command with help of online resources
 alias tb="nc termbin.com 9999" # copy to online clipboard
-alias excuse="w3m http://developerexcuses.com/ | head -3 | xargs -o"
+alias excuse="w3m http://developerexcuses.com/ | head -1"
 
 # check the weather
 wea() {
