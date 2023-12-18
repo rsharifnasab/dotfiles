@@ -44,6 +44,7 @@ packer.startup(function()
 	})
 
 	-- language specific
+	use("towolf/vim-helm")
 	use("justinmk/vim-syntax-extra") -- add extra syntax highlight for flex
 	use("elixir-editors/vim-elixir")
 	use("ekalinin/Dockerfile.vim") -- Vim syntax file & snippets for Dockerfile
