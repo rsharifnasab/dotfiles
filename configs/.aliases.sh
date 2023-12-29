@@ -144,8 +144,7 @@ alias kit="kitty --detach"
 
 # check network
 alias ccc='curl -s ipconfig.io/country'
-alias ccv='curl -s myip.wtf/yaml | grep -i country | head -1'
-alias ccv='curl -s myip.wtf/yaml | grep -i country | head -1 | awk '"'"'{print $2}'"'"''
+alias ccv='curl -s myip.wtf/yaml'
 alias pccc='p ccc'
 alias pccv='p ccv'
 alias nw='watch -n 3 -t -d -b "curl -s ipconfig.io/json"'
@@ -211,8 +210,8 @@ query_proxy() {
 }
 
 set_proxy() {
-    export http_proxy="http://127.0.0.1:9876/"
-    export https_proxy="http://127.0.0.1:9876/"
+    export http_proxy="http://127.0.0.1:6666/"
+    export https_proxy="http://127.0.0.1:6666/"
     query_proxy
 }
 
