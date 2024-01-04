@@ -96,6 +96,7 @@ alias زمثشق='clear'
 
 # bye
 alias :q='exit'
+alias :Q='exit'
 alias zzz="systemctl suspend"
 alias zzzz="systemctl hibernate"
 alias ظظظ="systemctl suspend"
@@ -434,7 +435,7 @@ lg() {
     lazygit "$@"
 
     if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-        cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+        cd "$(cat $LAZYGIT_NEW_DIR_FILE)" || return
         rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
     fi
 }
@@ -462,5 +463,10 @@ fi
 # exit-cd nnn with ctrl g
 # open it with `n`
 if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
-    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+    # shellcheck disable=SC1091
+    source "/usr/share/nnn/quitcd/quitcd.bash_zsh"
+fi
+if [ -f /opt/homebrew/share/nnn/quitcd/quitcd.bash_sh_zsh ]; then
+    # shellcheck disable=SC1091
+    source "/opt/homebrew/share/nnn/quitcd/quitcd.bash_sh_zsh"
 fi
