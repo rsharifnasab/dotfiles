@@ -31,7 +31,7 @@ let g:jellybeans_overrides = {
             \              'ctermfg': 'none', 'ctermbg': 'none',
             \     },
             \}
-colorscheme jellybeans
+"colorscheme jellybeans
 
 
 " theme for day:
@@ -55,6 +55,37 @@ require('lualine').setup{
     },
 }
 
+
+local colors = require("onenord.colors").load()
+
+require('onenord').setup({
+  theme = "dark", -- "dark" or "light". Alternatively, remove the option and set vim.o.background instead
+  borders = true, -- Split window borders
+  fade_nc = true, -- Fade non-current windows, making them more distinguishable
+  -- Style that is applied to various groups: see `highlight-args` for options
+  styles = {
+    comments = "NONE",
+    strings = "NONE",
+    keywords = "NONE",
+    functions = "NONE",
+    variables = "NONE",
+    diagnostics = "underline",
+  },
+  disable = {
+    background = false, -- Disable setting the background color
+    float_background = false, -- Disable setting the background color for floating windows
+    cursorline = false, -- Disable the cursorline
+    eob_lines = true, -- Hide the end-of-buffer lines
+  },
+  -- Inverse highlight for different groups
+  inverse = {
+    match_paren = false,
+  },
+  custom_highlights = {
+  },
+  custom_colors = {}, -- Overwrite default colors
+})
+
 -- indent blankline
 
 local hooks = require "ibl.hooks"
@@ -69,7 +100,6 @@ vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
 vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
 vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 end)
-
 require("ibl").setup {
     indent = {
         highlight = {
@@ -96,7 +126,12 @@ require("ibl").setup {
         },
     },
 }
+
 END
+" onenorf original
+highlight Normal               guifg=#C8D0E0 guibg=#2E3440
+" onenord cutom
+highlight Normal               guifg=#BAC2D2 guibg=#1F222d
 
 " git signs no highlight
 highlight GitSignsAdd          guifg=#009900 ctermfg=2
