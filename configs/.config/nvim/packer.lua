@@ -82,6 +82,7 @@ packer.startup(function()
 	-- themes
 	use("rafi/awesome-vim-colorschemes") -- many colorshcemes
 	use("rmehri01/onenord.nvim")
+	use("AhmedAbdulrahman/vim-aylin")
 
 	use({
 		"nvim-treesitter/nvim-treesitter-context",
