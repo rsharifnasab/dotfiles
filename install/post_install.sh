@@ -41,7 +41,7 @@ function inst() {
 }
 function aur_helper() {
     # if distro repo has paru, use it!
-    paru -h || asudo pacman -S paru || (
+    paru -h || sudo pacman -S paru || (
         # or else: install from source
         cd /tmp || exit
         git clone https://aur.archlinux.org/paru-bin.git
@@ -61,7 +61,7 @@ function compilers() {
 }
 
 function neovim_full() {
-    inst neovim
+    inst neovim prettier
 
     # nvim packer
     git clone --depth 1 https://github.com/wbthomason/packer.nvim \
@@ -71,12 +71,9 @@ function neovim_full() {
     inst python-msgpack python-pynvim fd ripgrep
     sudo npm install -g neovim
     # sync plugins
-    # nvim +PackerSync
-    nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    nvim +PackerSync
     nvim +UpdateRemotePlugins
     nvim +CocUpdate
-
-    inst prettier
 }
 
 function terminal_full() {
@@ -279,8 +276,8 @@ function wallpaper() {
 function docker_install() {
     inst docker docker-compose
     sudo mkdir -p /etc/docker
-    sudo echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
-        /etc/docker/daemon.json
+    echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
+        sudo tee /etc/docker/daemon.json
 }
 
 function run() {
