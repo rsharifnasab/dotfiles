@@ -151,7 +151,7 @@ function desktop_packages() {
     sudo npm i -g safe-rm
 
     # install persian font (from here: https://github.com/fzerorubigd/persian-fonts-linux)
-    echo "37" |
+    echo "37\nyes" |
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
 }
 
@@ -221,7 +221,7 @@ function lua_devel() {
 function micro() {
     # micro text editor
     curl https://getmic.ro | bash
-    sudo mv ./micro /usr/bin/micro
+    \sudo \mv ./micro /usr/bin/micro
 }
 
 function emacs() {
