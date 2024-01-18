@@ -269,8 +269,9 @@ function grub_fix() {
 }
 function wallpaper() {
     mkdir -p ~/Pictures/
-    git clone --branch master --depth 1 "https://github.com/rsharifnasab/wallpapers.git"
-    variety "&" || true
+    git clone --branch master --depth 1 "https://github.com/rsharifnasab/wallpapers.git" \
+        ~/Pictures/wallpapers
+    variety &
 }
 
 function docker_install() {
