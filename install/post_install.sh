@@ -281,6 +281,18 @@ function docker_install() {
         sudo tee /etc/docker/daemon.json
 }
 
+function fingerprint(){
+    sudo gpasswd -a "$USER" input
+    inst fprintd
+}
+
+function touchpad(){
+    sudo gpasswd -a "$USER" input
+    inst ruby libinput ruby-fusuma xdotool
+    gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled || true
+    # https://github.com/iberianpig/fusuma/blob/main/README.md
+}
+
 function run() {
     pre_install
     aur_helper
