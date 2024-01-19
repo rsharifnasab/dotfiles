@@ -81,7 +81,7 @@ function terminal_full() {
         kitty ttf-fira-code ttf-firacode-nerd \
         tree tldr fd nnn source-highlight mtr \
         the_silver_searcher httpie lazygit gitui \
-        just
+        just usbutils pciutils
 }
 
 function internet() {
@@ -284,6 +284,16 @@ function docker_install() {
 function fingerprint(){
     sudo gpasswd -a "$USER" input
     inst fprintd
+    fprintd-enroll roozbeh -f "right-index-finger"
+    fprintd-enroll roozbeh -f "left-index-finger"
+    fprintd-list
+    # in casy of any issue:
+    # \rm -rf /var/lib/fprint
+
+    # add "auth    sufficient    pam_fprintd.so" to first of these files:
+    # /etc/pam.d/xfce4-screensaver
+    # /etc/pam.d/sudo
+    # /etc/pam.d/system-local-login
 }
 
 function touchpad(){
