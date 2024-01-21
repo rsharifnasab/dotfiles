@@ -9,7 +9,8 @@ function latex() {
         texlive-latex texlive-latexextra \
         texlive-fontsrecommended texlive-binextra \
         ed dialog wdiff \
-        texstudio
+        texstudio \
+        evince okular languagetool
 
     (
         cd /usr/share/texmf-dist/scripts/texlive || return
