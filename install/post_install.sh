@@ -150,8 +150,16 @@ function desktop_packages() {
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
 
+}
+
+function desktop_packages_extra() {
+    inst typora marp-cli-bin marktext-bin termius
+
+}
+
+function fonts(){
     # install persian font (from here: https://github.com/fzerorubigd/persian-fonts-linux)
-    echo "37\nyes" |
+    printf "37\nyes\n" |
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
 }
 
@@ -312,6 +320,8 @@ function run() {
     neovim_full
     bluetooth
     desktop_packages
+    desktop_packages_extra
+    fonts
     ta
     cpp_devel
     java_devel
