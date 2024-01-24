@@ -146,7 +146,8 @@ function desktop_packages() {
         ncdu qrencode viu speedtet-cli ipython \
         vlc shotwell telegram-desktop meld thunar obs-studio \
         pandoc-bin typora-free \
-        gparted
+        gparted \
+        speedtest-cli bind # net utils
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -155,6 +156,7 @@ function desktop_packages() {
 
 function desktop_packages_extra() {
     inst typora marp-cli-bin marktext-bin termius
+    inst skypeforlinux-stable-bin gnome-keyring
 
 }
 
@@ -310,6 +312,14 @@ function touchpad(){
     inst ruby libinput ruby-fusuma xdotool
     gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled || true
     # https://github.com/iberianpig/fusuma/blob/main/README.md
+}
+
+function laptop(){
+    inst tlp ethtool
+    sudo systemctl enable tlp.service
+    sudo systemctl start tlp.service
+    tlp-stat -s
+    # sudo tlp-stat
 }
 
 function run() {
