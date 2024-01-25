@@ -334,6 +334,17 @@ EOF
 ~/bin/nm-iwd-migrate.sh
 }
 
+function disable-beep(){
+# permanently
+sudo tee /etc/modprobe.d/nobeep.conf <<- EOF
+blacklist pcspkr
+blacklist snd_pcsp
+EOF
+# just this time:
+sudo rmmod pcspkr || true
+sudo rmmod snd_pcsp || true
+}
+
 function run() {
     pre_install
     aur_helper
