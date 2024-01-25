@@ -322,6 +322,18 @@ function laptop(){
     # sudo tlp-stat
 }
 
+# intel wifi backend
+# solve suspend issue
+# https://wiki.archlinux.org/title/NetworkManager#Using_iwd_as_the_Wi-Fi_backend
+function iwd(){
+inst iwd
+sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf <<-EOF
+[device]
+wifi.backend=iwd
+EOF
+~/bin/nm-iwd-migrate.sh
+}
+
 function run() {
     pre_install
     aur_helper
