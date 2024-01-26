@@ -326,13 +326,19 @@ function laptop(){
 # solve suspend issue
 # https://wiki.archlinux.org/title/NetworkManager#Using_iwd_as_the_Wi-Fi_backend
 function iwd(){
-inst iwd
+inst iwd wireless-regdb
 sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf <<-EOF
 [device]
+wifi.scan-rand-mac-address=no
 wifi.backend=iwd
 EOF
-~/bin/nm-iwd-migrate.sh
+sudo systemctl disable wpa_supplicant
+# delete all saved networks
+nmcli --fields UUID,TIMESTAMP-REAL con show | grep never | awk '{print $1}' | while read line; do nmcli con delete uuid $line; done
+
+# then check systemctl status iwd and NetworkManager
 }
+
 
 function disable-beep(){
 # permanently
