@@ -132,16 +132,28 @@ alias goc="go clean"
 alias gott="go test './...' -cover"
 alias gop='cd $GOPATH'
 
+# clipboard in mac and linux
+if command -v xclip &>/dev/null; then
+    alias clipcopy="xclip -selection c"
+    alias clippaste="xclip -selection c -o"
+else
+    true
+fi
+alias clip_set="clipcopy"
+alias clip_get="clippaste"
+
+
+
 # command with extenral tools
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 alias redsh="redshift  -b 0.79:0.65  -l 35.74:51.33"
-alias clip_set="xclip -selection c"
-alias clip_get="xclip -selection c -o"
+
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
 alias psrc="source ~/apps/venv/bin/activate"
 alias yay="paru"
+alias syu="paru -Syu" # If you know, you know.
 alias kit="kitty --detach"
 
 # check network
