@@ -17,7 +17,8 @@ let g:neoformat_run_all_formatters = 1 " run all formaters even when the first o
 "--    autocmd!
 "--   autocmd BufWritePre * undojoin | Neoformat
 "--augroup END
-au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | endtry
+"au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | endtry
+au BufWritePre * if &ft !~ '^\(yaml\|yml\)$' | try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | endtry | endif
 
 let g:astyle_opt="--quiet --mode=java --style=java --indent-after-parens --indent-classes --indent-switches --break-blocks --pad-comma --unpad-paren --add-braces --convert-tabs --delete-empty-lines"
 let g:shfmt_opt="-ci"
@@ -30,5 +31,3 @@ let g:rooter_patterns = ['src', '.git', 'Makefile', 'go.mod']
 
 " yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-
