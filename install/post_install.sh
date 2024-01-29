@@ -9,7 +9,8 @@ function latex() {
         texlive-latex texlive-latexextra \
         texlive-fontsrecommended texlive-binextra \
         ed dialog wdiff \
-        texstudio
+        texstudio \
+        evince okular languagetool
 
     (
         cd /usr/share/texmf-dist/scripts/texlive || return
@@ -41,7 +42,7 @@ function inst() {
 }
 function aur_helper() {
     # if distro repo has paru, use it!
-    paru -h || asudo pacman -S paru || (
+    paru -h || sudo pacman -S paru || (
         # or else: install from source
         cd /tmp || exit
         git clone https://aur.archlinux.org/paru-bin.git
@@ -61,7 +62,7 @@ function compilers() {
 }
 
 function neovim_full() {
-    inst neovim
+    inst neovim prettier
 
     # nvim packer
     git clone --depth 1 https://github.com/wbthomason/packer.nvim \
@@ -71,12 +72,9 @@ function neovim_full() {
     inst python-msgpack python-pynvim fd ripgrep
     sudo npm install -g neovim
     # sync plugins
-    # nvim +PackerSync
-    nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    nvim +PackerSync
     nvim +UpdateRemotePlugins
     nvim +CocUpdate
-
-    inst prettier
 }
 
 function terminal_full() {
@@ -84,7 +82,7 @@ function terminal_full() {
         kitty ttf-fira-code ttf-firacode-nerd \
         tree tldr fd nnn source-highlight mtr \
         the_silver_searcher httpie lazygit gitui \
-        just
+        just usbutils pciutils
 }
 
 function internet() {
@@ -148,13 +146,23 @@ function desktop_packages() {
         ncdu qrencode viu speedtet-cli ipython \
         vlc shotwell telegram-desktop meld thunar obs-studio \
         pandoc-bin typora-free \
-        gparted
+        gparted \
+        speedtest-cli bind # net utils
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
 
+}
+
+function desktop_packages_extra() {
+    inst typora marp-cli-bin marktext-bin termius
+    inst skypeforlinux-stable-bin gnome-keyring
+
+}
+
+function fonts(){
     # install persian font (from here: https://github.com/fzerorubigd/persian-fonts-linux)
-    echo "37" |
+    printf "37\nyes\n" |
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
 }
 
@@ -224,7 +232,7 @@ function lua_devel() {
 function micro() {
     # micro text editor
     curl https://getmic.ro | bash
-    sudo mv ./micro /usr/bin/micro
+    \sudo \mv ./micro /usr/bin/micro
 }
 
 function emacs() {
@@ -272,15 +280,75 @@ function grub_fix() {
 }
 function wallpaper() {
     mkdir -p ~/Pictures/
-    git clone --branch master --depth 1 "https://github.com/rsharifnasab/wallpapers.git"
-    variety "&" || true
+    git clone --branch master --depth 1 "https://github.com/rsharifnasab/wallpapers.git" \
+        ~/Pictures/wallpapers
+    variety &
 }
 
 function docker_install() {
     inst docker docker-compose
     sudo mkdir -p /etc/docker
-    sudo echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
-        /etc/docker/daemon.json
+    echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
+        sudo tee /etc/docker/daemon.json
+}
+
+function fingerprint(){
+    sudo gpasswd -a "$USER" input
+    inst fprintd
+    fprintd-enroll roozbeh -f "right-index-finger"
+    fprintd-enroll roozbeh -f "left-index-finger"
+    fprintd-list
+    # in casy of any issue:
+    # \rm -rf /var/lib/fprint
+
+    # add "auth    sufficient    pam_fprintd.so" to first of these files:
+    # /etc/pam.d/xfce4-screensaver
+    # /etc/pam.d/sudo
+    # /etc/pam.d/system-local-login
+}
+
+function touchpad(){
+    sudo gpasswd -a "$USER" input
+    inst ruby libinput ruby-fusuma xdotool
+    gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled || true
+    # https://github.com/iberianpig/fusuma/blob/main/README.md
+}
+
+function laptop(){
+    inst tlp ethtool
+    sudo systemctl enable tlp.service
+    sudo systemctl start tlp.service
+    tlp-stat -s
+    # sudo tlp-stat
+}
+
+# intel wifi backend
+# solve suspend issue
+# https://wiki.archlinux.org/title/NetworkManager#Using_iwd_as_the_Wi-Fi_backend
+function iwd(){
+inst iwd wireless-regdb
+sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf <<-EOF
+[device]
+wifi.scan-rand-mac-address=no
+wifi.backend=iwd
+EOF
+sudo systemctl disable wpa_supplicant
+# delete all saved networks
+nmcli --fields UUID,TIMESTAMP-REAL con show | grep never | awk '{print $1}' | while read line; do nmcli con delete uuid $line; done
+
+# then check systemctl status iwd and NetworkManager
+}
+
+
+function disable-beep(){
+# permanently
+sudo tee /etc/modprobe.d/nobeep.conf <<- EOF
+blacklist pcspkr
+blacklist snd_pcsp
+EOF
+# just this time:
+sudo rmmod pcspkr || true
+sudo rmmod snd_pcsp || true
 }
 
 function run() {
@@ -292,6 +360,8 @@ function run() {
     neovim_full
     bluetooth
     desktop_packages
+    desktop_packages_extra
+    fonts
     ta
     cpp_devel
     java_devel

@@ -1,0 +1,29 @@
+swipe:
+  3:
+    left:
+      command: "xdotool key ctrl+alt+Left" # Switch to next workspace
+    right:
+      command: "xdotool key ctrl+alt+Right" # Switch to previous workspace
+pinch:
+  2:
+    in:
+      command: "xdotool key ctrl+minus"
+      threshold: 0.3
+    out:
+      command: "xdotool key ctrl+plus"
+      threshold: 0.3
+hold:
+  4:
+    command: "xdotool key super" # Activity
+
+rotate:
+  3:
+    clockwise:
+      command: "xdotool key XF86AudioRaiseVolume" # Volume up
+    counterclockwise:
+      command: "xdotool key XF86AudioLowerVolume" # Volume down
+  4:
+    clockwise:
+      command: "xdotool key XF86MonBrightnessUp" # Brightness up
+    counterclockwise:
+      command: "xdotool key XF86MonBrightnessDown" # Brightness down

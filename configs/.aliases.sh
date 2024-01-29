@@ -97,6 +97,7 @@ alias زمثشق='clear'
 # bye
 alias :q='exit'
 alias :Q='exit'
+alias exiy='exit'
 alias zzz="systemctl suspend"
 alias zzzz="systemctl hibernate"
 alias ظظظ="systemctl suspend"
