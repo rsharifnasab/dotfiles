@@ -67,7 +67,7 @@ let g:jellybeans_overrides = {
             \              'ctermfg': 'none', 'ctermbg': 'none',
             \     },
             \}
-colorscheme jellybeans
+"colorscheme jellybeans
 
 " lua onenord()
 
@@ -84,6 +84,15 @@ colorscheme jellybeans
 
 "colorscheme aylin " like ayu but better
 "highlight Normal guifg=#BAC2D2 guibg=#1F222d
+
+let g:xcodedarkhc_dim_punctuations = 1
+let g:xcodedarkhc_green_comments = 0
+let g:xcodedarkhc_emph_types = 1
+let g:xcodedarkhc_emph_funcs = 0
+let g:xcodedarkhc_emph_idents = 0
+let g:xcodedarkhc_match_paren_style = 1
+
+colorscheme xcodedarkhc
 
 let &fcs='eob: ' " dont show tilde in fillchars
 
