@@ -164,7 +164,8 @@ alias pccv='p ccv'
 alias nw='watch -n 3 -t -d -b "curl -s ipconfig.io/json"'
 
 # command with help of online resources
-alias tb="nc termbin.com 9999" # copy to online clipboard
+alias tb="nc mermbin.com 9999" # copy to online clipboard
+alias sprung='curl -F "sprunge=<-" http://sprunge.us'
 alias excuse="w3m http://developerexcuses.com/ | head -1"
 
 # check the weather

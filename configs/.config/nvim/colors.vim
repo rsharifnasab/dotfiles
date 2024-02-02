@@ -87,7 +87,7 @@ let g:jellybeans_overrides = {
 
 let g:xcodedarkhc_dim_punctuations = 1
 let g:xcodedarkhc_green_comments = 0
-let g:xcodedarkhc_emph_types = 1
+let g:xcodedarkhc_emph_types = 0
 let g:xcodedarkhc_emph_funcs = 0
 let g:xcodedarkhc_emph_idents = 0
 let g:xcodedarkhc_match_paren_style = 1
