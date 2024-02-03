@@ -10,7 +10,7 @@
     # Don't consider trailing space change as a cause for merge conflicts
     whitespace = -trailing-space
     autocrlf = input
-	excludesFile = ~/.gitignore_global
+    excludesFile = ~/.gitignore_global
 
 [diff]
     tool = meld
@@ -43,8 +43,11 @@
 [init]
     defaultBranch = master
 [merg]
-	tool = meld
+    tool = meld
 
+# Include only when I am in snapp
+[includeIf "gitdir:/home/roozbeh/Desktop/snapp/"]
+    path = .gitconfig.snapp
 
 # Include only when I am in snapp
 [includeIf "gitdir:/Users/roozbewh/"]
