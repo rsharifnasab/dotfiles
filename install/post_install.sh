@@ -57,7 +57,7 @@ function ta() {
 }
 
 function compilers() {
-    inst nodejs npm go python3 python-pip \
+    inst nodejs npm yarn go python3 python-pip \
         rustup jdk-openjdk lua elixir
 }
 
@@ -100,7 +100,7 @@ function cpp_devel() {
 
 function js_devel() {
     # for js development
-    inst eslint tidy stylelint
+    inst eslint tidy stylelint yarn
     sudo npm -g install js-beautify
 }
 
@@ -146,7 +146,7 @@ function desktop_packages() {
         ncdu qrencode viu speedtet-cli ipython \
         vlc shotwell telegram-desktop meld thunar obs-studio \
         pandoc-bin typora-free \
-        gparted \
+        gparted jq yq \
         speedtest-cli bind # net utils
 
     # prevent rm from deleting important files
