@@ -47,6 +47,8 @@ function gui_opener() {
 alias k="kubectl"
 alias j='jdate -u +"%Y/%m/%d"'
 alias v='nvim'
+alias c='nvim'
+alias rmr='rm -r'
 # emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'
