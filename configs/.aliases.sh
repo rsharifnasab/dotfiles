@@ -56,6 +56,7 @@ alias em='emacsclient -n -c -a ""'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias grepi='grep --color=auto -i'
 alias free="free -mht"
 
 alias ls='ls -h -1 --color=auto'
@@ -143,8 +144,6 @@ else
 fi
 alias clip_set="clipcopy"
 alias clip_get="clippaste"
-
-
 
 # command with extenral tools
 # make current folder ready for run junit tests

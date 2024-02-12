@@ -147,7 +147,9 @@ function desktop_packages() {
         vlc shotwell telegram-desktop meld thunar obs-studio \
         pandoc-bin typora-free \
         gparted jq yq \
-        speedtest-cli bind # net utils
+        speedtest-cli bind \
+        synapse
+    # macstyle launcher
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -160,7 +162,7 @@ function desktop_packages_extra() {
 
 }
 
-function fonts(){
+function fonts() {
     # install persian font (from here: https://github.com/fzerorubigd/persian-fonts-linux)
     printf "37\nyes\n" |
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
@@ -292,7 +294,7 @@ function docker_install() {
         sudo tee /etc/docker/daemon.json
 }
 
-function fingerprint(){
+function fingerprint() {
     sudo gpasswd -a "$USER" input
     inst fprintd
     fprintd-enroll roozbeh -f "right-index-finger"
@@ -307,14 +309,14 @@ function fingerprint(){
     # /etc/pam.d/system-local-login
 }
 
-function touchpad(){
+function touchpad() {
     sudo gpasswd -a "$USER" input
     inst ruby libinput ruby-fusuma xdotool
     gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled || true
     # https://github.com/iberianpig/fusuma/blob/main/README.md
 }
 
-function laptop(){
+function laptop() {
     inst tlp ethtool
     sudo systemctl enable tlp.service
     sudo systemctl start tlp.service
@@ -325,30 +327,28 @@ function laptop(){
 # intel wifi backend
 # solve suspend issue
 # https://wiki.archlinux.org/title/NetworkManager#Using_iwd_as_the_Wi-Fi_backend
-function iwd(){
-inst iwd wireless-regdb
-sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf <<-EOF
+function iwd() {
+    inst iwd wireless-regdb
+    sudo tee /etc/NetworkManager/conf.d/wifi-backend.conf <<-EOF
 [device]
 wifi.scan-rand-mac-address=no
 wifi.backend=iwd
 EOF
-sudo systemctl disable wpa_supplicant
-# delete all saved networks
-nmcli --fields UUID,TIMESTAMP-REAL con show | grep never | awk '{print $1}' | while read line; do nmcli con delete uuid $line; done
-
-# then check systemctl status iwd and NetworkManager
+    sudo systemctl disable wpa_supplicant
+    # delete all saved networks
+    nmcli --fields UUID,TIMESTAMP-REAL con show | grep never | awk '{print $1}' | while read line; do nmcli con delete uuid $line; done
+    # then check systemctl status iwd and NetworkManager
 }
 
-
-function disable-beep(){
-# permanently
-sudo tee /etc/modprobe.d/nobeep.conf <<- EOF
+function disable-beep() {
+    # permanently
+    sudo tee /etc/modprobe.d/nobeep.conf <<-EOF
 blacklist pcspkr
 blacklist snd_pcsp
 EOF
-# just this time:
-sudo rmmod pcspkr || true
-sudo rmmod snd_pcsp || true
+    # just this time:
+    sudo rmmod pcspkr || true
+    sudo rmmod snd_pcsp || true
 }
 
 function run() {
