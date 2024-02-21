@@ -1,7 +1,3 @@
-[user]
-    name = Roozbeh Sharifnasab
-    email = rsharifnasab@gmail.com
-
 [color]
     # Enable colors in color-supporting terminals
     ui = auto
@@ -42,13 +38,18 @@
 
 [init]
     defaultBranch = master
+
 [merg]
     tool = meld
+
+# Include only when I am Roozbeh
+[includeIf "gitdir:/home/roozbeh/"]
+    path = .gitconfig.roozbeh
 
 # Include only when I am in snapp
 [includeIf "gitdir:/home/roozbeh/Desktop/snapp/"]
     path = .gitconfig.snapp
 
-# Include only when I am in snapp
+# Include only when I am in snapp (macbook)
 [includeIf "gitdir:/Users/roozbewh/"]
     path = .gitconfig.snapp
