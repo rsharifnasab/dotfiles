@@ -467,6 +467,29 @@ port() {
     esac
 }
 
+wifi() {
+    nmcli connection show --active | grep -i "wifi" --color=never
+    ccc
+}
+
+wifiscan() {
+    timeout 1s nmcli device wifi list --rescan yes >/dev/null
+    nmcli device wifi list --rescan yes
+}
+
+__wificonnect() {
+    if [ $# -eq 0 ]; then
+        echo "No AP name supplied"
+    elif [ $# -eq 1 ]; then
+        nmcli device wifi connect "$1"
+    elif [ $# -eq 2 ]; then
+        nmcli device wifi connect "$1" password "$1"
+    fi
+    nmcli connection show --active
+    ccc
+}
+alias wificonnect=" __wificonnect"
+
 #########
 ## ETC ##
 #########
