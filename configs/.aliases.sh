@@ -483,12 +483,13 @@ __wificonnect() {
     elif [ $# -eq 1 ]; then
         nmcli device wifi connect "$1"
     elif [ $# -eq 2 ]; then
-        nmcli device wifi connect "$1" password "$1"
+        nmcli device wifi connect "$1" password "$2"
     fi
     nmcli connection show --active
     ccc
 }
 alias wificonnect=" __wificonnect"
+alias wificonnect="__wificonnect"
 
 #########
 ## ETC ##
