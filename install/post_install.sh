@@ -148,7 +148,7 @@ function desktop_packages() {
         pandoc-bin typora-free \
         gparted jq yq \
         speedtest-cli bind \
-        synapse
+        synapse mission-center
     # macstyle launcher
 
     # prevent rm from deleting important files
