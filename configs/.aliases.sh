@@ -246,6 +246,11 @@ alias sp="set_proxy"
 alias qp="query_proxy"
 
 ### other functions
+
+important() {
+    grep -i -v "info" | grep -i -v "debug"
+}
+
 mnt() {
     mount | awk -F' ' '{ printf "%s\t%s\n",$1,$3; }' |
         column -t | grep -E "^/dev/" | sort
@@ -478,13 +483,17 @@ wifiscan() {
 }
 
 __wificonnect() {
+    echo "scanning for wifi networks"
+    wifiscan
     if [ $# -eq 0 ]; then
         echo "No AP name supplied"
+        return
     elif [ $# -eq 1 ]; then
-        nmcli device wifi connect "$1"
+        nmcli device wifi connect "$1" || return
     elif [ $# -eq 2 ]; then
-        nmcli device wifi connect "$1" password "$2"
+        nmcli device wifi connect "$1" password "$2" || return
     fi
+    echo "connected to:"
     nmcli connection show --active
     ccc
 }
