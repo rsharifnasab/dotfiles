@@ -15,10 +15,10 @@ fi
 ###############
 ##set zsh theme
 ###############
-ZSH_THEME="random"
 ZSH_THEME="archcraft-dwm"
 ZSH_THEME="half-life"
 ZSH_THEME="robbyrussell"
+ZSH_THEME="random"
 
 ZSH_FAVLIST="$HOME/.zsh_favlist"
 ZSH_THEME_RANDOM_CANDIDATES=()
