@@ -140,7 +140,7 @@ function desktop_packages() {
     inst firefox chromium \
         noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu \
         ntfs-3g pacman-contrib dnsutil inetutils lxrandr \
-        zip unzip unrar xarchiver engrampa \
+        zip unzip unrar xarchiver engrampa p7zip \
         variety flameshot redshift \
         nano xed tmux zellij jcal btop tokei aria2 acpi tty-clock \
         ncdu qrencode viu speedtet-cli ipython \
@@ -149,7 +149,6 @@ function desktop_packages() {
         gparted jq yq \
         speedtest-cli bind \
         synapse mission-center
-    # macstyle launcher
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
