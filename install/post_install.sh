@@ -156,6 +156,7 @@ function desktop_packages() {
 }
 
 function desktop_packages_extra() {
+    inst pdftk poppler
     inst typora marp-cli-bin marktext-bin termius
     inst skypeforlinux-stable-bin gnome-keyring
 
