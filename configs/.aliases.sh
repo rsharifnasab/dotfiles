@@ -49,6 +49,7 @@ alias j='jdate -u +"%Y/%m/%d"'
 alias v='nvim'
 alias c='nvim'
 alias rmr='rm -r'
+alias cpr='cp -r'
 # emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'
@@ -484,7 +485,8 @@ wifiscan() {
 
 __wificonnect() {
     echo "scanning for wifi networks"
-    wifiscan
+    timeout 1s nmcli device wifi list --rescan yes || true
+    #wifiscan
     if [ $# -eq 0 ]; then
         echo "No AP name supplied"
         return
