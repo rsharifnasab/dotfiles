@@ -9,6 +9,35 @@ hi Whitespace  guibg=NONE ctermbg=NONE
 
 
 lua <<EOF
+
+function bamboo()
+    require("bamboo").setup{
+    transparent = false, -- Show/hide background
+    dim_inactive = false, -- Dim inactive windows/buffers
+    code_style = {
+        comments = { italic = true },
+        conditionals = { italic = true },
+        keywords = {},
+        functions = {},
+        namespaces = { italic = true },
+        parameters = { italic = true },
+        strings = {},
+        variables = {},
+        },
+    code_style = {
+        comments = { italic = true },
+        conditionals = { italic = true },
+        keywords = {},
+        functions = {},
+        namespaces = { italic = true },
+        parameters = { italic = true },
+        strings = {},
+        variables = {},
+        },
+    }
+    require("bamboo").load()
+    end
+
 function onenord()
     local colors = require("onenord.colors").load()
     require('onenord').setup({
@@ -91,8 +120,10 @@ let g:xcodedarkhc_emph_types = 0
 let g:xcodedarkhc_emph_funcs = 0
 let g:xcodedarkhc_emph_idents = 0
 let g:xcodedarkhc_match_paren_style = 1
+"colorscheme xcodedarkhc
 
-colorscheme xcodedarkhc
+
+lua bamboo()
 
 let &fcs='eob: ' " dont show tilde in fillchars
 

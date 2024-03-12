@@ -84,6 +84,7 @@ packer.startup(function()
 	use("rmehri01/onenord.nvim")
 	use("AhmedAbdulrahman/vim-aylin")
 	use("arzg/vim-colors-xcode")
+    use("ribru17/bamboo.nvim")
 
 	use({
 		"nvim-treesitter/nvim-treesitter-context",
