@@ -148,7 +148,7 @@ function desktop_packages() {
         pandoc-bin typora-free \
         gparted jq yq \
         speedtest-cli bind \
-        synapse mission-center
+        synapse
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -156,9 +156,17 @@ function desktop_packages() {
 }
 
 function desktop_packages_extra() {
+    # pdf manipulation
     inst pdftk poppler
-    inst typora marp-cli-bin marktext-bin termius
+
+    # markdown - ssh gui
+    inst typora marp-cli-bin marktext-bin logseq-desktop-bin termius
+
+    # skype!
     inst skypeforlinux-stable-bin gnome-keyring
+
+    # task manager - another terminal
+    inst mission-center wezterm
 
 }
 
