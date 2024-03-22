@@ -133,7 +133,7 @@ alias gop='cd $GOPATH'
 # command with extenral tools
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
-alias redsh="redshift  -b 0.79:0.65  -l 35.74:51.33"
+alias redsh="redshift  -b 0.95:0.85  -l 35.74:51.33"
 alias clip_set="xclip -selection c"
 alias clip_get="xclip -selection c -o"
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
@@ -144,8 +144,7 @@ alias kit="kitty --detach"
 
 # check network
 alias ccc='curl -s ipconfig.io/country'
-alias ccv='curl -s myip.wtf/yaml | grep -i country | head -1'
-alias ccv='curl -s myip.wtf/yaml | grep -i country | head -1 | awk '"'"'{print $2}'"'"''
+alias ccv='curl -s myip.wtf/yaml'
 alias pccc='p ccc'
 alias pccv='p ccv'
 alias nw='watch -n 3 -t -d -b "curl -s ipconfig.io/json"'
