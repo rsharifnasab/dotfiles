@@ -216,6 +216,7 @@ function python_devel() {
         source "venv/bin/activate"
         pip3 install --upgrade pip pylint pynvim ipython
         pip3 install --upgrade numpy pandas matplotlib plotly networkx pillow
+        pip3 install pyqt5 # for matplotlib
 
         pip3 install mypy pandas-stubs data-science-types # python static type check (work with ale)
         #mypy --install-types
