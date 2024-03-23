@@ -8,20 +8,24 @@ local packer = require("packer")
 local use = packer.use
 
 packer.startup(function()
+	-- because packer cannot find itself :)
 	use("wbthomason/packer.nvim")
+
 	--use "tversteeg/registers.nvim" -- press " to show registers content
 	--use 'wakatime/vim-wakatime' -- time track my programming
-	-- Stable version of coc autocomplete
+
+	-- coc autocomplete engine
 	use({
 		"neoclide/coc.nvim",
 		branch = "release",
 	})
-	use("dense-analysis/ale") -- ale for foreign linting
+	use("dense-analysis/ale") -- ale for external linters
 
 	-- ETC
 	use("editorconfig/editorconfig-vim")
 	use("airblade/vim-rooter") -- set root based on .git
 	use("lewis6991/gitsigns.nvim") -- changed lines from HEAD
+
 	use({
 		"romgrk/barbar.nvim",
 		requires = {
@@ -38,7 +42,7 @@ packer.startup(function()
 		end,
 	})
 
-    -- draw a line to show tabs
+	-- draw a line to show tabs
 	use("lukas-reineke/indent-blankline.nvim")
 
 	-- search
@@ -70,6 +74,13 @@ packer.startup(function()
 	use({
 		"nvim-tree/nvim-tree.lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
+	})
+	-- like vidir
+	use({
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup()
+		end,
 	})
 
 	use({
