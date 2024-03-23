@@ -120,3 +120,6 @@ end, {
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 vim.api.nvim_set_keymap("n", "<leader>l", ":Format<CR>", { noremap = true })
+
+-- TODO: make a custom linter for astyle (c/java)
+--https://github.com/stevearc/conform.nvim/issues/339
