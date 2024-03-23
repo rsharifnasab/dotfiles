@@ -72,8 +72,8 @@ xmap <leader>z  <Plug>(coc-codeaction-selected)
 nmap <leader>z  <Plug>(coc-codeaction-selected)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
 
 
 " Mappings for CoCList
@@ -93,4 +93,3 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 "nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
