@@ -76,12 +76,7 @@ packer.startup(function()
 		requires = { "nvim-tree/nvim-web-devicons" },
 	})
 	-- like vidir
-	use({
-		"stevearc/oil.nvim",
-		config = function()
-			require("oil").setup()
-		end,
-	})
+	--use("stevearc/oil.nvim")
 
 	use({
 		"nvimdev/dashboard-nvim",
