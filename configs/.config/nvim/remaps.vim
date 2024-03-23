@@ -5,7 +5,9 @@ map <C-a> <esc>ggVG<CR>
 noremap  <silent> <C-S>      :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
+
 nnoremap <silent> <C-L>  :nohlsearch<CR>h<C-L>
+
 " ctrl L -> clear highlighted search result
 tnoremap <Esc> <C-\><C-n> " esc in terminal mode -> exit
 
@@ -44,23 +46,18 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-
-" open new file
-nnoremap <Leader>o :Telescope find_files<CR>
-nnoremap <leader><tab> <cmd>Telescope find_files<cr>
-nnoremap <leader>f <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-
 " visual line mode
 nmap <Leader><Leader> V
 
 nmap  <leader>j :! idea format %<CR>
 
 
+" Telescope
+nnoremap <Leader>o :Telescope find_files<CR>
+nnoremap <leader><tab> <cmd>Telescope find_files<cr>
+nnoremap <leader>f <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" nvim tree
 nnoremap <C-f> :NvimTreeFindFileToggle<cr>
-
-
-" generate new serial episode download link from the old one
-let @z='yyp/S..EfE€kr€krg€kh'
