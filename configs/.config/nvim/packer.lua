@@ -30,8 +30,16 @@ packer.startup(function()
 		},
 	})
 
-	use("sbdchd/neoformat") -- format code
-	use("lukas-reineke/indent-blankline.nvim") -- draw a line to show tabs
+	-- formatter plugin
+	use({
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup()
+		end,
+	})
+
+    -- draw a line to show tabs
+	use("lukas-reineke/indent-blankline.nvim")
 
 	-- search
 	use({
@@ -47,7 +55,7 @@ packer.startup(function()
 	use("towolf/vim-helm")
 	use("justinmk/vim-syntax-extra") -- add extra syntax highlight for flex
 	use("elixir-editors/vim-elixir")
-	use("ekalinin/Dockerfile.vim") -- Vim syntax file & snippets for Dockerfile
+	use("ekalinin/Dockerfile.vim")
 	use("rust-lang/rust.vim")
 	use({
 		"fatih/vim-go",
@@ -80,11 +88,11 @@ packer.startup(function()
 	})
 
 	-- themes
-	use("rafi/awesome-vim-colorschemes") -- many colorshcemes
+	use("rafi/awesome-vim-colorschemes")
 	use("rmehri01/onenord.nvim")
 	use("AhmedAbdulrahman/vim-aylin")
 	use("arzg/vim-colors-xcode")
-    use("ribru17/bamboo.nvim")
+	use("ribru17/bamboo.nvim")
 
 	use({
 		"nvim-treesitter/nvim-treesitter-context",

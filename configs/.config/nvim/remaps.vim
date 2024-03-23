@@ -56,9 +56,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " visual line mode
 nmap <Leader><Leader> V
 
-nmap <leader>l  :Neoformat<CR>
-
-
 nmap  <leader>j :! idea format %<CR>
 
 
