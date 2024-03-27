@@ -215,10 +215,9 @@ cls() {
 
 ## network
 alias neko="~/apps/nekoray/launcher"
+alias p='http_proxy="http://127.0.0.1:6666/" https_proxy="http://127.0.0.1:6666/" '
 if command -v proxychains4 &>/dev/null; then
-    alias p="nocorrect proxychains4 -q "
-else
-    alias p='http_proxy="http://127.0.0.1:6666/" https_proxy="http://127.0.0.1:6666/" '
+    alias pc="nocorrect proxychains4 -q "
 fi
 
 query_proxy() {
@@ -264,7 +263,7 @@ mem() {
 hdd() {
     df -x tmpfs -x devtmpfs |
         tail -n +2 |
-        awk '{print $3, "of", $4, $5}' |
+        awk '{print $3, "of",$4, $5}' |
         sort -nr |
         uniq |
         numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%.1f" --field=1,3 |
