@@ -64,15 +64,12 @@ function compilers() {
 function neovim_full() {
     inst neovim prettier
 
-    # nvim packer
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
     # requiered packages for neovim
     inst python-msgpack python-pynvim fd ripgrep
     sudo npm install -g neovim
+
     # sync plugins
-    nvim +PackerSync
+    nvim +PackerSync # TODO
     nvim +UpdateRemotePlugins
     nvim +CocUpdate
 }
