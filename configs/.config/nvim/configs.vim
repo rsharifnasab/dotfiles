@@ -22,8 +22,7 @@ set laststatus=2 " last 2 line : show status
 "set cursorline " highlight current cursor line
 set t_Co=256 " 256 color terminal
 
-"set wrap " break the text to fill in terminal width
-set nowrap " dont break the text to fill in terminal width
+set wrap " break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char
 set breakindent " if broke the line, indent the broken part
 
