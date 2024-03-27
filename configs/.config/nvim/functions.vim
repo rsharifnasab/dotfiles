@@ -8,7 +8,6 @@ function! NumberToggle()
 endfunc
 nnoremap <F2> :call NumberToggle()<cr> " toggle relative number
 
-
 function DisableSyntaxTreesitter()
     if exists(':TSBufDisable')
         exec 'TSBufDisable autotag'

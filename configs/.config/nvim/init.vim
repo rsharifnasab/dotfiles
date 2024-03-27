@@ -22,4 +22,5 @@ endfor
 
 source ~/.config/nvim/remaps.vim
 source ~/.config/nvim/functions.vim
+luafile ~/.config/nvim/colors.lua
 source ~/.config/nvim/colors.vim
