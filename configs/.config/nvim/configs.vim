@@ -10,7 +10,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-set termbidi      " enable persian support
+set termbidi " enable persian support
 syntax enable " enable syntax highlighting
 set lazyredraw " don't redraw screen in macros
 set synmaxcol=500 "200 char of line should be highlighted
@@ -22,7 +22,8 @@ set laststatus=2 " last 2 line : show status
 "set cursorline " highlight current cursor line
 set t_Co=256 " 256 color terminal
 
-set wrap " break the text to fill in terminal width
+"set wrap " break the text to fill in terminal width
+set nowrap " dont break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char
 set breakindent " if broke the line, indent the broken part
 
@@ -76,14 +77,11 @@ set nobackup " do not create extra junk files
 set nowritebackup
 set noswapfile
 
-
 " disable bell
 set noerrorbells visualbell t_vb=
 
-
 let mapleader="\<Space>" "set the leader key
 "let g:python3_host_prog = '/usr/bin/python3' " set python path (make sure it work inside venvs
-
 
 set hidden " keep undo history on buffer change
 
@@ -122,7 +120,9 @@ autocmd InsertLeave * set nopaste
 autocmd BufNewFile,BufRead /dev/shm/gopass* setlocal noswapfile nobackup noundofile shada=""
 autocmd BufNewFile,BufRead /private/**/gopass** setlocal noswapfile nobackup noundofile shada=""
 
+" templates
 autocmd BufNewFile *.sh 0r ~/Templates/a.sh
+autocmd BufNewFile *.py 0r ~/Templates/a.py
 autocmd BufNewFile *.c 0r ~/Templates/main.c
 autocmd BufNewFile algorithm.cpp 0r ~/Templates/algorithm.cpp
 autocmd BufNewFile tester.cpp 0r ~/Templates/tester.cpp
