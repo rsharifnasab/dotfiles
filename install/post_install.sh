@@ -211,19 +211,20 @@ function java_devel() {
 
 function python_devel() {
     mkdir -p ~/apps
+    inst uv
     (
         cd ~/apps || exit
         python -m venv venv
         source "venv/bin/activate"
-        pip3 install --upgrade pip pylint pynvim ipython
-        pip3 install --upgrade numpy pandas matplotlib plotly networkx pillow
-        pip3 install pyqt5 # for matplotlib
+        uv pip3 install --upgrade pip pylint pynvim ipython
+        uv pip3 install --upgrade numpy pandas matplotlib plotly networkx pillow
+        uv pip3 install pyqt5 # for matplotlib
 
-        pip3 install mypy pandas-stubs data-science-types # python static type check (work with ale)
+        uv pip3 install mypy pandas-stubs data-science-types # python static type check (work with ale)
         #mypy --install-types
     )
 
-    inst python-pylint python-black pyright autopep8
+    inst python-pylint python-black pyright autopep8 ruff
 
     #inst python-pylint-venv python-pipenv python-pytest \
     # python-rednose python-pytest autopep8
