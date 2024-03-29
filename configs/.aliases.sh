@@ -510,11 +510,15 @@ fi
 
 # exit-cd nnn with ctrl g
 # open it with `n`
-if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
+if [ -f /usr/share/nnn/quitcd/quitcd.bash_sh_zsh ]; then
     # shellcheck disable=SC1091
-    source "/usr/share/nnn/quitcd/quitcd.bash_zsh"
+    source "/usr/share/nnn/quitcd/quitcd.bash_sh_zsh"
+    alias nnn="nnn -A"
+    alias n="n -A"
 fi
 if [ -f /opt/homebrew/share/nnn/quitcd/quitcd.bash_sh_zsh ]; then
     # shellcheck disable=SC1091
     source "/opt/homebrew/share/nnn/quitcd/quitcd.bash_sh_zsh"
+    alias nnn="nnn -A"
+    alias n="n -A"
 fi
