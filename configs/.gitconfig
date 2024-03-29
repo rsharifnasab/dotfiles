@@ -10,6 +10,7 @@
 
 [diff]
     tool = meld
+    algorithm = histogram
 
 [difftool]
     prompt = false
