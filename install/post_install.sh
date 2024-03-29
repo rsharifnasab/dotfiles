@@ -157,7 +157,7 @@ function desktop_packages_extra() {
     inst pdftk poppler
 
     # markdown - ssh gui
-    inst typora marp-cli-bin marktext-bin logseq-desktop-bin termius
+    inst typora marp-cli-bin marktext-bin logseq-desktop-bin termius fswatch
 
     # skype!
     inst skypeforlinux-stable-bin gnome-keyring

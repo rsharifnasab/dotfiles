@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+
+REPO_DIR="$HOME/proj/daily-life"
+
+cd "$REPO_DIR"
+
+echo "pulling updates"
+git pull origin master
+
+echo "launching sync_gh"
+"$HOME/bin/sync_gh" "$REPO_DIR" &
+sync_gh_pid=$!
+
+sleep 1
+
+if ! kill -0 "$sync_gh_pid" 2>/dev/null; then
+    echo "cannot run sync process"
+    exit 1
+fi
+
+
+echo "lanching logseq"
+logseq  &>/dev/null &
+logseq_pid=$!
+
+echo "running logseq"
+wait "$logseq_pid"
+echo "logseq finished"

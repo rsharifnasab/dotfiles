@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+REPO_DIR=$(realpath "$1")
+cd "$REPO_DIR" || {
+    echo "repo does not exist"
+    exit 1
+}
+pwd
+
+DELAY=60
+
+SCRIPT_NAME="$(basename "$0")"
+REPO_NICK_NAME="$(basename "$REPO_DIR")"
+LOCK_FILE="/tmp/${SCRIPT_NAME}_${REPO_NICK_NAME}.lock"
+
+
+function update(){
+    [ -n "$(git status -s)" ] || {
+        echo "no git update"
+        return 0
+    }
+
+    DATE_STR="$(date "+%Y-%m-%d %H:%M:%S")"
+    echo "modified at $DATE_STR"
+    git add -A
+    git commit -m "Automatic commit $DATE_STR"
+
+    git push origin "$BRANCH_NAME"
+}
+
+# Function to clean up the lock file
+cleanup() {
+    echo "quiting sync_gh"
+    update
+    echo "deleting lock file"
+    rm -f "$LOCK_FILE"
+    exit 0
+}
+
+# Check if the script is already running
+if [ -f "$LOCK_FILE" ]; then
+    echo "Another instance of $SCRIPT_NAME is already running."
+    exit 1
+fi
+
+# Create the lock file
+touch "$LOCK_FILE"
+
+# Trap signals to clean up
+trap 'cleanup' INT TERM SIGTTIN SIGTTOU
+
+
+BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
+
+echo "sync activation"
+
+(fswatch  \
+    -0onr \
+    "$REPO_DIR" \
+    -l $DELAY \
+    --event Created \
+    --event Removed \
+    --event Updated \
+    -e ".git" |
+while read -d "" _; do
+    update
+done
+)
+
+cleanup
