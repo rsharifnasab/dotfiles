@@ -60,8 +60,13 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
+    # fish like syntax highlighting
     zsh-autosuggestions
     fast-syntax-highlighting
+
+    # cool but slow autocomplete
+    # https://github.com/marlonrichert/zsh-autocomplete
+    #zsh-autocomplete
 
     copyfile #copy content of file to clipboard
 
@@ -74,14 +79,12 @@ plugins=(
     rust   # completion for rust, rustup, cargo
     stack  # completion for stack
 
-    z # most freq used dirs
-
     fancy-ctrl-z # enter ctrl-z instead of fg<enter>
 
     web-search # search web
-
-    #zsh-vi-mode
 )
+
+
 source "$ZSH"/oh-my-zsh.sh
 
 # fix autosuggestion color to bi visible
@@ -149,4 +152,8 @@ else
     if [ -x "$(command -v pfetch)" ]; then
         pfetch
     fi
+fi
+
+if [ -x "$(command -v zoxide)" ]; then
+    eval "$(zoxide init zsh --hook pwd --cmd z)"
 fi
