@@ -203,6 +203,13 @@ dif() {
 
 }
 
+
+function ls-(){
+  local first_arg="-$1"
+  shift
+  command ls "$first_arg" "$@"
+}
+
 # cd and ls at same time
 cls() {
     DIR="$*"

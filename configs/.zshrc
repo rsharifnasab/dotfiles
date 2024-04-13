@@ -114,22 +114,18 @@ fi
 ## Control history
 # ignore non meaningful commands from history
 export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
-# ignore history for jrnl
-setopt HIST_IGNORE_SPACE
+
+setopt HIST_IGNORE_SPACE # ignore history for jrnl
+setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
+setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
+setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+
 alias jrnl=" jrnl"
 
 #fix home/end/delete not working
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
-
-# reload new config files from dotfiles
-# changes in sync_home will effect after second reload!
-function r() {
-    clear
-    sync_home
-    exec zsh || echo 'error in syncing'
-}
 
 export FZF_BASE=$(which fzf)
 DISABLE_FZF_KEY_BINDINGS="false"
