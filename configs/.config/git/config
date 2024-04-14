@@ -6,7 +6,7 @@
     # Don't consider trailing space change as a cause for merge conflicts
     whitespace = -trailing-space
     autocrlf = input
-    excludesFile = ~/.gitignore_global
+    excludesFile = ./global
 
 [diff]
     tool = meld
@@ -45,16 +45,16 @@
 
 # Include only when I am Roozbeh
 [includeIf "gitdir:/home/roozbeh/"]
-    path = .gitconfig.roozbeh
+    path = ./roozbeh
 
 # Include only when I am in snapp
 [includeIf "gitdir:/home/roozbeh/Desktop/snapp/"]
-    path = .gitconfig.snapp
+    path = ./snapp
 
 # Include only when I am in snapp (macbook)
 [includeIf "gitdir:/Users/roozbewh/"]
-    path = .gitconfig.snapp
+    path = ./snapp
 
 # Include only when I am Maedeh
 [includeIf "gitdir:/home/maedeh/"]
-    path = .gitconfig.maedeh
+    path = ./maedeh
