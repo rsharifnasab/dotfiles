@@ -137,9 +137,9 @@ alias gott="go test './...' -cover"
 alias gop='cd $GOPATH'
 
 # clipboard in mac and linux
-if command -v xclip &>/dev/null; then
-    alias clipcopy="xclip -selection c"
-    alias clippaste="xclip -selection c -o"
+if command -v xsel &>/dev/null; then
+    alias clipcopy="xsel -ib"
+    alias clippaste="xclip -ob"
 else
     true
 fi
@@ -473,7 +473,7 @@ port() {
             echo "invalid port number"
             ;;
         *)
-            lsof -i ":${port_no}" -sTCP:LISTEN -n -P | awk '{ print $1 }' | tail +2 | sort | uniq
+            sudo lsof -i ":${port_no}" -sTCP:LISTEN -n -P | awk '{ print $1 }' | tail +2 | sort | uniq
             ;;
     esac
 }

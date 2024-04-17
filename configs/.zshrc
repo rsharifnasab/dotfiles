@@ -119,12 +119,21 @@ fi
 
 ## Control history
 # ignore non meaningful commands from history
-export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|cd -|cd ..|sss)"
+export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|sss)"
 
-setopt HIST_IGNORE_SPACE # ignore history for jrnl
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+
+setopt EXTENDED_HISTORY      # Write the history file in the ':start:elapsed;command' format.
+setopt HIST_IGNORE_SPACE  # ignore history when command starts with space
+setopt HIST_IGNORE_DUPS      # Do not record an event that was just recorded again.
 setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
 setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
 setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+setopt HIST_VERIFY           # Do not execute immediately upon history expansion.
+setopt INC_APPEND_HISTORY    # Write to the history file immediately, not when the shell exits.
+#setopt SHARE_HISTORY         # Share history between all sessions.
 
 alias jrnl=" jrnl"
 
@@ -132,6 +141,8 @@ alias jrnl=" jrnl"
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
+bindkey "^[[A" up-line-or-beginning-search    # Arrow up
+bindkey "^[[B" down-line-or-beginning-search  # Arrow down
 
 export FZF_BASE=$(which fzf)
 DISABLE_FZF_KEY_BINDINGS="false"
