@@ -64,6 +64,7 @@ alias ls='ls -h -1 --color=auto'
 alias l='ls -h -1 --color=auto -lAh'
 alias l.="ls -A | egrep '^\.'"
 alias sl='ls'
+alias s='ls'
 
 if command -v lsd &>/dev/null; then
     alias ls='lsd    -Fh1    --color=auto            --group-dirs first'
@@ -252,6 +253,12 @@ alias sp="set_proxy"
 alias qp="query_proxy"
 
 ### other functions
+
+if command -v uv &>/dev/null; then
+    alias pip="uv pip"
+fi
+
+
 
 important() {
     grep -i -v "info" | grep -i -v "debug"
