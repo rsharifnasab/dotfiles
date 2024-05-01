@@ -125,7 +125,7 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 
 
-setopt EXTENDED_HISTORY      # Write the history file in the ':start:elapsed;command' format.
+#setopt EXTENDED_HISTORY    # Write the history file in the ':start:elapsed;command' format.
 setopt HIST_IGNORE_SPACE  # ignore history when command starts with space
 setopt HIST_IGNORE_DUPS      # Do not record an event that was just recorded again.
 setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
