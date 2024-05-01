@@ -170,3 +170,10 @@ fi
 if [ -x "$(command -v zoxide)" ]; then
     eval "$(zoxide init zsh --hook pwd --cmd z)"
 fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+if [ -x "$(command -v pyenv)" ]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi

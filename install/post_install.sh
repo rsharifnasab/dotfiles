@@ -210,19 +210,19 @@ function java_devel() {
 }
 
 function python_devel() {
-    mkdir -p ~/apps
-    inst uv
-    (
-        cd ~/apps || exit
-        python -m venv venv
-        source "venv/bin/activate"
-        uv pip3 install --upgrade pip pylint pynvim ipython
-        uv pip3 install --upgrade numpy pandas matplotlib plotly networkx pillow
-        uv pip3 install pyqt5 # for matplotlib
+    inst uv pyenv
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 
-        uv pip3 install mypy pandas-stubs data-science-types # python static type check (work with ale)
-        #mypy --install-types
-    )
+    pyenv virtualenv apps
+    pyenv shell apps
+    pyenv activate apps
+
+    uv pip install --upgrade pip pylint pynvim ipython
+    uv pip install --upgrade numpy pandas matplotlib plotly networkx pillow
+    uv pip install pyqt5 # for matplotlib
+
+    uv pip install mypy pandas-stubs data-science-types # python static type check (work with ale)
+    #mypy --install-types
 
     inst python-pylint python-black pyright autopep8 ruff
 
