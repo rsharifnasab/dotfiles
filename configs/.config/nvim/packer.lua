@@ -11,6 +11,8 @@ packer.startup(function()
 	-- because packer cannot find itself :)
 	use("wbthomason/packer.nvim")
 
+	use("mbbill/undotree")
+
 	--use "tversteeg/registers.nvim" -- press " to show registers content
 	--use 'wakatime/vim-wakatime' -- time track my programming
 
