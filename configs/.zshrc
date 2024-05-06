@@ -174,6 +174,9 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 if [ -x "$(command -v pyenv)" ]; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    pyenv() {
+        eval "$(command pyenv init -)"
+        eval "$(command pyenv virtualenv-init -)"
+        pyenv "$@"
+    }
 fi
