@@ -2,7 +2,8 @@
 run:
   tests: false
 
-  skip-files:
+issues:
+  exclude-files:
     - ".*_test.go$"
 
 linters:
@@ -12,6 +13,8 @@ linters:
     - varnamelen
     - nolintlint
     - depguard
+    - gomnd
+    - execinquery
     # why?
     - tagliatelle
     - ireturn
