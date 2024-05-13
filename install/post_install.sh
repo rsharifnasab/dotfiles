@@ -91,7 +91,8 @@ function terminal_full() {
         kitty ttf-fira-code ttf-firacode-nerd \
         tree tldr fd nnn source-highlight mtr \
         the_silver_searcher httpie lazygit gitui \
-        just usbutils pciutils
+        just usbutils pciutils \
+        hyperfine # benchmark in cli
 }
 
 function internet() {
