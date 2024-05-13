@@ -74,6 +74,18 @@ function neovim_full() {
     nvim +CocUpdate
 }
 
+function neovim_new(){
+    inst git make unzip ripgrep fd xsel ttf-firacode-nerd
+
+    inst ruby
+    gem install neovim
+
+    pyenv virtualenv nvim
+    pyenv shell nvim
+    pyenv actiavte nvim
+    uv pip install pynvim
+}
+
 function terminal_full() {
     inst zsh moreutils zoxide \
         kitty ttf-fira-code ttf-firacode-nerd \
@@ -114,6 +126,10 @@ function rust_devel() {
     rustup component add rustfmt
 }
 
+function redis_devel() {
+    inst tiny-rdm-bin
+}
+
 function text_linters() {
     #    grammer check offline but slow
     inst languagetool
@@ -145,7 +161,7 @@ function desktop_packages() {
         pandoc-bin typora-free \
         gparted jq yq \
         speedtest-cli bind \
-        synapse
+        synapse fastfetch pfetch
 
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -162,8 +178,8 @@ function desktop_packages_extra() {
     # skype!
     inst skypeforlinux-stable-bin gnome-keyring
 
-    # task manager - another terminal
-    inst mission-center wezterm
+    # task manager
+    inst mission-center
 
 }
 
