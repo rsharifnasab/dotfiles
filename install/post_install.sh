@@ -30,7 +30,7 @@ function pre_install() {
 	sudo pacman -Syu
 	sudo pacman -R --noconfirm vim || true
 	sudo pacman -S --needed --noconfirm base-devel gvim xsel xclip wget curl \
-		stow man-pages man lsof bc rsync reflector
+		stow man-pages man lsof bc rsync reflector lsd
 }
 
 function inst() {
