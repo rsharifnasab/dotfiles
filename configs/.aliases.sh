@@ -67,10 +67,10 @@ alias sl='ls'
 alias s='ls'
 
 if command -v lsd &>/dev/null; then
-	alias ls='lsd    -Fh1    --color=auto            --group-dirs first'
-	alias lsize='lsd -Fh1l   --color=auto --sizesort                    --total-size'
-	alias l='lsd     -Fh1lA  --color=auto --sizesort --group-dirs first'
-	alias tree='lsd  -Fh1    --color=auto            --group-dirs first --tree'
+	alias ls='lsd    -Fh1    --color=auto            --git --group-dirs first'
+	alias lsize='lsd -Fh1l   --color=auto --sizesort --git                    --total-size'
+	alias l='lsd     -Fh1lA  --color=auto --sizesort --git --group-dirs first'
+	alias tree='lsd  -Fh1    --color=auto            --git --group-dirs first --tree'
 fi
 
 alias please="sudo "
