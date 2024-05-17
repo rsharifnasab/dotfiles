@@ -157,7 +157,7 @@ alias psrc="pyenv shell apps"
 alias yay="paru"
 alias syu="paru -Syu" # If you know, you know.
 alias kit="kitty --detach"
-
+alias map="telnet mapscii.me"
 # check network
 alias ccc='curl -s ipconfig.io/country'
 alias ccv='curl -s myip.wtf/yaml'
