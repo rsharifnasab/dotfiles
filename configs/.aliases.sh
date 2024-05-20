@@ -50,6 +50,8 @@ alias v='nvim'
 alias c='nvim'
 alias rmr='rm -r'
 alias cpr='cp -r'
+alias kctx="kubectx"
+alias kx="kubectx"
 # emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'

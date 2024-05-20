@@ -13,7 +13,8 @@ set laststatus=2 " last 2 line : show status
 set t_Co=256 " 256 color terminal
 set t_ut="" " fix vim background color erase
 
-set wrap " break the text to fill in terminal width
+"set wrap " break the text to fill in terminal width
+set nowrap " do not break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char
 set breakindent " if broke the line, indent the broken part
 
@@ -128,23 +129,23 @@ autocmd BufNewFile,BufRead /private/**/gopass** setlocal noswapfile nobackup nou
 
 " " general remaps " "
 " ctrl a -> Select all
-map <C-a> <esc>ggVG<CR> 
+map <C-a> <esc>ggVG<CR>
 
 " control S -> save
 noremap  <silent> <C-S>      :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 " ctrl L -> clear highlighted search result
-nnoremap <silent> <C-L>  :nohlsearch<CR>h<C-L> 
+nnoremap <silent> <C-L>  :nohlsearch<CR>h<C-L>
 " esc in terminal mode -> exit
-tnoremap <Esc> <C-\><C-n> 
+tnoremap <Esc> <C-\><C-n>
 
 
 " " tabs " "
 nnoremap <C-p> :bnext<CR>
 nnoremap <C-o> :bprevious<CR>
 nmap <C-n> :enew<cr>
-noremap <silent> <C-q> :bd<CR> 
+noremap <silent> <C-q> :bd<CR>
 " Close current buffer
 
 
@@ -204,5 +205,4 @@ colorscheme evening
 runtime! ftplugin/man.vim
 
 
-let &fcs='eob: ' 
-
+let &fcs='eob: '
