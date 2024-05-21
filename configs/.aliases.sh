@@ -44,14 +44,9 @@ function gui_opener() {
 	fi
 }
 
-alias k="kubectl"
-alias j='jdate -u +"%Y/%m/%d"'
-alias v='nvim'
-alias c='nvim'
 alias rmr='rm -r'
 alias cpr='cp -r'
-alias kctx="kubectx"
-alias kx="kubectx"
+
 # emacs client, needs emacs session running
 alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'
@@ -139,27 +134,35 @@ alias goc="go clean"
 alias gott="go test './...' -cover"
 alias gop='cd $GOPATH'
 
+# kubernetes aliases
+alias k="kubectl"
+alias kctx="kubectx"
+alias kx="kubectx"
+
 # clipboard in mac and linux
 if command -v xsel &>/dev/null; then
 	alias clipcopy="xsel -ib"
 	alias clippaste="xclip -ob"
-else
-	true
 fi
 alias clip_set="clipcopy"
 alias clip_get="clippaste"
 
-# command with extenral tools
+# command with external tools
+alias neofetch="fastfetch"
+alias j='jdate -u +"%Y/%m/%d"'
+alias v='nvim'
+alias c='nvim'
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 alias redsh="redshift  -b 0.95:0.85  -l 35.74:51.33"
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
 alias psrc="pyenv shell apps"
-alias yay="paru"
+#alias yay="paru"
 alias syu="paru -Syu" # If you know, you know.
 alias kit="kitty --detach"
 alias map="telnet mapscii.me"
+
 # check network
 alias ccc='curl -s ipconfig.io/country'
 alias ccv='curl -s myip.wtf/yaml'
@@ -255,10 +258,7 @@ alias qp="query_proxy"
 
 ### other functions
 
-if command -v uv &>/dev/null; then
-	alias pip="uv pip"
-fi
-
+# only high log levels
 important() {
 	grep -i -v "info" | grep -i -v "debug"
 }
