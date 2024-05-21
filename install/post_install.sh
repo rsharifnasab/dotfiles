@@ -324,10 +324,10 @@ function touchpad() {
 }
 
 function laptop() {
-	inst tlp ethtool
+	inst tlp ethtool tlpui powertop
 	sudo systemctl enable tlp.service
 	sudo systemctl start tlp.service
-	tlp-stat -s
+	sudo tlp-stat -s
 	# sudo tlp-stat
 }
 
