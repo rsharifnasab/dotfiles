@@ -82,7 +82,7 @@ function terminal_full() {
 		the_silver_searcher httpie lazygit gitui \
 		just usbutils pciutils \
 		hyperfine \
-		awesome-terminal-fonts
+		awesome-terminal-fonts python-tqdm
 }
 
 function internet() {
