@@ -343,10 +343,11 @@ EOF
 }
 
 function laptop() {
-	inst tlp ethtool tlpui powertop
+	inst tlp ethtool tlpui powertop gnome-power-manager
 	sudo systemctl enable tlp.service
 	sudo systemctl start tlp.service
 	sudo tlp-stat -s
+	gnome-power-statistics
 }
 
 # intel wifi backend
