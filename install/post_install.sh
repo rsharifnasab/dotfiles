@@ -35,9 +35,10 @@ function pre_install() {
 
 function inst() {
 	if hash paru paru 2>/dev/null; then
-		paru -S --needed --noconfirm "$*"
+		paru -S --needed --noconfirm "$@"
 	else
-		pacman -S --needed --noconfirm "$*"
+		echo "WARN: paru not found"
+		pacman -S --needed --noconfirm "$@"
 	fi
 }
 function aur_helper() {
@@ -57,12 +58,12 @@ function ta() {
 }
 
 function compilers() {
-	inst nodejs npm yarn go python3 python-pip \
+	inst npm yarn go python3 python-pip \
 		rustup jdk-openjdk lua elixir
 }
 
 function neovim_new() {
-	inst git make unzip ripgrep fd xsel ttf-firacode-nerd
+	inst git make unzip ripgrep fd xsel ttf-firacode-nerd pyenv pyenv-virtualenv ruby uv npm
 
 	inst ruby
 	gem install neovim
@@ -80,7 +81,8 @@ function terminal_full() {
 		tree tldr fd nnn source-highlight mtr \
 		the_silver_searcher httpie lazygit gitui \
 		just usbutils pciutils \
-		hyperfine # benchmark in cli
+		hyperfine \
+		awesome-terminal-fonts
 }
 
 function internet() {
@@ -112,11 +114,11 @@ function rust_devel() {
 	inst rust-analyzer
 	rustup component add rust-analysis rust-src
 	rustup component add clippy
-	rustup component add rustfmt
+	#rustup component add rustfmt
 }
 
 function redis_devel() {
-	inst tiny-rdm-bin
+	inst tiny-rdm-bin redis
 }
 
 function text_linters() {
@@ -141,34 +143,31 @@ function desktop_packages() {
 	mkdir -p ~/Desktop ~/Pictures ~/Music ~/Videos ~/Downloads ~/Documents
 	inst firefox chromium \
 		noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu \
-		ntfs-3g pacman-contrib dnsutil inetutils lxrandr \
+		ntfs-3g pacman-contrib inetutils lxrandr \
 		zip unzip unrar xarchiver engrampa p7zip \
 		variety flameshot redshift \
 		nano xed tmux zellij jcal btop tokei aria2 acpi tty-clock \
-		ncdu qrencode viu speedtet-cli ipython \
+		ncdu qrencode viu ipython \
 		vlc shotwell telegram-desktop meld thunar obs-studio \
-		pandoc-bin typora-free \
+		pandoc-bin \
 		gparted jq yq \
 		speedtest-cli bind \
-		synapse fastfetch pfetch
+		synapse fastfetch pfetch-rs-bin
 
 	# prevent rm from deleting important files
 	sudo npm i -g safe-rm
 
+	# remove this package to let chromium open!
+	# pacman -Rns xf86-video-intel package
 }
 
 function desktop_packages_extra() {
 	# pdf manipulation
 	inst pdftk poppler
 
-	# markdown - ssh gui
 	inst typora marp-cli-bin marktext-bin logseq-desktop-bin termius fswatch
 
-	# skype!
-	inst skypeforlinux-stable-bin gnome-keyring
-
-	# task manager
-	inst mission-center
+	inst skypeforlinux-bin gnome-keyring mission-center thunderbird
 
 }
 
@@ -201,16 +200,8 @@ function zsh_full() {
 	chsh -s "$(which zsh)"
 
 	#install fzf for zsh and other
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install
-}
-
-function java_devel() {
-	inst astyle
-	# only of opened a java file
-
-	sudo mkdir /usr/local/share/lombok
-	sudo wget https://projectlombok.org/downloads/lombok.jar -O /usr/local/share/lombok/lombok.jar
+	#git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	#~/.fzf/install
 }
 
 function python_devel() {
@@ -232,10 +223,6 @@ function python_devel() {
 
 	#inst python-pylint-venv python-pipenv python-pytest \
 	# python-rednose python-pytest autopep8
-}
-
-function lua_devel() {
-	inst stylua luajit
 }
 
 function micro() {

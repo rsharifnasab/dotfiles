@@ -41,13 +41,13 @@ complete -cf sudo
 alias nocorrect='command'
 
 [[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
+[[ -f ~/.site.sh ]] && . ~/.site.sh
+eval "$(fzf --bash)"
 
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # Pyenv (Python)
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:${PATH}"
-#eval "$(pyenv init --path)"
+
 PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
 export PATH="$PATH:$PYTHON_BIN_PATH"
 

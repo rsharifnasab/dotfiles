@@ -147,15 +147,10 @@ bindkey "^[[B" down-line-or-beginning-search  # Arrow down
 export FZF_BASE=$(which fzf)
 DISABLE_FZF_KEY_BINDINGS="false"
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
-[[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
-
-type apt >/dev/null 2>&1 && [[ -f ~/.debian_config ]] && source ~/.debian_config
-
-if [[ -f "$HOME/.site.sh" ]]; then
-    source "$HOME/.site.sh"
-fi
+[[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
+[[ -f ~/.site.sh ]] && . ~/.site.sh
 
 if [[ ! -e /tmp/welcome.sem ]]; then
     touch /tmp/welcome.sem
@@ -180,3 +175,8 @@ if [ -x "$(command -v pyenv)" ]; then
         pyenv "$@"
     }
 fi
+
+(
+type apt >/dev/null 2>&1 && [[ -f ~/.debian_config ]] && source ~/.debian_config
+) || true 
+
