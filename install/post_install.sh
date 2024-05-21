@@ -63,14 +63,14 @@ function compilers() {
 }
 
 function neovim_new() {
-	inst git make unzip ripgrep fd xsel ttf-firacode-nerd pyenv pyenv-virtualenv ruby uv npm
+	inst git make unzip ripgrep fd xsel ttf-firacode-nerd pyenv ruby uv npm
+	git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv || true
 
-	inst ruby
 	gem install neovim
 
 	pyenv virtualenv nvim
 	pyenv shell nvim
-	pyenv actiavte nvim
+	pyenv activate nvim
 	uv pip install pynvim
 	sudo npm install -g neovim
 }
@@ -286,6 +286,16 @@ function docker_install() {
 	sudo mkdir -p /etc/docker
 	echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
 		sudo tee /etc/docker/daemon.json
+
+	# add this script to /etc/local/bin/docker
+	tee /dev/null <<EOF
+#!/bin/bash
+if [ "$(id -u)" -eq 0 ]; then
+	/usr/bin/docker "$@"
+else
+	sudo /usr/bin/docker "$@"
+fi
+EOF
 }
 
 function fingerprint() {
@@ -293,7 +303,7 @@ function fingerprint() {
 	inst fprintd
 	fprintd-enroll roozbeh -f "right-index-finger"
 	fprintd-enroll roozbeh -f "left-index-finger"
-	fprintd-list
+	fprintd-list roozbeh
 	# in casy of any issue:
 	# \rm -rf /var/lib/fprint
 
@@ -305,9 +315,31 @@ function fingerprint() {
 
 function touchpad() {
 	sudo gpasswd -a "$USER" input
+	newgrp input
 	inst ruby libinput ruby-fusuma xdotool
 	gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled || true
 	# https://github.com/iberianpig/fusuma/blob/main/README.md
+	# place in: /etc/systemd/system/fusuma@.service
+	# sudo systemctl daemon-reload
+	# sudo systemctl enable fusuma@roozbeh.service
+	# sudo systemctl restart fusuma@roozbeh.service
+	# sudo systemctl status fusuma@roozbeh.service
+	tee /dev/null <<EOF
+[Unit][Unit]
+Description=Fusuma multitouch gesture recognizer
+
+[Service]
+Type=simple
+Environment="DISPLAY=:0"
+User=%i
+ExecStart=/usr/bin/fusuma
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=graphical.target
+EOF
+
 }
 
 function laptop() {
@@ -315,7 +347,6 @@ function laptop() {
 	sudo systemctl enable tlp.service
 	sudo systemctl start tlp.service
 	sudo tlp-stat -s
-	# sudo tlp-stat
 }
 
 # intel wifi backend
@@ -358,10 +389,7 @@ function run() {
 	fonts
 	ta
 	cpp_devel
-	java_devel
 	python_devel
-	shell_devel
-	lua_devel
 	#docker_install
 	#rust_devel
 	#text_linters
