@@ -86,7 +86,11 @@ function terminal_full() {
 }
 
 function internet() {
-	inst proxychains-ng xray-bin sing-box-bin jdk-openjdk
+	# set nekobox path to  /usr/share/sing-box
+	# https://github.com/MatsuriDayo/nekoray/issues/389
+	inst proxychains-ng xray-bin sing-box-bin jdk-openjdk \
+		nekoray-bin sing-geoip-common sing-geoip-db sing-geoip-rule-set \
+		sing-geosite-common sing-geosite-db sing-geosite-rule-set
 }
 
 function shell_devel() {
@@ -167,7 +171,9 @@ function desktop_packages_extra() {
 
 	inst typora marp-cli-bin marktext-bin logseq-desktop-bin termius fswatch
 
-	inst skypeforlinux-bin gnome-keyring mission-center thunderbird
+	# seahorse to change keyring password for skype
+	inst skypeforlinux-bin gnome-keyring seahorse \
+		mission-center thunderbird
 
 }
 
@@ -311,6 +317,10 @@ function fingerprint() {
 	# /etc/pam.d/xfce4-screensaver
 	# /etc/pam.d/sudo
 	# /etc/pam.d/system-local-login
+}
+
+function cloud() {
+	inst kubectl kubectx openshift-client-bin
 }
 
 function touchpad() {
