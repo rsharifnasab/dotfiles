@@ -122,7 +122,7 @@ function rust_devel() {
 }
 
 function redis_devel() {
-  inst tiny-rdm-bin redis
+  inst tiny-rdm-bin redis webkit2gtk
 }
 
 function text_linters() {
@@ -356,7 +356,10 @@ function laptop() {
   inst tlp ethtool tlpui powertop gnome-power-manager
   sudo systemctl enable tlp.service
   sudo systemctl start tlp.service
+  systemctl mask power-profiles-daemon.service
+  systemctl stop power-profiles-daemon.service
   sudo tlp-stat -s
+  sudo systemctl restart tlp.service
   gnome-power-statistics
 }
 
