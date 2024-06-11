@@ -19,17 +19,6 @@ linters:
     - tagliatelle
     - ireturn
     - musttag
-    # deprecated linters
-    - maligned
-    - scopelint
-    - golint
-    - interfacer
-    - exhaustivestruct
-    - deadcode
-    - nosnakecase
-    - ifshort
-    - varcheck
-    - structcheck
 linters-settings:
   cyclop:
     max-complexity: 15
