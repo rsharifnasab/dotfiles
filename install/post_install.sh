@@ -150,13 +150,13 @@ function desktop_packages() {
     ntfs-3g pacman-contrib inetutils lxrandr \
     zip unzip unrar xarchiver engrampa p7zip \
     variety flameshot redshift \
-    nano xed tmux zellij jcal btop tokei aria2 acpi tty-clock \
+    nano xed tmux jcal btop tokei aria2 acpi tty-clock \
     ncdu qrencode viu ipython \
     vlc shotwell telegram-desktop meld thunar obs-studio \
     pandoc-bin \
     gparted jq yq \
     speedtest-cli bind \
-    synapse fastfetch pfetch-rs-bin
+    fastfetch pfetch-rs-bin
 
   # prevent rm from deleting important files
   sudo npm i -g safe-rm
