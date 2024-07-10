@@ -196,6 +196,27 @@ typ() {
   typora "$@"
 }
 
+# make with automatically finding the makefile
+function make() {
+  local dir original_dir
+  original_dir=$(pwd)
+  dir=$original_dir
+
+  while [[ "$dir" != "/" ]]; do
+    if [[ -f "$dir/Makefile" ]]; then
+      cd "$dir" || return 1
+      command make "$@"
+      local make_status=$?
+      cd "$original_dir" || return 1
+      return $make_status
+    fi
+    dir=$(dirname "$dir")
+  done
+
+  echo "No Makefile found in any parent directory." >&2
+  return 1
+}
+
 # use gnu hightlight for add syntax hight to less
 gat() {
   src-hilite-lesspipe.sh "$@" | less
