@@ -152,6 +152,7 @@ alias neofetch="fastfetch"
 alias j='jdate -u +"%Y/%m/%d"'
 alias v='nvim'
 alias c='nvim'
+alias zed='zeditor'
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 alias redsh="redshift  -b 0.95:0.85  -l 35.74:51.33"
@@ -462,8 +463,31 @@ fzfd() {
 }
 
 # search from history (fzf) to repeat
+# same as ctrl-r
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+}
+
+wl() {
+  local ssid
+  local conn
+
+  nmcli device wifi rescan >/dev/null
+  ssid=$(nmcli device wifi list | tail -n +2 | grep -v '^  *\B--\B' | fzf -m | sed 's/^ *\*//' | awk '{print $1}')
+
+  if [ "x$ssid" != "x" ]; then
+    # check if the SSID has already a connection setup
+    conn=$(nmcli con | grep "$ssid" | awk '{print $1}' | uniq)
+    if [ "$conn" = "$ssid" ]; then
+      echo "Please wait while switching to known network $ssid…"
+      # if yes, bring up that connection
+      nmcli con up id "$conn"
+    else
+      echo "Please wait while connecting to new network $ssid…"
+      # if not connect to it and ask for the password
+      nmcli device wifi connect "$ssid"
+    fi
+  fi
 }
 
 inst() {
