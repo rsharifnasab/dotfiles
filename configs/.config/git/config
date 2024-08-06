@@ -56,5 +56,5 @@
     path = ./snapp
 
 # Include only when I am Maedeh
-[includeIf "gitdir:/home/maedeh/"]
+[includeIf "gitdir:*/[mM]aedeh/"]
     path = ./maedeh
