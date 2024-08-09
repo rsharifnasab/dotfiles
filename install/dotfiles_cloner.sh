@@ -15,9 +15,5 @@ mkdir -p proj
 cd proj
 git clone --branch master --depth 1 https://github.com/rsharifnasab/dotfiles.git
 cd dotfiles
-(
-    sudo pacman -S --needed reflector
-    sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist
-)
-sudo pacman -S --needed stow vim
+sudo pacman -S --needed stow vim reflector
 bash ./configs/bin/sync_home
