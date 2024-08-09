@@ -59,7 +59,8 @@ function ta() {
 
 function compilers() {
     inst npm yarn go python3 python-pip \
-        rustup jdk-openjdk lua
+        rustup jdk-openjdk lua \
+        clang cmake
 }
 
 function neovim_new() {
@@ -165,7 +166,6 @@ function desktop_packages() {
         variety flameshot redshift \
         ipython \
         vlc shotwell telegram-desktop meld thunar obs-studio \
-        pandoc-bin \
         gparted
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
@@ -183,6 +183,8 @@ function desktop_packages_extra() {
     # seahorse to change keyring password for skype
     inst skypeforlinux-bin gnome-keyring seahorse \
         mission-center thunderbird
+
+    inst pandoc-bin
 
 }
 
@@ -224,19 +226,22 @@ function python_devel() {
     inst uv pyenv
     git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 
-    pyenv virtualenv apps
-    pyenv shell apps
-    pyenv activate apps
+    (
+        pyenv init
+        pyenv virtualenv apps
+        pyenv shell apps
+        pyenv activate apps
 
-    uv pip install --upgrade pip pylint ipython
-    uv pip install --upgrade numpy pandas matplotlib plotly networkx pillow
-    uv pip install pyqt5 # for matplotlib
+        uv pip install --upgrade pip pylint ipython
+        uv pip install --upgrade numpy pandas matplotlib plotly networkx pillow
+        uv pip install pyqt5 # for matplotlib
 
-    uv pip install mypy pandas-stubs data-science-types # python static type check (work with ale)
-    #mypy --install-types
+        uv pip install mypy pandas-stubs data-science-types # python static type check (work with ale)
+        #mypy --install-types
 
-    inst python-pylint python-black pyright autopep8 ruff
+        uv inst python-pylint python-black pyright autopep8 ruff
 
+    )
     #inst python-pylint-venv python-pipenv python-pytest \
     # python-rednose python-pytest autopep8
 }
@@ -303,7 +308,7 @@ function docker_install() {
     echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
         sudo tee /etc/docker/daemon.json
 
-    # add this script to /etc/local/bin/docker
+    echo "add this script to /etc/local/bin/docker"
     tee /dev/null <<EOF
 #!/bin/bash
 if [ "$(id -u)" -eq 0 ]; then
