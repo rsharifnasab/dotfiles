@@ -13,7 +13,7 @@ echo "create directory structure"
 cd "$HOME"
 mkdir -p proj
 cd proj
-git clone https://github.com/rsharifnasab/dotfiles.git
+git clone --branch master --depth 1 https://github.com/rsharifnasab/dotfiles.git
 cd dotfiles
 (
     sudo pacman -S --needed reflector
