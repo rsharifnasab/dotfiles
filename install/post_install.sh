@@ -64,7 +64,8 @@ function compilers() {
 }
 
 function neovim_new() {
-    inst git make unzip ripgrep fd xsel ttf-firacode-nerd pyenv ruby uv npm tree-sitter-cli
+    inst git make unzip ripgrep fd xsel \
+        ttf-firacode-nerd pyenv ruby uv npm tree-sitter-cli luarocks
     git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv || true
 
     gem install neovim
