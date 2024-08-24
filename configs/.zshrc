@@ -25,6 +25,7 @@ ZSH_THEME="archcraft-dwm"
 ZSH_THEME="half-life"
 ZSH_THEME="robbyrussell"
 ZSH_THEME="random"
+ZSH_THEME="af-magic"
 
 ZSH_FAVLIST="$HOME/.zsh_favlist"
 ZSH_THEME_RANDOM_CANDIDATES=()
@@ -178,5 +179,4 @@ fi
 
 (
 type apt >/dev/null 2>&1 && [[ -f ~/.debian_config ]] && source ~/.debian_config
-) || true 
-
+) || true

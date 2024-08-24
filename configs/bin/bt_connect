@@ -31,6 +31,3 @@ for device in $devices; do
 done
 
 echo "failed :("
-
-
-
