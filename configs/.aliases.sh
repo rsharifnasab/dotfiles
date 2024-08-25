@@ -574,6 +574,11 @@ __wificonnect() {
 alias wificonnect=" __wificonnect"
 alias wificonnect="__wificonnect"
 
+# Clock
+alias tehran='TZ="Asia/Tehran" date'
+alias edmonton='TZ="America/Edmonton" date'
+alias toronto='TZ="America/Toronto" date'
+
 #########
 ## ETC ##
 #########
