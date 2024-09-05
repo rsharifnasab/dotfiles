@@ -13,8 +13,8 @@ set laststatus=2 " last 2 line : show status
 set t_Co=256 " 256 color terminal
 set t_ut="" " fix vim background color erase
 
-"set wrap " break the text to fill in terminal width
-set nowrap " do not break the text to fill in terminal width
+set wrap " break the text to fill in terminal width
+"set nowrap " do not break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char
 set breakindent " if broke the line, indent the broken part
 
