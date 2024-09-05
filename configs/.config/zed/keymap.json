@@ -1,0 +1,28 @@
+[
+  {
+    "bindings": {
+      "ctrl-f": "pane::RevealInProjectPanel",
+      "ctrl-t": "pane::GoBack",
+      "ctrl-shift-v": "editor::Paste"
+    }
+  },
+  {
+    "context": "(Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu) || EmptyPane || SharedScreen || (ProjectPanel && not_editing)",
+    "bindings": {
+      "ctrl-]": "editor::GoToDefinition",
+      "ctrl-tab": "tab_switcher::Toggle",
+      "ctrl-o": "pane::ActivatePrevItem",
+      "ctrl-p": "pane::ActivateNextItem",
+      "space tab": "file_finder::Toggle",
+      "space f": "pane::DeploySearch",
+      "space r n": "editor::Rename",
+      "g r": "editor::FindAllReferences"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "ctrl-f": "workspace::CloseAllDocks"
+    }
+  }
+]
