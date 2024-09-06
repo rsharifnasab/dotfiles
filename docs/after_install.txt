@@ -1,4 +1,5 @@
 after install arch-base distro, customize `post_install.sh` and run it (inside `install` folder)
+add chaotic-aur to pacman https://aur.chaotic.cx/
 after that these things are important:
 + add "persian with persian keyboard"
 + change "change layout option" to "caps lock"
