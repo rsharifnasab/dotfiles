@@ -186,6 +186,7 @@ function desktop_packages_extra() {
         mission-center thunderbird
 
     inst pandoc-bin
+    yay -S galaxybudsclient-bin
 
 }
 

@@ -167,8 +167,10 @@ alias map="telnet mapscii.me"
 # check network
 alias ccc='curl -s ipconfig.io/country'
 alias ccv='curl -s myip.wtf/yaml'
+alias ccb='curl -s https://ident.me; echo'
 alias pccc='p ccc'
 alias pccv='p ccv'
+alias pccb='p ccb'
 alias nw='watch -n 3 -t -d -b "curl -s ipconfig.io/json"'
 
 # command with help of online resources
@@ -449,7 +451,7 @@ fkill() {
 # select with fzf open file in gui
 fo() {
     IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
-    [[ -n "${files[0]}" ]] && opener "${files[@]}"
+    [[ -n "${files[@]}" ]] && opener "${files[@]}"
 }
 
 # select with fzf open selected folder in file manager
