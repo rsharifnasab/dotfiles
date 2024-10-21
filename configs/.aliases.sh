@@ -581,6 +581,28 @@ alias tehran='TZ="Asia/Tehran" date'
 alias edmonton='TZ="America/Edmonton" date'
 alias toronto='TZ="America/Toronto" date'
 
+# Safer commands for production
+helm() {
+    if [[ $1 == "uninstall" ]]; then
+        release_name=$2
+        current_namespace=$(oc project --short 2>/dev/null)
+
+        if [[ $? -ne 0 ]]; then
+            echo "guard: unable to get current project"
+            return 1
+        fi
+
+        echo -n "guard: ☠️ destructive command detected, are you sure you want to uninstall '\e[1m\e[31m$release_name\e[0m' in '\e[1m\e[31m$current_namespace\e[0m'? (y/n): "
+        read confirm
+
+        if [[ $confirm != "y" ]]; then
+            echo "Saved. :)"
+            return 1
+        fi
+    fi
+    command helm "$@"
+}
+
 #########
 ## ETC ##
 #########
