@@ -180,6 +180,8 @@ alias excuse="w3m http://developerexcuses.com/ | head -1"
 
 alias pytohn="python"
 
+alias sudounlock="faillock --user roozbeh --reset"
+
 # check the weather
 wea() {
     local city="${1:-tehran}"
@@ -352,15 +354,10 @@ clean_docker() {
     # Delete all images
     docker rmi $(docker images -q)
 
-    # Remove unused data
-    docker system prune
-
-    # And some more
-    docker system prune -af
-
     docker volume rm $(docker volume ls -f dangling=true -q)
 
     docker system prune -af &&
+        docker builder prune &&
         docker image prune -af &&
         docker system prune -af --volumes &&
         docker system df

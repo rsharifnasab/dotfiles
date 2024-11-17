@@ -105,6 +105,9 @@ function internet() {
     inst proxychains-ng xray-bin sing-box-bin jdk-openjdk \
         nekoray-bin sing-geoip-common sing-geoip-db sing-geoip-rule-set \
         sing-geosite-common sing-geosite-db sing-geosite-rule-set
+
+    # check internet connectivity status
+    go install -ldflags="-s -w" -v github.com/jesusprubio/up@latest
 }
 
 function shell_devel() {
@@ -337,7 +340,10 @@ function fingerprint() {
 }
 
 function cloud() {
-    inst kubectl kubectx openshift-client-bin
+    inst kubectl kubectx openshift-client-bin helm
+    inst nats-cli
+    nats --completion-script-zsh >~/.oh-my-zsh/completions/_nats
+    helm plugin install https://github.com/databus23/helm-diff
 }
 
 function touchpad() {
