@@ -346,6 +346,32 @@ function cloud() {
     helm plugin install https://github.com/databus23/helm-diff
 }
 
+function redshift_install() {
+    inst redshift
+    # place in: /etc/systemd/system/redsh@.service
+    # sudo systemctl daemon-reload
+    # sudo systemctl enable redsh@roozbeh.service
+    # sudo systemctl restart redsh@roozbeh.service
+    # sudo systemctl status redsh@roozbeh.service
+    tee /dev/null <<EOF
+    tee /dev/null <<EOF
+[Unit]
+Description=Redshift display colour temperature adjustment
+Documentation=http://jonls.dk/redshift/
+After=display-manager.service
+
+[Service]
+Environment=DISPLAY=:0
+ExecStart=/home/roozbeh/bin/redsh
+Restart=always
+User=%i
+
+[Install]
+WantedBy=default.target
+EOF
+
+}
+
 function touchpad() {
     sudo gpasswd -a "$USER" input
     newgrp input

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "starting redshift binary"
+redshift -b 0.96:0.90 -l 35.74:51.33

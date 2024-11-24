@@ -155,7 +155,6 @@ alias c='nvim'
 alias zed='zeditor'
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
-alias redsh="redshift  -b 0.95:0.85  -l 35.74:51.33"
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
 alias psrc="pyenv shell apps"
