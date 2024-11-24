@@ -4,3 +4,6 @@ set -euo pipefail
 
 echo "starting redshift binary"
 redshift -b 0.96:0.90 -l 35.74:51.33
+
+# By now it works only with tehran lat/long
+# I hope I change it soon :D
