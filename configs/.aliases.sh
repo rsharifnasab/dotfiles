@@ -621,3 +621,19 @@ if [ -f /opt/homebrew/share/nnn/quitcd/quitcd.bash_sh_zsh ]; then
     alias nnn="nnn -A"
     alias n="n -A"
 fi
+
+# enter an interactive chat conversation using mods
+chat() {
+    # pick a model alias from your config
+    model=$(cat ~/.config/mods/mods.yml | yq -r '.apis[].models[].aliases[0]' |
+        gum choose --height 8 --header "Pick model to chat with:" --no-show-help)
+    if [[ -z $model ]]; then
+        gum format "  :pensive:  cancelled, no model picked." -t emoji
+        return 1
+    fi
+    # first invocation starts a new conversation
+    mods --model "$model" --prompt-args || return $?
+    # after that enter a loop until user quits
+    while mods --model "$model" --prompt-args --continue-last; do :; done
+    return $?
+}

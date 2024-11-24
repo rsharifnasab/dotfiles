@@ -446,6 +446,10 @@ function disable-beep() {
     sudo rmmod snd_pcsp || true
 }
 
+function ai() {
+    inst mods gums yq
+}
+
 function run() {
     pre_install
     aur_helper
