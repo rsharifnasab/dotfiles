@@ -386,8 +386,9 @@ clean_disk() {
     echo "cleaning journalctl"
     sudo journalctl --vacuum-size=100M
     echo "cleaning recyclebin"
-    sudo "rm" -rf "$HOME"/.local/share/Trash/files/* || true
-    sudo "rm" -rf "$HOME"/.local/share/Trash/files/.* || true
+    "rm" -rf "$HOME"/.local/share/trash || true
+    "rm" -rf "$HOME"/.local/share/Trash/files/* || true
+    "rm" -rf "$HOME"/.local/share/Trash/files/.* || true
     echo "cleaning go cache"
     go clean -cache -modcache
     echo "removing orphan packages"

@@ -90,7 +90,7 @@ function terminal_full() {
         jq yq \
         speedtest-cli bind \
         fastfetch pfetch-rs-bin \
-        tre-command-bin
+        tre-command-bin gping rm-improved-bin
 
 }
 
