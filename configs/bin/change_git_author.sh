@@ -3,8 +3,9 @@
 export FILTER_BRANCH_SQUELCH_WARNING=1
 git filter-branch --env-filter '
 old_email="rsharifnasab@gmail.com"
-correct_email="maedehdehghanam@gmail.com"
-correct_name="Maedeh Dehghan"
+
+correct_email="new_email@gmail.com"
+correct_name="new_name"
 
 an="$GIT_AUTHOR_NAME"
 am="$GIT_AUTHOR_EMAIL"
