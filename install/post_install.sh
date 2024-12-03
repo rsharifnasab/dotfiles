@@ -89,7 +89,8 @@ function terminal_full() {
         ncdu qrencode viu \
         jq yq \
         speedtest-cli bind \
-        fastfetch pfetch-rs-bin
+        fastfetch pfetch-rs-bin \
+        tre-command-bin
 
 }
 

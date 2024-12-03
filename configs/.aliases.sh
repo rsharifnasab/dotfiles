@@ -637,3 +637,8 @@ chat() {
     while mods --model "$model" --prompt-args --continue-last; do :; done
     return $?
 }
+
+alias commit_message='git diff --staged | mods "Generate a conventional git commit message, for my changes, no other output"'
+
+# use e1 - e100 to edit files
+tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
