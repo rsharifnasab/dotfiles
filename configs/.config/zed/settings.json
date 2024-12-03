@@ -21,5 +21,35 @@
     "use_smartcase_find": true,
     "use_multiline_find": true,
     "use_system_clipboard": "always"
+  },
+  "language_models": {
+    "anthropic": {
+      "version": "1",
+      "api_url": "https://openrouter.ai/api"
+    },
+    "openai": {
+      "version": "1",
+      "api_url": "https://openrouter.ai/api/v1",
+      "available_models": [
+        {
+          "display_name": "sonnet",
+          "name": "anthropic/claude-3.5-sonnet",
+          "max_tokens": 120000
+        }
+      ]
+    }
+  },
+  "assistant": {
+    "version": "2",
+    "default_model": {
+      "provider": "openai",
+      "model": "anthropic/claude-3.5-sonnet"
+    },
+    "inline_alternatives": [
+      {
+        "provider": "openai",
+        "model": "anthropic/claude-3.5-sonnet"
+      }
+    ]
   }
 }
