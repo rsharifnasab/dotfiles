@@ -54,7 +54,3 @@
 # Include only when I am in snapp (macbook)
 [includeIf "gitdir:/Users/roozbewh/"]
     path = ./snapp
-
-# Include only when I am Maedeh
-[includeIf "gitdir:*/[mM]aedeh/"]
-    path = ./maedeh
