@@ -481,28 +481,6 @@ fh() {
     print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
-wl() {
-    local ssid
-    local conn
-
-    nmcli device wifi rescan >/dev/null
-    ssid=$(nmcli device wifi list | tail -n +2 | grep -v '^  *\B--\B' | fzf -m | sed 's/^ *\*//' | awk '{print $1}')
-
-    if [ "x$ssid" != "x" ]; then
-        # check if the SSID has already a connection setup
-        conn=$(nmcli con | grep "$ssid" | awk '{print $1}' | uniq)
-        if [ "$conn" = "$ssid" ]; then
-            echo "Please wait while switching to known network $ssid…"
-            # if yes, bring up that connection
-            nmcli con up id "$conn"
-        else
-            echo "Please wait while connecting to new network $ssid…"
-            # if not connect to it and ask for the password
-            nmcli device wifi connect "$ssid"
-        fi
-    fi
-}
-
 inst() {
     if hash paru paru 2>/dev/null; then
         paru -S --needed --noconfirm "$@"
@@ -562,16 +540,39 @@ __wificonnect() {
         echo "No AP name supplied"
         return
     elif [ $# -eq 1 ]; then
-        nmcli device wifi connect "$1" || return
+        echo "connecting to $1"
+        nmcli device wifi connect "$1" --ask || return
     elif [ $# -eq 2 ]; then
+        echo "connecting to $1 with password"
         nmcli device wifi connect "$1" password "$2" || return
     fi
     echo "connected to:"
     nmcli connection show --active
     ccc
 }
-alias wificonnect=" __wificonnect"
 alias wificonnect="__wificonnect"
+
+wl() {
+    local ssid
+    local conn
+
+    nmcli device wifi rescan >/dev/null
+    ssid=$(nmcli device wifi list | tail -n +2 | grep -v '^  *\B--\B' | fzf -m | sed 's/^ *\*//' | awk '{print $1}')
+
+    if [ "x$ssid" != "x" ]; then
+        # check if the SSID has already a connection setup
+        conn=$(nmcli con | grep "$ssid" | awk '{print $1}' | uniq)
+        if [ "$conn" = "$ssid" ]; then
+            echo "Please wait while switching to known network $ssid…"
+            # if yes, bring up that connection
+            nmcli con up id "$conn"
+        else
+            echo "Please wait while connecting to new network $ssid…"
+            # if not connect to it and ask for the password
+            nmcli device wifi connect "$ssid"
+        fi
+    fi
+}
 
 # Clock
 alias tehran='TZ="Asia/Tehran" date'
