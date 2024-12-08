@@ -97,7 +97,7 @@ function terminal_full() {
 function terminal_extra() {
     inst lazygit gitui \
         hyperfine mtr httpie \
-        source-highlight
+        source-highlight sd
 }
 
 function internet() {
