@@ -648,3 +648,9 @@ alias commit_message='git diff --staged | mods "Generate a conventional git comm
 
 # use e1 - e100 to edit files
 tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+
+format_go() {
+    gofmt -w .
+    gci write .
+    gofumpt -w .
+}
