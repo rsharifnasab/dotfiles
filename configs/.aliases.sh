@@ -172,6 +172,10 @@ alias pccv='p ccv'
 alias pccb='p ccb'
 alias nw='watch -n 3 -t -d -b "curl -s ipconfig.io/json"'
 
+epoch() {
+    date -d "@$1" '+%Y-%m-%d %H:%M:%S'
+}
+
 # command with help of online resources
 alias tb="nc mermbin.com 9999" # copy to online clipboard
 alias sprung='curl -F "sprunge=<-" http://sprunge.us'
