@@ -651,6 +651,6 @@ tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
 
 format_go() {
     gofmt -w .
-    gci write .
+    gci write . --skip-generated -s standard -s default
     gofumpt -w .
 }
