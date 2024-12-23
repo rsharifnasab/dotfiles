@@ -15,8 +15,7 @@ SCRIPT_NAME="$(basename "$0")"
 REPO_NICK_NAME="$(basename "$REPO_DIR")"
 LOCK_FILE="/tmp/${SCRIPT_NAME}_${REPO_NICK_NAME}.lock"
 
-
-function update(){
+function update() {
     [ -n "$(git status -s)" ] || {
         echo "no git update"
         return 0
@@ -32,7 +31,7 @@ function update(){
 
 # Function to clean up the lock file
 cleanup() {
-    echo "quiting sync_gh"
+    echo "quitting sync_gh"
     update
     echo "deleting lock file"
     rm -f "$LOCK_FILE"
@@ -51,22 +50,22 @@ touch "$LOCK_FILE"
 # Trap signals to clean up
 trap 'cleanup' INT TERM SIGTTIN SIGTTOU
 
-
 BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
 
 echo "sync activation"
 
-(fswatch  \
-    -0onr \
-    "$REPO_DIR" \
-    -l $DELAY \
-    --event Created \
-    --event Removed \
-    --event Updated \
-    -e ".git" |
-while read -d "" _; do
-    update
-done
+(
+    fswatch \
+        -0onr \
+        "$REPO_DIR" \
+        -l $DELAY \
+        --event Created \
+        --event Removed \
+        --event Updated \
+        -e ".git" |
+        while read -d "" _; do
+            update
+        done
 )
 
 cleanup
