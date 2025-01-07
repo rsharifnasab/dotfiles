@@ -449,7 +449,7 @@ function disable-beep() {
 }
 
 function ai() {
-    inst mods gums yq
+    inst mods gum yq
 }
 
 function gnome() {
