@@ -90,7 +90,8 @@ function terminal_full() {
         jq yq \
         speedtest-cli bind \
         fastfetch pfetch-rs-bin \
-        tre-command-bin gping rm-improved-bin
+        tre-command-bin gping rm-improved-bin \
+        guake
 
 }
 
@@ -171,7 +172,7 @@ function desktop_packages() {
         variety flameshot redshift \
         ipython \
         vlc shotwell telegram-desktop meld thunar obs-studio \
-        gparted
+        gparted obsidian
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
 
@@ -190,7 +191,7 @@ function desktop_packages_extra() {
         mission-center thunderbird
 
     inst pandoc-bin
-    yay -S galaxybudsclient-bin
+    inst galaxybudsclient-bin
 
 }
 
@@ -233,7 +234,6 @@ function python_devel() {
     git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 
     (
-        pyenv init
         pyenv virtualenv apps
         pyenv shell apps
         pyenv activate apps
@@ -245,7 +245,7 @@ function python_devel() {
         uv pip install mypy pandas-stubs data-science-types # python static type check (work with ale)
         #mypy --install-types
 
-        uv inst python-pylint python-black pyright autopep8 ruff
+        inst python-pylint python-black pyright autopep8 ruff
 
     )
     #inst python-pylint-venv python-pipenv python-pytest \
@@ -315,7 +315,8 @@ function docker_install() {
         sudo tee /etc/docker/daemon.json
 
     echo "add this script to /etc/local/bin/docker"
-    tee /dev/null <<EOF
+    sudo mkdir -p /etc/local/bin
+    sudo tee /etc/local/bin/docker <<EOF
 #!/bin/bash
 if [ "$(id -u)" -eq 0 ]; then
 	/usr/bin/docker "$@"
@@ -449,6 +450,15 @@ function disable-beep() {
 
 function ai() {
     inst mods gums yq
+}
+
+function gnome() {
+    # disable annoying "window is ready" notification
+    # https://superuser.com/questions/644850/disable-window-is-ready-notification-in-gnome-shell
+    # install: https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/
+    # OR
+    gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+    gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'smart'
 }
 
 function run() {

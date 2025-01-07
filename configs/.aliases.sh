@@ -654,3 +654,5 @@ format_go() {
     gci write . --skip-generated -s standard -s default
     gofumpt -w .
 }
+
+alias zoxide_here='find . -maxdepth 1 -type d -exec zoxide add {} \;'
