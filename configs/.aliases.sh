@@ -84,6 +84,8 @@ alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
 alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 
+alias ag="ag --hidden"
+
 # download in  terminal
 alias wget='wget -c'
 alias dllist='wget -c -i list.txt'

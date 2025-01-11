@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+function oc-info() {
+    local RED='\033[0;31m'
+    local GREEN='\033[0;32m'
+    local NC='\033[0m'
+
+    # Check if required commands exist
+    if ! command -v oc &>/dev/null || ! command -v jq &>/dev/null; then
+        echo -e "${RED}Error: Required commands (oc or jq) not found${NC}"
+        return 1
+    fi
+
+    # Get all config information in one call
+    local config_json
+    config_json=$(oc config view --minify -o json 2>/dev/null) || {
+        echo -e "${RED}Error: Failed to get config information${NC}"
+        return 1
+    }
+
+    # Extract all config values using a single jq call
+    local config_values
+    echo "$config_json" >data.json
+    config_values=$(echo "$config_json" | jq -r '[
+        .contexts[0].context.cluster,
+        .contexts[0].context.namespace // "default",
+        ."current-context"
+    ] | @tsv') || {
+        echo -e "${RED}Error: Failed to parse config information${NC}"
+        return 1
+    }
+
+    # Read values into array
+    local -a values
+    IFS=$'\t' read -r -a values <<<"$config_values"
+    local cluster="${values[0]}"
+    local namespace="${values[1]}"
+    local ctx="${values[2]}"
+
+    # Print full information
+    echo -e "${GREEN}Cluster Information:${NC}"
+    echo -e "├─ Cluster     : $cluster"
+    echo -e "├─ Context     : $ctx"
+    echo -e "└─ Namespace   : $namespace"
+
+}
+
+oc-info

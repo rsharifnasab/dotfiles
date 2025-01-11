@@ -192,7 +192,7 @@ function desktop_packages_extra() {
 
     inst pandoc-bin
     inst galaxybudsclient-bin
-
+    inst spotify-launcher
 }
 
 function fonts() {
@@ -231,7 +231,7 @@ function zsh_full() {
 
 function python_devel() {
     inst uv pyenv
-    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+    git clone https://github.com/pyenv/pyenv-virtualenv.git "$(pyenv root)/plugins/pyenv-virtualenv"
 
     (
         pyenv virtualenv apps
@@ -253,9 +253,8 @@ function python_devel() {
 }
 
 function micro() {
-    # micro text editor
     curl https://getmic.ro | bash
-    \sudo \mv ./micro /usr/bin/micro
+    \sudo "\mv" ./micro /usr/bin/micro
 }
 
 function emacs() {
