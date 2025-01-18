@@ -658,3 +658,7 @@ format_go() {
 }
 
 alias zoxide_here='find . -maxdepth 1 -type d -exec zoxide add {} \;'
+
+dict() {
+    mods -m haiko "translate this text from english to persian (or persian to english it it's already enlish). do it without any further explanaition, only give me 1 to 3 meanings: $1"
+}
