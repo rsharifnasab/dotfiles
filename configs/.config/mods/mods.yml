@@ -1,5 +1,5 @@
 ---
-default-model: sonnet
+default-model: deepseek
 # Text to append when using the -f flag.
 format-text:
   markdown: 'Format the response as markdown without enclosing backticks.'
@@ -52,12 +52,16 @@ apis:
     api-key:
     api-key-env: OPENROUTER_API_KEY
     models:
-      gpt-4o-mini:
+      openai/gpt-4o-mini:
         aliases: ["4o-mini", "mini"]
         max-input-chars: 392000
       gpt-4o:
         aliases: ["4o", "gpt4", "4"]
         max-input-chars: 392000
+      anthropic/claude-3.5-haiku:
+        aliases: ["claude-mini", "claude-haiku", "haiko"]
       anthropic/claude-3.5-sonnet:
         aliases: ["claude3.5-sonnet", "claude-3-5-sonnet", "sonnet-3.5", "sonnet", "claude"]
         max-input-chars: 680000
+      deepseek/deepseek-chat:
+        aliases: ["ds", "deepseek"]
