@@ -342,7 +342,7 @@ function fingerprint() {
 
 function cloud() {
     inst kubectl kubectx openshift-client-bin helm
-    inst nats-cli
+    inst nats-cli stern
     nats --completion-script-zsh >~/.oh-my-zsh/completions/_nats
     helm plugin install https://github.com/databus23/helm-diff
 }
