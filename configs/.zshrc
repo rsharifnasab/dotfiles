@@ -127,7 +127,6 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|sss)"
 HISTSIZE=10000000
 SAVEHIST=10000000
 
-
 #setopt EXTENDED_HISTORY    # Write the history file in the ':start:elapsed;command' format.
 setopt HIST_IGNORE_SPACE  # ignore history when command starts with space
 setopt HIST_IGNORE_DUPS      # Do not record an event that was just recorded again.
@@ -138,8 +137,6 @@ setopt HIST_VERIFY           # Do not execute immediately upon history expansion
 setopt INC_APPEND_HISTORY    # Write to the history file immediately, not when the shell exits.
 #setopt SHARE_HISTORY         # Share history between all sessions.
 
-alias jrnl=" jrnl"
-
 #fix home/end/delete not working
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
@@ -147,10 +144,6 @@ bindkey "^[[3~" delete-char
 bindkey "^[[A" up-line-or-beginning-search    # Arrow up
 bindkey "^[[B" down-line-or-beginning-search  # Arrow down
 
-export FZF_BASE=$(which fzf)
-DISABLE_FZF_KEY_BINDINGS="false"
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
-source <(fzf --zsh)
 
 [[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
 [[ -f ~/.site.sh ]] && . ~/.site.sh
@@ -164,6 +157,13 @@ else
         pfetch
     fi
 fi
+
+########################################
+
+export FZF_BASE=$(which fzf)
+DISABLE_FZF_KEY_BINDINGS="false"
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
+source <(fzf --zsh)
 
 if [ -x "$(command -v zoxide)" ]; then
     eval "$(zoxide init zsh --hook pwd --cmd z)"
@@ -179,6 +179,10 @@ if [ -x "$(command -v pyenv)" ]; then
     }
 fi
 
-(
-type apt >/dev/null 2>&1 && [[ -f ~/.debian_config ]] && source ~/.debian_config
-) || true
+if [[ -x "/usr/share/doc/git-extras/git-extras-completion.zsh" ]]; then
+   source /usr/share/doc/git-extras/git-extras-completion.zsh
+fi
+
+if command -v apt >/dev/null 2>&1 && [[ -f ~/.debian_config ]]; then
+    source ~/.debian_config
+fi
