@@ -20,7 +20,6 @@ function oc-info() {
 
     # Extract all config values using a single jq call
     local config_values
-    echo "$config_json" >data.json
     config_values=$(echo "$config_json" | jq -r '[
         .contexts[0].context.cluster,
         .contexts[0].context.namespace // "default",
