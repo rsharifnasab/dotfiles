@@ -114,6 +114,7 @@ alias ssc='command shutdown -c'
 # git aliases
 alias got='git'
 alias gut='git'
+alias gt='git'
 alias fir='git'
 alias glog='git log --graph --oneline --decorate --abbrev-commit --all'
 alias gstat="git status -sb"
