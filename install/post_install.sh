@@ -193,6 +193,14 @@ function desktop_packages_extra() {
     inst pandoc-bin
     inst galaxybudsclient-bin
     inst spotify-launcher
+
+    # fabric
+    (
+        cd /tmp || exit
+        curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-linux-amd64 >fabric && chmod +x fabric && ./fabric --version
+        \sudo mv ./fabric /usr/bin/
+        /usr/bin/fabric --setup # use openrouter
+    )
 }
 
 function fonts() {
@@ -345,6 +353,10 @@ function cloud() {
     inst nats-cli stern pgcli
     nats --completion-script-zsh >~/.oh-my-zsh/completions/_nats
     helm plugin install https://github.com/databus23/helm-diff
+
+    oc krew install neat
+    # Add to path:
+    # export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 }
 
 function redshift_install() {
