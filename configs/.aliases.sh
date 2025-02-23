@@ -147,6 +147,8 @@ alias kx="kubectx"
 if command -v xsel &>/dev/null; then
     alias clipcopy="xsel -ib"
     alias clippaste="xclip -ob"
+
+    alias pbpaste='xclip -selection clipboard -o'
 fi
 alias clip_set="clipcopy"
 alias clip_get="clippaste"
@@ -584,7 +586,7 @@ wl() {
 
 # Clock
 alias tehran='TZ="Asia/Tehran" date'
-alias edmonton='TZ="America/Edmonton" date'
+alias calgary='TZ="America/Edmonton" date'
 alias toronto='TZ="America/Toronto" date'
 
 # Safer commands for production
