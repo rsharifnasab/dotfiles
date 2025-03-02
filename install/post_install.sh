@@ -211,24 +211,6 @@ function fonts() {
 
 function zsh_full() {
     inst zsh fzf
-    #install oh my zsh
-    #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
-
-    # archcraft zsh theme
-    (
-        cd ~/.oh-my-zsh/themes || exit
-        git clone --depth 1 https://github.com/mrx04programmer/ZshTheme-ArchCraft/
-        mv ZshTheme-ArchCraft/archcraft-dwm.zsh-theme "$PWD"
-    )
-
-    # autosuggestion, fast syntax highlight, autocomplete
-    git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions \
-        ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    git clone --depth 1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
-        ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
-    git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git \
-        ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
 
     chsh -s "$(which zsh)"
 

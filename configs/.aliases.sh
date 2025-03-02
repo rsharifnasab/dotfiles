@@ -662,10 +662,16 @@ format_go() {
     gofumpt -w .
 }
 
-alias zoxide_here='find . -maxdepth 1 -type d -exec zoxide add {} \;'
+alias init_zoxide_here='find . -maxdepth 1 -type d -exec zoxide add {} \;'
 
 dict() {
     mods -m haiko "translate this text from english to persian (or persian to english it it's already enlish). do it without any further explanaition, only give me 1 to 3 meanings: $1"
 }
 
 alias jrnl=" jrnl"
+
+bookkeep_zsh() {
+    zinit delete --clean --yes
+    zinit self-update
+    zinit update --all
+}
