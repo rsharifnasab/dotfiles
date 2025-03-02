@@ -561,6 +561,7 @@ __wificonnect() {
     ccc
 }
 alias wificonnect="__wificonnect"
+alias nmc="nmcli"
 
 wl() {
     local ssid
