@@ -17,6 +17,7 @@ setopt nolistbeep # No bell on ambiguous completion!!
 setopt interactivecomments # comments in interactive mode
 setopt AUTO_CD
 
+
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
@@ -67,7 +68,7 @@ zinit snippet OMZL::completion.zsh # omz autocomplete
 zinit light marlonrichert/zsh-autocomplete  # ide-like autocomplete, only with omz-autocomplete
 zstyle '*:compinit' arguments -D -i -u -C -w
 zstyle ':autocomplete:*' min-input 3
-zstyle ':autocomplete:*' delay 3  # seconds (float)
+zstyle ':autocomplete:*' delay 0.9  # seconds (float)
 
 # My snippets
 zinit snippet OMZ::plugins/colored-man-pages
@@ -124,6 +125,7 @@ setopt HIST_REDUCE_BLANKS   # remove unnecessary blanks
 setopt HIST_VERIFY          # Do not execute immediately upon history expansion.
 setopt INC_APPEND_HISTORY   # Write to the history file immediately, not when the shell exits.
 #setopt SHARE_HISTORY       # Share history between all sessions.
+setopt HIST_FCNTL_LOCK      # Use more efficient file locking
 
 #fix home/end/delete not working
 bindkey "^[[H" beginning-of-line
@@ -169,7 +171,21 @@ fi
 autoload -Uz compinit && compinit -C
 autoload -Uz bashcompinit && bashcompinit
 
-zstyle ':completion:*' menu select
+#######################
+# autocomplete config #
+#######################
+
+#zstyle ':completion:*' menu select
+
+bindkey              '^I'         menu-complete
+bindkey "$terminfo[kcbt]" reverse-menu-complete
+
+# all Tab widgets
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+# all history widgets
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+# ^S
+zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
 ######################
 # Source other files #
