@@ -63,6 +63,8 @@ apis:
       anthropic/claude-3.5-sonnet:
         aliases: ["claude3.5-sonnet", "claude-3-5-sonnet", "sonnet-3.5", "sonnet", "claude"]
         max-input-chars: 680000
+      anthropic/claude-3.7-sonnet:
+        aliases: ["claude3.7-sonnet", "claude-3-7-sonnet", "sonnet-3.7", "3.7"]
       deepseek/deepseek-chat:
         aliases: ["ds", "deepseek"]
       deepseek/deepseek-r1:
