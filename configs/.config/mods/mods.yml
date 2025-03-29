@@ -73,3 +73,5 @@ apis:
         aliases: ["o3-mini-high", "o-mini", "om", "o3-mini"]
       openai/o3-mini:
         aliases: ["o3-mini-medium", "omm"]
+      perplexity/sonar:
+        aliases: ["perplexity", "sonar"]

@@ -678,3 +678,25 @@ bookkeep_zsh() {
     zinit self-update
     zinit update --all
 }
+
+# Use yt-dlp to fetch subtitles without downloading the video
+# WIP
+yt() {
+    (
+        set_proxy
+        yt-dlp \
+            --list-subs \
+            --cookies-from-browser firefox \
+            "$1"
+
+        yt-dlp \
+            --write-sub \
+            --cookies-from-browser firefox \
+            --skip-download \
+            --convert-subs srt \
+            --sub-lang en \
+            -o /tmp/sub-yt-dlp \
+            "$1"
+        sed -E '/^[0-9]+$|^$/d; /^[0-9]+:[0-9]+:[0-9]+/d' /tmp/sub-yt-dlp.*
+    )
+}
