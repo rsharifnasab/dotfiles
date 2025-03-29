@@ -200,6 +200,11 @@ function desktop_packages_extra() {
         curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-linux-amd64 >fabric && chmod +x fabric && ./fabric --version
         \sudo mv ./fabric /usr/bin/
         /usr/bin/fabric --setup # use openrouter
+        # fabric -l (list prompts)
+        # fabric -L (list models)
+        # fabric -u (upgrade prompts from remote)
+        # fabric -u "google.com" -p pattern_name
+        # fabric -u "youtube.com" -p pattern_name
     )
 }
 
