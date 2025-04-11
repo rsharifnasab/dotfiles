@@ -638,6 +638,37 @@ if [ -f /opt/homebrew/share/nnn/quitcd/quitcd.bash_sh_zsh ]; then
     alias n="n -A"
 fi
 
+y() {
+    # Store the current directory to return to in case of failure
+    local original_dir
+    local cwd_path
+    local target_dir
+
+    original_dir="$PWD"
+    cwd_path="/tmp/cwd_path_yazi"
+
+    # Run yazi with the cwd file option
+    yazi --cwd-file "$cwd_path"
+
+    # Check if the cwd file exists and is readable
+    if [[ -r "$cwd_path" ]]; then
+        target_dir="$(cat "$cwd_path")"
+
+        # Check if the target directory exists and is accessible
+        if [[ -d "$target_dir" && -x "$target_dir" ]]; then
+            cd "$target_dir" || return 1
+            echo "Changed directory to: $target_dir"
+        else
+            echo "Error: Target directory is invalid or inaccessible" >&2
+            cd "$original_dir" || exit
+            return 1
+        fi
+    else
+        echo "Error: Could not read the Yazi cwd file" >&2
+        return 1
+    fi
+}
+
 # enter an interactive chat conversation using mods
 chat() {
     # pick a model alias from your config
@@ -700,3 +731,5 @@ yt() {
         sed -E '/^[0-9]+$|^$/d; /^[0-9]+:[0-9]+:[0-9]+/d' /tmp/sub-yt-dlp.*
     )
 }
+
+alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
