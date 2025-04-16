@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
@@ -81,7 +88,10 @@ zinit snippet OMZ::plugins/fancy-ctrl-z # enter ctrl-z instead of fg<enter>
 
 
 # Theme
-zinit light agkozak/agkozak-zsh-prompt
+#zinit light agkozak/agkozak-zsh-prompt
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+
 
 # fix autosuggestion color to be visible
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
@@ -134,6 +144,12 @@ setopt HIST_FCNTL_LOCK      # Use more efficient file locking
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 ################
 # Autocomplete #
@@ -198,6 +214,8 @@ zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # ^S
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 
+
+
 ######################
 # Source other files #
 ######################
@@ -215,6 +233,7 @@ if [[ ! -e /tmp/welcome.sem ]]; then
 else
     if [ -x "$(command -v pfetch)" ]; then
         true
-        pfetch
+        # disabled in favor of powerlevel10k instant prompt
+        #pfetch
     fi
 fi
