@@ -463,6 +463,13 @@ function disable-beep() {
 
 function ai() {
     inst mods gum yq
+
+    # aider
+    pyenv virtualenv aider2
+    pyenv activate aider2
+    uv pip install aider-install
+    aider-install
+
 }
 
 function gnome() {
