@@ -1,5 +1,5 @@
 ---
-default-model: 4o
+default-model: 41
 # Text to append when using the -f flag.
 format-text:
   markdown: 'Format the response as markdown without enclosing backticks.'
@@ -48,16 +48,20 @@ max-input-chars: 12250
 # max-tokens: 100
 apis:
   openai:
-    base-url: https://openrouter.ai/api/v1
-    api-key:
-    api-key-env: OPENROUTER_API_KEY
+    base-url: "https://openrouter.ai/api/v1"
+    api-key-env: "OPENROUTER_API_KEY"
     models:
       openai/gpt-4o-mini:
-        aliases: ["4o-mini", "mini"]
+        aliases: ["4o-mini"]
         max-input-chars: 392000
       openai/gpt-4o:
         aliases: ["gpt-4o", "4o", "gpt4", "4"]
         max-input-chars: 392000
+      openai/gpt-4.1:
+        aliases: ["gpt-4.1", "41", "4.1", "gpt4.1"]
+      openai/gpt-4.1-mini:
+        aliases: ["gpt-4.1-mini", "41-mini", "4.1-mini", "gpt4.1-mini", "mini"]
+
       anthropic/claude-3.5-haiku:
         aliases: ["claude-mini", "claude-haiku", "haiko"]
       anthropic/claude-3.5-sonnet:
@@ -65,13 +69,24 @@ apis:
         max-input-chars: 680000
       anthropic/claude-3.7-sonnet:
         aliases: ["claude3.7-sonnet", "claude-3-7-sonnet", "sonnet-3.7", "3.7"]
+
       deepseek/deepseek-chat:
         aliases: ["ds", "deepseek"]
       deepseek/deepseek-r1:
         aliases: ["ds-r1", "r1"]
+
       openai/o3-mini-high:
         aliases: ["o3-mini-high", "o-mini", "om", "o3-mini"]
       openai/o3-mini:
         aliases: ["o3-mini-medium", "omm"]
+
+      x-ai/grok-3-beta:
+        aliases: ["grok", "grok3"]
+      x-ai/grok-3-mini-beta:
+        aliases: ["grok-mini", "grok3-mini"]
+
       perplexity/sonar:
         aliases: ["perplexity", "sonar"]
+
+      google/gemini-2.5-pro-preview-03-25:
+        aliases: ["gemini"]
