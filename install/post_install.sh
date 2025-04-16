@@ -222,6 +222,21 @@ function zsh_full() {
     #install fzf for zsh and other
     #git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     #~/.fzf/install
+
+    # install atuin
+    curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+    # atuin login
+    atuin import zsh
+
+    atuin history prune --dry-run
+    atuin history prune
+
+    atuin sync
+
+    mkdir -p "$HOME/.zsh/completions"
+    atuin gen-completions --shell zsh --out-dir "$HOME"/.zsh/completions
+
+    atuin info
 }
 
 function python_devel() {

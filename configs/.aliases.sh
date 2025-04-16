@@ -733,3 +733,5 @@ yt() {
 }
 
 alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
+
+alias autin="atuin"

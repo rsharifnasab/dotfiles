@@ -16,12 +16,12 @@ export HISTCONTROL=ignoreboth:erasedups
 
 PS1='[\u@\h \W]\$ '
 
-if [ -d "$HOME/.bin" ] ;
-  then PATH="$HOME/.bin:$PATH"
+if [ -d "$HOME/.bin" ]; then
+    PATH="$HOME/.bin:$PATH"
 fi
 
-if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 #shopt
@@ -29,7 +29,7 @@ fi
 shopt -s cdspell # autocorrects cd misspellings
 shopt -s cmdhist # save multi-line commands in history as single line
 shopt -s dotglob
-shopt -s histappend # do not overwrite history
+shopt -s histappend     # do not overwrite history
 shopt -s expand_aliases # expand aliases
 
 # auto compelte even after sudo
@@ -47,7 +47,6 @@ eval "$(fzf --bash)"
 PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
 export PATH="$PATH:$PYTHON_BIN_PATH"
 
-
 # Pyenv (Python)
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -58,3 +57,8 @@ if [ -x "$(command -v pyenv)" ]; then
         pyenv "$@"
     }
 fi
+
+. "$HOME/.atuin/bin/env"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"

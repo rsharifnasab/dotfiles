@@ -4,10 +4,12 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 export GOPATH="$HOME/go"
+
 export PATH="$PATH:\
 $HOME/bin:\
 $HOME/.local/bin:\
 $GOPATH/bin"
+
 export GRAVEYARD="$XDG_DATA_HOME/trash"
 
 setopt NO_GLOB_COMPLETE
@@ -136,7 +138,6 @@ bindkey "^[[3~" delete-char
 ################
 # Autocomplete #
 ################
-
 # Fzf autocomplete
 export FZF_BASE=$(which fzf)
 DISABLE_FZF_KEY_BINDINGS="false"
@@ -168,6 +169,15 @@ fi
 if [[ -x "/usr/share/doc/git-extras/git-extras-completion.zsh" ]]; then
    source /usr/share/doc/git-extras/git-extras-completion.zsh
 fi
+
+# atuin
+FPATH_APPEND="$HOME/.zsh/completions"
+if [ -d "$FPATH_APPEND" ]; then
+    FPATH="${FPATH_APPEND}:${FPATH}"
+fi
+
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
 
 autoload -Uz compinit && compinit -C
 autoload -Uz bashcompinit && bashcompinit
