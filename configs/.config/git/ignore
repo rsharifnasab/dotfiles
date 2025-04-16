@@ -18,3 +18,6 @@ Thumbs.db
 *.swp
 tags
 .vim
+
+# aider related files
+.aider*
