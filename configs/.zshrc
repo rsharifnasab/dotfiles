@@ -74,11 +74,11 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-zinit snippet OMZL::completion.zsh # omz autocomplete
-zinit light marlonrichert/zsh-autocomplete  # ide-like autocomplete, only with omz-autocomplete
-zstyle '*:compinit' arguments -D -i -u -C -w
-zstyle ':autocomplete:*' min-input 3
-zstyle ':autocomplete:*' delay 0.9  # seconds (float)
+#zinit snippet OMZL::completion.zsh # omz autocomplete
+#zinit light marlonrichert/zsh-autocomplete  # ide-like autocomplete, only with omz-autocomplete
+#zstyle '*:compinit' arguments -D -i -u -C -w
+#zstyle ':autocomplete:*' min-input 3
+#zstyle ':autocomplete:*' delay 0.9  # seconds (float)
 
 # My snippets
 zinit snippet OMZ::plugins/colored-man-pages
@@ -213,8 +213,6 @@ zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # ^S
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-
-
 
 ######################
 # Source other files #

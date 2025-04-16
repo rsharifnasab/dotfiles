@@ -174,7 +174,7 @@ alias map="telnet mapscii.me"
 
 # check network
 alias ccc='curl -s ipconfig.io/country'
-alias ccv='curl -s myip.wtf/yaml'
+alias ccv='curl -i myip.wtf/yaml'
 alias ccb='curl -s https://ident.me; echo'
 alias pccc='p ccc'
 alias pccv='p ccv'
@@ -248,7 +248,7 @@ function make() {
     return 1
 }
 
-# use gnu hightlight for add syntax hight to less
+# use gnu highlight for add syntax hight to less
 gat() {
     src-hilite-lesspipe.sh "$@" | less
 }
@@ -392,20 +392,49 @@ orphans() {
 clean_disk() {
     echo "cleaning paru"
     paru -Sc
+
     echo "cleaning pacman"
     sudo "pacman" -Scc
+
     echo "cleaning pip"
     \rm -r "$HOME/.cache/pip"
+
     echo "cleaning journalctl"
     sudo journalctl --vacuum-size=100M
+
     echo "cleaning recyclebin"
     "rm" -rf "$HOME"/.local/share/trash || true
     "rm" -rf "$HOME"/.local/share/Trash/files/* || true
     "rm" -rf "$HOME"/.local/share/Trash/files/.* || true
+
     echo "cleaning go cache"
-    go clean -cache -modcache
+    go clean -cache -modcache -testcache
+
     echo "removing orphan packages"
     orphans
+}
+
+bookkeep_zsh() {
+    zinit delete --clean --yes
+    zinit self-update
+    zinit update --all
+}
+
+bookkeep_nvim() {
+    touch /tmp/a.txt
+
+    # mason for external services
+    nvim /tmp/a.txt +MasonToolsUpdateSync +q
+
+    # Lazy for plugins
+    nvim -c 'autocmd User VeryLazy Lazy sync'
+}
+
+bookkeep() {
+    paru
+    bookkeep_zsh
+    bookkeep_nvim
+    clean_disk
 }
 
 # # usage: ex <file>
@@ -703,12 +732,6 @@ dict() {
 }
 
 alias jrnl=" jrnl"
-
-bookkeep_zsh() {
-    zinit delete --clean --yes
-    zinit self-update
-    zinit update --all
-}
 
 # Use yt-dlp to fetch subtitles without downloading the video
 # WIP
