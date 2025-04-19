@@ -69,6 +69,7 @@ function neovim_new() {
         python-pynvim
 
     gem install neovim
+    nvim --headless "+echo has('ruby')" +q # verify
 
     sudo npm install -g neovim
 }
