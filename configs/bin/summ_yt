@@ -16,6 +16,7 @@ yt-dlp \
     "$1"
 
 echo "downloading subtitle complete"
+
 srt_text /tmp/sub-yt-dlp.en.srt >/tmp/out.txt
 
 echo "summarizing subtitle"
@@ -26,7 +27,7 @@ command fabric \
     -p summarize \
     --model openai/gpt-4.1-mini \
     </tmp/out.txt \
-    >/tmp/res.txt
+    >/tmp/res.md
 
-echo "summarizing complete"
-cat /tmp/res.txt
+printf "summarizing complete\n\n"
+glow /tmp/res.md
