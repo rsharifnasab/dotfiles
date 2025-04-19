@@ -26,15 +26,15 @@
 # auto_sync = true
 
 ## enable or disable automatic update checks
-# update_check = true
+update_check = true
 
 ## address of the sync server
-# sync_address = "https://api.atuin.sh"
+sync_address = "https://api.atuin.sh"
 
 ## how often to sync history. note that this is only triggered when a command
 ## is ran, so sync intervals may well be longer
 ## set it to 0 to sync after every command
-# sync_frequency = "10m"
+sync_frequency = "10m"
 
 ## which search mode to use
 ## possible values: prefix, fulltext, fuzzy, skim
@@ -72,7 +72,7 @@
 # inline_height = 0
 
 ## Invert the UI - put the search bar at the top , Default to `false`
-# invert = false
+invert = false
 
 ## enable or disable showing a preview of the selected command
 ## useful when the command is longer than the terminal width and is cut off
@@ -165,7 +165,7 @@ enter_accept = false
 # network_timeout = 5
 
 ## Timeout (in seconds) for acquiring a local database connection (sqlite)
-# local_timeout = 5
+local_timeout = 5
 
 ## Set this to true and Atuin will minimize motion in the UI - timers will not update live, etc.
 ## Alternatively, set env NO_MOTION=true
@@ -207,7 +207,7 @@ enter_accept = false
 
 [keys]
 # Defaults to true. If disabled, using the up/down key won't exit the TUI when scrolled past the first/last entry.
-# scroll_exits = true
+scroll_exits = true
 # Defaults to true. The left arrow key will exit the TUI when scrolling before the first character
 # exit_past_line_start = true
 # Defaults to true. The right arrow key performs the same functionality as Tab and copies the selected line to the command line to be modified.
@@ -229,10 +229,10 @@ records = true
 
 [daemon]
 ## Enables using the daemon to sync. Requires the daemon to be running in the background. Start it with `atuin daemon`
-# enabled = false
+enabled = false
 
 ## How often the daemon should sync in seconds
-# sync_frequency = 300
+sync_frequency = 300
 
 ## The path to the unix socket used by the daemon (on unix systems)
 ## linux/mac: ~/.local/share/atuin/atuin.sock
