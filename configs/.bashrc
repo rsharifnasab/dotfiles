@@ -47,17 +47,6 @@ eval "$(fzf --bash)"
 PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
 export PATH="$PATH:$PYTHON_BIN_PATH"
 
-# Pyenv (Python)
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-if [ -x "$(command -v pyenv)" ]; then
-    pyenv() {
-        eval "$(command pyenv init -)"
-        eval "$(command pyenv virtualenv-init -)"
-        pyenv "$@"
-    }
-fi
-
 . "$HOME/.atuin/bin/env"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh

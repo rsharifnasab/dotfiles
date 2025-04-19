@@ -74,8 +74,8 @@ zinit light-mode for \
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
+zinit snippet OMZL::completion.zsh # omz autocomplete
 
-#zinit snippet OMZL::completion.zsh # omz autocomplete
 #zinit light marlonrichert/zsh-autocomplete  # ide-like autocomplete, only with omz-autocomplete
 #zstyle '*:compinit' arguments -D -i -u -C -w
 #zstyle ':autocomplete:*' min-input 3
@@ -91,7 +91,6 @@ zinit snippet OMZ::plugins/fancy-ctrl-z # enter ctrl-z instead of fg<enter>
 # Theme
 #zinit light agkozak/agkozak-zsh-prompt
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-
 
 
 # fix autosuggestion color to be visible
@@ -164,17 +163,6 @@ source <(fzf --zsh)
 # zoxide autocomplete
 if [ -x "$(command -v zoxide)" ]; then
     eval "$(zoxide init zsh --hook pwd --cmd x)"
-fi
-
-# initialize pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-if [ -x "$(command -v pyenv)" ]; then
-    pyenv() {
-        eval "$(command pyenv init -)"
-        eval "$(command pyenv virtualenv-init -)"
-        pyenv "$@"
-    }
 fi
 
 # Brew autocomplete

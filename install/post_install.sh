@@ -65,15 +65,11 @@ function compilers() {
 
 function neovim_new() {
     inst git make unzip ripgrep fd xsel \
-        ttf-firacode-nerd pyenv ruby uv npm tree-sitter-cli luarocks
-    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv || true
+        ttf-firacode-nerd ruby npm tree-sitter-cli luarocks \
+        python-pynvim
 
     gem install neovim
 
-    pyenv virtualenv nvim
-    pyenv shell nvim
-    pyenv activate nvim
-    uv pip install pynvim
     sudo npm install -g neovim
 }
 
@@ -170,7 +166,6 @@ function desktop_packages() {
         ntfs-3g pacman-contrib inetutils lxrandr \
         zip unzip unrar xarchiver engrampa p7zip \
         variety flameshot redshift \
-        ipython \
         vlc shotwell telegram-desktop meld thunar obs-studio \
         gparted obsidian
     # prevent rm from deleting important files
@@ -194,18 +189,6 @@ function desktop_packages_extra() {
     inst galaxybudsclient-bin
     inst spotify-launcher
 
-    # fabric
-    (
-        cd /tmp || exit
-        curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-linux-amd64 >fabric && chmod +x fabric && ./fabric --version
-        \sudo mv ./fabric /usr/bin/
-        /usr/bin/fabric --setup # use openrouter
-        # fabric -l (list prompts)
-        # fabric -L (list models)
-        # fabric -U (upgrade prompts from remote)
-        # fabric -u "google.com" -p pattern_name
-        # fabric -y "youtube.com" -p pattern_name
-    )
 }
 
 function fonts() {
@@ -240,26 +223,17 @@ function zsh_full() {
 }
 
 function python_devel() {
-    inst uv pyenv
-    git clone https://github.com/pyenv/pyenv-virtualenv.git "$(pyenv root)/plugins/pyenv-virtualenv"
+    inst uv python
 
-    (
-        pyenv virtualenv apps
-        pyenv shell apps
-        pyenv activate apps
+    uv tool install ipython
+    uv tool install ruff
+    uv tool install autopep8
+    uv tool install pyright
+    uv tool install black
+    uv tool install blue
+    uv tool install pylint
 
-        uv pip install --upgrade pip pylint ipython
-        uv pip install --upgrade numpy pandas matplotlib plotly networkx pillow
-        uv pip install pyqt5 # for matplotlib
-
-        uv pip install mypy pandas-stubs data-science-types # python static type check (work with ale)
-        #mypy --install-types
-
-        inst python-pylint python-black pyright autopep8 ruff
-
-    )
-    #inst python-pylint-venv python-pipenv python-pytest \
-    # python-rednose python-pytest autopep8
+    #inst python-pytest python-rednose
 }
 
 function micro() {
@@ -462,13 +436,23 @@ function disable-beep() {
 }
 
 function ai() {
-    inst mods gum yq
+    inst uv mods gum yq
 
-    # aider
-    pyenv virtualenv aider2
-    pyenv activate aider2
-    uv pip install aider-install
-    aider-install
+    uv tool install llm
+    uvx llm install -U llm-openrouter
+
+    uv tool install aider
+
+    # fabric
+    (
+        cd /tmp || exit
+        curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-linux-amd64 >fabric && chmod +x fabric && ./fabric --version
+        \sudo mv ./fabric /usr/bin/
+        /usr/bin/fabric --setup # use openrouter
+        # fabric -l (list prompts)
+        # fabric -L (list models)
+        # fabric -U (upgrade prompts from remote)
+    )
 
 }
 
