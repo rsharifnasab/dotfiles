@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+from itertools import groupby
+from sys import argv
+
+import srt
+
+
+def main(args):
+    inp = args[0]
+    content = ""
+    with open(inp, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    lines = [
+        line
+        for sub in srt.parse(content)  # parse srt
+        for line in sub.content.strip().splitlines()
+        if sub.content.strip()
+    ]
+
+    for k, _ in groupby(lines):
+        print(k)
+
+
+if __name__ == "__main__":
+    main(argv[1:])

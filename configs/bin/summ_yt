@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+#openai/gpt-4.1
+#openai/gpt-4.1-mini
+
+echo "downloading subtitle"
+
+yt-dlp \
+    --write-auto-subs \
+    --cookies-from-browser firefox \
+    --skip-download \
+    --convert-subs srt \
+    --sub-lang en \
+    -o /tmp/sub-yt-dlp \
+    -q \
+    "$1"
+
+echo "downloading subtitle complete"
+srt_text /tmp/sub-yt-dlp.en.srt >/tmp/out.txt
+
+echo "summarizing subtitle"
+export OPENAI_BASE_URL=
+export OPENAI_API_KEY=
+
+command fabric \
+    -p summarize \
+    --model openai/gpt-4.1-mini \
+    </tmp/out.txt \
+    >/tmp/res.txt
+
+echo "summarizing complete"
+cat /tmp/res.txt

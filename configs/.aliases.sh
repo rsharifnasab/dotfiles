@@ -166,9 +166,7 @@ alias zed='zeditor'
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
-alias psrc="pyenv shell apps"
-#alias yay="paru"
-alias syu="paru -Syu" # If you know, you know.
+alias syu="paru -Syu"
 alias kit="kitty --detach"
 alias map="telnet mapscii.me"
 
@@ -732,28 +730,6 @@ dict() {
 }
 
 alias jrnl=" jrnl"
-
-# Use yt-dlp to fetch subtitles without downloading the video
-# WIP
-yt() {
-    (
-        set_proxy
-        yt-dlp \
-            --list-subs \
-            --cookies-from-browser firefox \
-            "$1"
-
-        yt-dlp \
-            --write-sub \
-            --cookies-from-browser firefox \
-            --skip-download \
-            --convert-subs srt \
-            --sub-lang en \
-            -o /tmp/sub-yt-dlp \
-            "$1"
-        sed -E '/^[0-9]+$|^$/d; /^[0-9]+:[0-9]+:[0-9]+/d' /tmp/sub-yt-dlp.*
-    )
-}
 
 alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
 
