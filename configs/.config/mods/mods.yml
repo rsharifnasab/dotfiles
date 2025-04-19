@@ -51,12 +51,6 @@ apis:
     base-url: "https://openrouter.ai/api/v1"
     api-key-env: "OPENROUTER_API_KEY"
     models:
-      openai/gpt-4o-mini:
-        aliases: ["4o-mini"]
-        max-input-chars: 392000
-      openai/gpt-4o:
-        aliases: ["gpt-4o", "4o", "gpt4", "4"]
-        max-input-chars: 392000
       openai/gpt-4.1:
         aliases: ["gpt-4.1", "41", "4.1", "gpt4.1"]
       openai/gpt-4.1-mini:
@@ -75,10 +69,10 @@ apis:
       deepseek/deepseek-r1:
         aliases: ["ds-r1", "r1"]
 
-      openai/o3-mini-high:
-        aliases: ["o3-mini-high", "o-mini", "om", "o3-mini"]
-      openai/o3-mini:
-        aliases: ["o3-mini-medium", "omm"]
+      openai/o4-mini-high:
+        aliases: ["o4-mini-high", "o-mini", "om", "o4-mini"]
+      openai/o4-mini:
+        aliases: ["o4-mini-medium", "omm"]
 
       x-ai/grok-3-beta:
         aliases: ["grok", "grok3"]
