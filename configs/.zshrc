@@ -26,6 +26,7 @@ setopt listtypes # When listing files that are possible completions,
 setopt nolistbeep # No bell on ambiguous completion!!
 setopt interactivecomments # comments in interactive mode
 setopt AUTO_CD
+setopt NO_BEEP
 
 
 # Uncomment the following line if pasting URLs and other text is messed up.
