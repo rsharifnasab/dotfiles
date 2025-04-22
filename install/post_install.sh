@@ -88,7 +88,8 @@ function terminal_full() {
         speedtest-cli bind \
         fastfetch pfetch-rs-bin \
         tre-command-bin gping rm-improved-bin \
-        guake git-extras
+        guake git-extras \
+        pdfgrep
 
 }
 

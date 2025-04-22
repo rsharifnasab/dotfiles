@@ -171,9 +171,9 @@ alias kit="kitty --detach"
 alias map="telnet mapscii.me"
 
 # check network
-alias ccc='curl -s ipconfig.io/country'
-alias ccv='curl -i myip.wtf/yaml'
-alias ccb='curl -s https://ident.me; echo'
+alias ccc='timeout 6s curl -s ipconfig.io/country'    # just country
+alias ccv='timeout 6s curl -i myip.wtf/yaml'          # everything
+alias ccb='timeout 6s curl -s https://ident.me; echo' # ip
 alias pccc='p ccc'
 alias pccv='p ccv'
 alias pccb='p ccb'
