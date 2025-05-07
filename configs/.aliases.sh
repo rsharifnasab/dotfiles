@@ -613,6 +613,10 @@ wl() {
             nmcli device wifi connect "$ssid"
         fi
     fi
+
+    echo "connected to:"
+    nmcli connection show --active
+    ccc
 }
 
 # Clock
