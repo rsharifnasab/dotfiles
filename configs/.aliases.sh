@@ -738,3 +738,11 @@ alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
 alias zed="zeditor"
 
 alias autin="atuin"
+
+hash_dir() {
+    if [ -z "$1" ]; then
+        echo "Usage: hash_dir <directory>"
+        return 1
+    fi
+    tar -cf - "$1" | sha256sum
+}
