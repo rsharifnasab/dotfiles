@@ -41,10 +41,11 @@
     }
   },
   "agent": {
+    "always_allow_tool_actions": true,
     "version": "2",
     "default_model": {
       "provider": "openai",
-      "model": "anthropic/claude-3.5-sonnet"
+      "model": "anthropic/claude-3.7-sonnet"
     },
     "inline_alternatives": [
       {
