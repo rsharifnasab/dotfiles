@@ -161,7 +161,6 @@ alias neofetch="fastfetch"
 alias j='jdate -u +"%Y/%m/%d"'
 alias v='nvim'
 alias c='nvim'
-alias zed='zeditor'
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
@@ -736,5 +735,6 @@ dict() {
 alias jrnl=" jrnl"
 
 alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
+alias zed="zeditor"
 
 alias autin="atuin"

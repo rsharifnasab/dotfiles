@@ -23,23 +23,24 @@
     "use_system_clipboard": "always"
   },
   "language_models": {
-    "anthropic": {
-      "version": "1",
-      "api_url": "https://openrouter.ai/api"
-    },
     "openai": {
-      "version": "1",
       "api_url": "https://openrouter.ai/api/v1",
       "available_models": [
         {
-          "display_name": "sonnet",
+          "name": "anthropic/claude-3.7-sonnet",
+          "display_name": "sonnet-3.7",
+          "max_tokens": 64000
+        },
+        {
           "name": "anthropic/claude-3.5-sonnet",
-          "max_tokens": 120000
+          "display_name": "sonnet-3.5",
+          "max_tokens": 64000
         }
-      ]
+      ],
+      "version": "1"
     }
   },
-  "assistant": {
+  "agent": {
     "version": "2",
     "default_model": {
       "provider": "openai",
