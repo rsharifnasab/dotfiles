@@ -408,6 +408,9 @@ function laptop() {
     gnome-power-statistics
 
     # inst tlpui
+    #
+    # GRUB_CMDLINE_LINUX="amdgpu.dcdebugmask=0x10"
+    # sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
 # intel wifi backend
