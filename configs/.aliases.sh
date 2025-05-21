@@ -365,6 +365,8 @@ clean_docker() {
 
     docker volume rm $(docker volume ls -f dangling=true -q)
 
+    docker network prune --force
+
     docker system prune -af &&
         docker builder prune &&
         docker image prune -af &&
@@ -745,4 +747,14 @@ hash_dir() {
         return 1
     fi
     tar -cf - "$1" | sha256sum
+}
+
+fix_network() {
+    docker network prune --force
+    sudo systemctl restart NetworkManager.service
+    sudo systemctl restart dnsmasq.service
+
+    timeout 1s nmcli device wifi list --rescan yes >/dev/null
+
+    wl
 }
