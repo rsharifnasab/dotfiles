@@ -569,14 +569,14 @@ wifi() {
 }
 
 wifiscan() {
-    timeout 1s nmcli device wifi list --rescan yes >/dev/null
+    timeout 5s nmcli device wifi list --rescan yes >/dev/null
     nmcli device wifi list --rescan yes
 }
 
 __wificonnect() {
     echo "scanning for wifi networks"
-    timeout 1s nmcli device wifi list --rescan yes || true
-    #wifiscan
+    timeout 5s nmcli device wifi list --rescan yes || true
+
     if [ $# -eq 0 ]; then
         echo "No AP name supplied"
         return
