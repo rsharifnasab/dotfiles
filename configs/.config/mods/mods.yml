@@ -57,12 +57,9 @@ apis:
         aliases: ["gpt-4.1-mini", "41-mini", "4.1-mini", "gpt4.1-mini", "mini"]
 
       anthropic/claude-3.5-haiku:
-        aliases: ["claude-mini", "claude-haiku", "haiko"]
-      anthropic/claude-3.5-sonnet:
-        aliases: ["claude3.5-sonnet", "claude-3-5-sonnet", "sonnet-3.5", "sonnet", "claude"]
-        max-input-chars: 680000
-      anthropic/claude-3.7-sonnet:
-        aliases: ["claude3.7-sonnet", "claude-3-7-sonnet", "sonnet-3.7", "3.7"]
+        aliases: ["haiku-3.5", "claude-mini", "claude-haiku", "haiko"]
+      anthropic/claude-sonnet-4:
+        aliases: ["sonnet-4", "claude", "sonnet"]
 
       deepseek/deepseek-chat:
         aliases: ["ds", "deepseek"]

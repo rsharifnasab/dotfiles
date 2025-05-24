@@ -11,7 +11,7 @@
     "bindings": {
       "ctrl-]": "editor::GoToDefinition",
       "ctrl-tab": "tab_switcher::Toggle",
-      "ctrl-o": "pane::ActivatePrevItem",
+      "ctrl-o": "pane::ActivatePreviousItem",
       "ctrl-p": "pane::ActivateNextItem",
       "ctrl-a": "editor::SelectAll",
       "space tab": "file_finder::Toggle",
