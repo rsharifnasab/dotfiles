@@ -1,0 +1,14 @@
+[
+  {
+    "label": "GoTest",
+    "command": "/home/roozbeh/.zed/go-test.sh",
+    "use_new_terminal": false,
+    "reveal": "never"
+  },
+  {
+    "label": "GoBuild",
+    "command": "/home/roozbeh/.zed/go-build.sh",
+    "use_new_terminal": false,
+    "reveal": "never"
+  }
+]

@@ -7,6 +7,12 @@
     }
   },
   {
+    "context": "VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space r t": ["task::Spawn", { "task_name": "GoTest" }]
+    }
+  },
+  {
     "context": "(Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu) || EmptyPane || SharedScreen || (ProjectPanel && not_editing)",
     "bindings": {
       "ctrl-]": "editor::GoToDefinition",
