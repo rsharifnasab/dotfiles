@@ -1,20 +1,11 @@
 #!/bin/sh
 
-#devices=$(bluetoothctl devices | awk '{print $2}')
-
-devices="D9:87:A8:06:64:1F
-EE:C2:A0:A8:6B:98
-45:33:12:EE:CD:EB
-CE:F0:F0:82:FC:EF
-A0:60:90:2F:59:09
-75:57:1D:09:88:3E
-1C:52:16:A8:50:DC"
+devices=$(bluetoothctl devices | grep Device | awk '{print $2}')
 
 for device in $devices; do
-    echo "removing $device"
+    echo "disconnecting $device"
     bluetoothctl disconnect "$device"
-    bluetoothctl untrust "$device"
-    bluetoothctl remove "$device"
+    #bluetoothctl remove "$device"
 done
 
 bluetoothctl power off
@@ -24,7 +15,6 @@ timeout 12s bluetoothctl scan on
 for device in $devices; do
     echo "----connecting to $device----"
     bluetoothctl info "$device"
-    bluetoothctl trust "$device"
     bluetoothctl pair "$device"
     bluetoothctl connect "$device" || continue
     exit # successful
