@@ -758,3 +758,5 @@ fix_network() {
 
     wl
 }
+
+alias dim="echo $(tput cols)x$(tput lines)"

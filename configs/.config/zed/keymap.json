@@ -9,7 +9,8 @@
   {
     "context": "VimControl && !VimWaiting && !menu",
     "bindings": {
-      "space r t": ["task::Spawn", { "task_name": "GoTest" }]
+      "space r t": ["task::Spawn", { "task_name": "GoTest" }],
+      "space r b": ["task::Spawn", { "task_name": "GoBuild" }]
     }
   },
   {

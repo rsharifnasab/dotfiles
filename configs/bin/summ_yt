@@ -15,7 +15,7 @@ yt-dlp \
     -q \
     "$1"
 
-echo "downloading subtitle complete"
+echo "converting subtitle"
 
 srt_text /tmp/sub-yt-dlp.en.srt >/tmp/out.txt
 
