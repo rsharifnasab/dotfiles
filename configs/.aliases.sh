@@ -170,13 +170,14 @@ alias kit="kitty --detach"
 alias map="telnet mapscii.me"
 
 # check network
-alias ccc='timeout 6s curl -s ipconfig.io/country'    # just country
-alias ccv='timeout 6s curl -i myip.wtf/yaml'          # everything
-alias ccb='timeout 6s curl -s https://ident.me; echo' # ip
+alias ccc='timeout 7s curl -i https://ipconfig.io/country' # just country
+alias ccv='timeout 7s curl -i https://myip.wtf/yaml'       # everything
+alias ccb='timeout 7s curl -s https://ident.me; echo'      # ip
 alias pccc='p ccc'
 alias pccv='p ccv'
 alias pccb='p ccb'
-alias nw='watch -n 3 -t -d -b "curl -s ipconfig.io/json"'
+alias nw='watch -n 3 -t -d -b "curl -si ident.me"'
+alias snw='watch -n 3 -t -d -b "curl -si soft98.ir"'
 
 epoch() {
     date -d "@$1" '+%Y-%m-%d %H:%M:%S'
