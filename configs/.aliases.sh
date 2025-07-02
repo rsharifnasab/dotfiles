@@ -122,6 +122,8 @@ alias fir='git'
 alias glog='git log --graph --oneline --decorate --abbrev-commit --all'
 alias gstat="git status -sb"
 alias gstatv="git status -vv"
+alias stat="git status -sb"
+alias statv="git status -vv"
 alias gadd="git add"
 alias gcom="git commit -m"
 alias gcome="git commit" # open editor!
@@ -131,6 +133,7 @@ alias gdiff="git diff HEAD --color-words"
 alias gfetch="git fetch --all --prune"
 alias gloc="git ls-files | xargs wc -l"
 alias gclon="git clone --depth 1 --branch "
+alias igt="git"
 
 # go aliases
 alias go="nocorrect go"

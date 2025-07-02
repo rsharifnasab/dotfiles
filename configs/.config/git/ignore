@@ -22,3 +22,6 @@ tags
 # aider related files
 .aider*
 .ra-aid*
+
+.opencode/
+OpenCode.md
