@@ -735,13 +735,13 @@ format_go() {
 alias init_zoxide_here='find . -maxdepth 1 -type d -exec zoxide add {} \;'
 
 dict() {
-    mods -m haiko "translate this text from english to persian (or persian to english it it's already enlish). do it without any further explanaition, only give me 1 to 3 meanings: $1"
+    mods -m haiko "translate this text from english to persian (or persian to english it it's already english). do it without any further explanaition, only give me 1 to 3 meanings: $1"
 }
 
 alias jrnl=" jrnl"
 
 alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
-alias zed="zeditor"
+alias zed="OPENAI_BASE_URL= command zeditor"
 
 alias autin="atuin"
 

@@ -32,46 +32,23 @@
     "use_multiline_find": true,
     "use_system_clipboard": "always"
   },
-  "language_models": {
-    "openai": {
-      "api_url": "https://openrouter.ai/api/v1",
-      "available_models": [
-        {
-          "name": "anthropic/claude-sonnet-4",
-          "display_name": "sonnet-4",
-          "max_tokens": 200000
-        },
-        {
-          "name": "anthropic/claude-3.7-sonnet",
-          "display_name": "sonnet-3.7",
-          "max_tokens": 200000
-        },
-        {
-          "name": "openai/o4-mini",
-          "display_name": "4o-mini",
-          "max_tokens": 100000
-        },
-        {
-          "name": "anthropic/claude-3.5-haiku",
-          "display_name": "haiku-3.5",
-          "max_tokens": 64000
-        }
-      ],
-      "version": "1"
-    }
-  },
   "agent": {
+    "play_sound_when_agent_done": true,
     "default_profile": "write",
     "always_allow_tool_actions": true,
     "version": "2",
     "default_model": {
-      "provider": "openai",
-      "model": "anthropic/claude-3.7-sonnet"
+      "provider": "openrouter",
+      "model": "google/gemini-2.5-pro"
     },
     "inline_alternatives": [
       {
-        "provider": "openai",
-        "model": "anthropic/claude-3.7-sonnet"
+        "provider": "openrouter",
+        "model": "anthropic/claude-sonnet-4"
+      },
+      {
+        "provider": "openrouter",
+        "model": "google/gemini-2.5-pro"
       }
     ]
   }
