@@ -60,6 +60,7 @@ alias free="free -mht"
 alias ls='ls -h -1 --color=auto'
 alias l='ls -h -1 --color=auto -lAh'
 alias la='ls -h -1 --color=auto -lAh'
+alias ll='ls -h -1 --color=auto -lAh'
 alias l.="ls -A | egrep '^\.'"
 alias sl='ls'
 alias s='ls'
