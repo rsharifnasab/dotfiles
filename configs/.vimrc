@@ -18,7 +18,6 @@ set wrap " break the text to fill in terminal width
 set linebreak " break lines on space, rather than last char
 set breakindent " if broke the line, indent the broken part
 
-set mouse=a " use mouse normally
 set clipboard=unnamedplus "sync vim clipboard with system clipboard
 set lazyredraw " don't redraw screen in macros
 set synmaxcol=200 "200 char of line should be highlited
@@ -56,10 +55,10 @@ set gdefault " global find and replace by default
 
 
 " " file " "
-" set autochdir " automatically cd to current dir
 set noautochdir " do not cd to current folder
 set autoread " auto reload file changed outside
 set autowriteall " auto write all files before make
+au FocusGained,BufEnter * :silent! checktime
 
 filetype on " file-type-base config
 filetype indent on
@@ -89,26 +88,18 @@ if has("autocmd")
 endif
 
 " save undo stack in file, available after reopen file
-if has("nvim")
-    if has('persistent_undo')
-        set undofile
-        silent !mkdir -p /tmp/nvimundo
-        set undodir=/tmp/nvimundo
-    endif
-else
-    if has('persistent_undo')
-        set undofile
-        silent !mkdir -p /tmp/vimundo
-        set undodir=/tmp/vimundo
-    endif
+if has('persistent_undo')
+    set undofile
+    silent !mkdir -p /tmp/vimundo
+    set undodir=/tmp/vimundo
 endif
 
 " scroll before cursur reach the end of screen
 if !&scrolloff
-  set scrolloff=1
+    set scrolloff=1
 endif
 if !&sidescrolloff
-  set sidescrolloff=5
+    set sidescrolloff=5
 endif
 
 
@@ -206,3 +197,6 @@ runtime! ftplugin/man.vim
 
 
 let &fcs='eob: '
+
+set mouse=a
+set ttymouse=sgr
