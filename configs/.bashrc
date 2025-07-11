@@ -42,12 +42,18 @@ alias nocorrect='command'
 
 [[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
 [[ -f ~/.site.sh ]] && . ~/.site.sh
-eval "$(fzf --bash)"
 
-PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
-export PATH="$PATH:$PYTHON_BIN_PATH"
 
-. "$HOME/.atuin/bin/env"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -x "$(command -v zoxide)" ]; then
+    eval "$(zoxide init zsh --hook pwd --cmd x)"
+fi
+
+if [ -x "$(command -v python3)" ]; then
+    PYTHON_BIN_PATH="$(python3 -m site --user-base)/bin"
+    export PATH="$PATH:$PYTHON_BIN_PATH"
+fi
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
+

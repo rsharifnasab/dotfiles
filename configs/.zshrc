@@ -155,10 +155,16 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Autocomplete #
 ################
 # Fzf autocomplete
-export FZF_BASE=$(which fzf)
-DISABLE_FZF_KEY_BINDINGS="false"
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
-source <(fzf --zsh)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -x "$(command -v fzf)" ]; then
+    export FZF_BASE=$(which fzf)
+    DISABLE_FZF_KEY_BINDINGS="false"
+
+    if [ -x "$(command -v gf)" ]; then
+        export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
+    fi
+fi
 
 # zoxide autocomplete
 if [ -x "$(command -v zoxide)" ]; then
@@ -181,8 +187,10 @@ if [ -d "$FPATH_APPEND" ]; then
     FPATH="${FPATH_APPEND}:${FPATH}"
 fi
 
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh)"
+if [ -x "$(command -v atuin)" ]; then
+    . "$HOME/.atuin/bin/env"
+    eval "$(atuin init zsh)"
+fi
 
 autoload -Uz compinit && compinit -C
 autoload -Uz bashcompinit && bashcompinit
@@ -224,3 +232,4 @@ else
         #pfetch
     fi
 fi
+
