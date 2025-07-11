@@ -174,7 +174,7 @@ alias kit="kitty --detach"
 alias map="telnet mapscii.me"
 
 # check network
-alias ccc='timeout 7s curl -i https://ipconfig.io/country' # just country
+alias ccc='timeout 7s curl -i  "https://api.ipapi.is"' # just country
 alias ccv='timeout 7s curl -i https://myip.wtf/yaml'       # everything
 alias ccb='timeout 7s curl -s https://ident.me; echo'      # ip
 alias pccc='p ccc'
@@ -295,6 +295,11 @@ query_proxy() {
 set_proxy() {
     export http_proxy="http://127.0.0.1:6666/"
     export https_proxy="http://127.0.0.1:6666/"
+
+    export http_proxy="socks5h://127.0.0.1:2333/"
+    export https_proxy="socks5h://127.0.0.1:2333/"
+
+    export HTTP_PROXY="socks5h://127.0.0.1:2333/"
     query_proxy
 }
 
@@ -733,7 +738,7 @@ format_go() {
     gofumpt -w .
 }
 
-alias init_zoxide_here='find . -maxdepth 1 -type d -exec zoxide add {} \;'
+alias init_zoxide_here='find . -maxdepth 2 -type d -exec zoxide add {} \;'
 
 dict() {
     mods -m haiko "translate this text from english to persian (or persian to english it it's already english). do it without any further explanaition, only give me 1 to 3 meanings: $1"
@@ -742,7 +747,14 @@ dict() {
 alias jrnl=" jrnl"
 
 alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
-alias zed="OPENAI_BASE_URL= command zeditor"
+
+alias power="cat /sys/firmware/acpi/platform_profile"
+
+if command -v zeditor &>/dev/null; then
+    alias zed="OPENAI_BASE_URL= command zed"
+elif command -v zed &>/dev/null; then
+    alias zed="OPENAI_BASE_URL= command zed"
+fi
 
 alias autin="atuin"
 
