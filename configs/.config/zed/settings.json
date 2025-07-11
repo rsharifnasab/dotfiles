@@ -7,6 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "languages": {
+    "YAML": {
+      "format_on_save": "off"
+    }
+  },
   "edit_predictions": {
     "mode": "subtle",
     "copilot": {
@@ -38,8 +43,8 @@
     "always_allow_tool_actions": true,
     "version": "2",
     "default_model": {
-      "provider": "openrouter",
-      "model": "google/gemini-2.5-pro"
+      "provider": "openai",
+      "model": "gpt-4.1"
     },
     "inline_alternatives": [
       {
