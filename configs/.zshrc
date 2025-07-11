@@ -220,6 +220,7 @@ if command -v apt >/dev/null 2>&1 && [[ -f ~/.debian_config ]]; then
 fi
 [[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
 [[ -f ~/.site.sh ]] && . ~/.site.sh
+[[ -f ~/.envs.site.sh ]] && . ~/.envs.site.sh
 
 if [[ ! -e /tmp/welcome.sem ]]; then
     touch /tmp/welcome.sem

@@ -42,7 +42,7 @@ alias nocorrect='command'
 
 [[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
 [[ -f ~/.site.sh ]] && . ~/.site.sh
-
+[[ -f ~/.envs.site.sh ]] && . ~/.envs.site.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

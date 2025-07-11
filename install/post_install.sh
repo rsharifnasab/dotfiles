@@ -299,16 +299,9 @@ function docker_install() {
     echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
         sudo tee /etc/docker/daemon.json
 
-    echo "add this script to /etc/local/bin/docker"
-    sudo mkdir -p /etc/local/bin
-    sudo tee /etc/local/bin/docker <<EOF
-#!/bin/bash
-if [ "$(id -u)" -eq 0 ]; then
-	/usr/bin/docker "$@"
-else
-	sudo /usr/bin/docker "$@"
-fi
-EOF
+    echo "adding script /etc/local/bin/docker"
+    sudo mkdir -p /usr/local/bin
+    sudo cp ./docker-exe /usr/local/bin/docker # TODO: fix source path
 }
 
 function fingerprint() {
