@@ -114,7 +114,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
     export EDITOR='nvim'
     export VISUAL='nvim'
-    export SUDO_EDITOR="nvim"
+    export SUDO_EDITOR="vim"
 fi
 
 
@@ -192,8 +192,10 @@ if [ -x "$(command -v atuin)" ]; then
     eval "$(atuin init zsh)"
 fi
 
-autoload -Uz compinit && compinit -C
-autoload -Uz bashcompinit && bashcompinit
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
+# in case of issue: rm -f ~/.zcompdump; compinit
 
 #######################
 # autocomplete config #
