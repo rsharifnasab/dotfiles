@@ -26,7 +26,7 @@
   "buffer_font_size": 19.0,
   "theme": {
     "mode": "system",
-    "light": "Material Dark",
+    "light": "One Dark",
     "dark": "One Dark"
   },
   "vim_mode": true,
@@ -39,12 +39,11 @@
   },
   "agent": {
     "play_sound_when_agent_done": true,
-    "default_profile": "write",
+    "default_profile": "minimal",
     "always_allow_tool_actions": true,
-    "version": "2",
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4.1"
+      "provider": "openrouter",
+      "model": "openai/gpt-4.1"
     },
     "inline_alternatives": [
       {
