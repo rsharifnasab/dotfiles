@@ -21,12 +21,11 @@ cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/appli
 sed -i "s|Icon=kitty|Icon=$(readlink -f ~)/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
 sed -i "s|Exec=kitty|Exec=$(readlink -f ~)/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
 # Make xdg-terminal-exec (and hence desktop environments that support it use kitty)
-echo 'kitty.desktop' > ~/.config/xdg-terminals.list
-
+echo 'kitty.desktop' >~/.config/xdg-terminals.list
 
 # nerdfont
 curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
-echo "24,25" |  getnf
+echo "24,25" | getnf
 
 # neovim
 sudo add-apt-repository ppa:neovim-ppa/unstable
@@ -38,7 +37,6 @@ apt install ruby ruby-dev npm
 gem install neovim
 nvim --headless "+echo has('ruby')" +q # verify
 sudo npm install -g neovim
-
 
 # zed
 curl -f https://zed.dev/install.sh | sh
@@ -62,6 +60,7 @@ sudo apt install teams-for-linux
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+apt install tmux
 
 # go latest version
 #curl -sL -o ~/bin/gimme https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
@@ -81,7 +80,7 @@ sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg # allow unprivileged
 
 # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.33/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list   # helps tools such as command-not-found to work correctly
+sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list # helps tools such as command-not-found to work correctly
 sudo apt-get update
 sudo apt-get install -y kubectl
 
@@ -90,13 +89,14 @@ curl https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-
 # ex /tmp/oc.tar.gz
 # mv oc kubectl ~/bin/
 
-kubectl completion oc > ~/.zshrc/completions/_kubectl
+kubectl completion zsh >~/.zshrc/completions/_kubectl
+oc completion zsh >~/.zshrc/completions/_oc
 
+# helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+helm completion zsh >~/.zsh/completions/_helm
+helm plugin install https://github.com/databus23/helm-diff
 
 # TODO
 # windows-hello style login: https://github.com/boltgolt/howd
-# install ovsidian from flathub
-# test zed
-# neovim fix
 # atuin history?
-# oc autocomplete
