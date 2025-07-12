@@ -86,7 +86,7 @@ alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
 alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 
-alias ag="ag --hidden"
+alias ag="ag --hidden --ignore .git"
 
 # download in  terminal
 alias wget='wget -c'
@@ -174,9 +174,9 @@ alias kit="kitty --detach"
 alias map="telnet mapscii.me"
 
 # check network
-alias ccc='timeout 7s curl -i  "https://api.ipapi.is"' # just country
-alias ccv='timeout 7s curl -i https://myip.wtf/yaml'       # everything
-alias ccb='timeout 7s curl -s https://ident.me; echo'      # ip
+alias ccc='timeout 7s curl -s https://api.ipapi.is'   # json info
+alias ccv='timeout 7s curl -s https://myip.wtf/yaml'  # everything
+alias ccb='timeout 7s curl -s https://ident.me; echo' # ip
 alias pccc='p ccc'
 alias pccv='p ccv'
 alias pccb='p ccb'
