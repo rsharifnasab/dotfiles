@@ -12,6 +12,28 @@
       "format_on_save": "off"
     }
   },
+  "file_types": {
+    "Helm": [
+      "**/templates/**/*.tpl",
+      "**/templates/**/*.yaml",
+      "**/templates/**/*.yml",
+      "**/helmfile.d/**/*.yaml",
+      "**/helmfile.d/**/*.yml",
+      "**/values*.yaml"
+    ]
+  },
+  "lsp": {
+    "helm_ls": {
+      "settings": {
+        "helm-ls": {
+          "logLevel": "info",
+          "yamlls": {
+            "enabled": true
+          }
+        }
+      }
+    }
+  },
   "edit_predictions": {
     "mode": "subtle",
     "copilot": {
