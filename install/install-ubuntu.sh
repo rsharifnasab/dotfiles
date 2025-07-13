@@ -4,7 +4,7 @@ sudo apt upgrade
 sudo apt install vim-gtk3 btop acpi stow \
     lsd git zsh vlc chromium python-is-python \
     oathtool npm cargo aria2 curl gnupg \
-    spotify-client zoxide rg silversearcher-ag
+    spotify-client zoxide rg silversearcher-ag jq yq
 
 mkdir -p ~/.zsh/completions
 
@@ -96,6 +96,12 @@ oc completion zsh >~/.zshrc/completions/_oc
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 helm completion zsh >~/.zsh/completions/_helm
 helm plugin install https://github.com/databus23/helm-diff
+
+# db
+sudo apt install mycli pgcli iredis
+sudo add-apt-repository ppa:serge-rider/dbeaver-ce
+sudo apt-get update
+sudo apt-get install dbeaver-ce
 
 # TODO
 # windows-hello style login: https://github.com/boltgolt/howd
