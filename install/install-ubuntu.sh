@@ -4,7 +4,7 @@ sudo apt upgrade
 sudo apt install vim-gtk3 btop acpi stow \
     lsd git zsh vlc chromium python-is-python \
     oathtool npm cargo aria2 curl gnupg \
-    spotify-client zoxide rg silversearcher-ag jq yq
+    spotify-client zoxide rg silversearcher-ag jq yq moreutils
 
 mkdir -p ~/.zsh/completions
 
@@ -78,12 +78,6 @@ sudo mkdir -p -m 755 /etc/apt/keyrings
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.33/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg # allow unprivileged APT programs to read this keyring
 
-# This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.33/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list # helps tools such as command-not-found to work correctly
-sudo apt-get update
-sudo apt-get install -y kubectl
-
 # oc and kubectl
 curl https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz -o /tmp/oc.tar.gz
 # ex /tmp/oc.tar.gz
@@ -102,6 +96,14 @@ sudo apt install mycli pgcli iredis
 sudo add-apt-repository ppa:serge-rider/dbeaver-ce
 sudo apt-get update
 sudo apt-get install dbeaver-ce
+sudo npm install -g redis-commander
+# run redis-commander, then open localhost:8081
+
+# safe-rm
+sudo npm i -g safe-rm
+
+# stern
+go install github.com/stern/stern@latest
 
 # TODO
 # windows-hello style login: https://github.com/boltgolt/howd
