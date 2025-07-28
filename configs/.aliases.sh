@@ -144,6 +144,7 @@ alias goc="go clean"
 alias gott="go test './...' -cover"
 alias gop='cd $GOPATH'
 alias ggu="go get -v -u './...' && go mod tidy"
+alias gch="go build -o /dev/null './...' && go test './...' -count=0"
 
 # kubernetes aliases
 alias k="kubectl"
