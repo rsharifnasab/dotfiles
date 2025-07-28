@@ -6,6 +6,8 @@ after that these things are important:
 + check super-key
 + check zsh backspace
 + check ctrl+alt+t
++ check screenshot keybinding
++ check alt+f4
 + change default apps
 + setup shecan or fod (freedom of developers)
 + check bluetooth and sound
