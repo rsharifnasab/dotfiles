@@ -4,7 +4,8 @@ sudo apt upgrade
 sudo apt install vim-gtk3 btop acpi stow \
     lsd git zsh vlc chromium python-is-python \
     oathtool npm cargo aria2 curl gnupg \
-    spotify-client zoxide rg silversearcher-ag jq yq moreutils
+    spotify-client zoxide rg silversearcher-ag jq yq moreutils \
+    ncal
 
 mkdir -p ~/.zsh/completions
 
