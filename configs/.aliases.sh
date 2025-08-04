@@ -752,9 +752,11 @@ alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
 alias power="cat /sys/firmware/acpi/platform_profile"
 
 if command -v zeditor &>/dev/null; then
-    alias zed="OPENAI_BASE_URL= command zed"
+    alias zed="OPENAI_BASE_URL= command zeditor"
+    alias z="OPENAI_BASE_URL= command zeditor"
 elif command -v zed &>/dev/null; then
     alias zed="OPENAI_BASE_URL= command zed"
+    alias z="OPENAI_BASE_URL= command zed"
 fi
 
 alias autin="atuin"
