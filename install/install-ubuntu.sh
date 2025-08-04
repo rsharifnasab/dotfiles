@@ -106,6 +106,9 @@ sudo npm i -g safe-rm
 # stern
 go install github.com/stern/stern@latest
 
+# nats-cli
+go install github.com/nats-io/natscli/nats@latest
+
 # TODO
 # windows-hello style login: https://github.com/boltgolt/howd
 # atuin history?
