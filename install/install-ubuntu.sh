@@ -109,6 +109,12 @@ go install github.com/stern/stern@latest
 # nats-cli
 go install github.com/nats-io/natscli/nats@latest
 
+# image magick
+sudo apt install imagemagick
+
+# fd find
+sudo apt install fd-find
+
 # TODO
 # windows-hello style login: https://github.com/boltgolt/howd
 # atuin history?
