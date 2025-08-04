@@ -197,6 +197,11 @@ compinit
 bashcompinit
 # in case of issue: rm -f ~/.zcompdump; compinit
 
+# edit command in editor
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
 #######################
 # autocomplete config #
 #######################
@@ -235,4 +240,3 @@ else
         #pfetch
     fi
 fi
-
