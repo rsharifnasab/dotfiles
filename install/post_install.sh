@@ -302,6 +302,24 @@ function docker_install() {
     echo "adding script /etc/local/bin/docker"
     sudo mkdir -p /usr/local/bin
     sudo cp ./docker-exe /usr/local/bin/docker # TODO: fix source path
+
+}
+
+function ease_sudo() {
+    sudo tee /etc/sudoers.d/roozbeh <<-EOF
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart vpn.service
+Defaults!/usr/bin/systemctl env_keep += "TERMINFO"
+
+roozbeh ALL=(ALL) NOPASSWD: /usr/sbin/openconnect
+Defaults!/usr/sbin/openconnect env_keep += "TERMINFO"
+
+
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/dockerd
+Defaults!/usr/bin/dockerd env_keep += "TERMINFO"
+
+roozbeh ALL=(ALL) NOPASSWD: /usr/local/bin/docker
+Defaults!/usr/local/bin/docker env_keep += "TERMINFO"
+	EOF
 }
 
 function fingerprint() {
