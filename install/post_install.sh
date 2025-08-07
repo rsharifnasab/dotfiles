@@ -308,6 +308,9 @@ function docker_install() {
 function ease_sudo() {
     sudo tee /etc/sudoers.d/roozbeh <<-EOF
 roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart vpn.service
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart vpn
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl status vpn.service
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl status vpn
 Defaults!/usr/bin/systemctl env_keep += "TERMINFO"
 
 roozbeh ALL=(ALL) NOPASSWD: /usr/sbin/openconnect
