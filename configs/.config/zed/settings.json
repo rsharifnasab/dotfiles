@@ -65,16 +65,16 @@
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "openrouter",
-      "model": "openai/gpt-4.1"
+      "model": "openai/gpt-5-mini"
     },
     "inline_alternatives": [
       {
         "provider": "openrouter",
-        "model": "anthropic/claude-sonnet-4"
+        "model": "openai/gpt-5-mini"
       },
       {
         "provider": "openrouter",
-        "model": "google/gemini-2.5-pro"
+        "model": "anthropic/claude-sonnet-4"
       }
     ]
   }
