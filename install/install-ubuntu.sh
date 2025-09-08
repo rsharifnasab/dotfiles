@@ -64,9 +64,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 apt install tmux
 
 # go latest version
-#curl -sL -o ~/bin/gimme https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
-#chmod +x ~/bin/gimme
-#gimme stable
+curl -sL -o ~/bin/gimme https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
+chmod +x ~/bin/gimme
+gimme stable
 
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt update

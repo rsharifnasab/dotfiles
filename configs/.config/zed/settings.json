@@ -7,6 +7,8 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "restore_on_startup": "none",
+  "restore_on_file_reopen": false,
   "languages": {
     "YAML": {
       "format_on_save": "off"
@@ -44,11 +46,11 @@
   },
   "show_edit_predictions": false,
   "proxy": "socks5://127.0.0.1:2333",
-  "ui_font_size": 16,
-  "buffer_font_size": 19.0,
+  "ui_font_size": 11.5,
+  "buffer_font_size": 11.0,
   "theme": {
     "mode": "system",
-    "light": "One Dark",
+    "light": "Ayu Dark",
     "dark": "One Dark"
   },
   "vim_mode": true,
@@ -65,13 +67,9 @@
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "openrouter",
-      "model": "openai/gpt-5-mini"
+      "model": "qwen/qwen3-coder"
     },
     "inline_alternatives": [
-      {
-        "provider": "openrouter",
-        "model": "openai/gpt-5-mini"
-      },
       {
         "provider": "openrouter",
         "model": "anthropic/claude-sonnet-4"

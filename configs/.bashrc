@@ -47,7 +47,7 @@ alias nocorrect='command'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 if [ -x "$(command -v zoxide)" ]; then
-    eval "$(zoxide init zsh --hook pwd --cmd x)"
+    eval "$(zoxide init bash --hook pwd --cmd x)"
 fi
 
 if [ -x "$(command -v python3)" ]; then
@@ -57,3 +57,4 @@ fi
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
+. "$HOME/.local/share/../bin/env"

@@ -144,7 +144,7 @@ alias goc="go clean"
 alias gott="go test './...' -cover"
 alias gop='cd $GOPATH'
 alias ggu="go get -v -u './...' && go mod tidy"
-alias gch="go build -o /dev/null './...' && go test './...' -count=0"
+alias gch="go mod tidy && go mod vendor && go build -o /dev/null './...' && go test './...' -count=0"
 
 # kubernetes aliases
 alias k="kubectl"
@@ -164,7 +164,6 @@ alias clip_get="clippaste"
 # command with external tools
 alias neofetch="fastfetch"
 alias j='jdate -u +"%Y/%m/%d"'
-alias v='nvim'
 alias c='nvim'
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
@@ -447,6 +446,39 @@ bookkeep() {
     clean_disk
 }
 
+v() {
+    local file line col
+
+    # filename:line:col
+    if [[ "$1" =~ ^([^:]+):([0-9]+):([0-9]+)$ ]]; then
+        if [ -n "${BASH_VERSION:-}" ]; then
+            file=${BASH_REMATCH[1]}
+            line=${BASH_REMATCH[2]}
+            col=${BASH_REMATCH[3]}
+        else
+            file=${match[1]}
+            line=${match[2]}
+            col=${match[3]}
+        fi
+        nvim +"call cursor($line, $col)" "$file"
+
+    # filename:line
+    elif [[ "$1" =~ ^([^:]+):([0-9]+)$ ]]; then
+        if [ -n "${BASH_VERSION:-}" ]; then
+            file=${BASH_REMATCH[1]}
+            line=${BASH_REMATCH[2]}
+        else
+            file=${match[1]}
+            line=${match[2]}
+        fi
+        nvim +"$line" "$file"
+
+    # normal case
+    else
+        nvim "$@"
+    fi
+}
+
 # # usage: ex <file>
 ex() {
     if [ -f "$1" ]; then
@@ -492,7 +524,7 @@ fkill() {
     else
         pid=$(ps -ef | sed 1d | fzf -m --height=50% --layout=reverse | awk '{print $2}')
     fi
-    if [ "x$pid" != "x" ]; then
+    if [ "$pid" != "" ]; then
         echo "$pid" | xargs kill "-${1:-9}"
     fi
 }
@@ -612,7 +644,7 @@ wl() {
     nmcli device wifi rescan >/dev/null
     ssid=$(nmcli device wifi list | tail -n +2 | grep -v '^  *\B--\B' | fzf -m | sed 's/^ *\*//' | awk '{print $1}')
 
-    if [ "x$ssid" != "x" ]; then
+    if [ "$ssid" != "" ]; then
         # check if the SSID has already a connection setup
         conn=$(nmcli con | grep "$ssid" | awk '{print $1}' | uniq)
         if [ "$conn" = "$ssid" ]; then
