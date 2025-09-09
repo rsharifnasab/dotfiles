@@ -583,6 +583,24 @@ re() {
     paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
 }
 
+# change git branch with fzf
+fbr() {
+    local branches branch
+    branches=$(git branch)
+    branch=$(echo "$branches" | fzf +m)
+    git switch $(echo "$branch" | sed 's/^[* ]*//')
+}
+
+# change git branch with fzf, including remote
+fbrr() {
+    local branches branch
+    branches=$(git branch --all)
+    branch=$(echo "$branches" | fzf +m)
+    git switch $(echo "$branch" | sed 's/^[* ]*//')
+}
+
+#### OTHER #######
+
 lg() {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
 
@@ -593,6 +611,8 @@ lg() {
         rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
     fi
 }
+
+### NETWORK ###
 
 port() {
     port_no="$1"
