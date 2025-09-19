@@ -241,5 +241,3 @@ else
         #pfetch
     fi
 fi
-
-. "$HOME/.local/share/../bin/env"
