@@ -21,8 +21,9 @@ fi
 
 # shorter commands
 
-#alias docker-compose='sudo docker-compose'
-#alias docker='sudo docker'
+alias docker-compose='sudo docker-compose'
+alias docker='sudo docker'
+alias dockerd='sudo dockerd'
 
 if command -v xdg-open &>/dev/null; then
     alias opener="xdg-open"
@@ -150,6 +151,7 @@ alias gch="go mod tidy && go mod vendor && go build -o /dev/null './...' && go t
 alias k="kubectl"
 alias kctx="kubectx"
 alias kx="kubectx"
+alias oci="kubectx -c"
 
 # clipboard in mac and linux
 if command -v xsel &>/dev/null; then
