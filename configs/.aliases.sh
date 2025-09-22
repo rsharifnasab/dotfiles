@@ -179,9 +179,9 @@ alias map="telnet mapscii.me"
 alias ccc='timeout 7s curl -s https://api.ipapi.is'   # json info
 alias ccv='timeout 7s curl -s https://myip.wtf/yaml'  # everything
 alias ccb='timeout 7s curl -s https://ident.me; echo' # ip
-alias pccc='p ccc'
-alias pccv='p ccv'
-alias pccb='p ccb'
+alias pccc='(sp; ccc)'
+alias pccv='(sp; ccv)'
+alias pccb='(sp; ccb)'
 alias nw='watch -n 3 -t -d -b "curl -si ident.me"'
 alias snw='watch -n 3 -t -d -b "curl -si soft98.ir"'
 
@@ -285,7 +285,7 @@ cls() {
 
 ## network
 alias neko="~/apps/nekoray/launcher"
-alias p='http_proxy="http://127.0.0.1:6666/" https_proxy="http://127.0.0.1:6666/" '
+alias pc='http_proxy="http://127.0.0.1:6666/" https_proxy="http://127.0.0.1:6666/" '
 if command -v proxychains4 &>/dev/null; then
     alias pc="nocorrect proxychains4 -q "
 fi
@@ -834,3 +834,23 @@ fix_network() {
 }
 
 alias dim="echo $(tput cols)x$(tput lines)"
+
+set_secret_envs() {
+
+    (
+        if [ -n "$BASH_VERSION" ]; then
+            shopt -s expand_aliases
+        elif [ -n "$ZSH_VERSION" ]; then
+            true
+        else
+            echo "Unsupported shell" >&2
+            return 1
+        fi
+
+        [[ -f "$HOME/.envs.site.sh" ]] && . "$HOME/.envs.site.sh"
+
+        "$@"
+    )
+}
+
+alias p="set_secret_envs "
