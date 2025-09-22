@@ -813,13 +813,22 @@ alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
 
 alias power="cat /sys/firmware/acpi/platform_profile"
 
-if command -v zeditor &>/dev/null; then
-    alias zed="OPENAI_BASE_URL= command zeditor"
-    alias z="OPENAI_BASE_URL= command zeditor"
-elif command -v zed &>/dev/null; then
-    alias zed="OPENAI_BASE_URL= command zed"
-    alias z="OPENAI_BASE_URL= command zed"
-fi
+zed() {
+    (
+        _set_secret_envs
+        export OPENAI_BASE_URL=
+
+        if command -v zeditor &>/dev/null; then
+            command zeditor "$@"
+        elif command -v zed &>/dev/null; then
+            command zed "$@"
+        else
+            echo "zed not found"
+        fi
+    )
+}
+
+alias z="zed"
 
 alias autin="atuin"
 
