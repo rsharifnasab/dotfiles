@@ -64,7 +64,6 @@ alias la='ls -h -1 --color=auto -lAh'
 alias ll='ls -h -1 --color=auto -lAh'
 alias l.="ls -A | egrep '^\.'"
 alias sl='ls'
-alias s='ls'
 
 if command -v lsd &>/dev/null; then
     alias ls='lsd    -Fh1    --color=auto            --git --group-dirs first'
@@ -318,6 +317,15 @@ reset_proxy() {
 alias rp="reset_proxy"
 alias sp="set_proxy"
 alias qp="query_proxy"
+
+_set_proxy_run() {
+    (
+        set_proxy
+        "$@"
+    )
+}
+
+alias p="_set_proxy_run "
 
 ### other functions
 
@@ -835,22 +843,13 @@ fix_network() {
 
 alias dim="echo $(tput cols)x$(tput lines)"
 
-set_secret_envs() {
+_set_secret_envs() {
 
     (
-        if [ -n "$BASH_VERSION" ]; then
-            shopt -s expand_aliases
-        elif [ -n "$ZSH_VERSION" ]; then
-            true
-        else
-            echo "Unsupported shell" >&2
-            return 1
-        fi
-
         [[ -f "$HOME/.envs.site.sh" ]] && . "$HOME/.envs.site.sh"
 
         "$@"
     )
 }
 
-alias p="set_secret_envs "
+alias s="_set_secret_envs "
