@@ -1,3 +1,5 @@
 [user]
     email = roozbeh.sharifnasab@snapp.cab
     name = Roozbeh Sharifnasab
+[commit]
+	template = /home/roozbeh/.gitmessage

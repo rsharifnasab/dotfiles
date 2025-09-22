@@ -1,0 +1,10 @@
+# Commit Title
+
+# Commit Description
+# Explain what and why in detail.
+
+# ---------------------
+# AI Metadata Footer
+# ---------------------
+AI-Assisted: false
+AI-Model: NA
