@@ -6,3 +6,5 @@
 [init]
     defaultBranch = main
 	templatedir = ~/.config/git/templates/snapp/
+[core]
+    hooksPath = ~/.config/git/templates/snapp/hooks/
