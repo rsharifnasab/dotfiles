@@ -3,3 +3,6 @@
     name = Roozbeh Sharifnasab
 [commit]
 	template = /home/roozbeh/.gitmessage.txt
+[init]
+    defaultBranch = main
+	templatedir = ~/.config/git/templates/snapp/

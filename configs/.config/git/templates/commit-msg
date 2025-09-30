@@ -1,0 +1,9 @@
+#!/bin/bash
+
+commit_regex='AI-Assisted:'
+error_msg="Aborting commit. Your commit message does not match the required format."
+
+if ! grep -E "$commit_regex" "$1"; then
+    echo "$error_msg" >&2
+    exit 1
+fi

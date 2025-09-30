@@ -1,7 +1,6 @@
-Commit Title
+# Title
 
-Commit Description
-Explain what and why.
+# Short description about the change
 
 AI-Assisted: false
 AI-Model: NA
