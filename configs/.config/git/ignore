@@ -31,3 +31,6 @@ OpenCode.md
 
 /tmp
 .air.toml
+
+config.local.yml
+config.local.yaml
