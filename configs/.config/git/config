@@ -47,10 +47,6 @@
 [includeIf "gitdir:/home/roozbeh/"]
     path = ./roozbeh
 
-# Include only when I am in snapp
+# Include only when I am in Snapp dir
 [includeIf "gitdir:/home/roozbeh/Desktop/snapp/"]
-    path = ./snapp
-
-# Include only when I am in snapp (macbook)
-[includeIf "gitdir:/Users/roozbewh/"]
     path = ./snapp
