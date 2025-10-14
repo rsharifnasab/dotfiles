@@ -174,6 +174,10 @@ vmap <Leader>P "+P
 nmap <Leader><Leader> V
 
 
+" Disable lowercase and uppercase conversion in visual mode
+vmap u <Nop>
+vmap U <Nop>
+
 """"""""""""""""""""""
 
 
