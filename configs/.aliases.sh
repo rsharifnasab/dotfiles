@@ -455,8 +455,8 @@ bookkeep_nvim() {
 bookkeep() {
     paru
     bookkeep_zsh
-    bookkeep_nvim
     clean_disk
+    bookkeep_nvim
 }
 
 v() {
