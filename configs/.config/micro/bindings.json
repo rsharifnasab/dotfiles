@@ -1,4 +1,5 @@
 {
     "Alt-/": "lua:comment.comment",
-    "Ctrl-g": "CommandMode"
+    "CtrlUnderscore": "lua:comment.comment",
+    "F5": "lua:wc.wordCount"
 }
