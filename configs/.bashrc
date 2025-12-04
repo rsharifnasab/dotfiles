@@ -57,4 +57,4 @@ fi
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
-. "$HOME/.local/share/../bin/env"
+#. "$HOME/.local/share/../bin/env"
