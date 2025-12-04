@@ -77,7 +77,7 @@ function neovim_new() {
 function terminal_full() {
     inst zsh moreutils zoxide \
         kitty ttf-fira-code ttf-firacode-nerd \
-        tree tldr fd nnn \
+        tree tealdeer fd nnn \
         the_silver_searcher \
         just usbutils pciutils \
         bat fzf \
@@ -89,7 +89,11 @@ function terminal_full() {
         fastfetch pfetch-rs-bin \
         tre-command-bin gping rm-improved-bin \
         guake git-extras \
-        pdfgrep
+        pdfgrep \
+        navi
+
+
+    navi repo browse # add repos to navi
 
 }
 
@@ -184,7 +188,7 @@ function desktop_packages_extra() {
     inst typora marp-cli-bin marktext-bin logseq-desktop-bin termius fswatch
 
     # seahorse to change keyring password for skype
-    inst skypeforlinux-bin gnome-keyring seahorse \
+    inst gnome-keyring seahorse \
         mission-center thunderbird
 
     inst pandoc-bin
