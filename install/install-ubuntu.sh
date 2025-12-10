@@ -118,3 +118,10 @@ sudo apt install fd-find
 # TODO
 # windows-hello style login: https://github.com/boltgolt/howd
 # atuin history?
+
+# yazi
+apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+#then get binary from here https://github.com/sxyazi/yazi/releases
+
+# opencode
+curl -fsSL https://opencode.ai/install | bash
