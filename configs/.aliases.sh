@@ -52,6 +52,8 @@ alias cpr='cp -r'
 alias em-term='emacsclient -a ""'
 alias em='emacsclient -n -c -a ""'
 
+alias gemini='npx https://github.com/google-gemini/gemini-cli'
+
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -166,6 +168,7 @@ alias clip_get="clippaste"
 alias neofetch="fastfetch"
 alias j='jdate -u +"%Y/%m/%d"'
 alias c='nvim'
+alias b='nvim'
 # make current folder ready for run junit tests
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
@@ -293,7 +296,7 @@ query_proxy() {
     echo "http_proxy=$http_proxy, https_proxy=$https_proxy"
 }
 
-set_proxy() {
+set_socks_proxy() {
     export http_proxy="socks5h://127.0.0.1:2333/"
     export https_proxy="socks5h://127.0.0.1:2333/"
 
@@ -317,18 +320,10 @@ reset_proxy() {
     query_proxy
 }
 
+alias ssp="set_socks_proxy"
+alias shp="set_http_proxy"
 alias rp="reset_proxy"
-alias sp="set_proxy"
 alias qp="query_proxy"
-
-_set_proxy_run() {
-    (
-        set_proxy
-        "$@"
-    )
-}
-
-alias p="_set_proxy_run "
 
 ### other functions
 
@@ -818,7 +813,7 @@ alias power="cat /sys/firmware/acpi/platform_profile"
 
 zed() {
     (
-        _set_secret_envs
+        set_envs
         set_http_proxy
 
         export OPENAI_BASE_URL=
@@ -859,13 +854,17 @@ fix_network() {
 
 alias dim="echo $(tput cols)x$(tput lines)"
 
-_set_secret_envs() {
+set_envs() {
+    [[ -f "$HOME/.envs.site.sh" ]] && . "$HOME/.envs.site.sh"
+}
+
+_run_with_envs() {
 
     (
-        [[ -f "$HOME/.envs.site.sh" ]] && . "$HOME/.envs.site.sh"
+        set_envs
 
         "$@"
     )
 }
 
-alias s="_set_secret_envs "
+alias s="_run_with_envs "
