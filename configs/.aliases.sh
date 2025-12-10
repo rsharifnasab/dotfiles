@@ -1,7 +1,4 @@
 #!/usr/bin/bash
-#############
-## ALIASES ##
-#############
 
 ## safer commands
 alias rm='rm -I'
@@ -15,16 +12,33 @@ if command -v safe-rm &>/dev/null; then
 fi
 
 # Preserve changing perms on /
-#alias chown='chown --preserve-root'
-#alias chmod='chmod --preserve-root'
-#alias chgrp='chgrp --preserve-root'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
 
-# shorter commands
+# Safer command for production
+helm() {
+    if [[ $1 == "uninstall" ]]; then
+        release_name=$2
+        current_namespace=$(oc project --short 2>/dev/null)
 
-alias docker-compose='sudo docker-compose'
-alias docker='sudo docker'
-alias dockerd='sudo dockerd'
+        if [[ $? -ne 0 ]]; then
+            echo "guard: unable to get current project"
+            return 1
+        fi
 
+        echo -n "guard: ☠️ destructive command detected, are you sure you want to uninstall '\e[1m\e[31m$release_name\e[0m' in '\e[1m\e[31m$current_namespace\e[0m'? (y/n): "
+        read confirm
+
+        if [[ $confirm != "y" ]]; then
+            echo "Saved. :)"
+            return 1
+        fi
+    fi
+    command helm "$@"
+}
+
+# xdg-open handy aliases
 if command -v xdg-open &>/dev/null; then
     alias opener="xdg-open"
     alias open="xdg-open"
@@ -45,14 +59,10 @@ function gui_opener() {
     fi
 }
 
+# shorter/handy commands
+
 alias rmr='rm -r'
 alias cpr='cp -r'
-
-# emacs client, needs emacs session running
-alias em-term='emacsclient -a ""'
-alias em='emacsclient -n -c -a ""'
-
-alias gemini='npx https://github.com/google-gemini/gemini-cli'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -74,8 +84,11 @@ if command -v lsd &>/dev/null; then
     alias tree='lsd  -Fh1    --color=auto            --git --group-dirs first --tree'
 fi
 
+# emacs client, needs emacs session running
+alias em-term='emacsclient -a ""'
+alias em='emacsclient -n -c -a ""'
+
 alias please="sudo "
-#alias sudo="sudo "
 alias cd..='cd ..'
 alias mkdir="mkdir -pv"
 alias cpv='rsync -ah --info=progress2' # copy with progressbar
@@ -90,13 +103,14 @@ alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 
 alias ag="ag --hidden --ignore .git"
 
-# download in  terminal
+alias dim="echo $(tput cols)x$(tput lines)"
+
 alias wget='wget -c'
 alias dllist='wget -c -i list.txt'
 alias aria2='aria2c -c -x8 -s8 -j1 --summary-interval=0 --file-allocation=none'
 alias arialist='aria2c -c -x8 -s8 -j1 --summary-interval=0 -i list.txt --file-allocation=none'
 
-# what if I mistyped clear?
+# what if I had typo in clear?
 alias clean='clear'
 alias CLEAN='clear'
 alias CLEAR='clear'
@@ -146,13 +160,31 @@ alias goc="go clean"
 alias gott="go test './...' -cover"
 alias gop='cd $GOPATH'
 alias ggu="go get -v -u './...' && go mod tidy"
-alias gch="go mod tidy && go mod vendor && go build -o /dev/null './...' && go test './...' -count=0"
+gch() {
+    go mod tidy
+    go mod vendor
+    go build -o /dev/null './...'
+    go test './...' -count=0
+}
+format_go() {
+    gofmt -w .
+    gci write . --skip-generated -s standard -s default
+    gofumpt -w .
+}
 
 # kubernetes aliases
 alias k="kubectl"
 alias kctx="kubectx"
 alias kx="kubectx"
 alias oci="kubectx -c"
+
+#get fastest mirrors in your neighborhood
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 \
+    --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 
 # clipboard in mac and linux
 if command -v xsel &>/dev/null; then
@@ -169,13 +201,16 @@ alias neofetch="fastfetch"
 alias j='jdate -u +"%Y/%m/%d"'
 alias c='nvim'
 alias b='nvim'
-# make current folder ready for run junit tests
-alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
 alias syu="paru -Syu"
 alias kit="kitty --detach"
 alias map="telnet mapscii.me"
+alias pytohn="python"
+alias sudounlock="faillock --user roozbeh --reset"
+
+# make current folder ready for run junit tests
+alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 
 # check network
 alias ccc='timeout 7s curl -s https://api.ipapi.is'   # json info
@@ -187,18 +222,33 @@ alias pccb='(sp; ccb)'
 alias nw='watch -n 3 -t -d -b "curl -si ident.me"'
 alias snw='watch -n 3 -t -d -b "curl -si soft98.ir"'
 
-epoch() {
-    date -d "@$1" '+%Y-%m-%d %H:%M:%S'
+# Latex
+alias tllocalmgr="tlmgr --usermode"
+alias tlmgr="tlmgr --usermode"
+
+# Clock
+alias tehran='TZ="Asia/Tehran" date'
+alias calgary='TZ="America/Edmonton" date'
+alias toronto='TZ="America/Toronto" date'
+
+# ai
+dict() {
+    mods -m haiko "translate this text from english to persian (or persian to english it it's already english). do it without any further explanaition, only give me 1 to 3 meanings: $1"
 }
+alias commit_message='git diff --staged | mods "Generate a conventional git commit message, for my changes, no other output"'
+
+# use e1 - e100 to edit files
+tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
+alias init_zoxide_here='find . -maxdepth 2 -type d -exec zoxide add {} \;'
+alias power="cat /sys/firmware/acpi/platform_profile"
+alias autin="atuin"
+alias code=codium
+
+epoch() { date -d "@$1" '+%Y-%m-%d %H:%M:%S'; }
 
 # command with help of online resources
 alias tb="nc mermbin.com 9999" # copy to online clipboard
-alias sprung='curl -F "sprunge=<-" http://sprunge.us'
 alias excuse="w3m http://developerexcuses.com/ | head -1"
-
-alias pytohn="python"
-
-alias sudounlock="faillock --user roozbeh --reset"
 
 # check the weather
 wea() {
@@ -223,9 +273,6 @@ weaf() {
     local city="${1:-tehran}"
     curl -s "wttr.in/${city}?Fq"
 }
-
-alias tllocalmgr="tlmgr --usermode"
-alias tlmgr="tlmgr --usermode"
 
 # open typora even if file does not exist
 typ() {
@@ -254,7 +301,7 @@ function make() {
     return 1
 }
 
-# use gnu highlight for add syntax hight to less
+# use gnu highlight for add syntax highlight to less
 gat() {
     src-hilite-lesspipe.sh "$@" | less
 }
@@ -286,11 +333,6 @@ cls() {
 }
 
 ## network
-alias neko="~/apps/nekoray/launcher"
-alias pc='http_proxy="http://127.0.0.1:6666/" https_proxy="http://127.0.0.1:6666/" '
-if command -v proxychains4 &>/dev/null; then
-    alias pc="nocorrect proxychains4 -q "
-fi
 
 query_proxy() {
     echo "http_proxy=$http_proxy, https_proxy=$https_proxy"
@@ -368,6 +410,11 @@ sum_vid_len() {
         awk '{sum += $0} END{print sum/60 "min"}'
 }
 
+# Docker
+
+alias docker-compose='sudo docker-compose'
+alias docker='sudo docker'
+alias dockerd='sudo dockerd'
 clean_docker() {
     # Kill all running containers:
     docker kill $(docker ps -q)
@@ -512,14 +559,6 @@ ex() {
     fi
 }
 
-#get fastest mirrors in your neighborhood
-alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
-alias mirrorx='sudo reflector --age 6 --latest 20 --fastest 20 \
-    --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
-
 ##############
 ### FZF s ###
 #############
@@ -611,9 +650,7 @@ fbrr() {
 
 lg() {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
-
     lazygit "$@"
-
     if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
         cd "$(cat $LAZYGIT_NEW_DIR_FILE)" || return
         rm -f $LAZYGIT_NEW_DIR_FILE >/dev/null
@@ -663,7 +700,6 @@ __wificonnect() {
     ccc
 }
 alias wificonnect="__wificonnect"
-alias nmc="nmcli"
 
 wl() {
     local ssid
@@ -691,40 +727,9 @@ wl() {
     ccc
 }
 
-# Clock
-alias tehran='TZ="Asia/Tehran" date'
-alias calgary='TZ="America/Edmonton" date'
-alias toronto='TZ="America/Toronto" date'
-
-# Safer commands for production
-helm() {
-    if [[ $1 == "uninstall" ]]; then
-        release_name=$2
-        current_namespace=$(oc project --short 2>/dev/null)
-
-        if [[ $? -ne 0 ]]; then
-            echo "guard: unable to get current project"
-            return 1
-        fi
-
-        echo -n "guard: ☠️ destructive command detected, are you sure you want to uninstall '\e[1m\e[31m$release_name\e[0m' in '\e[1m\e[31m$current_namespace\e[0m'? (y/n): "
-        read confirm
-
-        if [[ $confirm != "y" ]]; then
-            echo "Saved. :)"
-            return 1
-        fi
-    fi
-    command helm "$@"
-}
-
 #########
 ## ETC ##
 #########
-
-if [ -e "/Applications/MarkText.app/Contents/MacOS/MarkText" ]; then
-    alias marktext="/Applications/MarkText.app/Contents/MacOS/MarkText"
-fi
 
 # exit-cd nnn with ctrl g
 # open it with `n`
@@ -741,6 +746,7 @@ if [ -f /opt/homebrew/share/nnn/quitcd/quitcd.bash_sh_zsh ]; then
     alias n="n -A"
 fi
 
+# cd with yazi
 y() {
     # Store the current directory to return to in case of failure
     local original_dir
@@ -767,72 +773,10 @@ y() {
             return 1
         fi
     else
-        echo "Error: Could not read the Yazi cwd file" >&2
+        echo "Error: Could not read the Yazi cwd file, have you installed yazi?" >&2
         return 1
     fi
 }
-
-# enter an interactive chat conversation using mods
-chat() {
-    # pick a model alias from your config
-    model=$(cat ~/.config/mods/mods.yml | yq -r '.apis[].models[].aliases[0]' |
-        gum choose --height 8 --header "Pick model to chat with:" --no-show-help)
-    if [[ -z $model ]]; then
-        gum format "  :pensive:  cancelled, no model picked." -t emoji
-        return 1
-    fi
-    # first invocation starts a new conversation
-    mods --model "$model" --prompt-args || return $?
-    # after that enter a loop until user quits
-    while mods --model "$model" --prompt-args --continue-last; do :; done
-    return $?
-}
-
-alias commit_message='git diff --staged | mods "Generate a conventional git commit message, for my changes, no other output"'
-
-# use e1 - e100 to edit files
-tre() { command tre "$@" -e && source "/tmp/tre_aliases_$USER" 2>/dev/null; }
-
-format_go() {
-    gofmt -w .
-    gci write . --skip-generated -s standard -s default
-    gofumpt -w .
-}
-
-alias init_zoxide_here='find . -maxdepth 2 -type d -exec zoxide add {} \;'
-
-dict() {
-    mods -m haiko "translate this text from english to persian (or persian to english it it's already english). do it without any further explanaition, only give me 1 to 3 meanings: $1"
-}
-
-alias jrnl=" jrnl"
-
-alias fabric="OPENAI_BASE_URL= OPENAI_API_KEY= command fabric"
-
-alias power="cat /sys/firmware/acpi/platform_profile"
-
-zed() {
-    (
-        set_envs
-        set_http_proxy
-
-        export OPENAI_BASE_URL=
-
-        if command -v zeditor &>/dev/null; then
-            command zeditor "$@"
-        elif command -v zed &>/dev/null; then
-            command zed "$@"
-        else
-            echo "zed not found"
-        fi
-    )
-}
-
-alias z="zed"
-
-alias autin="atuin"
-
-alias code=codium
 
 hash_dir() {
     if [ -z "$1" ]; then
@@ -842,29 +786,66 @@ hash_dir() {
     tar -cf - "$1" | sha256sum
 }
 
-fix_network() {
-    docker network prune --force
-    sudo systemctl restart NetworkManager.service
-    sudo systemctl restart dnsmasq.service
-
-    timeout 1s nmcli device wifi list --rescan yes >/dev/null
-
-    wl
-}
-
-alias dim="echo $(tput cols)x$(tput lines)"
-
+# Source local envs
 set_envs() {
     [[ -f "$HOME/.envs.site.sh" ]] && . "$HOME/.envs.site.sh"
 }
 
 _run_with_envs() {
-
     (
         set_envs
-
         "$@"
     )
 }
 
 alias s="_run_with_envs "
+
+function gemini() {
+    (
+        set_http_proxy
+        npx https://github.com/google-gemini/gemini-cli
+    )
+}
+
+function claude() {
+    (
+        set_http_proxy
+        claude
+    )
+}
+
+zed() {
+    (
+        set_envs
+        set_http_proxy
+        export OPENAI_BASE_URL=
+        if command -v zeditor &>/dev/null; then
+            command zeditor "$@"
+        elif command -v zed &>/dev/null; then
+            command zed "$@"
+        else
+            echo "zed not found"
+            exit 1
+        fi
+    )
+}
+alias z="zed"
+
+opencode() {
+    (
+        set_envs
+        set_http_proxy
+        export OPENAI_BASE_URL=
+        command opencode
+    )
+}
+
+fabric() {
+    (
+        set_envs
+        set_http_proxy
+        export OPENAI_BASE_URL=
+        export OPENAI_API_KEY=
+        command fabric
+    )
+}
