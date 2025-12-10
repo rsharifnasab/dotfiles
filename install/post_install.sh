@@ -449,20 +449,21 @@ function ai() {
 
     uv tool install llm
     uvx llm install -U llm-openrouter
-
     uv tool install aider
+
+    inst fabric-ai opencode-bin
 
     # fabric
     (
-        cd /tmp || exit
-        curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-linux-amd64 >fabric && chmod +x fabric && ./fabric --version
-        \sudo mv ./fabric /usr/bin/
+        curl -fsSL https://raw.githubusercontent.com/danielmiessler/fabric/main/scripts/installer/install.sh | bash
+        mkdir -p ~/.config/fabric
+        touch ~/.config/fabric/.env
         /usr/bin/fabric --setup # use openrouter
+
         # fabric -l (list prompts)
         # fabric -L (list models)
         # fabric -U (upgrade prompts from remote)
     )
-
 }
 
 function gnome() {
