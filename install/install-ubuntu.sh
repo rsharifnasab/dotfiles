@@ -120,7 +120,7 @@ sudo apt install fd-find
 # atuin history?
 
 # yazi
-apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep zoxide imagemagick
 #then get binary from here https://github.com/sxyazi/yazi/releases
 
 # opencode
