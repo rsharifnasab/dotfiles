@@ -36,3 +36,5 @@ config.local.yml
 config.local.yaml
 gemini.md
 GEMINI.md
+
+**/.claude/settings.local.json
