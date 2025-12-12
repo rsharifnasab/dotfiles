@@ -46,11 +46,11 @@
   },
   "show_edit_predictions": false,
   "proxy": "socks5://127.0.0.1:2333",
-  "ui_font_size": 11.5,
-  "buffer_font_size": 11.0,
+  "ui_font_size": 15.5,
+  "buffer_font_size": 14.0,
   "theme": {
     "mode": "system",
-    "light": "Ayu Dark",
+    "light": "Dracula Light (Alucard",
     "dark": "One Dark"
   },
   "vim_mode": true,
@@ -58,16 +58,15 @@
   "use_auto_surround": false,
   "vim": {
     "use_smartcase_find": true,
-    "use_multiline_find": true,
     "use_system_clipboard": "always"
   },
   "agent": {
     "play_sound_when_agent_done": true,
-    "default_profile": "minimal",
+    "default_profile": "ask",
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "openrouter",
-      "model": "qwen/qwen3-coder"
+      "model": "anthropic/claude-sonnet-4.5"
     },
     "inline_alternatives": [
       {

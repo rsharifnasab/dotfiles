@@ -154,7 +154,7 @@ function redis_devel() {
 }
 
 function text_linters() {
-    #    grammer check offline but slow
+    #    grammar check offline but slow
     inst languagetool
 
     # fast and have options
@@ -163,7 +163,7 @@ function text_linters() {
     # read and sync styles from .vale.ini
     # more info: https://vale.sh/generator/
 
-    # fast, foxus on non-offending writing
+    # fast, focus on non-offending writing
     # sudo npm install alex --global
 }
 
@@ -258,16 +258,6 @@ function emacs() {
 
     # copy dotfiles to home folder
     ./bin/update -d
-}
-
-function ubuntu() {
-    sudo apt install python-neovim python3-neovim \
-        snapd cmake npm gcc g++ zsh-autosuggestions tldr \
-        nnn fzf tree shellcheck xsel httpie clang ctags dnsutils
-
-    # install recent version of this packages
-    sudo snap install nvim --classic
-    sudo snap install go --classic
 }
 
 function hotspot() {
@@ -461,20 +451,21 @@ function ai() {
 
     uv tool install llm
     uvx llm install -U llm-openrouter
-
     uv tool install aider
+
+    inst fabric-ai opencode-bin
 
     # fabric
     (
-        cd /tmp || exit
-        curl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-linux-amd64 >fabric && chmod +x fabric && ./fabric --version
-        \sudo mv ./fabric /usr/bin/
+        curl -fsSL https://raw.githubusercontent.com/danielmiessler/fabric/main/scripts/installer/install.sh | bash
+        mkdir -p ~/.config/fabric
+        touch ~/.config/fabric/.env
         /usr/bin/fabric --setup # use openrouter
+
         # fabric -l (list prompts)
         # fabric -L (list models)
         # fabric -U (upgrade prompts from remote)
     )
-
 }
 
 function gnome() {
