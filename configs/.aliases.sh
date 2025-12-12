@@ -484,10 +484,6 @@ bookkeep_zsh() {
     zinit update --all
 }
 
-bookkeep_fzf() {
-    cd ~/.fzf && git pull && ./instal
-}
-
 bookkeep_nvim() {
     touch /tmp/a.txt
 
@@ -503,7 +499,6 @@ bookkeep() {
     bookkeep_zsh
     clean_disk
     bookkeep_nvim
-    bookkeep_fzf
 }
 
 v() {
