@@ -183,7 +183,8 @@ function desktop_packages() {
         zip unzip unrar xarchiver engrampa p7zip \
         variety flameshot redshift \
         vlc shotwell telegram-desktop meld thunar obs-studio \
-        gparted obsidian proton-authenticator-bin
+        gparted obsidian proton-authenticator-bin \
+        zed
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
 
