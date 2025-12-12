@@ -40,11 +40,24 @@ complete -cf sudo
 # and we have aliases like "nocorrect mkdir"
 alias nocorrect='command'
 
+# Fzf autocomplete
+if [ -x "$(command -v fzf)" ]; then
+    export FZF_BASE=$(which fzf)
+    DISABLE_FZF_KEY_BINDINGS="false"
+
+    if [ -x "$(command -v gf)" ]; then
+        export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
+    fi
+
+    # vim **-tab-tab
+    # kill **-tab-tab
+    # ctrl-r
+    # alt-c
+    source <(fzf --bash)
+fi
+
 [[ -f ~/.aliases.sh ]] && . ~/.aliases.sh
 [[ -f ~/.site.sh ]] && . ~/.site.sh
-[[ -f ~/.envs.site.sh ]] && . ~/.envs.site.sh
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 if [ -x "$(command -v zoxide)" ]; then
     eval "$(zoxide init bash --hook pwd --cmd x)"
