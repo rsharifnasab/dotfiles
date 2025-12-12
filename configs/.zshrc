@@ -154,17 +154,6 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 ################
 # Autocomplete #
 ################
-# Fzf autocomplete
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-if [ -x "$(command -v fzf)" ]; then
-    export FZF_BASE=$(which fzf)
-    DISABLE_FZF_KEY_BINDINGS="false"
-
-    if [ -x "$(command -v gf)" ]; then
-        export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
-    fi
-fi
 
 # zoxide autocomplete
 if [ -x "$(command -v zoxide)" ]; then
@@ -217,6 +206,18 @@ zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # ^S
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+
+# Fzf autocomplete
+if [ -x "$(command -v fzf)" ]; then
+    export FZF_BASE=$(which fzf)
+    DISABLE_FZF_KEY_BINDINGS="false"
+
+    if [ -x "$(command -v gf)" ]; then
+        export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
+    fi
+
+    source <(fzf --zsh)
+fi
 
 ######################
 # Source other files #
