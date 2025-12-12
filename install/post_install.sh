@@ -3,6 +3,9 @@
 #set -o nounset
 #set -o pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+FILES_DIR="$SCRIPT_DIR/files"
+
 function latex() {
     inst tectonic \
         texlive-bin texlive-basic texlive-xetex \
@@ -74,7 +77,7 @@ function neovim_new() {
 
     (
         uv venv ~/.venvs/nvim
-        source .venvs/nvim/bin/activate && uv pip install pynvim
+        source ~/.venvs/nvim/bin/activate && uv pip install pynvim
     )
 
     #git clone https://github.com/rsharifnasab/my-neovim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
@@ -101,6 +104,7 @@ function terminal_full() {
         pdfgrep \
         navi
 
+    navi fn welcome
     navi repo browse # add tldr repo to navi
 
     chsh -s "$(which zsh)"
@@ -293,28 +297,12 @@ function docker_install() {
 
     echo "adding script /etc/local/bin/docker"
     sudo mkdir -p /usr/local/bin
-    sudo cp ./docker-exe /usr/local/bin/docker # TODO: fix source path
+    sudo cp "$FILES_DIR/docker-exe.sh" /usr/local/bin/docker
 
 }
 
 function ease_sudo() {
-    sudo tee /etc/sudoers.d/roozbeh <<-EOF
-roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart vpn.service
-roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart vpn
-roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl status vpn.service
-roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl status vpn
-Defaults!/usr/bin/systemctl env_keep += "TERMINFO"
-
-roozbeh ALL=(ALL) NOPASSWD: /usr/sbin/openconnect
-Defaults!/usr/sbin/openconnect env_keep += "TERMINFO"
-
-
-roozbeh ALL=(ALL) NOPASSWD: /usr/bin/dockerd
-Defaults!/usr/bin/dockerd env_keep += "TERMINFO"
-
-roozbeh ALL=(ALL) NOPASSWD: /usr/local/bin/docker
-Defaults!/usr/local/bin/docker env_keep += "TERMINFO"
-	EOF
+    sudo cp "$FILES_DIR/sudoer-roozbeh" /etc/sudoers.d/roozbeh
 }
 
 function fingerprint() {
@@ -350,23 +338,8 @@ function redshift_install() {
     # sudo systemctl enable redsh@roozbeh.service
     # sudo systemctl restart redsh@roozbeh.service
     # sudo systemctl status redsh@roozbeh.service
-    tee /dev/null <<EOF
-    tee /dev/null <<EOF
-[Unit]
-Description=Redshift display colour temperature adjustment
-Documentation=http://jonls.dk/redshift/
-After=display-manager.service
 
-[Service]
-Environment=DISPLAY=:0
-ExecStart=/home/roozbeh/bin/redsh
-Restart=always
-User=%i
-
-[Install]
-WantedBy=default.target
-EOF
-
+    sudo cp "$FILES_DIR/redshift.service" /etc/systemd/redsh@roozbeh.service
 }
 
 function touchpad() {
@@ -380,22 +353,7 @@ function touchpad() {
     # sudo systemctl enable fusuma@roozbeh.service
     # sudo systemctl restart fusuma@roozbeh.service
     # sudo systemctl status fusuma@roozbeh.service
-    tee /dev/null <<EOF
-[Unit][Unit]
-Description=Fusuma multitouch gesture recognizer
-
-[Service]
-Type=simple
-Environment="DISPLAY=:0"
-User=%i
-ExecStart=/usr/bin/fusuma
-KillMode=process
-Restart=on-failure
-
-[Install]
-WantedBy=graphical.target
-EOF
-
+    sudo cp "$FILES_DIR/fusuma.service" /etc/systemd/fusuma@roozbeh.service
 }
 
 function laptop() {
@@ -449,11 +407,15 @@ function disable-beep() {
 function ai() {
     inst uv mods gum yq
 
+    # llm
     uv tool install llm
     uvx llm install -U llm-openrouter
+
+    # aider
     uv tool install aider
 
-    inst fabric-ai opencode-bin
+    # opencode
+    inst opencode-bin
 
     # fabric
     (
@@ -481,7 +443,6 @@ function run() {
     pre_install
     aur_helper
     compilers
-    #zsh_atuin
     terminal_full
     neovim_new
     bluetooth
@@ -491,6 +452,7 @@ function run() {
     ta
     cpp_devel
     python_devel
+    #zsh_atuin
     #docker_install
     #rust_devel
     #text_linters

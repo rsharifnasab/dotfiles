@@ -1,0 +1,16 @@
+
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart vpn.service
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart vpn
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl status vpn.service
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/systemctl status vpn
+Defaults!/usr/bin/systemctl env_keep += "TERMINFO"
+
+roozbeh ALL=(ALL) NOPASSWD: /usr/sbin/openconnect
+Defaults!/usr/sbin/openconnect env_keep += "TERMINFO"
+
+
+roozbeh ALL=(ALL) NOPASSWD: /usr/bin/dockerd
+Defaults!/usr/bin/dockerd env_keep += "TERMINFO"
+
+roozbeh ALL=(ALL) NOPASSWD: /usr/local/bin/docker
+Defaults!/usr/local/bin/docker env_keep += "TERMINFO"
