@@ -101,7 +101,7 @@ function terminal_full() {
         pdfgrep \
         navi
 
-    navi repo browse # add repos to navi
+    navi repo browse # add tldr repo to navi
 
     chsh -s "$(which zsh)"
 }
