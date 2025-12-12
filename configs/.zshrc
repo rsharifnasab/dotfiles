@@ -226,6 +226,12 @@ fi
 # ctrl-g to open navi and edit command
 eval "$(navi widget zsh)"
 
+
+# Add nvim mason bin to PATH if it exists
+if [[ -d "$HOME/.local/share/nvim/mason/bin" ]]; then
+    export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+fi
+
 ######################
 # Source other files #
 ######################
