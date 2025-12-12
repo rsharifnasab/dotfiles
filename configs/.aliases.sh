@@ -103,6 +103,8 @@ alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 
 alias ag="ag --hidden --ignore .git"
 
+alias sdu="systemctl --user"
+
 alias dim="echo $(tput cols)x$(tput lines)"
 
 alias wget='wget -c'

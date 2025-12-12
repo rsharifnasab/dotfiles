@@ -87,23 +87,19 @@ function neovim_new() {
 }
 
 function terminal_full() {
-    inst zsh moreutils zoxide \
-        kitty ttf-fira-code ttf-firacode-nerd \
-        tree tealdeer fd nnn \
-        the_silver_searcher \
-        just usbutils pciutils \
-        bat fzf \
-        awesome-terminal-fonts python-tqdm \
-        nano xed tmux jcal btop tokei aria2 acpi tty-clock \
-        ncdu qrencode viu \
-        jq yq \
-        speedtest-cli bind \
-        fastfetch pfetch-rs-bin \
-        tre-command-bin gping rm-improved-bin \
-        guake git-extras \
-        pdfgrep \
-        navi
-
+    inst \
+        zsh kitty guake tmux \
+        nano xed \
+        ttf-fira-code ttf-firacode-nerd awesome-terminal-fonts \
+        tree fd nnn zoxide \
+        the_silver_searcher fzf jq yq pdfgrep \
+        tealdeer bat just navi \
+        usbutils pciutils acpi \
+        aria2 speedtest-cli bind \
+        fastfetch pfetch-rs-bin rm-improved-bin \
+        jcal btop tokei ncdu tty-clock viu qrencode \
+        python-tqdm tre-command-bin git-extras \
+        moreutils
     navi fn welcome
     navi repo browse # add tldr repo to navi
 
@@ -111,17 +107,14 @@ function terminal_full() {
 }
 
 function terminal_extra() {
-    inst lazygit gitui \
-        hyperfine mtr httpie \
-        source-highlight sd
+    inst \
+        gitui lazygit \
+        gping hyperfine mtr httpie \
+        sd source-highlight
 }
 
 function internet() {
-    # set nekobox path to  /usr/share/sing-box
-    # https://github.com/MatsuriDayo/nekoray/issues/389
-    inst proxychains-ng xray-bin sing-box-bin jdk-openjdk \
-        nekoray-bin sing-geoip-common sing-geoip-db sing-geoip-rule-set \
-        sing-geosite-common sing-geosite-db sing-geosite-rule-set
+    inst proxychains-ng xray-bin sing-box-bin jdk-openjdk
 }
 
 function shell_devel() {
@@ -134,14 +127,12 @@ function cpp_devel() {
 }
 
 function js_devel() {
-    # for js development
     inst eslint tidy stylelint yarn
     sudo npm -g install js-beautify
 }
 
 function haskell_devel() {
-    inst ghc-static stack cabal-install hlint stylish-haskell \
-        elixir
+    inst ghc-static stack cabal-install hlint stylish-haskell
 }
 
 function rust_devel() {
@@ -177,14 +168,20 @@ function virtualbox() {
 
 function desktop_packages() {
     mkdir -p "$HOME/Desktop" "$HOME/Pictures" "$HOME/Music" "$HOME/Videos" "$HOME/Downloads" "$HOME/Documents"
-    inst firefox chromium \
-        noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu \
-        ntfs-3g pacman-contrib inetutils lxrandr \
+
+    inst \
+        firefox chromium \
+        noto-fonts noto-fonts-emoji \
+        ttf-linux-libertine ttf-dejavu \
+        ntfs-3g pacman-contrib inetutils \
+        lxrandr gparted \
         zip unzip unrar xarchiver engrampa p7zip \
-        variety flameshot redshift \
-        vlc shotwell telegram-desktop meld thunar obs-studio \
-        gparted obsidian proton-authenticator-bin \
-        zed
+        variety flameshot \
+        vlc shotwell telegram-desktop \
+        meld thunar obs-studio \
+        obsidian zed \
+        proton-authenticator-bin
+
     # prevent rm from deleting important files
     sudo npm i -g safe-rm
 
@@ -193,6 +190,13 @@ function desktop_packages() {
 }
 
 function desktop_packages_extra() {
+    (
+        inst redshift
+
+        mkdir -p "$HOME/.config/systemd/user/"
+        cp "$FILES_DIR/redshift.service" "$HOME/.config/systemd/user/"
+    )
+
     # pdf manipulation
     inst pdftk poppler
 
@@ -328,19 +332,7 @@ function cloud() {
     helm plugin install https://github.com/databus23/helm-diff
 
     oc krew install neat
-    # Add to path:
     # export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-}
-
-function redshift_install() {
-    inst redshift
-    # place in: /etc/systemd/system/redsh@.service
-    # sudo systemctl daemon-reload
-    # sudo systemctl enable redsh@roozbeh.service
-    # sudo systemctl restart redsh@roozbeh.service
-    # sudo systemctl status redsh@roozbeh.service
-
-    sudo cp "$FILES_DIR/redshift.service" /etc/systemd/redsh@roozbeh.service
 }
 
 function touchpad() {
@@ -350,11 +342,12 @@ function touchpad() {
     gsettings set org.gnome.desktop.peripherals.touchpad send-events enabled || true
     # https://github.com/iberianpig/fusuma/blob/main/README.md
     # place in: /etc/systemd/system/fusuma@.service
-    # sudo systemctl daemon-reload
-    # sudo systemctl enable fusuma@roozbeh.service
-    # sudo systemctl restart fusuma@roozbeh.service
-    # sudo systemctl status fusuma@roozbeh.service
-    sudo cp "$FILES_DIR/fusuma.service" /etc/systemd/fusuma@roozbeh.service
+    # sudo systemctl --user daemon-reload
+    # sudo systemctl --uesr restart fusuma.service
+    # sudo systemctl --user status fusuma.service
+
+    mkdir -p "$HOME/.config/systemd/user/"
+    cp "$FILES_DIR/fusuma.service" "$HOME/.config/systemd/user/"
 }
 
 function laptop() {
