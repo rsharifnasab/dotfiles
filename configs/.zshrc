@@ -216,8 +216,15 @@ if [ -x "$(command -v fzf)" ]; then
         export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
     fi
 
+    # vim **-tab-tab
+    # kill **-tab-tab
+    # ctrl-r
+    # alt-c
     source <(fzf --zsh)
 fi
+
+# ctrl-g to open navi and edit command
+eval "$(navi widget zsh)"
 
 ######################
 # Source other files #
