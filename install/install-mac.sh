@@ -13,7 +13,7 @@ set -o pipefail
 
     #install brew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo 'export PATH="$PATH:/opt/homebrew/bin' >>~/.site.sh
+    echo 'export PATH="$PATH:/opt/homebrew/bin' >>"$HOME/.site.sh"
 )
 (
     brew install stow lsd zsh git
@@ -51,7 +51,7 @@ set -o pipefail
     # orbstack instead of docker desktop
     brew install orbstack homebrew/cask/docker lazydocker
     brew install docker-completion docker-compose docker-compose-completion
-    # set this registry in ~/.docker/daemon.json:         "https://docker.iranserver.com"
+    # set this registry in "$HOME/.docker/daemon.json":         "https://docker.iranserver.com"
 
     go install mvdan.cc/sh/v3/cmd/shfmt@latest
 )
@@ -70,29 +70,29 @@ set -o pipefail
     xattr -cr /Applications/MarkText.app
 )
 (
-    git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+    git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
 
     # archcraft zsh theme
     (
-        cd ~/.oh-my-zsh/themes || exit
+        cd "$HOME/.oh-my-zsh/themes" || exit
         git clone https://github.com/mrx04programmer/ZshTheme-ArchCraft/
         mv ZshTheme-ArchCraft/archcraft-dwm.zsh-theme "$PWD"
     )
 
     # autosuggestion, fast syntax highlight, autocomplete
     git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions \
-        ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
     git clone --depth 1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
-        ~/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
+        "$HOME/.oh-my-zsh/custom/plugins/fast-syntax-highlighting"
     git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git \
-        ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
+        "$HOME/.oh-my-zsh/custom/plugins/zsh-autocomplete"
 
     #install fzf for zsh and other
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+    git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+    "$HOME/.fzf/install"
 
     git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+        "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 )
 (
     brew install proxychains-ng xray openfortivpn
@@ -111,7 +111,7 @@ set -o pipefail
 
     brew install pinentry-mac
     PINENTRY=$(which pinentry-mac)
-    echo "pinentry-program ${PINENTRY}" >>~/.gnupg/gpg-agent.conf
+    echo "pinentry-program ${PINENTRY}" >>"$HOME/.gnupg/gpg-agent.conf"
     defaults write org.gpgtools.common UseKeychain NO
 )
 (

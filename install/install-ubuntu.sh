@@ -7,22 +7,22 @@ sudo apt install vim-gtk3 btop acpi stow \
     spotify-client zoxide rg silversearcher-ag jq yq moreutils \
     ncal
 
-mkdir -p ~/.zsh/completions
+mkdir -p "$HOME/.zsh/completions"
 
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
-mkdir -p ~/.local/bin/
-ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
-cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+mkdir -p "$HOME/.local/bin/"
+ln -sf "$HOME/.local/kitty.app/bin/kitty" "$HOME/.local/kitty.app/bin/kitten" "$HOME/.local/bin/"
+cp "$HOME/.local/kitty.app/share/applications/kitty.desktop" "$HOME/.local/share/applications/"
 # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
-cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+cp "$HOME/.local/kitty.app/share/applications/kitty-open.desktop" "$HOME/.local/share/applications/"
 # Update the paths to the kitty and its icon in the kitty desktop file(s)
 
-sed -i "s|Icon=kitty|Icon=$(readlink -f ~)/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
-sed -i "s|Exec=kitty|Exec=$(readlink -f ~)/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+sed -i "s|Icon=kitty|Icon=$(readlink -f "$HOME")/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" "$HOME/.local/share/applications/kitty"*.desktop
+sed -i "s|Exec=kitty|Exec=$(readlink -f "$HOME")/.local/kitty.app/bin/kitty|g" "$HOME/.local/share/applications/kitty"*.desktop
 # Make xdg-terminal-exec (and hence desktop environments that support it use kitty)
-echo 'kitty.desktop' >~/.config/xdg-terminals.list
+echo 'kitty.desktop' >"$HOME/.config/xdg-terminals.list"
 
 # nerdfont
 curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
@@ -59,13 +59,13 @@ sudo apt update
 sudo apt install teams-for-linux
 
 # install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+"$HOME/.fzf/install"
 apt install tmux
 
 # go latest version
-curl -sL -o ~/bin/gimme https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
-chmod +x ~/bin/gimme
+curl -sL -o "$HOME/bin/gimme" https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
+chmod +x "$HOME/bin/gimme"
 gimme stable
 
 sudo add-apt-repository ppa:longsleep/golang-backports
@@ -82,14 +82,14 @@ sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg # allow unprivileged
 # oc and kubectl
 curl https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz -o /tmp/oc.tar.gz
 # ex /tmp/oc.tar.gz
-# mv oc kubectl ~/bin/
+# mv oc kubectl "$HOME/bin/"
 
-kubectl completion zsh >~/.zshrc/completions/_kubectl
-oc completion zsh >~/.zshrc/completions/_oc
+kubectl completion zsh >"$HOME/.zsh/completions/_kubectl"
+oc completion zsh >"$HOME/.zsh/completions/_oc"
 
 # helm
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-helm completion zsh >~/.zsh/completions/_helm
+helm completion zsh >"$HOME/.zsh/completions/_helm"
 helm plugin install https://github.com/databus23/helm-diff
 
 # db

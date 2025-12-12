@@ -76,8 +76,8 @@ function neovim_new() {
     sudo npm install -g neovim
 
     (
-        uv venv ~/.venvs/nvim
-        source ~/.venvs/nvim/bin/activate && uv pip install pynvim
+        uv venv "$HOME/.venvs/nvim"
+        source "$HOME/.venvs/nvim/bin/activate" && uv pip install pynvim
     )
 
     #git clone https://github.com/rsharifnasab/my-neovim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
@@ -176,7 +176,7 @@ function virtualbox() {
 }
 
 function desktop_packages() {
-    mkdir -p ~/Desktop ~/Pictures ~/Music ~/Videos ~/Downloads ~/Documents
+    mkdir -p "$HOME/Desktop" "$HOME/Pictures" "$HOME/Music" "$HOME/Videos" "$HOME/Downloads" "$HOME/Documents"
     inst firefox chromium \
         noto-fonts noto-fonts-emoji ttf-linux-libertine ttf-dejavu \
         ntfs-3g pacman-contrib inetutils lxrandr \
@@ -251,14 +251,14 @@ function micro() {
 
 function emacs() {
     inst emacs
-    rm -r ~/.emacs.d
-    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-    ~/.emacs.d/bin/doom install
+    rm -r "$HOME/.emacs.d"
+    git clone --depth 1 https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
+    "$HOME/.emacs.d/bin/doom" install
 
     #to updare:
-    ~/.emacs.d/bin/doom upgrade
+    "$HOME/.emacs.d/bin/doom" upgrade
     #add doom binary to path:
-    sudo ln -s ~/.emacs.d/bin/doom /usr/bin/doom
+    sudo ln -s "$HOME/.emacs.d/bin/doom" /usr/bin/doom
 
     # copy dotfiles to home folder
     ./bin/update -d
@@ -283,9 +283,9 @@ function grub_fix() {
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 function wallpaper() {
-    mkdir -p ~/Pictures/
+    mkdir -p "$HOME/Pictures/"
     git clone --branch master --depth 1 "https://github.com/rsharifnasab/wallpapers.git" \
-        ~/Pictures/wallpapers
+        "$HOME/Pictures/wallpapers"
     variety &
 }
 
@@ -323,7 +323,7 @@ function fingerprint() {
 function cloud() {
     inst kubectl kubectx openshift-client-bin helm
     inst nats-cli stern pgcli mycli iredis redis
-    nats --completion-script-zsh >~/.zsh/completions/_nats
+    nats --completion-script-zsh >"$HOME/.zsh/completions/_nats"
     helm plugin install https://github.com/databus23/helm-diff
 
     oc krew install neat
@@ -420,8 +420,8 @@ function ai() {
     # fabric
     (
         curl -fsSL https://raw.githubusercontent.com/danielmiessler/fabric/main/scripts/installer/install.sh | bash
-        mkdir -p ~/.config/fabric
-        touch ~/.config/fabric/.env
+        mkdir -p "$HOME/.config/fabric"
+        touch "$HOME/.config/fabric/.env"
         /usr/bin/fabric --setup # use openrouter
 
         # fabric -l (list prompts)
