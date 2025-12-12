@@ -65,13 +65,22 @@ function compilers() {
 
 function neovim_new() {
     inst git make unzip ripgrep fd xsel \
-        ttf-firacode-nerd ruby npm tree-sitter-cli luarocks \
-        python-pynvim
+        ttf-firacode-nerd ruby npm tree-sitter-cli \
+        luarocks lua51 \
+        uv python3
 
     gem install neovim
+    sudo npm install -g neovim
+
+    (
+        uv venv ~/.venvs/nvim
+        source .venvs/nvim/bin/activate && uv pip install pynvim
+    )
+
+    #git clone https://github.com/rsharifnasab/my-neovim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+
     nvim --headless "+echo has('ruby')" +q # verify
 
-    sudo npm install -g neovim
 }
 
 function terminal_full() {
@@ -92,9 +101,9 @@ function terminal_full() {
         pdfgrep \
         navi
 
-
     navi repo browse # add repos to navi
 
+    chsh -s "$(which zsh)"
 }
 
 function terminal_extra() {
@@ -109,9 +118,6 @@ function internet() {
     inst proxychains-ng xray-bin sing-box-bin jdk-openjdk \
         nekoray-bin sing-geoip-common sing-geoip-db sing-geoip-rule-set \
         sing-geosite-common sing-geosite-db sing-geosite-rule-set
-
-    # check internet connectivity status
-    go install -ldflags="-s -w" -v github.com/jesusprubio/up@latest
 }
 
 function shell_devel() {
@@ -203,15 +209,7 @@ function fonts() {
         bash -c "$(curl -fsSL https://raw.githubusercontent.com/fzerorubigd/persian-fonts-linux/master/farsifonts.sh)"
 }
 
-function zsh_full() {
-    inst zsh fzf
-
-    chsh -s "$(which zsh)"
-
-    #install fzf for zsh and other
-    #git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    #~/.fzf/install
-
+function zsh_atuin() {
     # install atuin
     curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
     # atuin login
@@ -492,7 +490,7 @@ function run() {
     pre_install
     aur_helper
     compilers
-    zsh_full
+    #zsh_atuin
     terminal_full
     neovim_new
     bluetooth
