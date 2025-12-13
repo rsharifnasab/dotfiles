@@ -223,9 +223,11 @@ if [ -x "$(command -v fzf)" ]; then
     source <(fzf --zsh)
 fi
 
+
+if [ -x "$(command -v navi)" ]; then
 # ctrl-g to open navi and edit command
 eval "$(navi widget zsh)"
-
+fi
 
 # Add nvim mason bin to PATH if it exists
 if [[ -d "$HOME/.local/share/nvim/mason/bin" ]]; then
@@ -254,3 +256,5 @@ else
         #pfetch
     fi
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
