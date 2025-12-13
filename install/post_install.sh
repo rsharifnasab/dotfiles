@@ -100,7 +100,8 @@ function terminal_full() {
         jcal btop tokei ncdu tty-clock viu qrencode \
         python-tqdm tre-command-bin git-extras \
         moreutils
-    navi fn welcome
+
+    navi repo add denisidoro/navi-tldr-pages
     navi repo browse # add tldr repo to navi
 
     chsh -s "$(which zsh)"
