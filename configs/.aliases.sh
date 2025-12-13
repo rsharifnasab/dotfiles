@@ -364,6 +364,7 @@ reset_proxy() {
     query_proxy
 }
 
+alias sp="set_socks_proxy"
 alias ssp="set_socks_proxy"
 alias shp="set_http_proxy"
 alias rp="reset_proxy"
