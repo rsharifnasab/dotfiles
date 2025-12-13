@@ -125,3 +125,7 @@ apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep zoxide imagemagick
 
 # opencode
 curl -fsSL https://opencode.ai/install | bash
+
+# navi
+bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
+navi repo add denisidoro/navi-tldr-pages
