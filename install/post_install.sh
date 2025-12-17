@@ -397,17 +397,23 @@ function disable-beep() {
 }
 
 function ai() {
-    inst uv mods gum yq
+    inst uv yq
+
+    # mods (only chat)
+    inst mods
+
+    # agent from mods creators
+    inst crush-bin
+
+    # agent: similar to crush
+    inst opencode-bin
+
+    # Claude code
+    inst claude-code
 
     # llm
     uv tool install llm
     uvx llm install -U llm-openrouter
-
-    # aider
-    uv tool install aider
-
-    # opencode
-    inst opencode-bin
 
     # fabric
     (
