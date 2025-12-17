@@ -301,10 +301,7 @@ function docker_install() {
     echo '{"registry-mirrors": ["https://docker.iranserver.com"]}' |
         sudo tee /etc/docker/daemon.json
 
-    echo "adding script /etc/local/bin/docker"
-    sudo mkdir -p /usr/local/bin
-    sudo cp "$FILES_DIR/docker-exe.sh" /usr/local/bin/docker
-
+    sudo usermod -aG docker "$USER"
 }
 
 function ease_sudo() {

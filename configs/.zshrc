@@ -70,22 +70,31 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-# My plugins
+# Basic plugins
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
-zinit snippet OMZL::completion.zsh # omz autocomplete
+zinit light wfxr/forgit # check fzf-based aliases in https://github.com/wfxr/forgit
 
-#zinit light marlonrichert/zsh-autocomplete  # ide-like autocomplete, only with omz-autocomplete
-#zstyle '*:compinit' arguments -D -i -u -C -w
-#zstyle ':autocomplete:*' min-input 3
-#zstyle ':autocomplete:*' delay 0.9  # seconds (float)
-
-# My snippets
+# Snippets
 zinit snippet OMZ::plugins/colored-man-pages
-zinit snippet OMZ::plugins/sudo # esc esc -> add sudo to command
-zinit snippet OMZ::plugins/golang # completion for go as well as aliases
-zinit snippet OMZ::plugins/fancy-ctrl-z # enter ctrl-z instead of fg<enter>
+zinit snippet OMZ::plugins/sudo # esc esc -> sudo prefix
+zinit snippet OMZ::plugins/fancy-ctrl-z # ctrl-z -> fg<enter>
+zinit snippet OMZ::plugins/common-aliases
+
+# Completions
+zinit snippet OMZL::completion.zsh # omz autocomplete
+zinit snippet OMZ::plugins/git-extras
+zinit snippet OMZ::plugins/extract
+zinit snippet OMZ::plugins/fzf
+zinit snippet OMZ::plugins/golang
+zinit snippet OMZ::plugins/docker
+zinit snippet OMZ::plugins/docker-compose
+zinit snippet OMZ::plugins/oc
+zinit snippet OMZ::plugins/kubectl
+zinit snippet OMZ::plugins/kubectx
+zinit snippet OMZ::plugins/helm
+zinit snippet OMZ::plugins/argocd
 
 
 # Theme
@@ -220,7 +229,6 @@ if [ -x "$(command -v fzf)" ]; then
     # kill **-tab-tab
     # ctrl-r
     # alt-c
-    source <(fzf --zsh)
 fi
 
 

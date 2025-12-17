@@ -303,11 +303,6 @@ function make() {
     return 1
 }
 
-# use gnu highlight for add syntax highlight to less
-gat() {
-    src-hilite-lesspipe.sh "$@" | less
-}
-
 dif() {
     if [ -x "$(command -v diff-so-fancy)" ]; then
         diff -u "$@" | diff-so-fancy
@@ -415,9 +410,6 @@ sum_vid_len() {
 
 # Docker
 
-alias docker-compose='sudo docker-compose'
-alias docker='sudo docker'
-alias dockerd='sudo dockerd'
 clean_docker() {
     # Kill all running containers:
     docker kill $(docker ps -q)
@@ -498,7 +490,6 @@ bookkeep_nvim() {
 }
 
 bookkeep() {
-    paru
     bookkeep_zsh
     clean_disk
     bookkeep_nvim
@@ -534,31 +525,6 @@ v() {
     # normal case
     else
         nvim "$@"
-    fi
-}
-
-# # usage: ex <file>
-ex() {
-    if [ -f "$1" ]; then
-        case $1 in
-        *.tar.bz2) tar xjf "$1" ;;
-        *.tar.gz) tar xzf "$1" ;;
-        *.bz2) bunzip2 "$1" ;;
-        *.rar) unrar x "$1" ;;
-        *.gz) gunzip "$1" ;;
-        *.tar) tar xf "$1" ;;
-        *.tbz2) tar xjf "$1" ;;
-        *.tgz) tar xzf "$1" ;;
-        *.zip) unzip "$1" ;;
-        *.Z) uncompress "$1" ;;
-        *.7z) 7z x "$1" ;;
-        *.deb) ar x "$1" ;;
-        *.tar.xz) tar xf "$1" ;;
-        *.tar.zst) unzstd "$1" ;;
-        *) echo "'$1' cannot be extracted via ex()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
     fi
 }
 
@@ -603,18 +569,6 @@ fe() {
     [[ -n "${files[*]}" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
-# select dir and cd to it. including hidden directories
-fzfd() {
-    local dir
-    dir=$(find "${1:-.}" -type d 2>/dev/null | fzf +m) && cd "$dir" || return
-}
-
-# search from history (fzf) to repeat
-# same as ctrl-r
-fh() {
-    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
-}
-
 inst() {
     if hash paru paru 2>/dev/null; then
         paru -S --needed --noconfirm "$@"
@@ -631,22 +585,6 @@ function in() {
 # search (fzf) and remove package with paru
 re() {
     paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
-}
-
-# change git branch with fzf
-fbr() {
-    local branches branch
-    branches=$(git branch)
-    branch=$(echo "$branches" | fzf +m)
-    git switch $(echo "$branch" | sed 's/^[* ]*//')
-}
-
-# change git branch with fzf, including remote
-fbrr() {
-    local branches branch
-    branches=$(git branch --all)
-    branch=$(echo "$branches" | fzf +m)
-    git switch $(echo "$branch" | sed 's/^[* ]*//')
 }
 
 #### OTHER #######
