@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
 ## safer commands
-alias rm='rm -I'
 alias mc='nocorrect mv -i'
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
@@ -71,9 +70,6 @@ alias grepi='grep --color=auto -i'
 alias free="free -mht"
 
 alias ls='ls -h -1 --color=auto'
-alias l='ls -h -1 --color=auto -lAh'
-alias la='ls -h -1 --color=auto -lAh'
-alias ll='ls -h -1 --color=auto -lAh'
 alias l.="ls -A | egrep '^\.'"
 alias sl='ls'
 
@@ -98,7 +94,6 @@ dns() { dig "$@" "+short"; }
 alias pacman="sudo pacman --color auto"
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 
-alias gd="gcc -lstdc++ -Wall -Wextra -O0 -g -Ddebug"
 alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 
 alias ag="ag --hidden --ignore .git"
