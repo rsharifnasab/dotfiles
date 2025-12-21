@@ -80,7 +80,7 @@ zinit light wfxr/forgit # check fzf-based aliases in https://github.com/wfxr/for
 zinit snippet OMZ::plugins/colored-man-pages
 zinit snippet OMZ::plugins/sudo # esc esc -> sudo prefix
 zinit snippet OMZ::plugins/fancy-ctrl-z # ctrl-z -> fg<enter>
-zinit snippet OMZ::plugins/common-aliases
+zinit snippet OMZ::plugins/common-aliases # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 
 # Completions
 zinit snippet OMZL::completion.zsh # omz autocomplete
