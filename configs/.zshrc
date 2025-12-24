@@ -174,11 +174,6 @@ if type /opt/homebrew/bin/brew &>/dev/null; then
     FPATH="$(/opt/homebrew/bin/brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-# Git-extras autocomplete
-if [[ -x "/usr/share/doc/git-extras/git-extras-completion.zsh" ]]; then
-   source /usr/share/doc/git-extras/git-extras-completion.zsh
-fi
-
 # atuin
 FPATH_APPEND="$HOME/.zsh/completions"
 if [ -d "$FPATH_APPEND" ]; then
