@@ -746,7 +746,7 @@ function gemini() {
 function claude() {
     (
         set_http_proxy
-        claude "$@"
+        command claude "$@"
     )
 }
 
