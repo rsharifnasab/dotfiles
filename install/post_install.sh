@@ -178,7 +178,7 @@ function desktop_packages() {
         lxrandr gparted \
         zip unzip unrar xarchiver engrampa p7zip \
         variety flameshot \
-        vlc shotwell telegram-desktop \
+        vlc-plugins-all shotwell telegram-desktop \
         meld thunar obs-studio \
         obsidian zed \
         proton-authenticator-bin
