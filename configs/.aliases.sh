@@ -745,8 +745,12 @@ function gemini() {
 
 function claude() {
     (
+        set_envs
         set_http_proxy
-        claude "$@"
+        export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
+        export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
+        export ANTHROPIC_API_KEY="" # Must be explicitly empty
+        /home/roozbeh/.claude/local/claude "$@"
     )
 }
 
@@ -783,5 +787,12 @@ fabric() {
         export OPENAI_BASE_URL=
         export OPENAI_API_KEY=
         command fabric "$@"
+    )
+}
+
+git() {
+    (
+        set_http_proxy >/dev/null
+        command git "$@"
     )
 }
