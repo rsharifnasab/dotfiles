@@ -85,7 +85,7 @@ zinit snippet OMZ::plugins/common-aliases # https://github.com/ohmyzsh/ohmyzsh/b
 # Completions
 zinit snippet OMZL::completion.zsh # omz autocomplete
 zinit snippet OMZ::plugins/git-extras
-zinit snippet OMZ::plugins/extract
+#zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/fzf
 zinit snippet OMZ::plugins/golang
 zinit snippet OMZ::plugins/docker
