@@ -133,6 +133,10 @@ alias got='git'
 alias gut='git'
 alias gt='git'
 alias fir='git'
+alias igt='git'
+alias giy='git'
+alias fit='git'
+
 alias glog='git log --graph --oneline --decorate --abbrev-commit --all'
 alias gstat="git status -sb"
 alias gstatv="git status -vv"
@@ -147,14 +151,14 @@ alias gdiff="git diff HEAD --color-words"
 alias gfetch="git fetch --all --prune"
 alias gloc="git ls-files | xargs wc -l"
 alias gclon="git clone --depth 1 --branch "
-alias igt="git"
 
 # go aliases
 alias go="nocorrect go"
 alias gor="go run"
-alias gob="go build ."
+alias gob="go build ./..."
 alias goc="go clean"
-alias gott="go test './...' -cover"
+alias got0="go test './...' -count 0"
+alias gott="go test './...' -count 1 -cover"
 alias gop='cd $GOPATH'
 alias ggu="go get -v -u './...' && go mod tidy"
 gch() {
@@ -743,17 +747,6 @@ function gemini() {
     )
 }
 
-function claude() {
-    (
-        set_envs
-        set_http_proxy
-        export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
-        export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
-        export ANTHROPIC_API_KEY="" # Must be explicitly empty
-        /home/roozbeh/.claude/local/claude "$@"
-    )
-}
-
 zed() {
     (
         set_envs
@@ -787,12 +780,5 @@ fabric() {
         export OPENAI_BASE_URL=
         export OPENAI_API_KEY=
         command fabric "$@"
-    )
-}
-
-git() {
-    (
-        set_http_proxy >/dev/null
-        command git "$@"
     )
 }
