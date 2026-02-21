@@ -204,7 +204,7 @@ alias c='nvim'
 alias b='nvim'
 alias clock='tty-clock -s -S -c -t -C 6 -b' # open beautiful clock
 alias qrcode="qrencode -t ansiutf8"
-alias syu="paru -Syu"
+alias syu="yay -Syu"
 alias kit="kitty --detach"
 alias map="telnet mapscii.me"
 alias pytohn="python"
@@ -448,8 +448,8 @@ orphans() {
 }
 
 clean_disk() {
-    echo "cleaning paru"
-    paru -Sc
+    echo "cleaning aur"
+    yay -Sc
 
     echo "cleaning pacman"
     sudo "pacman" -Scc
@@ -569,21 +569,21 @@ fe() {
 }
 
 inst() {
-    if hash paru paru 2>/dev/null; then
-        paru -S --needed --noconfirm "$@"
+    if hash yay 2>/dev/null; then
+        yay -S --needed --noconfirm "$@"
     else
         pacman -S --needed --noconfirm "$@"
     fi
 }
 
-# search (fzf) and install package with paru
+# search (fzf) and install package with aur helper
 function in() {
-    paru -Slq | fzf -q "$1" -m --preview 'paru -Si {1}' | xargs -ro paru -S
+    yay -Slq | fzf -q "$1" -m --preview 'yay -Si {1}' | xargs -ro yay -S
 }
 
-# search (fzf) and remove package with paru
+# search (fzf) and remove package with aur helper
 re() {
-    paru -Qq | fzf -q "$1" -m --preview 'paru -Qi {1}' | xargs -ro paru -Rns
+    yay -Qq | fzf -q "$1" -m --preview 'yay -Qi {1}' | xargs -ro yay -Rns
 }
 
 #### OTHER #######
