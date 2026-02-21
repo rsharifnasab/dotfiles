@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go build:*)",
+      "Bash(git log:*)",
+      "Bash(go get:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(go mod vendor:*)",
+      "Bash(find:*)",
+      "Bash(go list:*)",
+      "Bash(make lint-ci:*)",
+      "Bash(go test:*)",
+      "Bash(git fetch:*)",
+      "Bash(done)",
+      "Bash(cat:*)",
+      "Bash(go doc:*)",
+      "Bash(git ls-tree:*)"
+    ],
+    "defaultMode": "default"
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "api": {
+    "base_url": "https://api.z.ai/api/anthropic",
+    "auth_token_env": "ZED_AI_API_KEY",
+    "anthropic_api_key": ""
+  },
+  "models": {
+    "sonnet": "glm-5",
+    "opus": "glm-5",
+    "haiku": "glm-4.7-flash"
+  }
+}
