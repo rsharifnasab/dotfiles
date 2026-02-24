@@ -214,9 +214,10 @@ alias sudounlock="faillock --user roozbeh --reset"
 alias junit="cp -r  ~/pro*/*utils/junit_test_runner/* ."
 
 # check network
-alias ccc='timeout 7s curl -s https://api.ipapi.is'   # json info
-alias ccv='timeout 7s curl -s https://myip.wtf/yaml'  # everything
-alias ccb='timeout 7s curl -s https://ident.me; echo' # ip
+alias ccc='timeout 7s curl -s https://ifconfig.co/json' # json info
+alias ccv='timeout 7s curl -s https://myip.wtf/yaml'    # everything
+alias ccb='timeout 7s curl -s https://ident.me; echo'   # ip
+alias ccn='timeout 7s curl -s https://api.ipapi.is'     # json info
 alias pccc='(sp; ccc)'
 alias pccv='(sp; ccv)'
 alias pccb='(sp; ccb)'
