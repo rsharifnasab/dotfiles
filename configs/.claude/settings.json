@@ -26,9 +26,9 @@
   "env": {
     "ANTHROPIC_BASE_URL": "https://llm.snapp.tech/anthropic",
     "API_TIMEOUT_MS": "3000000",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax/MiniMax-M2.5",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "minimax/MiniMax-M2.5",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "minimax/MiniMax-M2.5"
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 0,
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax/MiniMax-M2.5-highspeed",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "minimax/MiniMax-M2.5-highspeed",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "minimax/MiniMax-M2.5-highspeed"
   }
 }
