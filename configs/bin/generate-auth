@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$HOME/.envs.site.sh"
+
+echo "$ZED_AI_API_KEY"
+
+#echo "$SNAPP_AI_API_KEY"
