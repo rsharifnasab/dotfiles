@@ -22,15 +22,13 @@
     "gopls-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
-  "alwaysThinkingEnabled": true,
-  "api": {
-    "base_url": "https://api.z.ai/api/anthropic",
-    "auth_token_env": "ZED_AI_API_KEY",
-    "anthropic_api_key": ""
-  },
-  "models": {
-    "sonnet": "glm-5",
-    "opus": "glm-5",
-    "haiku": "glm-4.7-flash"
+  "apiKeyHelper": "/home/roozbeh/bin/generate-auth-anthropic",
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://llm.snapp.tech/anthropic",
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax/MiniMax-M2.5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "minimax/MiniMax-M2.5",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "minimax/MiniMax-M2.5"
   }
 }
