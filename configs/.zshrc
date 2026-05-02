@@ -3,7 +3,7 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 
 # disabled for now, used for profiling
-zmodload zsh/zprof
+#zmodload zsh/zprof
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -90,7 +90,6 @@ zinit snippet OMZ::plugins/common-aliases # https://github.com/ohmyzsh/ohmyzsh/b
 
 
 # Completions
-zinit snippet OMZ::plugins/fzf
 zinit snippet OMZ::plugins/golang
 zinit snippet OMZ::plugins/docker
 #zinit snippet OMZ::plugins/docker-compose
@@ -188,17 +187,6 @@ if [ -x "$(command -v atuin)" ]; then
     eval "$(atuin init zsh)"
 fi
 
-autoload -Uz compinit bashcompinit
-
-zcompdump=~/.cache/zcompdump
-
-if [[ ! -f $zcompdump || $zcompdump(#qN.mh+24) ]]; then
-  compinit -d $zcompdump
-else
-  compinit -C -d $zcompdump
-fi
-bashcompinit
-
 # edit command in editor
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -221,9 +209,6 @@ zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # ^S
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Fzf autocomplete
 if [ -x "$(command -v fzf)" ]; then
@@ -277,5 +262,14 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
+# initialize completion
+autoload -Uz compinit
+zcompdump=~/.cache/zcompdump
+if [[ ! -f $zcompdump || $zcompdump(#qN.mh+24) ]]; then
+  compinit -d $zcompdump
+else
+  compinit -C -d $zcompdump
+fi
+
 # disabled for now, used for profiling
-zprof
+#zprof
