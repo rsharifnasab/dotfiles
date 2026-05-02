@@ -87,19 +87,20 @@ zinit snippet OMZ::plugins/sudo # esc esc -> sudo prefix
 zinit snippet OMZ::plugins/fancy-ctrl-z # ctrl-z -> fg<enter>
 zinit snippet OMZ::plugins/common-aliases # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 
+autoload -Uz compinit bashcompinit
+compinit -C
+bashcompinit
+
 # Completions
-zinit snippet OMZL::completion.zsh # omz autocomplete
-zinit snippet OMZ::plugins/git-extras
-#zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/fzf
 zinit snippet OMZ::plugins/golang
 zinit snippet OMZ::plugins/docker
 zinit snippet OMZ::plugins/docker-compose
-zinit snippet OMZ::plugins/oc
 zinit snippet OMZ::plugins/kubectl
 zinit snippet OMZ::plugins/kubectx
 zinit snippet OMZ::plugins/helm
 zinit snippet OMZ::plugins/argocd
+zinit snippet OMZ::plugins/oc
 
 
 # Theme
@@ -189,11 +190,6 @@ if [ -x "$(command -v atuin)" ]; then
     . "$HOME/.atuin/bin/env"
     eval "$(atuin init zsh)"
 fi
-
-autoload -Uz compinit bashcompinit
-compinit -C
-bashcompinit
-# in case of issue: rm -f ~/.zcompdump; compinit
 
 # edit command in editor
 autoload -U edit-command-line
