@@ -1,6 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+#
+zmodload zsh/zprof
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -59,9 +62,11 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
         print -P "%F{160} The clone has failed.%f%b"
 fi
 
+
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+
 
 # Load a few important annexes, without Turbo
 zinit light-mode for \
@@ -186,7 +191,7 @@ if [ -x "$(command -v atuin)" ]; then
 fi
 
 autoload -Uz compinit bashcompinit
-compinit
+compinit -C
 bashcompinit
 # in case of issue: rm -f ~/.zcompdump; compinit
 
@@ -201,6 +206,8 @@ bindkey '^x^e' edit-command-line
 
 #zstyle ':completion:*' menu select
 
+
+
 bindkey              '^I'         menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
 
@@ -210,6 +217,9 @@ zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # ^S
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Fzf autocomplete
 if [ -x "$(command -v fzf)" ]; then
@@ -261,3 +271,5 @@ else
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+zprof
