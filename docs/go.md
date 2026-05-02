@@ -1,6 +1,10 @@
-https://codeload.github.com/golang/go/zip/refs/tags/go1.26.2
-https://github.com/golang/go/tags
+# Go Upgrade (Build from Source)
 
+## Download
+- https://codeload.github.com/golang/go/zip/refs/tags/go1.26.2  
+- https://github.com/golang/go/tags  
+
+## Build
 ```bash
 cd src
 git switch go1.26.3
@@ -8,17 +12,23 @@ git switch go1.26.3
 mv ../go ~/apps/go
 ```
 
+---
 
+# golangci-lint
 
-https://github.com/golangci/golangci-lint/releases/download/v2.11.4/golangci-lint-2.11.4-linux-amd64.tar.gz
-https://github.com/golangci/golangci-lint/releases
+## Download
+- https://github.com/golangci/golangci-lint/releases/download/v2.11.4/golangci-lint-2.11.4-linux-amd64.tar.gz  
+- https://github.com/golangci/golangci-lint/releases  
 
+## Install
+```bash
+tar -xzf golangci-lint-2.11.4-linux-amd64.tar.gz
+mv golangci-lint-2.11.4-linux-amd64 ~/apps/golangci-lint
 ```
-uz golangci-lint-2.11.4-linux-amd64.tar.gz
-mv to bin
-```
 
+---
 
+# PATH
 ```bash
 export PATH="/home/roozbeh/apps/go/bin:$PATH"
 export PATH="/home/roozbeh/apps/golangci-lint/bin:$PATH"
