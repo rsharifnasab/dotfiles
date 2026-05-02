@@ -3,7 +3,7 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 
 # disabled for now, used for profiling
-# zmodload zsh/zprof
+zmodload zsh/zprof
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -83,31 +83,27 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light wfxr/forgit # check fzf-based aliases in https://github.com/wfxr/forgit
 
 # Snippets
-zinit snippet OMZ::plugins/colored-man-pages
+#zinit snippet OMZ::plugins/colored-man-pages
 zinit snippet OMZ::plugins/sudo # esc esc -> sudo prefix
 zinit snippet OMZ::plugins/fancy-ctrl-z # ctrl-z -> fg<enter>
 zinit snippet OMZ::plugins/common-aliases # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/common-aliases/common-aliases.plugin.zsh
 
-autoload -Uz compinit bashcompinit
-compinit -C
-bashcompinit
 
 # Completions
 zinit snippet OMZ::plugins/fzf
 zinit snippet OMZ::plugins/golang
 zinit snippet OMZ::plugins/docker
-zinit snippet OMZ::plugins/docker-compose
+#zinit snippet OMZ::plugins/docker-compose
 zinit snippet OMZ::plugins/kubectl
 zinit snippet OMZ::plugins/kubectx
 zinit snippet OMZ::plugins/helm
-zinit snippet OMZ::plugins/argocd
+#zinit snippet OMZ::plugins/argocd
 zinit snippet OMZ::plugins/oc
 
 
 # Theme
 #zinit light agkozak/agkozak-zsh-prompt
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-
 
 # fix autosuggestion color to be visible
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
@@ -192,6 +188,17 @@ if [ -x "$(command -v atuin)" ]; then
     eval "$(atuin init zsh)"
 fi
 
+autoload -Uz compinit bashcompinit
+
+zcompdump=~/.cache/zcompdump
+
+if [[ ! -f $zcompdump || $zcompdump(#qN.mh+24) ]]; then
+  compinit -d $zcompdump
+else
+  compinit -C -d $zcompdump
+fi
+bashcompinit
+
 # edit command in editor
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -271,4 +278,4 @@ fi
 
 
 # disabled for now, used for profiling
-# zprof
+zprof
