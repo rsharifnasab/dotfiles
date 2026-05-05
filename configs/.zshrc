@@ -81,6 +81,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light wfxr/forgit # check fzf-based aliases in https://github.com/wfxr/forgit
+zinit snippet OMZL::completion.zsh # omz autocomplete
 
 # Snippets
 #zinit snippet OMZ::plugins/colored-man-pages
