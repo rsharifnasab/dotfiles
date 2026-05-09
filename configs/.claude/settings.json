@@ -4,9 +4,9 @@
     "ANTHROPIC_BASE_URL": "https://llm.snapp.tech/anthropic",
     "API_TIMEOUT_MS": "3000000",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "0",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax/MiniMax-M2.5-highspeed",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "minimax/MiniMax-M2.7",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "minimax/MiniMax-M2.7"
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi/kimi-k2-turbo-preview",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "kimi/kimi-k2.6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "kimi/kimi-k2.6"
   },
   "permissions": {
     "allow": [
@@ -23,7 +23,8 @@
       "Bash(done)",
       "Bash(cat:*)",
       "Bash(go doc:*)",
-      "Bash(git ls-tree:*)"
+      "Bash(git ls-tree:*)",
+      "Bash(helm template:*)"
     ],
     "defaultMode": "default"
   },
