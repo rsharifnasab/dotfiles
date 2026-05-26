@@ -1,16 +1,17 @@
 #!/bin/python3
 from argparse import ArgumentParser
+
 from PIL import Image
 
 argparse = ArgumentParser()
-argparse.add_argument("--input", "-i", type=str,
-                      required=True, help="input image")
-argparse.add_argument("--output", "-o", type=str,
-                      default="cropped.png", help="output image to be saved")
+argparse.add_argument("--input", "-i", type=str, required=True, help="input image")
+argparse.add_argument(
+    "--output", "-o", type=str, default="cropped.png", help="output image to be saved"
+)
 args = argparse.parse_args()
 
 
-MAX_SIZE = (800, 400)
+MAX_SIZE = (1000, 890)
 
 
 with Image.open(args.input) as im:
@@ -21,12 +22,9 @@ with Image.open(args.input) as im:
         print("WARNING : already smaller than limit\nNo crop")
         new_dim = size
     else:
-        new_dim = (
-            int(ratio*MAX_SIZE[1]),
-            MAX_SIZE[1]
-        )
+        new_dim = (int(ratio * MAX_SIZE[1]), MAX_SIZE[1])
 
     print(f"new dimension : {new_dim}")
     resized_im = im.resize(new_dim)
-    resized_im .save(args.output)
+    resized_im.save(args.output)
     print(f"image succesfully wrote to {args.output}")
