@@ -7,6 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "restore_on_startup": "none",
   "restore_on_file_reopen": false,
   "languages": {
@@ -61,6 +73,7 @@
     "use_system_clipboard": "always"
   },
   "agent": {
+    "dock": "right",
     "play_sound_when_agent_done": true,
     "default_profile": "write",
     "always_allow_tool_actions": true,
