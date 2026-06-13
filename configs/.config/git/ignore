@@ -41,3 +41,6 @@ GEMINI.md
 
 /opencodetmp
 *_ignore.*
+
+.agents
+skills-lock.json
