@@ -2,6 +2,13 @@
 
 source "$HOME/.envs.site.sh"
 
-#echo "$ZED_AI_API_KEY"
-
-echo "$SNAPP_AI_API_KEY"
+case "$(hostname)" in
+roozbeh-*)
+    # home machine — use OpenRouter
+    echo "$OPENROUTER_API_KEY"
+    ;;
+*)
+    # company laptop — use Snapp LLM gateway
+    echo "$SNAPP_AI_API_KEY"
+    ;;
+esac

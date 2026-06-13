@@ -1,3 +1,6 @@
 *.exe
 *.out
 paru/
+
+# Per-machine overrides for Claude Code (e.g. company LLM gateway)
+settings.local.json
