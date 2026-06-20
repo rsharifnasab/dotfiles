@@ -92,13 +92,14 @@ zinit snippet OMZ::plugins/common-aliases # https://github.com/ohmyzsh/ohmyzsh/b
 
 # Completions
 zinit snippet OMZ::plugins/golang
-zinit snippet OMZ::plugins/docker
+zinit snippet OMZ::plugins/git
+#zinit snippet OMZ::plugins/docker
 #zinit snippet OMZ::plugins/docker-compose
-zinit snippet OMZ::plugins/kubectl
+#zinit snippet OMZ::plugins/kubectl
 zinit snippet OMZ::plugins/kubectx
-zinit snippet OMZ::plugins/helm
+#zinit snippet OMZ::plugins/helm
 #zinit snippet OMZ::plugins/argocd
-zinit snippet OMZ::plugins/oc
+#zinit snippet OMZ::plugins/oc
 
 
 # Theme
