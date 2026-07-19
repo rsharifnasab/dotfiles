@@ -393,7 +393,7 @@ hdd() {
 }
 
 last_commands() {
-    history | awk '{print $4}' | sort | uniq -c | sort -n | tail -20
+    history 100 | awk '{print $2}' | sort | uniq -c | sort -n | tail -20
 }
 
 vlc_sub() {
@@ -771,6 +771,15 @@ opencode() {
         set_http_proxy
         export OPENAI_BASE_URL=
         command opencode "$@"
+    )
+}
+
+omp() {
+    (
+        set_envs
+        export OPENAI_BASE_URL=""
+        export OPENROUTER_API_KEY=""
+        command omp "$@"
     )
 }
 
