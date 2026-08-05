@@ -139,8 +139,8 @@ fi
 export HISTORY_IGNORE="(ls|cd|pwd|exit|reboot|history|sss)"
 
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=100000
+SAVEHIST=100000
 
 #setopt EXTENDED_HISTORY    # Write the history file in the ':start:elapsed;command' format.
 setopt HIST_IGNORE_SPACE    # ignore history when command starts with space
