@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+readonly BLUE='\033[1;34m'
+readonly GREEN='\033[1;32m'
+readonly RED='\033[1;31m'
+readonly YELLOW='\033[1;33m'
+readonly RESET='\033[0m'
+
+run() {
+    local start end rc
+    local cmd=("$@")
+
+    printf "\n${BLUE}==>${RESET} %s\n" "${cmd[*]}"
+
+    start=$(date +%s)
+
+    "${cmd[@]}"
+    rc=$?
+
+    end=$(date +%s)
+
+    if ((rc == 0)); then
+        printf "${GREEN}✓ Success${RESET} (%ds)\n" "$((end - start))"
+    else
+        printf "${RED}✗ Failed${RESET} (%ds)\n" "$((end - start))"
+        printf "${RED}Exit code:${RESET} %d\n" "$rc"
+        printf "${RED}Command:${RESET} %s\n" "${cmd[*]}"
+        exit "$rc"
+    fi
+}
+
+echo -e "${YELLOW}Running Go project checks...${RESET}"
+
+run go mod tidy
+
+if [[ ! -d vendor || go.mod -nt vendor ]]; then
+    echo -e "${YELLOW}go.mod is newer than vendor; updating vendor...${RESET}"
+    run go mod vendor
+else
+    echo -e "${GREEN}✓ vendor is up to date; skipping go mod vendor${RESET}"
+fi
+
+run go build ./...
+run go test ./... -count=0
+run golangci-lint run ./...
+
+echo
+echo -e "${GREEN}✔ All checks passed!${RESET}"

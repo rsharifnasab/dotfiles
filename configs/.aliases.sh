@@ -161,12 +161,7 @@ alias got0="go test './...' -count 0"
 alias gott="go test './...' -count 1 -cover"
 alias gop='cd $GOPATH'
 alias ggu="go get -v -u './...' && go mod tidy"
-gch() {
-    go mod tidy
-    go mod vendor
-    go build -o /dev/null './...'
-    go test './...' -count=0
-}
+
 format_go() {
     gofmt -w .
     gci write . --skip-generated -s standard -s default
