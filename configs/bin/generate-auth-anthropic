@@ -8,7 +8,7 @@ roozbeh-*)
     echo "$OPENROUTER_API_KEY"
     ;;
 *)
-    # company laptop — use Snapp LLM gateway
+    # company laptop — use Snapp AI
     echo "$SNAPP_AI_API_KEY"
     ;;
 esac
