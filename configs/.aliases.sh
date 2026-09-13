@@ -2,8 +2,8 @@
 
 ## safer commands
 alias mc='nocorrect mv -i'
-alias mv='nocorrect mv -i'
-alias cp='nocorrect cp -i'
+alias mvv='nocorrect mv -i'
+alias cpp='nocorrect cp -i'
 alias ln='ln -i'
 
 if command -v safe-rm &>/dev/null; then
