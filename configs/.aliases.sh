@@ -2,8 +2,8 @@
 
 ## safer commands
 alias mc='nocorrect mv -i'
-alias mv='nocorrect mv -i'
-alias cp='nocorrect cp -i'
+alias mvv='nocorrect mv -i'
+alias cpp='nocorrect cp -i'
 alias ln='ln -i'
 
 if command -v safe-rm &>/dev/null; then
@@ -161,12 +161,7 @@ alias got0="go test './...' -count 0"
 alias gott="go test './...' -count 1 -cover"
 alias gop='cd $GOPATH'
 alias ggu="go get -v -u './...' && go mod tidy"
-gch() {
-    go mod tidy
-    go mod vendor
-    go build -o /dev/null './...'
-    go test './...' -count=0
-}
+
 format_go() {
     gofmt -w .
     gci write . --skip-generated -s standard -s default
@@ -393,7 +388,7 @@ hdd() {
 }
 
 last_commands() {
-    history | awk '{print $4}' | sort | uniq -c | sort -n | tail -20
+    history 100 | awk '{print $2}' | sort | uniq -c | sort -n | tail -20
 }
 
 vlc_sub() {
@@ -771,6 +766,15 @@ opencode() {
         set_http_proxy
         export OPENAI_BASE_URL=
         command opencode "$@"
+    )
+}
+
+omp() {
+    (
+        set_envs
+        export OPENAI_BASE_URL=""
+        export OPENROUTER_API_KEY=""
+        command omp "$@"
     )
 }
 
