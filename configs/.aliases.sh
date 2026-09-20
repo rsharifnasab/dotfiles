@@ -2,8 +2,8 @@
 
 ## safer commands
 alias mc='nocorrect mv -i'
-alias mvv='nocorrect mv -i'
-alias cpp='nocorrect cp -i'
+alias mv='nocorrect mv -i'
+alias cp='nocorrect cp -i'
 alias ln='ln -i'
 
 if command -v safe-rm &>/dev/null; then
@@ -130,6 +130,7 @@ alias ssc='command shutdown -c'
 
 # git aliases
 alias got='git'
+alias it='git'
 alias gut='git'
 alias gt='git'
 alias fir='git'
@@ -762,8 +763,8 @@ alias z="zed"
 
 opencode() {
     (
-        set_envs
-        set_http_proxy
+        #set_envs
+        #set_http_proxy
         export OPENAI_BASE_URL=
         command opencode "$@"
     )
