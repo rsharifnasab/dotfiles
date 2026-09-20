@@ -2,11 +2,13 @@
   "apiKeyHelper": "/home/roozbeh/bin/generate-auth-anthropic",
   "env": {
     "API_TIMEOUT_MS": "3000000",
+    "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
+    "ANTHROPIC_API_KEY": "",
+    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "0",
-    "ANTHROPIC_BASE_URL": "https://ai.snapp.tech/anthropic",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax/MiniMax-M3",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "kimi/kimi-k3",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "zai/glm-5.3-flash"
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "~deepseek/deepseek-flash-latest",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "~z-ai/glm-flash-latest",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "~openai/gpt-luna-latest"
   },
   "permissions": {
     "allow": [
@@ -28,10 +30,11 @@
     ],
     "defaultMode": "default"
   },
-  "model": "haiku",
+  "model": "sonnet",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
   },
+  "tui": "fullscreen",
   "theme": "dark-daltonized"
 }

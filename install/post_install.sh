@@ -399,21 +399,14 @@ function disable-beep() {
 function ai() {
     inst uv yq
 
-    # mods (only chat)
-    inst mods
-
-    # agent from mods creators
-    inst crush-bin
-
-    # agent: similar to crush
-    inst opencode-bin
+    # Opencode
+    curl -fsSL https://opencode.ai/install | bash
 
     # Claude code
-    inst claude-code
+    curl -fsSL https://claude.ai/install.sh | bash -x
 
-    # llm
-    uv tool install llm
-    uvx llm install -U llm-openrouter
+    # Openrouter ori
+    curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
 
     # fabric
     (
