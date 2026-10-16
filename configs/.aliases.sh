@@ -792,3 +792,13 @@ fabric() {
         command fabric "$@"
     )
 }
+
+cld() {
+    (
+        set_envs
+        set_http_proxy
+        export OPENAI_BASE_URL=
+        export OPENAI_API_KEY=
+        command claude "$@"
+    )
+}
