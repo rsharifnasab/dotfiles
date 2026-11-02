@@ -94,6 +94,10 @@ dns() { dig "$@" "+short"; }
 alias pacman="sudo pacman --color auto"
 alias jctl="journalctl -p 3 -xb" # get journalctl error messages
 
+# docker with sudo
+alias docker="sudo docker "
+alias dockerd="sudo dockerd "
+
 alias g="gcc -lstdc++ -Wall -Wextra -O0 -g"
 
 alias ag="ag --hidden --ignore .git"
@@ -787,5 +791,15 @@ fabric() {
         export OPENAI_BASE_URL=
         export OPENAI_API_KEY=
         command fabric "$@"
+    )
+}
+
+cld() {
+    (
+        set_envs
+        set_http_proxy
+        export OPENAI_BASE_URL=
+        export OPENAI_API_KEY=
+        command claude "$@"
     )
 }
