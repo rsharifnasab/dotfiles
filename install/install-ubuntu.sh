@@ -9,6 +9,8 @@ sudo apt install vim-gtk3 btop acpi stow \
 
 mkdir -p "$HOME/.zsh/completions"
 
+chsh -s `which zsh`
+
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
@@ -34,6 +36,7 @@ sudo apt update
 sudo apt install neovim python3-pynvim python3-venv python3-socks python3-requests luarocks
 sudo npm install -g neovim
 apt install ruby ruby-dev npm
+cargo install --locked tree-sitter-cli
 
 gem install neovim
 nvim --headless "+echo has('ruby')" +q # verify
