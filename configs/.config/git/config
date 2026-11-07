@@ -48,5 +48,5 @@
     path = ./roozbeh
 
 # Include only when I am in Snapp dir
-[includeIf "gitdir:/home/roozbeh/Desktop/snapp/"]
-    path = ./snapp
+[includeIf "gitdir:/home/roozbeh/Desktop/nobitex/"]
+    path = ./nobi
