@@ -9,7 +9,7 @@ sudo apt install vim-gtk3 btop acpi stow \
 
 mkdir -p "$HOME/.zsh/completions"
 
-chsh -s `which zsh`
+chsh -s $(which zsh)
 
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -48,7 +48,6 @@ curl -f https://zed.dev/install.sh | sh
 # docker
 curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
 bash /tmp/get-docker.sh
-
 
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
@@ -98,7 +97,6 @@ sudo apt install imagemagick
 sudo apt install fd-find
 ln -s $(which fdfind) ~/.local/bin/fd
 
-
 # yazi
 apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep zoxide imagemagick
 #then get binary from here https://github.com/sxyazi/yazi/releases
@@ -109,27 +107,24 @@ curl -fsSL https://opencode.ai/install | bash
 # claude code
 curl -fsSL https://claude.ai/install.sh | bash
 
-
 # spotify
 sudo mkdir -p /etc/apt/keyrings
-curl -sS https://download.spotify.com/debian/pubkey_5384CE82BA52C83A.asc \
-  | sudo gpg --dearmor --yes -o /etc/apt/keyrings/spotify.gpg
+curl -sS https://download.spotify.com/debian/pubkey_5384CE82BA52C83A.asc |
+    sudo gpg --dearmor --yes -o /etc/apt/keyrings/spotify.gpg
 
-echo "deb [signed-by=/etc/apt/keyrings/spotify.gpg] https://repository.spotify.com stable non-free" \
-  | sudo tee /etc/apt/sources.list.d/spotify.list
+echo "deb [signed-by=/etc/apt/keyrings/spotify.gpg] https://repository.spotify.com stable non-free" |
+    sudo tee /etc/apt/sources.list.d/spotify.list
 
 sudo apt update
 sudo apt install spotify-client
 
-
 # misc terminal
-apt install ncdu moreutils tmux guake tree nnn  bat aria2 neofetch btop tre-command just tealdeer mtr httpie hyperfine jcal
+apt install ncdu moreutils tmux guake tree nnn bat aria2 neofetch btop tre-command just tealdeer mtr httpie hyperfine jcal
 
 # misc programs
 apt install meld thunar obs-studio gnome-keyring
 
 # TODO: element, telegram, proton-authenticator
-
 
 # rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -138,3 +133,25 @@ rustup default stable
 rustup component add clippy
 rustup component add rustfmt
 rustup component add rust-analysis rust-src
+
+# Internet
+(
+    sudo mkdir -p /usr/local/lib/xray
+    cd /tmp || exit
+
+    curl -fLo xray.zip \
+        "https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-$(uname -m | sed -e 's/x86_64/64/' -e 's/aarch64/arm64-v8a/').zip"
+
+    sudo unzip -o xray.zip -d /usr/local/lib/xray
+    sudo install -m 755 /usr/local/lib/xray/xray /usr/local/bin/xray
+    rm -f xray.zip
+)
+(
+    cd /tmp || exit
+    curl -fLo sing-box.tar.gz \
+        "https://github.com/SagerNet/sing-box/releases/latest/download/sing-box-$(curl -fsSL https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep -oP '(?<="tag_name": ")[^"]+' | sed 's/^v//')-linux-amd64.tar.gz"
+
+    tar -xzf sing-box.tar.gz
+    sudo install -m 755 sing-box-*/sing-box /usr/local/bin/sing-box
+    rm -rf sing-box.tar.gz sing-box-*
+)
