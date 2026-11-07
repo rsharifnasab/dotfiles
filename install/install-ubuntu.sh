@@ -2,9 +2,9 @@ sudo apt update
 sudo apt upgrade
 
 sudo apt install vim-gtk3 btop acpi stow \
-    lsd git zsh vlc chromium python-is-python \
+    lsd git zsh vlc chromium \
     oathtool npm cargo aria2 curl gnupg \
-    spotify-client zoxide rg silversearcher-ag jq yq moreutils \
+    zoxide silversearcher-ag jq yq moreutils \
     ncal
 
 mkdir -p "$HOME/.zsh/completions"
@@ -46,17 +46,6 @@ curl -f https://zed.dev/install.sh | sh
 curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
 bash /tmp/get-docker.sh
 
-# teams
-sudo mkdir -p /etc/apt/keyrings
-sudo wget -qO /etc/apt/keyrings/teams-for-linux.asc https://repo.teamsforlinux.de/teams-for-linux.asc
-echo "Types: deb
-URIs: https://repo.teamsforlinux.de/debian/
-Suites: stable
-Components: main
-Signed-By: /etc/apt/keyrings/teams-for-linux.asc
-Architectures: amd64" | sudo tee /etc/apt/sources.list.d/teams-for-linux-packages.sources
-sudo apt update
-sudo apt install teams-for-linux
 
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
@@ -64,10 +53,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 apt install tmux
 
 # go latest version
-curl -sL -o "$HOME/bin/gimme" https://raw.githubusercontent.com/travis-ci/gimme/master/gimme
-chmod +x "$HOME/bin/gimme"
-gimme stable
-
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt update
 sudo apt install golang-go
@@ -103,21 +88,13 @@ sudo npm install -g redis-commander
 # safe-rm
 sudo npm i -g safe-rm
 
-# stern
-go install github.com/stern/stern@latest
-
-# nats-cli
-go install github.com/nats-io/natscli/nats@latest
-
 # image magick
 sudo apt install imagemagick
 
-# fd find
+# fd instead of find
 sudo apt install fd-find
+ln -s $(which fdfind) ~/.local/bin/fd
 
-# TODO
-# windows-hello style login: https://github.com/boltgolt/howd
-# atuin history?
 
 # yazi
 apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep zoxide imagemagick
@@ -126,6 +103,35 @@ apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep zoxide imagemagick
 # opencode
 curl -fsSL https://opencode.ai/install | bash
 
-# navi
-bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
-navi repo add denisidoro/navi-tldr-pages
+# claude code
+curl -fsSL https://claude.ai/install.sh | bash
+
+
+# spotify
+sudo mkdir -p /etc/apt/keyrings
+curl -sS https://download.spotify.com/debian/pubkey_5384CE82BA52C83A.asc \
+  | sudo gpg --dearmor --yes -o /etc/apt/keyrings/spotify.gpg
+
+echo "deb [signed-by=/etc/apt/keyrings/spotify.gpg] https://repository.spotify.com stable non-free" \
+  | sudo tee /etc/apt/sources.list.d/spotify.list
+
+sudo apt update
+sudo apt install spotify-client
+
+
+# misc terminal
+apt install ncdu moreutils tmux guake tree nnn  bat aria2 neofetch btop tre-command just tealdeer mtr httpie hyperfine jcal
+
+# misc programs
+apt install meld thunar obs-studio gnome-keyring
+
+# TODO: element, telegram, proton-authenticator
+
+
+# rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup install stable
+rustup default stable
+rustup component add clippy
+rustup component add rustfmt
+rustup component add rust-analysis rust-src
