@@ -141,7 +141,7 @@ rustup component add rustfmt
 rustup component add rust-analysis rust-src
 
 # Internet
-(
+( # xray
     sudo mkdir -p /usr/local/lib/xray
     cd /tmp || exit
 
@@ -152,7 +152,7 @@ rustup component add rust-analysis rust-src
     sudo install -m 755 /usr/local/lib/xray/xray /usr/local/bin/xray
     rm -f xray.zip
 )
-(
+( # sing-box
     cd /tmp || exit
     curl -fLo sing-box.tar.gz \
         "https://github.com/SagerNet/sing-box/releases/latest/download/sing-box-$(curl -fsSL https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep -oP '(?<="tag_name": ")[^"]+' | sed 's/^v//')-linux-amd64.tar.gz"
@@ -160,4 +160,15 @@ rustup component add rust-analysis rust-src
     tar -xzf sing-box.tar.gz
     sudo install -m 755 sing-box-*/sing-box /usr/local/bin/sing-box
     rm -rf sing-box.tar.gz sing-box-*
+)
+( # wireguard and openvpn
+    sudo apt update
+    sudo apt install wireguard wireguard-tools openvpn network-manager-openvpn network-manager-openvpn-gnome
+
+    echo "deb [signed-by=/etc/apt/keyrings/openvpn.gpg] https://packages.openvpn.net/openvpn3/debian noble main" | sudo tee /etc/apt/sources.list.d/openvpn3.list
+    sudo mkdir -p /etc/apt/keyrings/
+    curl -fsSL https://packages.openvpn.net/packages-repo.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/openvpn.gpg
+
+    sudo apt update
+    sudo apt instal openvpn3
 )
