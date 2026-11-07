@@ -217,7 +217,7 @@ if [ -x "$(command -v fzf)" ]; then
     export FZF_BASE=$(which fzf)
     DISABLE_FZF_KEY_BINDINGS="false"
 
-    if [ -x "$(command -v gf)" ]; then
+    if [ -x "$(command -v rf)" ]; then
         export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" --follow'
     fi
 
