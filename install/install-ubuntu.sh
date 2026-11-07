@@ -4,7 +4,7 @@ sudo apt upgrade
 sudo apt install vim-gtk3 btop acpi stow \
     lsd git zsh vlc chromium \
     oathtool npm cargo aria2 curl gnupg \
-    zoxide silversearcher-ag jq yq moreutils \
+    zoxide ripgrep silversearcher-ag jq yq moreutils \
     ncal
 
 mkdir -p "$HOME/.zsh/completions"
@@ -33,10 +33,16 @@ echo "24,25" | getnf
 # neovim
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
-sudo apt install neovim python3-pynvim python3-venv python3-socks python3-requests luarocks
+sudo apt install neovim python3-pynvim python3-venv python3-socks python3-requests luarocks xclip
 sudo npm install -g neovim
 apt install ruby ruby-dev npm
 cargo install --locked tree-sitter-cli
+
+(
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    uv venv "$HOME/.venvs/nvim"
+    source "$HOME/.venvs/nvim/bin/activate" && uv pip install pynvim
+)
 
 gem install neovim
 nvim --headless "+echo has('ruby')" +q # verify
