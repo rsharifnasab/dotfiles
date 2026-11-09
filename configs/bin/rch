@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly BLUE='\033[1;34m'
+readonly GREEN='\033[1;32m'
+readonly RED='\033[1;31m'
+readonly YELLOW='\033[1;33m'
+readonly RESET='\033[0m'
+
+run() {
+    local start end rc
+    local cmd=("$@")
+
+    printf "\n${BLUE}==>${RESET} %s\n" "${cmd[*]}"
+
+    start=$(date +%s)
+    "${cmd[@]}"
+    rc=$?
+    end=$(date +%s)
+
+    if ((rc == 0)); then
+        printf "${GREEN}✓ Success${RESET} (%ds)\n" "$((end - start))"
+    else
+        printf "${RED}✗ Failed${RESET} (%ds)\n" "$((end - start))"
+        printf "${RED}Exit code:${RESET} %d\n" "$rc"
+        printf "${RED}Command:${RESET} %s\n" "${cmd[*]}"
+        exit "$rc"
+    fi
+}
+
+echo -e "${YELLOW}Running Rust project checks...${RESET}"
+
+run cargo fmt --all -- --check
+run cargo clippy --all-targets --all-features --locked --quiet -- -D warnings
+run cargo test --all-targets --locked --quiet
+run cargo build -q --all-targets --locked
+
+echo
+echo -e "${GREEN}✔ All checks passed!${RESET}"
