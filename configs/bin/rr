@@ -20,9 +20,9 @@ run() {
 }
 
 run "fmt" cargo fmt --all -- --check
-run "lint" cargo clippy --all-targets --all-features --locked --quiet -- -D warnings
-run "test" cargo test --all-targets --locked --quiet
-run "build" cargo build -q --all-targets --locked
+run "lint" cargo clippy --all-targets --all-features --quiet -- -D warnings
+run "test" cargo test --all-targets --quiet
+run "build" cargo build -q --all-targets
 
 trap - ERR
 

@@ -32,9 +32,9 @@ run() {
 echo -e "${YELLOW}Running Rust project checks...${RESET}"
 
 run cargo fmt --all -- --check
-run cargo clippy --all-targets --all-features --locked --quiet -- -D warnings
-run cargo test --all-targets --locked --quiet
-run cargo build -q --all-targets --locked
+run cargo clippy --all-targets --all-features --quiet -- -D warnings
+run cargo test --all-targets --quiet
+run cargo build -q --all-targets
 
 echo
 echo -e "${GREEN}✔ All checks passed!${RESET}"
